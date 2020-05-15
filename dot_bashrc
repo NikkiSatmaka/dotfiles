@@ -2,8 +2,6 @@
 # ~/.bashrc
 #
 
-# small changes for chezmoi diff
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
