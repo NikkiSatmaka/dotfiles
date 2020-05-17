@@ -1,0 +1,369 @@
+# Basic Settings
+set shell zsh
+set preview true
+# set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope
+set shellopts '-eu:--shwordsplit'
+set ifs "\n"
+set scrolloff 10
+set color256
+set drawbox
+set icons
+set period 1
+
+# Vars that depend on environmental variables
+$lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope"
+
+# Custom Functions
+cmd open ${{
+    case $(file --mime-type $f -b) in
+    	text/troff) groff -ms $f -T pdf > $f.pdf;;
+        text/*) $EDITOR $fx;;
+	image/x-xcf|image/svg+xml) setsid gimp $f >/dev/null 2>&1 & ;;
+  image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\)\(_large\)*$" | setsid sxiv -baio 2>/dev/null | lf-select & ;;
+	audio/*) mpv --input-ipc-server=/tmp/mpvsoc$(date +%%s) $f ;;
+	video/*) setsid mpv --input-ipc-server=/tmp/mpvsoc$(date +%%s) $f -quiet >/dev/null 2>&1 & ;;
+	application/pdf) setsid zathura $fx >/dev/null 2>&1 & ;;
+        *) for f in $fx; do setsid $OPENER $f >/dev/null 2>&1 & done;;
+    esac
+}}
+
+cmd rifle ${{
+    set -f
+    rifle -l $f
+    read -p "Select runner: " runner
+    rifle -p $runner $f
+}}
+
+#
+# Rename Functions
+#
+
+cmd bulkrename ${{
+    old=$(mktemp)
+    new=$(mktemp)
+    [ -n $fs ] && fs=$(ls)
+    printf "$fs\n" > $old
+    printf "$fs\n" > $new
+    $EDITOR $new
+    [ $(cat $new | wc -l) -ne $(cat $old | wc -l) ] && exit
+    paste $old $new | while read names; do
+        src=$(printf $names | cut -f1)
+        dst=$(printf $names | cut -f2)
+        [ $src = $dst ] && continue
+        [ -e $dst ] && continue
+        mv $src $dst
+    done
+    rm $old $new
+    lf -remote "send $id unselect"
+}}
+
+# Unmap the default binding
+# Rename the file with a completely different name
+
+# Edit the current filename
+cmd renameappend ${{
+	# get 'basename' of the selection
+	filename="${f##*/}"
+	# quote it so we won't deal with quotes in the lf -remote command
+	filename="$(printf '%q' "$filename")"
+	filename="${filename// /<space>}"
+	lf -remote "send $id push :rename<space>$filename"
+}}
+
+# Edit filename before the extension
+cmd renameextensions ${{
+	# get 'basename' of the selection
+	filename="${f##*/}"
+	# quote it so we won't deal with quotes in the lf -remote command
+	filename="$(printf '%q' "$filename")"
+	filename="${filename// /<space>}"
+	lf -remote "send $id push :rename<space>$filename<a-b><c-b>"
+}}
+
+cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
+
+cmd mkfile $$EDITOR "$(echo $* | tr ' ' '\ ')"
+
+cmd sudomkfile $sudo $EDITOR "$(echo $* | tr ' ' '\ ')"
+
+cmd mkscript $mkscript "$(echo $* | tr ' ' '\ ')"
+
+cmd chmod ${{
+	clear
+	printf "Mode Bits: "
+	read ans
+
+	for file in "$fx"
+	do
+	chmod $ans $file
+	done
+}}
+
+cmd setbg %setbg "$f"
+
+cmd moveto ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear; echo "Move to where?"
+	dest="$(cut -d'	' -f2- ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)" &&
+	eval mv -iv $fx $dest &&
+	notify-send "🚚 File(s) moved." "File(s) moved to $dest."
+}}
+
+cmd copyto ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear; echo "Copy to where?"
+	dest="$(cut -d'	' -f2- ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)" &&
+	eval cp -ivr $fx $dest &&
+	notify-send "📋 File(s) copied." "File(s) copies to $dest."
+}}
+
+cmd imgur ${{ imgur.sh "$f" | xclip -selection clipboard
+}}
+
+cmd fzf_jump ${{
+  res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd broot_jump ${{
+  f=$(mktemp)
+  res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
+  rm -f "$f"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd dragon %dragon-drag-and-drop -a -x $fx
+cmd cpdragon %cpdragon
+cmd mvdragon %mvdragon
+cmd dlfile %dlfile
+
+# extract the current file with the right command
+# (xkcd link: https://xkcd.com/1168/)
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.tar) tar xvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+# compress current file or selected files with tar
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar cvf $1.tar.xz $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with tar and gunzip
+cmd targz ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czvf $1.tar.gz $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with tar and bz2
+cmd tarbz2 ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar cjvf $1.tar.bz2 $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+# Trash cli bindings
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    # extract the substring from start of string up to delimiter.
+    # this is the first "element" of the string.
+    file=${files%%;*}
+
+    trash-put "$(basename "$file")"
+    # if there's only one element left, set `files` to an empty string.
+    # this causes us to exit this `while` loop.
+    # else, we delete the first "element" of the string from files, and move onto the next.
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+cmd trash_clear ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	# printf "%s\n\t" "$fx"
+	trash-list
+	printf "empty Trash?[y/N]"
+	read ans
+	[ $ans = "y" ] && trash-empty
+}}
+
+cmd trash_restore ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	trash-restore
+}}
+
+cmd stripspace %stripspace "$f"
+
+# Bindings
+# Remove some defaults
+map r
+map m
+map "'"
+map '"'
+map o
+map d
+map c
+map e
+map f
+
+# File Openers
+map ee $$EDITOR "$f"
+map u $view "$f"
+
+# Archive Mappings
+map az zip
+map at tar
+map ag targz
+map ab targz
+map au unarchive
+
+# Trash Mappings
+map dd trash
+map tc trash_clear
+map tr trash_restore
+map <delete> trash
+
+# Broot Mapping
+map f broot_jump
+
+# Dragon Mapping
+map dr dragon
+map dm mvdragon
+map dc cpdragon
+map dl dlfile
+
+map s<space> stripspace
+
+# use enter for shell commands
+map <enter> shell
+
+# execute current file (must be executable)
+# map x $$f
+# map X !$f
+
+# dedicated keys for file opener actions
+# map o &mimeopen $f
+# map O $mimeopen --ask $f
+
+# Basic Functions
+map . set hidden!
+map DD delete
+map p paste
+map x cut
+map y copy
+map X moveto
+map Y copyto
+# map <enter> open
+map mf push :mkfile<space>
+map mr push :sudomkfile<space>
+map md push :mkdir<space>
+map ms push :mkscript<space>
+map ch chmod
+map bg setbg
+# map o open_config
+map ra rename
+map re renameextensions
+map rc push ra<c-u>
+map rb bulkrename
+map H top
+map L bottom
+map R reload
+map C clear
+map U unselect
+
+# Movement
+map gtr cd ~/.local/share/Trash/files
+map gus cd /run/media/nikki
+
+map gv. cd ~/videos
+map gva cd ~/videos/anime
+
+map gp. cd ~/pictures
+map gpm cd ~/pictures/mpvscreenshots
+map gps cd ~/pictures/screenshots
+
+map gw. cd ~/pictures/wallpapers
+map gww cd ~/pictures/wallpapers/Wallpapers
+map gwm cd ~/pictures/wallpapers/MobileWallpapers
+
+map gd cd ~/documents
+map gt. cd ~/documents/Textbooks
+map gt1 cd ~/documents/Textbooks/1stYear
+map gt2 cd ~/documents/Textbooks/2ndYear
+map gt3 cd ~/documents/Textbooks/3rdYear
+map gu3 cd ~/documents/Uni/3rdYear
+
+map gD cd ~/downloads
+map ge cd ~/desktop
+
+map gs. cd ~/scripts
+map gsl cd ~/scripts/lf
+map gsa cd ~/scripts/alsa
+map gsi cd ~/scripts/i3
+map gse cd ~/scripts/lemonbar
+map gsp cd ~/scripts/polybar
+map gsb cd ~/scripts/bspwm
+map gsu cd ~/scripts/pulse
+map gdt cd ~/scripts/transmission
+
+map gr. cd ~/repos
+map grb cd ~/repos/bookmenu
+map grf cd ~/repos/cleanfullscreen
+map grm cd ~/repos/dmenu
+map grd cd ~/repos/dotfiles
+map gri cd ~/repos/init
+map grk cd ~/repos/kanban-board
+map grl cd ~/repos/lbryurlconvert
+map grP cd ~/repos/PerlProjects
+map grr cd ~/repos/reading-list
+map grs cd ~/repos/st
+map grw cd ~/repos/website
+
+map gc cd ~/.config
+map gC cd ~/cell
+map gE cd /etc
+map gU. cd /usr
+map gUs cd /usr/share

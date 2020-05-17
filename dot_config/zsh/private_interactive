@@ -1,0 +1,179 @@
+# Disable ctrl-s to freeze terminal.
+stty stop undef
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# ZINIT PATH
+typeset -A ZINIT
+ZINIT[BIN_DIR]="${ZDOTDIR:-$HOME}/.zinit/bin"
+ZINIT[HOME_DIR]="${ZDOTDIR:-$HOME}/.zinit"
+ZINIT[PLUGINS_DIR]="${ZINIT[HOME_DIR]}/plugins"
+ZINIT[COMPLETIONS_DIR]="${ZINIT[HOME_DIR]}/completions"
+ZINIT[SNIPPETS_DIR]="${ZINIT[HOME_DIR]}/snippets"
+ZINIT[ZCOMPDUMP_PATH]="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+
+# Initialize completion
+autoload -Uz compinit
+[[ ! -d $ZSH_CACHE_DIR ]] && command mkdir -p "$ZSH_CACHE_DIR"
+compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+zstyle ':completion:*' menu select=4
+zmodload zsh/complist
+
+. ~/.config/shell/interactive
+
+ssource ~/.config/zsh/interactive_local
+
+# Automatically cd into typed directory.
+setopt autocd
+
+# Use vim style navigation keys in menu completion
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+# Initialize editing command line
+autoload -U edit-command-line && zle -N edit-command-line
+
+# Enable interactive comments (# on the command line)
+setopt interactivecomments
+
+# Nicer history
+HISTSIZE=10000
+HISTDIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
+HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
+[[ ! -d $HISTDIR ]] && command mkdir -p "$HISTDIR"
+SAVEHIST=$HISTSIZE
+setopt appendhistory
+setopt incappendhistory
+setopt extendedhistory
+
+# Time to wait for additional characters in a sequence
+KEYTIMEOUT=1 # corresponds to 10ms
+
+# Use vim style line editing in zsh
+bindkey -v
+# Movement
+bindkey -a 'gg' beginning-of-buffer-or-history
+bindkey -a 'G' end-of-buffer-or-history
+# Undo
+bindkey -a 'u' undo
+bindkey -a '^R' redo
+# Edit line
+bindkey -a '^V' edit-command-line
+# Backspace
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+# Delete
+bindkey '^[[P' delete-char
+
+# Use incremental search
+bindkey "^R" history-incremental-search-backward
+
+# Disable shell builtins
+disable r
+
+# Change cursor shape for different vi modes.
+zle-keymap-select () {
+	if [[ ${KEYMAP} == vicmd ]] ||
+		[[ $1 = 'block' ]]; then
+		echo -ne '\e[1 q'
+	elif [[ ${KEYMAP} == main ]] ||
+		[[ ${KEYMAP} == viins ]] ||
+		[[ ${KEYMAP} = '' ]] ||
+		[[ $1 = 'beam' ]]; then
+		echo -ne '\e[5 q'
+	fi
+}
+
+zle -N zle-keymap-select
+
+zle-line-init () {
+	zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+	echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# Press ESC v to edit your command in your $EDITOR.
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+# load .inputrc
+#eval "$(sed -rn 's/^([^#].*?): (.*)$/bindkey \1 \2/p' ~/.inputrc)"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+# if [[ "$(tput colors)" == "256" ]]; then
+#     ZSH_HIGHLIGHT_STYLES[default]=none
+#     ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=160
+#     ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=037,bold #,standout
+#     ZSH_HIGHLIGHT_STYLES[alias]=fg=064,bold
+#     ZSH_HIGHLIGHT_STYLES[builtin]=fg=064,bold
+#     ZSH_HIGHLIGHT_STYLES[function]=fg=064,bold
+#     ZSH_HIGHLIGHT_STYLES[command]=fg=064,bold
+#     ZSH_HIGHLIGHT_STYLES[precommand]=fg=064,underline
+#     ZSH_HIGHLIGHT_STYLES[commandseparator]=none
+#     ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=037
+#     ZSH_HIGHLIGHT_STYLES[path]=fg=166,underline
+#     ZSH_HIGHLIGHT_STYLES[globbing]=fg=033
+#     ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
+#     ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=125,bold
+#     ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=125,bold
+#     ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
+#     ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=136
+#     ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=136
+#     ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=136
+#     ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=136
+#     ZSH_HIGHLIGHT_STYLES[assign]=fg=037
+# fi
+
+# # dircolors
+
+# if [[ "$(tput colors)" == "256" ]]; then
+#     eval $(dircolors =(cat ~/.shell/plugins/dircolors-solarized/dircolors.256dark ~/.shell/dircolors.extra))
+# fi
+
+# # Enable starship prompt.
+# eval "$(starship init zsh)"
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.config/zsh/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.config/zsh/.zinit" && command chmod g-rwX "$HOME/.config/zsh/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.config/zsh/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.config/zsh/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+
+# # Load zsh-autosuggestions
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+
+# # Enable direnv.
+# eval "$(direnv hook zsh)"

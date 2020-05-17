@@ -1,0 +1,182 @@
+# #--Last Major Edit: 03/01/2020 Nikki Satmaka--# #
+
+#####################
+# wm independent hotkeys
+#####################
+
+# Terminal Emulator
+super + Return
+	$TERMINAL
+
+# Program Launcher
+super + space
+	rofi -m -1 -show run
+
+# Emoji Launcher
+super + shift + d
+	dmenu_emoji
+
+# Reload this sxhkd config file
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Reload wallpaper
+super + alt + w
+	feh --bg-fill --no-fehbg --randomize ~/pictures/wallpapers
+
+# Screenshots
+Print
+	screenshot full
+
+shift + Print
+	screenshot select
+
+control + Print
+	screenshot fulltime
+
+super + Print
+	screenshot selecttime
+
+#####################
+# System Control
+#####################
+
+# compositor
+super + {_,shift + }c
+	{checkcomp,comptoggle}
+
+#####################
+# XF86 keys
+#####################
+
+XF86AudioMute
+	pulsemixer --toggle-mute
+XF86Audio{Raise,Lower}Volume
+	pulsemixer --change-volume {+,-}5
+# XF86Audio{Next,Prev}
+# 	mpc {next,prev}
+# XF86Audio{Pause,Play,Stop}
+# 	mpc {pause,play,stop}
+# XF86Audio{Rewind,Forward}
+# 	mpc seek {-,+}10
+XF86AudioMicMute
+	pulsemixer --id source-1 --toggle-mute
+# XF86AudioMedia
+# 	$TERMINAL -e ncmpcpp
+XF86MonBrightness{Up,Down}
+	light {-A,-U} 5
+XF86PowerOff
+	promptoff
+# XF86Calculator
+# 	$TERMINAL -e bc
+# XF86Sleep
+# 	prompt 'Hibernate computer?' 'sudo -A zzz'
+# XF86WWW
+# 	$BROWSER
+# XF86DOS
+# 	$TERMINAL
+# XF86ScreenSaver
+# 	mpc pause; pauseallmpv; i3lock -e -f -c 1d2021; xset dpms force off
+# XF86TaskPane
+# 	$TERMINAL -e htop
+# XF86Mail
+# 	$TERMINAL -e neomutt
+# XF86MyComputer
+# 	$TERMINAL -e $FILE /
+XF86Launch1
+	xset dpms force off
+XF86TouchpadToggle
+	(synclient | grep "TouchpadOff.*1" && synclient TouchpadOff=0) || synclient TouchpadOff=1
+XF86Touchpad{Off,On}
+	synclient TouchpadOff={1,0}
+
+#####################
+# bspwm Hotkeys
+#####################
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# focus the node in the given direction
+# hold shift to switch nodes in that direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# focus the next/previous node in the current desktop
+super + {_,shift + }Tab
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel

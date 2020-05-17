@@ -1,0 +1,14 @@
+clear lock
+add mod3 = Hyper_L
+remove mod4 = Hyper_L
+keycode  66 = Hyper_L NoSymbol Hyper_L
+keycode  10 = 8 exclam 8 exclam
+keycode  11 = 7 at 7 at
+keycode  12 = 3 numbersign 3 numbersign
+keycode  13 = 4 dollar 4 dollar
+keycode  14 = 5 percent 5 percent
+keycode  15 = 6 asciicircum 6 asciicircum
+keycode  16 = 2 ampersand at 2 ampersand
+keycode  17 = 1 asterisk 1 asterisk
+keycode  18 = 9 parenleft 9 parenleft
+keycode  19 = 0 parenright 0 parenright

@@ -1,26 +1,11 @@
-#
-# ~/.bashrc
-#
+# this file gets run in two cases:
+# 1. non-login interactive shell
+# 2. remote shell (over ssh or similar)
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# #2 happens when you run "ssh user@host bash" explicitly.
+# in this case, /etc/bash.bashrc has not been previous executed (unlike #1).
+# however, we assume that #2 is a recovery mode, so we don't want to do much.
+# (also, my google-fu didn't find a way to distinguish them)
 
-# PS1 Setup
-# PS1='[\u@\h \W]\$ '
-# PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
-# PS1="\[\e[33m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\]:\[\e[35m\]\w\[\e[m\]\[\e[33m\]]\[\e[m\] (\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)) \$ "
-
-shopt -s autocd		# Automatically cd into typed directory.
-shopt -s checkwinsize		# Automatically cd into typed directory.
-
-# Load aliases and shortcuts if existent.
-[ -f "$XDG_CONFIG_HOME/shortcuts/aliases" ] && source "$XDG_CONFIG_HOME/shortcuts/aliases"
-[ -f "$XDG_CONFIG_HOME/shortcuts/shortcuts" ] && source "$XDG_CONFIG_HOME/shortcuts/shortcuts"
-[ -f "$XDG_CONFIG_HOME/shortcuts/zshnameddirs" ] && source "$XDG_CONFIG_HOME/shortcuts/zshnameddirs"
-
-# [ -r /usr/share/bash-completion/bash_completion ] && . usr/share/bash-completion/bash_completion
-
-# Starship Prompt
-eval "$(starship init bash)"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. ~/.config/bash/env
+. ~/.config/bash/interactive

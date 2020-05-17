@@ -1,0 +1,268 @@
+# Copy output of last command
+# alias c='"$(history | tail -2 | sed "s/  [0-9]*  //;2d")" > /tmp/cmdoutput && cat /tmp/cmdoutput | xsel -b && notify-send "Terminal" "Ouput Copied"'
+
+# Quick chmod ;-)
+alias rw-='chmod 600'
+alias rwx='chmod 700'
+alias r--='chmod 644'
+alias r-x='chmod 755'
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ~='cd ~'
+alias -- -='cd -'
+
+# Shortcuts
+alias h="cd $HOME && ls"
+alias dl="cd $HOME/Downloads && ls"
+alias d="cd $HOME/Documents && ls"
+alias mm="cd $HOME/Music && ls"
+alias pp="cd $HOME/Pictures && ls"
+alias ss="cd $HOME/Pictures/screenshots && ls"
+alias vv="cd $HOME/Videos && ls"
+alias b="cd $HOME/.local/bin && ls -a"
+alias cf="cd ${XDG_CONFIG_HOME:-$HOME/.config} && ls -a"
+alias cs="cd ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts && ls -a"
+alias dx="cd $HOME/Dropbox && ls"
+alias o="cd $HOME/dots && ls -a"
+alias bos="cd $HOME/Dropbox/Documents/BOS && ls"
+alias st="cd /storage && ls"
+alias mn="cd /mnt && ls -a"
+alias sd="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/directories"
+alias sf="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/files"
+alias sc="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/commands"
+alias sb="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/bspwm/bspwmrc"
+alias sx="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/sxhkd/sxhkdrc"
+alias sz="$EDITOR $ZDOTDIR/.zshrc"
+alias sv="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/nvim/init.vim"
+alias sr="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/ranger/rc.conf"
+alias sqb="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/qutebrowser/config.py"
+
+# trash command
+alias trp='trash-put -iv'
+alias tre='trash-empty'
+alias trl='trash-list'
+alias trr='trash-restore'
+alias trm='trash-rm'
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias cp="cp -iv"
+alias mv="mv -iv"
+# alias rm='echo "Use trp to trash files"; false'
+alias mkd="mkdir -pv"
+alias yt="youtube-dl --add-metadata -i"
+alias yta="yt -x -f bestaudio/best"
+alias ffmpeg="ffmpeg -hide_banner"
+
+# alias spt='launchspt'
+
+# ls aliases
+alias ls="exa -Fh --group-directories-first"
+alias l="exa -Fhl --group-directories-first"  # List all files colorized in long format
+alias la="exa -Fhla --group-directories-first"
+alias lad="exa -Fhd -- .*(/)"  # only show dot-directories
+alias lsa="exa -Fha -- .*(.)"  # only show dot-files
+alias lsd="exa -FhlD"  # only show directories
+alias lse="exa -Fhld -- *(/^F)"  # only show empty directories
+
+alias lsnew="exa -rthl -- *(.) | tail $@ 2&>/dev/null"  # only the newest files
+alias lsold="exa -rthl -- *(.) | head $@ 2&>/dev/null"   # display the oldest files
+alias lssmall="exa -hl --sort=size -- *(.) | tail $@ 2&>/dev/null"  # display the smallest files
+alias lsx="exa -l -- *(*) | head $@ 2&>/dev/null"        # only show executables
+alias lssuid="exa -l -- *(s,S) | head $@ 2&>/dev/null"   # only show suid-files
+alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head $@ 2&>/dev/null"    # display the biggest files
+
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+# alias ccat="highlight --out-format=ansi"
+
+# Some other stuff
+alias magit="nvim -c MagitOnly"
+# alias ref="shortcuts >/dev/null; source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/shortcuts"; source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/commands"; source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/zshnameddirs"
+# alias weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport"
+alias tmux="tmux -f \${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
+
+# Application aliases
+alias v="nvim"
+alias vim="nvim"
+alias vimdiff="nvim -d"
+alias p="pandoc"
+alias m="mpv"
+alias r="ranger"
+alias trc="transmission-remote-cli"
+alias trss="transmission-rss"
+alias xup="xrdb .Xresources"
+alias pman="sudo pacman"
+alias pip="sudo pip"
+alias jp="joplin"
+
+# These common commands are just too long! Abbreviate them.
+alias ka="killall"
+alias trem="transmission-remote"
+alias YT="youtube-viewer"
+alias sdn="sudo shutdown -h now"
+
+# git aliases
+alias g='git'
+alias gst='git status'
+alias gc='git commit'
+alias ga='git add'
+alias gpl='git pull'
+alias gpom='git pull origin master'
+alias gpu='git push'
+alias gd='git diff'
+alias gch='git checkout'
+alias gnb='git checkout -b'
+alias gac='git add . && git commit'
+alias grs='git restore --staged .'
+alias gre='git restore'
+alias gr='git remote'
+alias gcl='git clone'
+alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+alias gt='git ls-tree -r master --name-only'
+alias grm='git remote'
+alias gb='git branch'
+alias gm='git merge'
+alias gf='git fetch'
+
+# Angular aliases
+alias ngs='ng serve'
+alias ngt='ng test'
+alias nggc='ng generate component'
+alias nggs='ng generate service'
+
+# Restore apps
+alias restoreapps="yay -S --needed - < ~/.restore/applist"
+alias restorestow="cd ~/dots/stow_home ; for d in *;do stow -t ~ $d; done"
+alias restorestowroot="cd ~/dots/stow_root ;_for d in *;do stow -t / $d; done"
+
+# Hexdsl Alias --------------------------------------------
+alias blame-plot="systemd-analyze plot >plot.svg"
+alias blame="systemd-analyze blame"
+alias cal="cal -Y"
+
+alias beepspk="echo -ne "\007""
+alias gccbest="gcc -c -Q -march=native --help=target"
+# alias calcurse="CALCURSE_CALDAV_PASSWORD=$(pass show posteo.de|head -n1) calcurse-caldav --init=keep-remote"
+alias ch="chmod +x"
+alias clean="cleanupdate"
+alias jpg2webp="for f in *.jpg; do cwebp "$f" -o "$(basename -- "$f" .jpg).webp"; done"
+alias png2webp="for f in *.png; do cwebp "$f" -o "$(basename -- "$f" .png).webp"; done"
+
+alias cpuspeed="watch grep \"cpu MHz\" /proc/cpuinfo"
+alias df="df -h"
+alias dig="drill"
+alias fake1g="fallocate -l 1G test.img"
+alias fe="fzf | xargs -r -I % $EDITOR %"
+alias fixsum="updpkgsums"
+alias free="free -h"
+alias gameserverdrive="sshfs root@68.183.36.163:/root/ /storage/gameserver"
+alias gameserver="ssh -v root@68.183.36.163"
+alias glhack="glhack --windowed"
+alias googledrive="google-drive-ocamlfuse /mnt/google"
+alias gopherdrive="sshfs hexdsl@206.189.5.169:/home/hexdsl/gopher/ /storage/gopher"
+
+alias handbrake="ghb"
+
+# Apps aliases
+alias listaur="pacman -Qm"
+alias paci="sudo pacman -Qi"
+# alias paci="yay -Qeq | fzf -m --preview "yay -Qi {1}" | xargs -ro yay -Rs"
+alias rank="sudo reflector --verbose -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist"
+
+alias motherboard="cat /sys/devices/virtual/dmi/id/board_{vendor,name,version}"
+
+alias myip="curl http://ipecho.net/plain; echo"
+alias netusage="vnstat"
+alias parrot="curl parrot.live"
+alias pass="PASSWORD_STORE_ENABLE_EXTENSIONS=true pass"
+alias pg="pwgen -cnBy 15"
+# alias pgx="cat /dev/urandom | tr -dc "[:print:]" | tr -d "[:space:]" | fold -w 25 | grep -E "[A-Z].[0-9].[^a-zA-Z\d]" | head -n 5"
+alias ping="ping -c 3"
+alias q="exit"
+alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
+alias se="fd -tf .  ~/.bin/ ~/.config | fzf | xargs -r $EDITOR"
+alias S="sudo systemctl"
+alias s="systemctl --user"
+alias suckclean="make clean && rm -f config.h && git reset --hard origin/master"
+alias sxiv="sxiv -a -b"
+alias tar-make="tar -cvzf"
+alias top="htop"
+alias tree="tree -C"
+# alias tty-clock="tty-clock -c -b -f "%a %d %b" -C 5"
+alias unixtime="date +%s"
+#alias uptime="tuptime"
+# alias webgallery="for f in *.webp; do echo "<img src=\"/images/gallery/$f\" />" >> gallery.html; done"
+alias whats="apropos"
+alias which="where"
+# alias xevkb="xev -event keyboard | egrep -o "(keycode(.)+\)|XLookup.+[1-9].+)""
+alias xpgopher="ssh hexdsl@206.189.5.169"
+alias rofitop="rofi -show top -modi top"
+# alias xp="xprop | grep -E "^(WM_CLASS|_NET_WM_NAME|WM_NAME)""
+alias instagram="instaloader --no-video-thumbnails --no-metadata-json --no-captions"
+
+# functions
+dc () {
+    dfm
+    dir="$(cat ~/.config/dmenufm/dmenufm_lastpath)"
+    [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+}
+
+# Colourized less output
+cless() {
+  case "$1" in
+      *.md) glow -s dark "$1" | less -r;;
+      *) highlight -O ansi "$1" --force | less -r;;
+  esac
+}
+
+# Colourized cat output
+ccat() {
+  case "$1" in
+      *.md) glow -s dark "$1";;
+      *) highlight -O ansi "$1" --force;;
+  esac
+}
+
+# cd when exiting lf
+lc () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp" >/dev/null
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+
+# cd when exiting nnn
+n ()
+{
+    # Block nesting of nnn in subshells
+    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+        echo "nnn is already running"
+        return
+    fi
+
+    # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # To cd on quit only on ^G, remove the "export" as in:
+    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    # NOTE: NNN_TMPFILE is fixed, should not be modified
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+    # stty start undef
+    # stty stop undef
+    # stty lwrap undef
+    # stty lnext undef
+
+    nnn "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+            . "$NNN_TMPFILE"
+            rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}

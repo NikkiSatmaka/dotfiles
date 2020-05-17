@@ -1,0 +1,22 @@
+# Path to the bash it configuration
+# export BASH_IT=~/.bash_it
+
+# Theme (from ~/.bash_it/themes/)
+# export BASH_IT_THEME=powerline
+
+# Load Bash It
+# . $BASH_IT/bash_it.sh
+
+. ~/.config/shell/interactive
+
+HISTCONTROL=ignoredups
+HISTSIZE=10000
+HISTDIR="${XDG_DATA_HOME:-$HOME/.local/share}/bash"
+HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/bash/history"
+[[ ! -d $HISTDIR ]] && command mkdir -p "$HISTDIR"
+
+# Enable starship prompt.
+eval "$(starship init bash)"
+
+# Enable direnv.
+#eval "$(direnv hook bash)"

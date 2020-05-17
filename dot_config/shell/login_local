@@ -1,0 +1,173 @@
+# XDG Base Directory
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+export XDG_CONFIG_DIRS="/etc/xdg"
+
+# Preferred programs
+export TERMINAL=alacritty
+export READER=zathura
+export VIDEO=mpv
+export IMAGE=sxiv
+export FILE=nnn
+export COLORTERM=truecolor
+export OPENER=xdg-open
+export WM=bspwm
+export BROWSER=brave
+# if [ -n "$DISPLAY" ]; then
+# 	export BROWSER="brave"
+# else
+# 	export BROWSER="w3m"
+# fi
+
+# ~/ Clean-up:
+#export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
+export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
+export NMBGIT="${XDG_DATA_HOME:-$HOME/.local/share}/notmuch/nmbug"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
+export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
+export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/readline/inputrc"
+export ALSA_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/alsa/asoundrc"
+export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
+export KODI_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/kodi"
+export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/pass"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+
+# GnuPG
+# export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+
+# Other program settings:
+export DICS="/usr/share/stardict/dic/"
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
+export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
+
+# java fixes
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# npm
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"
+
+# ruby gem
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+export GEM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/gem"
+export GEM_SPEC_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/gem"
+
+# go
+export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
+
+# Android SDK
+export ANDROID_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
+export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
+export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/android"
+export ADB_VENDOR_KEY="${XDG_CONFIG_HOME:-$HOME/.config}/android"
+
+# Doom emacs
+export DOOMDIR="${XDG_CONFIG_HOME:-$HOME/.config}/doom"
+
+# FFF file manager
+export FFF_HIDDEN=0
+
+export FFF_KEY_SCROLL_UP2='off'
+export FFF_KEY_SCROLL_DOWN2='off'
+export FFF_KEY_PARENT2='off'
+export FFF_KEY_CHILD2='off'
+
+if command -v trash-put > /dev/null 2>&1; then
+	export FFF_TRASH_CMD='trash-put'
+else
+	export FFF_TRASH_CMD='mv'
+fi
+
+# NNN file manager
+export NNN_USE_EDITOR=1
+export NNN_OPENER=xdg-open
+export NNN_TRASH=1
+export NNN_COLORS="1234"
+export NNN_PLUG='o:fzopen;C:diffs;v:imgview;i:imgur;p:pdfview;m:mediainf;d:dragdrop;e:unarchive;s:suedit;c:cpfile'
+
+# This is the list for lf icons:
+export LF_ICONS="di=📁:\
+fi=📃:\
+tw=🤝:\
+ow=📂:\
+ln=⛓:\
+or=❌:\
+ex=🎯:\
+*.txt=✍:\
+*.mom=✍:\
+*.me=✍:\
+*.ms=✍:\
+*.png=🖼:\
+*.ico=🖼:\
+*.jpg=📸:\
+*.jpeg=📸:\
+*.gif=🖼:\
+*.svg=🗺:\
+*.xcf=🖌:\
+*.html=🌎:\
+*.xml=📰:\
+*.gpg=🔒:\
+*.css=🎨:\
+*.pdf=📚:\
+*.djvu=📚:\
+*.epub=📚:\
+*.csv=📓:\
+*.xlsx=📓:\
+*.tex=📜:\
+*.md=📘:\
+*.r=📊:\
+*.R=📊:\
+*.rmd=📊:\
+*.Rmd=📊:\
+*.mp3=🎵:\
+*.opus=🎵:\
+*.ogg=🎵:\
+*.m4a=🎵:\
+*.flac=🎼:\
+*.mkv=🎥:\
+*.mp4=🎥:\
+*.webm=🎥:\
+*.mpeg=🎥:\
+*.avi=🎥:\
+*.zip=📦:\
+*.rar=📦:\
+*.7z=📦:\
+*.tar.gz=📦:\
+*.z64=🎮:\
+*.v64=🎮:\
+*.n64=🎮:\
+*.1=ℹ:\
+*.nfo=ℹ:\
+*.info=ℹ:\
+*.log=📙:\
+*.iso=📀:\
+*.img=📀:\
+*.bib=🎓:\
+*.ged=👪:\
+*.part=💔:\
+*.torrent=🔽:\
+"
+
+# Path settings
+pathappend "$HOME/.local/bin" PATH
+pathappend "$HOME/.local/bin/bspwm" PATH
+pathappend "$HOME/.local/bin/i3" PATH
+pathappend "$HOME/.local/bin/lf" PATH
+pathappend "$HOME/.local/bin/polybar" PATH
+pathappend "$HOME/.local/cargo/bin" PATH
+pathappend "$HOME/.emacs.d/bin" PATH
+pathappend "$HOME/.local/src/doom-emacs/bin" PATH
+pathappend "/usr/local/go/bin" PATH
+pathappend "$HOME/go/bin" PATH
+pathappend "$GEM_HOME" PATH
+pathappend "${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin" PATH
+pathappend "/usr/local/plan9/bin" PATH
+pathappend "$ANDROID_HOME/platform-tools" PATH
+pathappend "/usr/lib/w3m" PATH
+
+# Switch escape and caps if tty and no passwd required:
+sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap 2>/dev/null

@@ -1,0 +1,66 @@
+# suffix aliases (needs Zsh >= 4.*).  Suffix aliases allow the shell
+# to run a command on a file by suffix, e.g 'alias -s ps=gv' makes
+# 'foo.ps' execute 'gv foo.ps'.
+if [[ $ZSH_VERSION == 5.<->* ]]; then
+    # some "file aliases"
+    alias -s {ogg,flac,mpg,mpeg,avi,ogm,wmv,m4v,mp4,mov}="mplayer -idx"
+    alias -s {ogg,flac,mpg,mpeg,avi,ogm,wmv,m4v,mp4,mov}="mpv"
+    alias -s {jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF}="mirage"
+    alias -s dvi=xdvi
+    alias -s pdf=xpdf
+    alias -s ps=gv
+    alias -s {htm,html,php,com,net,org,gov}="pick-web-browser"
+    alias -s tex=${EDITOR:-vi}
+    alias -s txt=${PAGER:-less}
+    # some global aliases for redirection
+    alias -g N="&>/dev/null"
+    alias -g 1N="1>/dev/null"
+    alias -g 2N="2>/dev/null"
+    alias -g DN="/dev/null"
+    alias -g PI="|"
+    # Paging with less / head / tail
+    alias -g LS='| less -S'
+    alias -g EL='|& less'
+    alias -g ELS='|& less -S'
+    alias -g TRIM='| cut -c 1-$COLUMNS'
+    alias -g H='| head'
+    alias -g HL='| head -n $(( +LINES ? LINES - 4 : 20 ))'
+    alias -g EH='|& head'
+    alias -g EHL='|& head -n $(( +LINES ? LINES - 4 : 20 ))'
+    alias -g TL='| tail -n $(( +LINES ? LINES - 4 : 20 ))'
+    alias -g ET='|& tail'
+    alias -g ETL='|& tail -n $(( +LINES ? LINES - 4 : 20 ))'
+    # Sorting / counting
+    alias -g C='| wc -l'
+    alias -g SS='| sort'
+    alias -g Su='| sort -u'
+    alias -g Sn='| sort -n'
+    alias -g Snr='| sort -nr'
+    # grep(1)'ing
+    for switches in {,i}{,l,L}{,r}{,v}; do
+        eval "alias -g  GG$switches='| egrep ${switches:+-$switches}'"
+        eval "alias -g EG$switches='|& egrep ${switches:+-$switches}'"
+        eval "alias -g XG$switches='| xargs egrep ${switches:+-$switches}'"
+        eval "alias -g X0G$switches='| xargs -0 egrep ${switches:+-$switches}'"
+    done
+    # awk
+    alias -g A1="| awk '{print \$1}'"
+    alias -g A2="| awk '{print \$2}'"
+    alias -g A3="| awk '{print \$3}'"
+    alias -g A4="| awk '{print \$4}'"
+    alias -g A5="| awk '{print \$5}'"
+    alias -g A6="| awk '{print \$6}'"
+    alias -g A7="| awk '{print \$7}'"
+    alias -g A8="| awk '{print \$8}'"
+    alias -g A9="| awk '{print \$9}'"
+    alias -g EA='|& awk '
+    alias -g EA1="|& awk '{print \$1}'"
+    alias -g EA2="|& awk '{print \$2}'"
+    alias -g EA3="|& awk '{print \$3}'"
+    alias -g EA4="|& awk '{print \$4}'"
+    alias -g EA5="|& awk '{print \$5}'"
+    alias -g EA6="|& awk '{print \$6}'"
+    alias -g EA7="|& awk '{print \$7}'"
+    alias -g EA8="|& awk '{print \$8}'"
+    alias -g EA9="|& awk '{print \$9}'"
+fi
