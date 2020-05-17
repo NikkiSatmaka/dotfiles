@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+version="e32261c8d0fb25b2bcba466ea08a661d6dad4a64"
+destdir=~/.oh-my-zsh/custom/themes/spaceship-prompt
+
+echo "Execute $0..."
+
+rm -rf ${destdir}
+mkdir -p ${destdir}
+curl -s -L https://github.com/denysdovhan/spaceship-prompt/archive/${version}.tar.gz | tar -C ${destdir} --strip-components=1 -xzf -
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+
+# create symbolic link
+ln -sf ${destdir}/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
