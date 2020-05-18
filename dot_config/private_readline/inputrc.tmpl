@@ -76,6 +76,13 @@ $if mode=vi
 
 $endif
 
+{{ if eq .chezmoi.os "darwin" -}}
+# Alt-Left
+"\e\e[D": backward-word
+# Alt-Right
+"\e\e[C": forward-word
+
+{{ else -}}
 # Ctrl Left
 "\e[1;5D": backward-word
 # Ctrl Right
@@ -84,6 +91,8 @@ $endif
 "\e[1;3D": beginning-of-line
 # Alt-Right
 "\e[1;3C": end-of-line
+
+{{ end -}}
 
 # Ctrl L
 "\C-l": clear-screen

@@ -136,7 +136,11 @@ font:
     style: Bold Italic
 
   # Point size
+  {{- if eq .chezmoi.os "darwin" }}
+  size: 14.0
+  {{- else }}
   size: 8.5
+  {{- end }}
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -165,7 +169,7 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  #use_thin_strokes: true
+  use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
@@ -639,8 +643,8 @@ key_bindings:
   #- { key: Add,    mods: Command,            action: IncreaseFontSize }
   - { key: Minus,  mods: Command,            action: DecreaseFontSize }
   #- { key: K,      mods: Command,            action: ClearHistory     }
-  #- { key: V,      mods: Command,            action: Paste            }
-  #- { key: C,      mods: Command,            action: Copy             }
+  - { key: V,      mods: Command,            action: Paste            }
+  - { key: C,      mods: Command,            action: Copy             }
   #- { key: C,      mods: Command, mode: Vi,  action: ClearSelection   }
   #- { key: H,      mods: Command,            action: Hide             }
   #- { key: M,      mods: Command,            action: Minimize         }

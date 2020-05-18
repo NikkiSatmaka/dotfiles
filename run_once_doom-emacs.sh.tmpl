@@ -1,0 +1,24 @@
+#!/bin/sh
+# -*-mode:sh-*- vim:ft=shell-script
+
+{{ if ne .chezmoi.os "windows" -}}
+
+version="e32261c8d0fb25b2bcba466ea08a661d6dad4a64"
+destdir="~/.local/src/"
+doomdir=~"/.local/src/doom-emacs"
+chemacsdir="~/.local/src/chemacs"
+
+[[ ! -d $destdir ]] && command mkdir -p $destdir
+# rm -rf ${doomdir}
+# mkdir -p ${doomdir}
+
+echo "Installing chemacs"
+
+git clone --depth 1 https://github.com/plexus/chemacs.git "$chemacsdir"
+cd "$chemacsdir"
+./install.sh
+
+echo "Installing doom-emacs"
+
+git clone --depth 1 https://github.com/hlissner/doom-emacs "$doomdir"
+${doomdir}/bin/doom install

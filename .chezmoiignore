@@ -1,0 +1,39 @@
+# -*-mode:gitignore-*- vim:ft=gitignore
+
+# ~/.local/share/chezmoi/.chezmoiignore
+# =============================================================================
+# Read by chezmoi when chosing repository files to copy to home directory.
+#
+# This list defines globs to ignore, and supports Go's text/template language.
+# See https://www.chezmoi.io/docs/reference/#chezmoiignore
+
+*.gz
+LICENSE
+README.md
+com.googlecode.iterm2.plist
+
+# Ignore non-Linux files.
+{{- if ne .chezmoi.os "linux" }}
+dot_config/bspwm
+dot_config/dunst
+dot_config/picom
+dot_config/polybar
+dot_config/rofi
+dot_config/sxhkd
+dot_config/private_mimeapps.list
+dot_config/private_user-dirs.dirs
+dot_config/private_user-dirs.locale
+{{- end }}
+
+# Ignore non-macOS files.
+{{- if ne .chezmoi.os "darwin" }}
+dot_config/iterm
+dot_config/skhd
+dot_config/yabai
+dot_Brewfile
+{{- end }}
+
+# Ignore non-Windows files.
+{{- if ne .chezmoi.os "windows" }}
+dot_config/windows_terminal
+{{- end }}
