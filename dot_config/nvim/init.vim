@@ -29,7 +29,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'vimwiki/vimwiki'
 	Plug 'jreybert/vimagit'
 "{{ Junegunn Choi Plugins }}
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all --xdg' }
 	Plug 'junegunn/fzf.vim'
 	Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 	Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
