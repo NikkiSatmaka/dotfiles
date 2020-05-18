@@ -2,6 +2,5 @@
 # sequence, which means this file suddenly has to cater for two different
 # shells.
 
-. ~/.sh/env
-. ~/.sh/login
-
+. ~/.config/sh/env
+. ~/.config/sh/login
