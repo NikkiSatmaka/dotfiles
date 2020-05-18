@@ -1,6 +1,36 @@
 # Copy output of last command
 # alias c='"$(history | tail -2 | sed "s/  [0-9]*  //;2d")" > /tmp/cmdoutput && cat /tmp/cmdoutput | xsel -b && notify-send "Terminal" "Ouput Copied"'
 
+# Redefine standard commands to improve their behavior
+# -----------------------------------------------------------------------------
+
+# Starts calculator with math support.
+alias bc='bc -l'
+
+# Makes file commands verbose.
+alias cp="cp -iv"
+alias mv="mv -iv"
+# alias rm="rm -iv"
+# alias rm='echo "Use trp to trash files"; false'
+
+# Displays drives and space in human readable format.
+alias df="df -h"
+
+# Prints disk usage per directory non-recursively, in human readable format.
+alias du='du -h -d1'
+
+# Colorizes diff output.
+alias diff="diff --color=auto"
+# alias ccat="highlight --out-format=ansi"
+
+# Colorizes the `grep` output.
+alias grep="grep --color=auto"
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# Use exa as a modern 'ls'
+alias ls="exa -Fh --group-directories-first"
+
 # Quick chmod ;-)
 alias rw-='chmod 600'
 alias rwx='chmod 700'
@@ -48,10 +78,6 @@ alias trl='trash-list'
 alias trr='trash-restore'
 alias trm='trash-rm'
 
-# Verbosity and settings that you pretty much just always are going to want.
-alias cp="cp -iv"
-alias mv="mv -iv"
-# alias rm='echo "Use trp to trash files"; false'
 alias mkd="mkdir -pv"
 alias yt="youtube-dl --add-metadata -i"
 alias yta="yt -x -f bestaudio/best"
@@ -59,10 +85,22 @@ alias ffmpeg="ffmpeg -hide_banner"
 
 # alias spt='launchspt'
 
-# ls aliases
-alias ls="exa -Fh --group-directories-first"
-alias l="exa -Fhl --group-directories-first"  # List all files colorized in long format
-alias la="exa -Fhla --group-directories-first"
+# Makes `mount` command output pretty and with a human readable format.
+alias mount='mount | column -t'
+
+# Disables wrapping of long lines in Nano.
+alias nano='nano -w';
+
+# Stops ping after sending 3 ECHO_REQUEST packets.
+alias ping="ping -c 3"
+
+# Directory browsing
+# -----------------------------------------------------------------------------
+
+alias l="exa -Fhl --group-directories-first"  # show files in long format
+alias la="exa -Fha --group-directories-first"  # show all files
+alias ll="exa -Fhla --group-directories-first"  # show all files in long format
+
 alias lad="exa -Fhd -- .*(/)"  # only show dot-directories
 alias lsa="exa -Fha -- .*(.)"  # only show dot-files
 alias lsd="exa -FhlD"  # only show directories
@@ -75,9 +113,22 @@ alias lsx="exa -l -- *(*) | head $@ 2&>/dev/null"        # only show executables
 alias lssuid="exa -l -- *(s,S) | head $@ 2&>/dev/null"   # only show suid-files
 alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head $@ 2&>/dev/null"    # display the biggest files
 
-alias grep="grep --color=auto"
-alias diff="diff --color=auto"
-# alias ccat="highlight --out-format=ansi"
+
+# File management
+# -----------------------------------------------------------------------------
+
+# Copies a file securely.
+alias cpv='rsync -ah --info=progress2'
+
+# Finds directories.
+alias fd='find . -type d -name'
+
+# Finds files.
+alias ff='find . -type f -name'
+
+
+# General aliases
+# -----------------------------------------------------------------------------
 
 # Some other stuff
 alias magit="nvim -c MagitOnly"
@@ -87,7 +138,6 @@ alias tmux="tmux -f \${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
 
 # Application aliases
 alias v="nvim"
-alias vim="nvim"
 alias vimdiff="nvim -d"
 alias p="pandoc"
 alias m="mpv"
@@ -134,11 +184,6 @@ alias ngt='ng test'
 alias nggc='ng generate component'
 alias nggs='ng generate service'
 
-# Restore apps
-alias restoreapps="yay -S --needed - < ~/.restore/applist"
-alias restorestow="cd ~/dots/stow_home ; for d in *;do stow -t ~ $d; done"
-alias restorestowroot="cd ~/dots/stow_root ;_for d in *;do stow -t / $d; done"
-
 # Hexdsl Alias --------------------------------------------
 alias blame-plot="systemd-analyze plot >plot.svg"
 alias blame="systemd-analyze blame"
@@ -153,7 +198,6 @@ alias jpg2webp="for f in *.jpg; do cwebp "$f" -o "$(basename -- "$f" .jpg).webp"
 alias png2webp="for f in *.png; do cwebp "$f" -o "$(basename -- "$f" .png).webp"; done"
 
 alias cpuspeed="watch grep \"cpu MHz\" /proc/cpuinfo"
-alias df="df -h"
 alias dig="drill"
 alias fake1g="fallocate -l 1G test.img"
 alias fe="fzf | xargs -r -I % $EDITOR %"
@@ -181,7 +225,6 @@ alias parrot="curl parrot.live"
 alias pass="PASSWORD_STORE_ENABLE_EXTENSIONS=true pass"
 alias pg="pwgen -cnBy 15"
 # alias pgx="cat /dev/urandom | tr -dc "[:print:]" | tr -d "[:space:]" | fold -w 25 | grep -E "[A-Z].[0-9].[^a-zA-Z\d]" | head -n 5"
-alias ping="ping -c 3"
 alias q="exit"
 alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 alias se="fd -tf .  ~/.bin/ ~/.config | fzf | xargs -r $EDITOR"

@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
 
 dll() {
-  url="$2"
-  wget -O ~/images/$1 "https://api.pcloud.com/getpubthumb?code=${url#*=}&linkpassword=undefined&size=2048x2048&crop=0&type=auto"
+  wget -O ~/Pictures/wallpapers/"$1" "$2"
 
 }
 
-[ -f ~/images/sci.jpg ] ||
-  dll sci.jpg https://my.pcloud.com/publink/show?code=XZbGKPkZzd7BXQPfS6FnAM2pjpddW8CYdjyy
+[ -d ~/Pictures/wallpapers ] || mkdir -p ~/Pictures/wallpapers
+
+dll bg.jpg https://images.wallpaperscraft.com/image/space_sky_stars_79233_2560x1440.jpg
+
+feh --bg-fill --no-fehbg ~/Pictures/wallpapers/bg.jpg

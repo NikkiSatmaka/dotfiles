@@ -7,6 +7,9 @@
 # Load Bash It
 # . $BASH_IT/bash_it.sh
 
+# Load fzf completion
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+
 . ~/.config/shell/interactive
 
 HISTCONTROL=ignoredups
