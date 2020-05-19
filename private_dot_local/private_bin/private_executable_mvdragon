@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 files=$(dragon-drag-and-drop -t -x)
 

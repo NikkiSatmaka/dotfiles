@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cp $1 ~/.local/bin/$1
 convert ~/.local/bin/$1 ~/.local/bin/source.jpg

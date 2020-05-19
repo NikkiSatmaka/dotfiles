@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Preview script built for use with lf and fzf
 LINES=30
 case "$1" in

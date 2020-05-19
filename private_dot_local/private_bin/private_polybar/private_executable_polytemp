@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Simple script to show the cpu temp formatted to be shown in polybar
 
 temp=$(acpi -t | sed 's/.*, //;s/ degrees //;s/C//')

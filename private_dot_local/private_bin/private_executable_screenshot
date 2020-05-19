@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Simple script that uses maim to take a screenshot
 
 outputdir="$HOME/Pictures/screenshots"

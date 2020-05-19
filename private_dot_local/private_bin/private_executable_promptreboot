@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env bash
 prompt "Reboot Libby?" "systemctl reboot"

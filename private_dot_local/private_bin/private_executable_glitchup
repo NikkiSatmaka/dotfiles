@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # python ~/.local/bin/jpglitch.py -a 13 -i 11 ~/.local/bin/source.jpg &&
 feh --bg-scale --no-fehbg ~/.local/bin/source.jpg

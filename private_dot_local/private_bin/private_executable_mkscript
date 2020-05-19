@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Simple script to generate a script file in my scripts directory
 
 file=$HOME/.local/bin/$1
@@ -7,7 +7,7 @@ if [ -d "$HOME/.local/bin" ]; then
   if [ -e "$HOME/.local/bin/$1" ]; then
     $EDITOR "$file"
   else
-    echo "#!/bin/sh" >> "$file"
+    echo "#!/usr/bin/env sh" >> "$file"
     chmod +x "$file"
     $EDITOR "$file"
   fi

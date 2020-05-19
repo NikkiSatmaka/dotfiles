@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env bash
 prompt "shutdown Libby?" "systemctl poweroff"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Script to reload an instance of polybar
 if [ -z "$(pidof polybar)" ]; then
   polylaunch &

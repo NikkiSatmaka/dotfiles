@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if  pgrep picom &>/dev/null; then
     # robot "shutting down Pie com" & notify-send "Turning Picom OFF"

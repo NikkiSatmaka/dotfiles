@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # Simple script to output battery level formatted for polybar
 
 bat_number=0
