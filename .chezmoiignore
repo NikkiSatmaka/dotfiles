@@ -14,26 +14,30 @@ com.googlecode.iterm2.plist
 
 # Ignore non-Linux files.
 {{- if ne .chezmoi.os "linux" }}
-dot_config/bspwm
-dot_config/dunst
-dot_config/picom
-dot_config/polybar
-dot_config/rofi
-dot_config/sxhkd
-dot_config/private_mimeapps.list
-dot_config/private_user-dirs.dirs
-dot_config/private_user-dirs.locale
+.config/bspwm
+.config/dunst
+.config/picom
+.config/polybar
+.config/rofi
+.config/sxhkd
+.config/private_mimeapps.list
+.config/private_user-dirs.dirs
+.config/private_user-dirs.locale
+.xinitrc
+.Xmodmap
+.xprofile
+.Xresources
 {{- end }}
 
 # Ignore non-macOS files.
 {{- if ne .chezmoi.os "darwin" }}
-dot_config/iterm
-dot_config/skhd
-dot_config/yabai
-dot_Brewfile
+.config/iterm
+.config/skhd
+.config/yabai
+.Brewfile
 {{- end }}
 
 # Ignore non-Windows files.
 {{- if ne .chezmoi.os "windows" }}
-dot_config/windows_terminal
+.config/windows_terminal
 {{- end }}
