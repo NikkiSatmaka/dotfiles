@@ -1,12 +1,19 @@
 #!/usr/bin/env sh
 
-dll() {
-  wget -O ~/Pictures/wallpapers/"$1" "$2"
+dlbg() {
+  url="$1"
+  bgdir="$HOME/Pictures/wallpapers"
+  bg="$bgdir/$(basename "$1")"
+  bgloc="$bgdir/bg"
+
+  [ -d "$bgdir" ] || mkdir -p "$bgdir"
+
+  wget -O "$bg" "$url"
+
+  [ -f "$bg" ] && ln -sf "$(readlink -f "$bg")" "$bgloc"
+
+  feh --bg-fill --no-fehbg "$bgloc"
 
 }
 
-[ -d ~/Pictures/wallpapers ] || mkdir -p ~/Pictures/wallpapers
-
-dll bg.jpg https://images.wallpaperscraft.com/image/space_sky_stars_79233_2560x1440.jpg
-
-feh --bg-fill --no-fehbg ~/Pictures/wallpapers/bg.jpg
+dlbg "https://www.hdwallpapers.in/download/colorful_smoke_with_mask_5k-HD.jpg"
