@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+readonly aururl='https://aur.archlinux.org/cgit/aur.git/snapshot'
+readonly aurhelper='yay'
+readonly srcdir="$HOME/.local/src"
+
+################################################################################
+##                                                                            ##
+## Sources																	  ##
+##                                                                            ##
+################################################################################
+
+declare -A AllDeps
+
+deps='curl tar makepkg grep '
+
+AllDeps['aur']='curl tar makepkg'
+install_aur () {
+    [ -f "/usr/bin/$1" ] || (
+        cd /tmp || exit
+        rm -rf /tmp/"$1"*
+        curl -LO "$aururl/$1.tar.gz" &&
+        tar -xvf "$1".tar.gz >/dev/null 2>&1 &&
+        cd "$1" &&
+        makepkg --noconfirm -si >/dev/null 2>&1
+        cd /tmp || return
+    )
+}
+
+install_pacman () {
+    [ -f "$1" ] && (
+        grep -v '^#' "$1" | \
+        grep -v '^$' | \
+        sudo pacman -Syu --noconfirm --needed -
+    )
+}
+
+install_yay () {
+    [ -f "$1" ] && (
+        grep -v '^#' "$1" | \
+        grep -v '^$' | \
+        yay -Syua --noconfirm --needed -
+    )
+}
+
+install_aur $aurhelper
+
+install_pacman pkgs-arch
+
+install_yay pkgs-aur

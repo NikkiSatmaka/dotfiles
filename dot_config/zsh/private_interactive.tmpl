@@ -9,7 +9,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ZINIT PATH
-typeset -A ZINIT
+declare -A ZINIT
 ZINIT[BIN_DIR]="${ZDOTDIR:-$HOME}/.zinit/bin"
 ZINIT[HOME_DIR]="${ZDOTDIR:-$HOME}/.zinit"
 ZINIT[PLUGINS_DIR]="${ZINIT[HOME_DIR]}/plugins"
