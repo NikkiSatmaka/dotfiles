@@ -1,16 +1,24 @@
-#!/bin/sh
+{{ if ne .chezmoi.os "windows" -}}
+#!/usr/bin/env sh
 # -*-mode:sh-*- vim:ft=shell-script
 
-{{ if ne .chezmoi.os "windows" -}}
+# ~/.local/share/chezmoi/run_once_85-install-doom-emacs.sh.tmpl
+# ============================================================================
+# Runs after `chezmoi apply` to install doom-emacs configureation file.
+#
+# This script clone the chemacs and doom emacs repository to its proper
+# destination. Chezmoi will skip this script on other Windows.
+# See https://www.chezmoi.io/docs/how-to/
+#
+# {{- /* This file supports Go's text/template language. */}}
 
-version="e32261c8d0fb25b2bcba466ea08a661d6dad4a64"
 destdir="~/.local/src/"
 doomdir=~"/.local/src/doom-emacs"
 chemacsdir="~/.local/src/chemacs"
 
 [[ ! -d $destdir ]] && command mkdir -p $destdir
 # rm -rf ${doomdir}
-# mkdir -p ${doomdir}
+# rm -rf ${chemacsdir}
 
 echo "Installing chemacs"
 
@@ -22,3 +30,4 @@ echo "Installing doom-emacs"
 
 git clone --depth 1 https://github.com/hlissner/doom-emacs "$doomdir"
 ${doomdir}/bin/doom install
+{{- end }}
