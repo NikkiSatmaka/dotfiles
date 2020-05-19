@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+if [ "$(pidof picom)" ]
+then
+	# robot "Pie com is on" & notify-send "Picom is on"
+	notify-send "Picom is on"
+else
+	# robot "Pie com is off" & notify-send "Picom is off"
+	notify-send "Picom is off"
+fi

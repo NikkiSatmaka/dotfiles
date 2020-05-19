@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if  pgrep picom &>/dev/null; then
+    # robot "shutting down Pie com" & notify-send "Turning Picom OFF"
+    notify-send "Turning Picom OFF"
+    pkill picom &
+else
+    # robot "turning on Pie com" & notify-send "Turning Picom ON"
+    notify-send "Turning Picom ON"
+	picom -b &
+fi
+
+exit 0

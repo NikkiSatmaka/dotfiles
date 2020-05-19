@@ -1,0 +1,27 @@
+#!/bin/sh
+# Simple script that uses maim to take a screenshot
+
+outputdir="$HOME/Pictures/screenshots"
+output="$outputdir/"$(date '+%F_%H%M%S').png""
+
+if [ ! -d "$outputdir" ]; then
+    mkdir -p "$outputdir"
+fi
+
+menu() {
+    echo "" | rofi -dmenu -p "How Long?" | xargs -I _ sleep "_"
+}
+
+imgur() {
+    xclip -selection clipboard -t image/png -i "$output" && imgurbash2 "$output"
+}
+
+case "$1" in
+    "full") maim -u -m 9 "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit;;
+    "select") maim -u -m 9 -c 1,0,1.5,0.2 -l -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit ;;
+    "fulltime") menu && maim -m 9 "$output" || exit ;;
+    "selecttime") menu && maim -m 9 -c 1,0,1.5,0.2 -l -s "$output" || exit ;;
+
+esac
+
+notify-send "Maim" "Screenshot Taken"

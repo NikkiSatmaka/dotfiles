@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# A dmenu wrapper script for system functions.
+
+cmds="\
+lock screen	slock
+leave bspwm	kill -TERM $(pidof -s bspwm)
+refresh bspwm	kill -HUP $(pidof -s bspwm)
+reboot		sudo -A reboot
+shutdown	sudo -A shutdown -h now
+"
+
+choice="$(echo "$cmds" | cut -d'	' -f 1 | rofi -dmenu)"
+
+`echo "$cmds" | grep "^$choice	" | cut -d '	' -f2`

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pkill -f "entr vim_compile" && exit
+echo "$1" | entr vim_compile "$1"

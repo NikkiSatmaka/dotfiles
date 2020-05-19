@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cp $1 ~/.local/bin/$1
+convert ~/.local/bin/$1 ~/.local/bin/source.jpg
+rm ~/.local/bin/$1
+# glitchup
+feh --bg-scale --no-fehbg ~/.local/bin/source.jpg

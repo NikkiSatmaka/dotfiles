@@ -1,0 +1,20 @@
+#!/bin/sh
+
+
+file=$(readlink -f "$1")
+dir=$(dirname "$file")
+base="${file%.*}"
+shebang=$(sed -n 1p "$file")
+bib="/home/hexdsl/Nextcloud/Documents/hexbib"
+
+cd "$dir" || exit
+
+case "$file" in
+	*\.ms) refer -e -PS "$bib" "$file" | groff -me -ms -pdfmark -kejptU -T pdf > "$base".pdf ;;
+	*\.mom) refer -e -p "$bib" "$file" | groff -mom -kejpt -T pdf > "$base".pdf ;;
+	*\.tex) pdflatex "$file" ;;
+	*\.md) pandoc "$file" -o "$base".pdf ;;
+	*\.py) python "$file" ;;
+	*\.go) go run "$file" ;;
+	*) echo "NOTHING TO DO" ;;
+esac

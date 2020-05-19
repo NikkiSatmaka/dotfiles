@@ -1,0 +1,20 @@
+#!/bin/bash
+# Launches an instance of polybar
+
+# Use predefined launch script from premade themes
+if [ -x "${XDG_CONFIG_HOME:-$HOME/.config}/polybar/launch.sh" ]; then
+  . "${XDG_CONFIG_HOME:-$HOME/.config}/polybar/launch.sh"
+
+else
+  # Terminate already running bar instances
+  killall -q polybar
+
+  # Wait until the processes have been shut down
+  while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+  # Launch Polybar, using default config location ~/.config/polybar/config
+  polybar bar &
+
+  echo "Polybar launched..."
+
+fi

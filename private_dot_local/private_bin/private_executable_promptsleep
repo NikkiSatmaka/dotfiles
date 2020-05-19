@@ -1,0 +1,2 @@
+#!/bin/bash
+prompt "sleep Libby?" "sudo systemctl suspend"
