@@ -20,7 +20,11 @@ ZINIT[ZCOMPDUMP_PATH]="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 # Initialize completion
 autoload -Uz compinit
 [[ ! -d $ZSH_CACHE_DIR ]] && command mkdir -p "$ZSH_CACHE_DIR"
+{{ if eq .chezmoi.os "darwin" -}}
+compinit -u
+{{ else -}}
 compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+{{ end -}}
 zstyle ':completion:*' menu select=4
 zmodload zsh/complist
 
