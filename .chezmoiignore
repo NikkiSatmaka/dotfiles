@@ -28,6 +28,9 @@ com.googlecode.iterm2.plist
 .Xmodmap
 .xprofile
 .Xresources
+11-install-packages.sh
+85-install-doom-emacs.sh
+90-set-background.sh
 {{- end }}
 
 # Ignore non-macOS files.
