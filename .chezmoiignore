@@ -12,7 +12,8 @@ LICENSE
 README.md
 com.googlecode.iterm2.plist
 pkgs_*
-*.sh
+10-install-packages.sh
+85-install-doom-emacs.sh
 
 # Ignore non-Linux files.
 {{- if ne .chezmoi.os "linux" }}
@@ -30,6 +31,8 @@ pkgs_*
 .Xmodmap
 .xprofile
 .Xresources
+50-link-sh-dash.sh
+90-set-wallpaper.sh
 {{- end }}
 
 # Ignore non-macOS files.
@@ -38,7 +41,7 @@ pkgs_*
 .config/skhd
 .config/yabai
 .Brewfile
-Library/Preferences/espanso
+Library
 {{- end }}
 
 # Ignore non-Windows files.

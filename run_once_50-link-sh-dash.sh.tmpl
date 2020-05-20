@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+#
+# ~/.local/share/chezmoi/run_once_50-link-sh-dash.sh.tmpl
+# ============================================================================
+# Runs after `chezmoi apply` to download and set the desktop wallpaper.
+#
+# This script relinks the /bin/sh to /bin/dash just like in debian.
+# Chezmoi will only run this script on Linux.
+# See https://www.chezmoi.io/docs/how-to/
+#
+# {{- /* This file supports Go's text/template language. */}}
+
+hook_file="/usr/share/libalpm/hooks/dashbinsh.hook"
+
+if type dash > /dev/null; then
+  echo "Re-pointing /bin/sh symlink to dash..."
+  sudo ln -sfT dash /usr/bin/sh
+else
+  echo 'Please install dash first'
+  exit 1
+fi
+
+[ ! -f "$hook_file" ] &&
+sudo tee "$hook_file" > /dev/null <<EOF &&
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = bash
+
+[Action]
+Description = Re-pointing /bin/sh symlink to dash...
+When = PostTransaction
+Exec = /usr/bin/ln -sfT dash /usr/bin/sh
+Depends = dash
+EOF
+sudo chmod 644 "$hook_file"
