@@ -1,5 +1,5 @@
-{{ if ne .chezmoi.os "windows" -}}
 #!/usr/bin/env sh
+{{ if ne .chezmoi.os "windows" -}}
 # -*-mode:sh-*- vim:ft=shell-script
 
 # ~/.local/share/chezmoi/run_once_85-install-doom-emacs.sh.tmpl
@@ -12,7 +12,7 @@
 #
 # {{- /* This file supports Go's text/template language. */}}
 
-destdir="~/.local/src/"
+sourcedir="~/.local/src/"
 doomdir=~"/.local/src/doom-emacs"
 chemacsdir="~/.local/src/chemacs"
 

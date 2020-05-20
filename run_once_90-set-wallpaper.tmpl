@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
-
-# ~/.local/share/chezmoi/run_once_90-set-background.sh.tmpl
+#
+# ~/.local/share/chezmoi/run_once_90-set-wallpaper.tmpl
 # ============================================================================
-# Runs after `chezmoi apply` to download and set the desktop background.
+# Runs after `chezmoi apply` to download and set the desktop wallpaper.
 #
 # This script downloads the image provided to the wallpaper directory.
 # Chezmoi will only run this script on Linux.
@@ -10,27 +10,31 @@
 #
 # {{- /* This file supports Go's text/template language. */}}
 
-readonly WALL_SOURCE="https://www.hdwallpapers.in/download/colorful_smoke_with_mask_5k-HD.jpg"
-readonly WALL_DIR="$HOME/Pictures/wallpapers"
-readonly WALL_LOC="$WALL_DIR/wall"
+readonly wall_source="https://www.hdwallpapers.in/download/colorful_smoke_with_mask_5k-hd.jpg"
+readonly wall_dir="$HOME/Pictures/wallpapers"
+readonly wall_loc="$wall_dir/wall"
 
 
-dl_wall () {
+dl_wall() {
   [ ! -d "$1" ] && mkdir -p "$1"
   wall="$1/$(basename "$2")"
-  wget -O "$wall" "$1"
+  [ ! -f "$wall" ] && wget -O "$wall" "$1"
   return "$wall"
 }
 
 
-set_wall () {
+set_wall() {
   [ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$2"
   [ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" \
     -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$2"
   feh --bg-fill --no-fehbg "$2"
 }
 
+err() {
+  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
+}
 
-WALL_FILE="dl_wall $WALL_DIR $WALL_SOURCE"
 
-set_wall "$WALL_FILE" "$WALL_LOC"
+dl_wall "$wall_dir" "$wall_source"
+
+set_wall "$wall_dir" "$wall_loc"

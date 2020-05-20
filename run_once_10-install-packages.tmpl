@@ -1,0 +1,57 @@
+#!/usr/bin/env sh
+#
+# ~/.local/share/chezmoi/run_once_90-set-wallpaper.tmpl
+# ============================================================================
+# Runs after `chezmoi apply` to download and set the desktop wallpaper.
+#
+# This script downloads the image provided to the wallpaper directory.
+# Chezmoi will only run this script on Linux.
+# See https://www.chezmoi.io/docs/how-to/
+#
+# {{- /* This file supports Go's text/template language. */}}
+
+readonly aur_url='https://aur.archlinux.org/cgit/aur.git/snapshot'
+readonly aur_helper='yay'
+readonly src_dir="$HOME/.local/src"
+readonly pkgs_arch="./pkgs_arch"
+readonly pkgs_brew_tap="./pkgs_brew_tap"
+readonly pkgs_brew_cask="./pkgs_brew_cask"
+readonly pkgs_brew="./pkgs_brew"
+readonly pkgs_aur="./pkgs_aur"
+
+
+install_aur () {
+  [ -f "/usr/bin/$1" ] || (
+    cd /tmp || exit
+    rm -rf /tmp/"$1"*
+    curl -LO "$aururl/$1.tar.gz" &&
+    tar -xvf "$1".tar.gz >/dev/null 2>&1 &&
+    cd "$1" &&
+    makepkg --noconfirm -si >/dev/null 2>&1
+    cd /tmp || return
+  )
+}
+
+install_pacman () {
+  [ -f "$1" ] && (
+    grep -v '^#' "$1" \
+      | grep -v '^$' \
+      | sudo pacman -Syu --noconfirm --needed -
+  )
+}
+
+install_yay () {
+  [ -f "$1" ] && (
+    grep -v '^#' "$1" | grep -v '^$' | yay -Syua --noconfirm --needed -
+  )
+}
+
+err() {
+  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
+}
+
+install_aur "$aur_helper"
+
+install_pacman "$pkgs_arch"
+
+install_yay "$pkgs_aur"

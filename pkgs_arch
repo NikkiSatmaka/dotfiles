@@ -1,0 +1,184 @@
+# display manager
+# lightdm
+
+# terminal
+alacritty
+tmux
+
+# shell
+bash
+bash-completion
+dash
+zsh
+zsh-autosuggestions
+zsh-completions
+zsh-syntax-highlighting
+
+# file manager
+# fff
+nnn
+# ranger
+
+# fonts
+adobe-source-code-pro-fonts
+gnu-free-fonts
+otf-fira-code
+
+# browser
+firefox
+# w3m
+
+# GTK
+# arc-gtk-theme
+# arc-icon-theme
+
+# xorg
+xorg-server
+xorg-xinit
+xorg-xprop
+xorg-xwininfo
+xorg-fonts-100dpi
+xorg-xbacklight
+xorg-xev
+xorg-xsetroot
+xorg-xset
+unclutter
+picom
+dunst
+xclip
+sxhkd
+
+# video drivers
+mesa
+xf86-video-intel
+vulkan-intel
+
+# audio drivers
+pulseaudio
+pulsemixer
+pulseaudio-alsa
+
+# bluetooth
+blueman
+bluez
+pulseaudio-bluetooth
+
+# pdf
+zathura
+zathura-pdf-mupdf
+
+# media
+youtube-dl
+
+# docs
+man-pages
+xorg-docs
+python-docs
+python-lxml-docs
+arduino-docs
+arch-wiki-docs
+rust-docs
+ruby-docs
+linux-docs
+
+# dev
+git
+python2
+python
+jupyter-notebook
+nodejs
+npm
+perl
+ruby
+ghc
+
+# archives
+tar
+zip
+unzip
+
+# utility
+stow
+bat
+bc
+diff-so-fancy
+exa
+fd
+fzf
+htop
+man-db
+ncdu
+tree
+udiskie
+ripgrep
+xdg-utils
+xdg-user-dirs
+syncthing
+
+# password
+pass
+
+# text
+vim
+neovim
+
+# latex
+texlive-latexextra
+
+# system
+cronie
+openssh
+pacman-contrib
+pacutils
+incron
+
+# network
+iproute2
+networkmanager
+network-manager-applet
+dnscrypt-proxy
+wget
+curl
+nmap
+
+# media playback
+mpd
+mpv
+ncmpcpp
+
+# image/video/3d
+ffmpeg
+feh
+maim
+mediainfo
+perl-image-exiftool
+sxiv
+
+# python
+flake8
+python-arrow
+python-beautifulsoup4
+python-certifi
+python-colorama
+python-cryptography
+python-html5lib
+python-jedi
+python-lxml
+python-markdown
+python-matplotlib
+python-numpy
+python-pandas
+python-phonenumbers
+python-pip
+python-progress
+python-pysocks
+python-requests
+python-scipy
+python-seaborn
+python-selenium
+python-soupsieve
+python-statsmodels
+python-stem
+python-pygments
+python-pynvim
+python-virtualenv
