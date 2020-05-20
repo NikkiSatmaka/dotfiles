@@ -1,19 +1,26 @@
 #!/usr/bin/env sh
 
-dlbg() {
-  url="$1"
-  bgdir="$HOME/Pictures/wallpapers"
-  bg="$bgdir/$(basename "$1")"
-  bgloc="$bgdir/bg"
+bgsource="https://www.hdwallpapers.in/download/colorful_smoke_with_mask_5k-HD.jpg"
+bgdir="$HOME/Pictures/wallpapers"
+bgloc="$bgdir/bg"
 
-  [ -d "$bgdir" ] || mkdir -p "$bgdir"
 
-  wget -O "$bg" "$url"
-
-  [ -f "$bg" ] && ln -sf "$(readlink -f "$bg")" "$bgloc"
-
-  feh --bg-fill --no-fehbg "$bgloc"
-
+dlbg () {
+  [ ! -d "$1" ] && mkdir -p "$1"
+  bg="$1/$(basename "$2")"
+  wget -O "$bg" "$1"
+  return "$bg"
 }
 
-dlbg "https://www.hdwallpapers.in/download/colorful_smoke_with_mask_5k-HD.jpg"
+
+setbg () {
+  [ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$2"
+  [ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" \
+    -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$2"
+  feh --bg-fill --no-fehbg "$2"
+}
+
+
+bgfile="dlbg $bgdir $bgsource"
+
+setbg "$bgfile" "$bgloc"

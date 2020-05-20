@@ -16,13 +16,14 @@ com.googlecode.iterm2.plist
 {{- if ne .chezmoi.os "linux" }}
 .config/bspwm
 .config/dunst
+.config/espanso
 .config/picom
 .config/polybar
 .config/rofi
 .config/sxhkd
-.config/private_mimeapps.list
-.config/private_user-dirs.dirs
-.config/private_user-dirs.locale
+.config/mimeapps.list
+.config/user-dirs.dirs
+.config/user-dirs.locale
 .xinitrc
 .Xmodmap
 .xprofile
@@ -35,6 +36,7 @@ com.googlecode.iterm2.plist
 .config/skhd
 .config/yabai
 .Brewfile
+Library/Preferences/espanso
 {{- end }}
 
 # Ignore non-Windows files.
