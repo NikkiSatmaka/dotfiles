@@ -11,6 +11,7 @@
 LICENSE
 README.md
 com.googlecode.iterm2.plist
+pkgs-*
 
 # Ignore non-Linux files.
 {{- if ne .chezmoi.os "linux" }}
