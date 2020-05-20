@@ -246,6 +246,7 @@ alias xpgopher="ssh hexdsl@206.189.5.169"
 alias rofitop="rofi -show top -modi top"
 # alias xp="xprop | grep -E "^(WM_CLASS|_NET_WM_NAME|WM_NAME)""
 alias instagram="instaloader --no-video-thumbnails --no-metadata-json --no-captions"
+alias conky = "conky --config="{$XDG_CONFIG_HOME:-$HOME/.config}/conky/conkyrc"
 
 # functions
 dc () {
