@@ -12,34 +12,36 @@
 #
 # {{- /* This file supports Go's text/template language. */}}
 
-sourcedir="~/.local/src/"
-doomdir=~"/.local/src/doom-emacs"
-chemacsdir="~/.local/src/chemacs"
-
-[[ ! -d $destdir ]] && command mkdir -p $destdir
-# rm -rf ${doomdir}
-# rm -rf ${chemacsdir}
+readonly src_dir="$HOME/.local/src"
+readonly doom_git="https://github.com/hlissner/doom-emacs"
+readonly chemacs_git="https://github.com/plexus/chemacs"
 
 
- echo "complex set of rules" > /etc/conf/foo.txt
+clone_git() {
+  [ ! -d "$2" ] && mkdir -p "$2"
+  clone_dir="$2/$(basename "$1")"
+  [ ! -d "$clone_dir" ] &&
+  git clone --depth 1 "$1.git" "$clone_dir"
+}
 
-if [ ! -d $chemacsdir ]; then
+
+install_chemacs() {
   echo "Installing chemacs"
-
-  git clone --depth 1 https://github.com/plexus/chemacs.git "$chemacsdir"
-  cd "$chemacsdir"
+  clone_git "$chemacs_git" "$src_dir"
+  cd "$clone_dir" || exit
   ./install.sh
-else
-  echo "Folder chemacs already exist"
-fi
+}
 
-if [ ! -d $doomdir ]; then
+
+install_doom() {
   echo "Installing doom-emacs"
+  clone_git "$doom_git" "$src_dir"
+  "$clone_dir/bin/doom" install
+}
 
-  git clone --depth 1 https://github.com/hlissner/doom-emacs "$doomdir"
-  ${doomdir}/bin/doom install
-else
-  echo "Folder doom-emacs already exist"
-fi
+
+install_chemacs
+
+install_doom
 
 {{- end }}

@@ -81,7 +81,6 @@ export ADB_VENDOR_KEY="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export DOOMDIR="${XDG_CONFIG_HOME:-$HOME/.config}/doom"
 
 # Wine
-mkdir -p "{$XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes"
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 
 # FFF file manager

@@ -19,7 +19,6 @@ dl_wall() {
   [ ! -d "$1" ] && mkdir -p "$1"
   wall="$1/$(basename "$2")"
   [ ! -f "$wall" ] && wget -O "$wall" "$1"
-  return "$wall"
 }
 
 
