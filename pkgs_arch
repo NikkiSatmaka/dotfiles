@@ -1,3 +1,10 @@
+# initial deps
+curl
+grep
+makepkg
+tar
+wget
+
 # display manager
 # lightdm
 
@@ -7,12 +14,8 @@ tmux
 
 # shell
 bash
-bash-completion
 dash
 zsh
-zsh-autosuggestions
-zsh-completions
-zsh-syntax-highlighting
 
 # file manager
 # fff
@@ -20,9 +23,9 @@ nnn
 # ranger
 
 # fonts
-adobe-source-code-pro-fonts
-gnu-free-fonts
-otf-fira-code
+# adobe-source-code-pro-fonts
+# gnu-free-fonts
+# otf-fira-code
 
 # browser
 firefox
@@ -46,6 +49,9 @@ unclutter
 picom
 dunst
 xclip
+
+# window manager
+bspwm
 sxhkd
 
 # video drivers
@@ -93,7 +99,6 @@ ruby
 ghc
 
 # archives
-tar
 zip
 unzip
 
@@ -137,8 +142,6 @@ iproute2
 networkmanager
 network-manager-applet
 dnscrypt-proxy
-wget
-curl
 nmap
 
 # media playback

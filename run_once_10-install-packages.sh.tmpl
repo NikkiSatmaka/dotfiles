@@ -20,7 +20,7 @@ readonly pkgs_brew="./pkgs_brew"
 readonly pkgs_aur="./pkgs_aur"
 
 
-install_aur () {
+install_aur() {
   [ -f "/usr/bin/$1" ] || (
     cd /tmp || exit
     rm -rf /tmp/"$1"*
@@ -32,7 +32,8 @@ install_aur () {
   )
 }
 
-install_pacman () {
+
+install_pacman() {
   [ -f "$1" ] && (
     grep -v '^#' "$1" \
       | grep -v '^$' \
@@ -40,18 +41,21 @@ install_pacman () {
   )
 }
 
-install_yay () {
+
+install_yay() {
   [ -f "$1" ] && (
     grep -v '^#' "$1" | grep -v '^$' | yay -Syua --noconfirm --needed -
   )
 }
 
+
 err() {
   echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
 }
 
-install_aur "$aur_helper"
 
 install_pacman "$pkgs_arch"
+
+install_aur "$aur_helper"
 
 install_yay "$pkgs_aur"
