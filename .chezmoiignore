@@ -29,8 +29,7 @@ com.googlecode.iterm2.plist
 .Xmodmap
 .xprofile
 .Xresources
-pkgs_arch
-pkgs_aur
+pkgs-*
 01-dash-shell
 10-main-pkgs
 11-extra-pkgs
@@ -48,9 +47,6 @@ pkgs_aur
 .config/yabai
 .Brewfile
 Library
-pkgs_brew
-pkgs_brew_cask
-pkgs_brew_tap
 {{- end }}
 
 # Ignore non-Windows files.

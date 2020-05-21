@@ -1,0 +1,242 @@
+#!/bin/sh
+## groups
+base-devel
+pacman-contrib
+
+## initial deps
+curl
+git
+grep
+tar
+wget
+
+## shell
+bash
+bash-completion
+dash
+zsh
+
+## window manager
+bspwm
+sxhkd
+
+## window manager set
+dunst
+libnotify
+picom
+
+## intel drivers
+intel-ucode
+xf86-video-intel
+vulkan-intel
+
+## amd drivers
+# amd-ucode
+# xf86-video-ati
+# mesa-vdpau
+
+## xorg and drivers
+mesa
+# arandr
+light
+xdotool
+xorg-server
+xorg-xdpyinfo
+xorg-xinit
+xorg-xkill
+xorg-xprop
+xorg-xset
+xorg-xsetroot
+xorg-xrandr
+xorg-xwininfo
+
+## audio drivers
+pamixer
+pulsemixer
+pulseaudio-alsa
+pulseaudio-bluetooth
+
+## bluetooth
+bluez
+bluez-libs
+bluez-utils
+
+## terminal
+alacritty
+tmux
+
+# text
+vim
+neovim
+
+## file manager
+# fff
+nnn
+# ranger
+
+## pdf
+zathura
+zathura-pdf-mupdf
+
+## docs
+man-pages
+xorg-docs
+python-docs
+python-lxml-docs
+arduino-docs
+arch-wiki-docs
+rust-docs
+ruby-docs
+linux-docs
+
+## dev
+# python
+# jupyter-notebook
+# nodejs
+# npm
+# perl
+# ruby
+# ghc
+
+## archives
+zip
+unrar
+unzip
+
+## utility
+ncdu
+tree
+xdg-user-dirs
+# syncthing
+
+## password
+# lastpass-cli
+pass
+
+## latex
+# texlive-latexextra
+
+## system
+# cronie
+# pacutils
+# incron
+
+# network
+# iproute2
+networkmanager
+# network-manager-applet
+dnscrypt-proxy
+# nmap
+
+## media
+mpd
+mpv
+ncmpcpp
+youtube-dl
+
+## image/video/3d
+ffmpeg
+feh
+# gimp
+imagemagick
+maim
+mediainfo
+perl-image-exiftool
+sxiv
+
+## python
+# flake8
+# python-arrow
+# python-beautifulsoup4
+# python-certifi
+# python-colorama
+# python-cryptography
+# python-html5lib
+# python-jedi
+# python-lxml
+# python-markdown
+# python-matplotlib
+# python-numpy
+# python-pandas
+# python-phonenumbers
+python-pip
+# python-progress
+# python-pysocks
+# python-requests
+# python-scipy
+# python-seaborn
+# python-selenium
+# python-soupsieve
+# python-statsmodels
+# python-stem
+# python-pygments
+# python-pynvim
+# python-virtualenv
+
+## main pkgs
+atool
+bat
+bc
+calcurse
+cowsay
+diff-so-fancy
+dbus
+exa
+fd
+fortune-mod
+fzf
+gnome-keyring
+htop
+man
+man-db
+neofetch
+ntp
+qutebrowser
+ripgrep
+socat
+unclutter
+xcape
+xclip
+
+## fonts
+gnu-free-fonts
+noto-fonts-emoji
+otf-font-awesome
+otf-overpass
+ttf-joypixels
+ttf-junicode
+ttf-nerd-fonts-symbols
+xorg-fonts-type1
+
+## battery
+acpi_call
+tlp
+tlp-rdw
+
+## extra pkgs
+# android-tools
+# discord
+# dos2unix
+# firefox
+figlet
+highlight
+httpie
+# libreoffice-still
+# obs-studio
+openssh
+# pipes.sh
+# speedtest-cli
+transmission-cli
+# tremc-git
+udiskie
+# unimatrix-git
+# woeusb
+# xarchiver
+xdg-user-dir
+
+## microcode / drivers / extras
+cups
+dosfstools
+exfat-utils
+ntfs-3g
+# nvidia-lts

@@ -1,0 +1,35 @@
+## shell
+# dashbinsh
+
+## dependencies
+libxft-bgra
+
+## aur helper
+yay
+
+## fonts
+# ttf-ms-fonts
+ttf-symbola-infinality
+
+## nerd fonts
+# nerd-fonts-hack
+# nerd-fonts-jetbrains-mono
+# nerd-fonts-meslo
+# nerd-fonts-source-code-pro
+# nerd-fonts-fira-code
+
+## web browser
+brave-bin
+google-chrome
+
+## utilities
+dragon-drag-and-drop
+lf
+# qmk
+simple-mtpfs
+# screenkey
+task-spooler
+
+## window manager
+betterlockscreen
+polybar

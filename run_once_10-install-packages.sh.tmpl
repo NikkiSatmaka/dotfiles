@@ -6,15 +6,14 @@
 
 ### OPTIONS AND VARIABLES ###
 
-readonly aur_url='https://aur.archlinux.org/cgit/aur.git/snapshot'
-readonly aur_helper='yay'
-readonly src_dir="$HOME/.local/src"
-readonly pkgs_arch="$HOME/.local/share/chezmoi/pkgs_arch"
-readonly pkgs_brew_tap="$HOME/.local/share/chezmoi/pkgs_brew_tap"
-readonly pkgs_brew_cask="$HOME/.local/share/chezmoi/pkgs_brew_cask"
-readonly pkgs_brew="$HOME/.local/share/chezmoi/pkgs_brew"
-readonly pkgs_aur="$HOME/.local/share/chezmoi/pkgs_aur"
-pkgs_arch pkgs_aur pkgs_brew pkgs_brew_cask pkgs_brew_tap
+readonly AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
+readonly AUR_HELPER='yay'
+readonly SRC_DIR="$HOME/.local/src"
+readonly PKGS_ARCH="$HOME/.local/share/chezmoi/pkgs-arch"
+readonly PKGS_BREW_TAP="$HOME/.local/share/chezmoi/pkgs-brew-tap"
+readonly PKGS_BREW_CASK="$HOME/.local/share/chezmoi/pkgs-brew-cask"
+readonly PKGS_BREW="$HOME/.local/share/chezmoi/pkgs-brew"
+readonly PKGS_AUR="$HOME/.local/share/chezmoi/pkgs-aur"
 
 ### FUNCTIONS ###
 
@@ -76,28 +75,21 @@ printferr() { printf "$@" >&2; }
 
 if type apt >/dev/null 2>&1; then
 	install_pkg() {
-		sudo apt-get install -y "$1" >/dev/null 2>&1
+		sudo apt-get install -y "$1"
 	}
-	grepseq="\"^[PGU]*,\""
-else
-	distro="arch"
+elif type pacman >/dev/null 2>&1; then
 	install_pkg() {
-		sudo pacman --noconfirm --needed -S "$1" >/dev/null 2>&1
+		sudo pacman --noconfirm --needed -S "$1"
 	}
-	grepseq="\"^[PGA]*,\""
 fi
-
-installpkg () {
-	pacman --noconfirm --needed -S "$1" >/dev/null 2>&1 ;
-}
 
 refreshkeys() {
 	echo "Refreshing Arch Keyring..."
 	sudo pacman --noconfirm -Syu archlinux-keyring >/dev/null 2>&1
 }
 
-# aur install
-install_aur() {
+# aur install using tar method
+manual_install() {
 	if type "$1" >/dev/null 2>&1; then
 		echo "$1 already installed. skipping"
 	else
@@ -112,35 +104,58 @@ install_aur() {
 }
 
 
-install_pacman() {
-	if [ -f "$1" ]; then
-		grep -v '^#' "$1" \
-			  | grep -v '^$' \
-			  | sudo pacman -Syu --noconfirm --needed -
-	fi
+main_install() {
+	install_pkg "$1"
 }
 
-
-install_yay() {
-	aur_installed=$(pacman -Qqm)
+aur_install() {
 	echo "$aur_installed" | grep "^$1$" >/dev/null 2>&1 && return
-	if [ -f "$1" ]; then
-		grep -v '^#' "$1" \
-			| grep -v '^$' \
-			| yay -Syua --batchinstall --noconfirm --needed -
+	"$AUR_HELPER" -S --noconfirm "$1"
+}
+
+pip_install() {
+	if type pip >/dev/null 2>&1; then
+		:
+	else
+		install_pkg python-pip
 	fi
+	pip install "$1"
 }
 
 
-err() {
-	echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
+installation_loop() {
+	[ -f "$2" ] && cp "$2" /tmp/pkgs
+	sed '/^#/d' "$2" | sed '/^$/d' > /tmp/pkgs
+	aur_installed="$(pacman -Qqm)"
+	while read -r package; do
+		case "$1" in
+			"aur") aur_install "$package" ;;
+			"apt"|"pacman") main_install "$package" ;;
+			"pip") pip_install "$package" ;;
+		esac
+	done < /tmp/pkgs
 }
 
+systembeepoff() {
+	rmmod pcspkr
+	echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+}
 
-install_pacman "$pkgs_arch"
+### THE ACTUAL SCRIPT ###
 
-install_aur "$aur_helper"
+echo "The script is starting"
 
-install_yay "$pkgs_aur"
+refreshkeys
 
-sudo pacman -S --noconfirm --needed \
+install_pkg base-devel
+install_pkg curl
+install_pkg git
+install_pkg ntp
+
+manual_install "$AUR_HELPER"
+
+aur_install libxft-bgra
+
+installation_loop aur "$PKGS_AUR"
+
+installation_loop pacman "$PKGS_ARCH"
