@@ -99,7 +99,7 @@ cmd chmod ${{
 	done
 }}
 
-cmd setbg %setbg "$f"
+cmd setwall %setwall "$f"
 
 cmd moveto ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
@@ -302,7 +302,7 @@ map mr push :sudomkfile<space>
 map md push :mkdir<space>
 map ms push :mkscript<space>
 map ch chmod
-map bg setbg
+map bg setwall
 # map o open_config
 map ra rename
 map re renameextensions

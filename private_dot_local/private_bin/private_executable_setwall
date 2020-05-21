@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+# This script does the following:
+# Run by itself, set the wallpaper (at X start).
+# If given a file, set that as the new wallpaper.
+# If given a directory, choose random file in it.
+# If wal is installed, also generates a colorscheme.
+
+# Location of link to wallpaper link.
+readonly wall_dir="$HOME/Pictures/wallpapers"
+readonly wall_loc="$wall_dir/wall"
+
+
+[ ! -d "$wall_loc" ] && mkdir -p "$wall_loc"
+
+[ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$wall_loc" &&
+  notify-send -i "$wall_loc" "Changing wallpaper..."
+
+[ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" \
+  -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$wall_loc" &&
+  notify-send -i "$wall_loc" "Random Wallpaper chosen."
+
+# If pywal is installed, use it.
+# wal -s -i "$(readlink -f "$wall_loc")" -o \
+#   "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
+
+feh --bg-fill --no-fehbg "$wall_loc"
