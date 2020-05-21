@@ -5,6 +5,12 @@
 #==============================================================================
 
 # change shell
-chsh -s /bin/zsh
+# test
+if [ "$(basename "$SHELL")" = "zsh" ]; then
+    echo "default shell is already zsh"
+    echo "no changes were performed"
+else
+    chsh -s /bin/zsh
+fi
 # home
 cd "$HOME" || exit
