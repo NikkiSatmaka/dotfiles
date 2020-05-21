@@ -14,14 +14,14 @@ readonly WALL_LOC="$WALL_DIR/wall"
 [ ! -d "$WALL_DIR" ] && mkdir -p "$WALL_DIR"
 
 [ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$WALL_LOC" &&
-  notify-send -i "$WALL_LOC" "Changing wallpaper..."
+	notify-send -i "$WALL_LOC" "Changing wallpaper..."
 
 [ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" \
-  -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$WALL_LOC" &&
-  notify-send -i "$WALL_LOC" "Random Wallpaper chosen."
+	-iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$WALL_LOC" &&
+	notify-send -i "$WALL_LOC" "Random Wallpaper chosen."
 
 # If pywal is installed, use it.
-# wal -s -i "$(readlink -f "$WALL_LOC")" -o \
-#   "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
+wal -s -i "$(readlink -f "$WALL_LOC")" -o \
+	"${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
 
 feh --bg-fill --no-fehbg "$WALL_LOC"

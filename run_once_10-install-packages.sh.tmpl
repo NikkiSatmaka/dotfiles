@@ -1,59 +1,139 @@
 #!/usr/bin/env sh
-#
-# ~/.local/share/chezmoi/run_once_90-set-wallpaper.tmpl
-# ============================================================================
-# Runs after `chezmoi apply` to download and set the desktop wallpaper.
-#
-# This script downloads the image provided to the wallpaper directory.
-# Chezmoi will only run this script on Linux.
-# See https://www.chezmoi.io/docs/how-to/
-#
-# {{- /* This file supports Go's text/template language. */}}
+
+#==============================================================================
+# main (essential) packages & fonts
+#==============================================================================
+
+### OPTIONS AND VARIABLES ###
 
 readonly aur_url='https://aur.archlinux.org/cgit/aur.git/snapshot'
 readonly aur_helper='yay'
 readonly src_dir="$HOME/.local/src"
-readonly pkgs_arch="./pkgs_arch"
-readonly pkgs_brew_tap="./pkgs_brew_tap"
-readonly pkgs_brew_cask="./pkgs_brew_cask"
-readonly pkgs_brew="./pkgs_brew"
-readonly pkgs_aur="./pkgs_aur"
+readonly pkgs_arch="$HOME/.local/share/chezmoi/pkgs_arch"
+readonly pkgs_brew_tap="$HOME/.local/share/chezmoi/pkgs_brew_tap"
+readonly pkgs_brew_cask="$HOME/.local/share/chezmoi/pkgs_brew_cask"
+readonly pkgs_brew="$HOME/.local/share/chezmoi/pkgs_brew"
+readonly pkgs_aur="$HOME/.local/share/chezmoi/pkgs_aur"
+pkgs_arch pkgs_aur pkgs_brew pkgs_brew_cask pkgs_brew_tap
 
+### FUNCTIONS ###
+
+echoerrcolor() {
+	if (( $colors )); then
+		case $1 in
+			none)
+				str="\e[0;37m"
+				;;
+			green)
+				str="\e[0;32m"
+				;;
+			red)
+				str="\e[0;31m"
+				;;
+			blue)
+				str="\e[1;34m"
+				;;
+			darkcyan)
+				str="\e[0;36m"
+				;;
+			darkgreen)
+				str="\e[1;32m"
+				;;
+			darkred)
+				str="\e[1;31m"
+				;;
+			magenta)
+				str="\e[0;35m"
+				;;
+			darkmagenta)
+				str="\e[1;35m"
+				;;
+
+		esac
+		echo -ne $str >&2;
+	fi
+}
+
+echoerrnocolor() {
+	if (( $colors )); then
+		echo -ne "\e[0m" >&2;
+	fi
+}
+
+echoerr() {
+	if [ $# -gt 1 ]; then
+		color=$1
+		shift
+		echoerrcolor $color
+	fi
+	echo "$@" >&2;
+	if [ $color ]; then
+		echoerrnocolor
+	fi
+}
+
+printferr() { printf "$@" >&2; }
+
+if type apt >/dev/null 2>&1; then
+	install_pkg() {
+		sudo apt-get install -y "$1" >/dev/null 2>&1
+	}
+	grepseq="\"^[PGU]*,\""
+else
+	distro="arch"
+	install_pkg() {
+		sudo pacman --noconfirm --needed -S "$1" >/dev/null 2>&1
+	}
+	grepseq="\"^[PGA]*,\""
+fi
+
+installpkg () {
+	pacman --noconfirm --needed -S "$1" >/dev/null 2>&1 ;
+}
+
+refreshkeys() {
+	echo "Refreshing Arch Keyring..."
+	sudo pacman --noconfirm -Syu archlinux-keyring >/dev/null 2>&1
+}
 
 # aur install
 install_aur() {
-  if type "$1" > /dev/null 2>&1; then
-    echo "$1 already installed. skipping"
-  else
-    cd /tmp || exit
-    rm -rf /tmp/"$1"*
-    curl -LO "$AUR_URL/$1.tar.gz" &&
-    tar -xvf "$1".tar.gz >/dev/null 2>&1 &&
-    cd "$1" &&
-    makepkg -si --noconfirm >/dev/null 2>&1
-    cd /tmp || return
-  fi
+	if type "$1" >/dev/null 2>&1; then
+		echo "$1 already installed. skipping"
+	else
+		cd /tmp || exit
+		rm -rf /tmp/"$1"*
+		curl -LO "$AUR_URL/$1.tar.gz" &&
+		tar -xvf "$1".tar.gz >/dev/null 2>&1 &&
+		cd "$1" &&
+		makepkg -si --noconfirm >/dev/null 2>&1
+		cd /tmp || return
+	fi
 }
 
 
 install_pacman() {
-  if [ -f "$1" ]; then
-    grep -v '^#' "$1" \
-      | grep -v '^$' \
-      | sudo pacman -Syu --noconfirm --needed -
-  fi
+	if [ -f "$1" ]; then
+		grep -v '^#' "$1" \
+			  | grep -v '^$' \
+			  | sudo pacman -Syu --noconfirm --needed -
+	fi
 }
 
 
 install_yay() {
-  if [ -f "$1" ]; then
-    grep -v '^#' "$1" | grep -v '^$' | yay -Syua --noconfirm --needed -
-  fi
+	aur_installed=$(pacman -Qqm)
+	echo "$aur_installed" | grep "^$1$" >/dev/null 2>&1 && return
+	if [ -f "$1" ]; then
+		grep -v '^#' "$1" \
+			| grep -v '^$' \
+			| yay -Syua --batchinstall --noconfirm --needed -
+	fi
 }
 
 
 err() {
-  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
+	echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
 }
 
 

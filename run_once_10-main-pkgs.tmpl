@@ -9,7 +9,7 @@ readonly AUR_HELPER='yay'
 
 # aur install
 install_aur() {
-  if type "$1" > /dev/null 2>&1; then
+  if type "$1" >/dev/null 2>&1; then
     echo "$1 already installed. skipping"
   else
     cd /tmp || exit
@@ -28,13 +28,31 @@ install_aur() {
 sudo pacman --noconfirm --needed -S \
   base-devel
 
+# # xorg and drivers
+# sudo pacman --noconfirm --needed -S \
+#   mesa \
+#   xf86-video-intel \
+#   vulkan-intel \
+#   # xf86-video-ati \
+#   # mesa-vdpau \
+#   arandr \
+#   light \
+#   xdotool \
+#   xorg-server \
+#   xorg-xdpyinfo \
+#   xorg-xinit \
+#   xorg-xkill \
+#   xorg-xprop \
+#   xorg-xset \
+#   xorg-xsetroot \
+#   xorg-xrandr \
+#   xorg-xwininfo
+
 # xorg and drivers
 sudo pacman --noconfirm --needed -S \
   mesa \
   xf86-video-intel \
   vulkan-intel \
-  # xf86-video-ati \
-  # mesa-vdpau \
   arandr \
   light \
   xdotool \
@@ -43,6 +61,7 @@ sudo pacman --noconfirm --needed -S \
   xorg-xinit \
   xorg-xkill \
   xorg-xprop \
+  xorg-xset \
   xorg-xsetroot \
   xorg-xrandr \
   xorg-xwininfo
@@ -51,7 +70,7 @@ sudo pacman --noconfirm --needed -S \
 install_aur "$AUR_HELPER"
 
 # dependencies
-yay --noconfirm --needed -S \
+yay --batchinstall --noconfirm --needed -S \
   libxft-bgra
 
 # main pkgs
@@ -80,6 +99,7 @@ sudo pacman --noconfirm --needed -S \
   mpv \
   neofetch \
   neovim \
+  ntp \
   networkmanager \
   pamixer \
   pulsemixer \
@@ -97,7 +117,6 @@ sudo pacman --noconfirm --needed -S \
   unzip \
   xcape \
   xclip \
-  xset \
   wget \
   zathura-pdf-mupdf \
   zip \
@@ -114,12 +133,21 @@ sudo pacman --noconfirm --needed -S \
 #   ttf-nerd-fonts-symbols \
 #   xorg-fonts-type1
 
-# fonts
-yay --noconfirm --needed -S \
-  # ttf-ms-fonts \
-  ttf-symbola-infinality \
-  nerd-fonts-hack \
-  nerd-fonts-jetbrains-mono \
-  nerd-fonts-meslo \
-  nerd-fonts-source-code-pro \
-  nerd-fonts-fira-code
+# # fonts
+# yay --batchinstall --noconfirm --needed -S \
+#   # ttf-ms-fonts \
+#   ttf-symbola-infinality \
+#   nerd-fonts-hack \
+#   nerd-fonts-jetbrains-mono \
+#   nerd-fonts-meslo \
+#   nerd-fonts-source-code-pro \
+#   nerd-fonts-fira-code
+
+# # fonts
+# yay --batchinstall --noconfirm --needed -S \
+#   ttf-symbola-infinality \
+#   nerd-fonts-hack \
+#   nerd-fonts-jetbrains-mono \
+#   nerd-fonts-meslo \
+#   nerd-fonts-source-code-pro \
+#   nerd-fonts-fira-code

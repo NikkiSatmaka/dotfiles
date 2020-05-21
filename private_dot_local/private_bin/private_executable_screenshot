@@ -8,11 +8,11 @@ if [ ! -d "$outputdir" ]; then
     mkdir -p "$outputdir"
 fi
 
-menu() {
+menu () {
     echo "" | rofi -dmenu -p "How Long?" | xargs -I _ sleep "_"
 }
 
-imgur() {
+imgur () {
     xclip -selection clipboard -t image/png -i "$output" && imgurbash2 "$output"
 }
 

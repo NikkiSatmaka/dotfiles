@@ -1,6 +1,6 @@
 alias please='sudo'
 
-mcd () {
+mcd() {
     test -z "$1" && echo mcd: no path given && return
     test -d "$1" && print "mcd: Directory $1 already exists"
     mkdir -p -- "$1"

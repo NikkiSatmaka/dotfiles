@@ -21,7 +21,7 @@ if [ -f "$HOOK_FILE" ]; then
   echo "no changes were performed"
   exit
 else
-  sudo tee "$HOOK_FILE" > /dev/null 2>&1 << _EOF_ &&
+  sudo tee "$HOOK_FILE" >/dev/null 2>&1 << _EOF_ &&
 [Trigger]
 Type = Package
 Operation = Install

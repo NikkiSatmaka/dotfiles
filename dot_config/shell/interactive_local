@@ -248,7 +248,7 @@ alias rofitop="rofi -show top -modi top"
 alias instagram="instaloader --no-video-thumbnails --no-metadata-json --no-captions"
 
 # functions
-dc () {
+dc() {
     dfm
     dir="$(cat ~/.config/dmenufm/dmenufm_lastpath)"
     [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
@@ -271,7 +271,7 @@ ccat() {
 }
 
 # cd when exiting lf
-lc () {
+lc() {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
@@ -282,8 +282,7 @@ lc () {
 }
 
 # cd when exiting nnn
-n ()
-{
+n() {
     # Block nesting of nnn in subshells
     if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
         echo "nnn is already running"
