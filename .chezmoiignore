@@ -11,9 +11,7 @@
 LICENSE
 README.md
 com.googlecode.iterm2.plist
-pkgs_*
 10-install-packages.sh
-85-install-doom-emacs.sh
 
 # Ignore non-Linux files.
 {{- if ne .chezmoi.os "linux" }}
@@ -31,8 +29,16 @@ pkgs_*
 .Xmodmap
 .xprofile
 .Xresources
-50-link-sh-dash.sh
-90-set-wallpaper.sh
+pkgs_arch
+pkgs_aur
+01-dash-shell
+10-main-pkgs
+11-extra-pkgs
+30-graphical-environment
+40-hardware-specific
+50-change-shell
+85-install-doom-emacs
+90-set-wallpaper
 {{- end }}
 
 # Ignore non-macOS files.
@@ -42,6 +48,9 @@ pkgs_*
 .config/yabai
 .Brewfile
 Library
+pkgs_brew
+pkgs_brew_cask
+pkgs_brew_tap
 {{- end }}
 
 # Ignore non-Windows files.

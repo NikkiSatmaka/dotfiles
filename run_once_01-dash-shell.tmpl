@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# /bin/sh -> dash
+#==============================================================================
+
+readonly HOOK_FILE="/usr/share/libalpm/hooks/dashbinsh.hook"
+
+if [ "$(readlink /bin/sh)" = "bash" ]; then
+  sudo pacman --noconfirm --needed -S dash || exit
+  sudo ln -sfT dash /usr/bin/sh &&
+    echo "pointed /bin/sh symlink to dash"
+else
+  echo "dash is already linked to /bin/sh"
+  echo "no changes were performed"
+  exit
+fi
+
+if [ -f "$HOOK_FILE" ]; then
+  echo "dashbinsh hook already exists"
+  echo "no changes were performed"
+  exit
+else
+  sudo tee "$HOOK_FILE" > /dev/null 2>&1 << _EOF_ &&
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = bash
+
+[Action]
+Description = Re-pointing /bin/sh symlink to dash...
+When = PostTransaction
+Exec = /usr/bin/ln -sfT dash /usr/bin/sh
+Depends = dash
+_EOF_
+  sudo chmod 644 "$HOOK_FILE" &&
+    echo "dashbinsh hook created"
+fi

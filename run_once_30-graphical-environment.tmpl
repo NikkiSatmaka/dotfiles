@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# graphical environment & window manager
+#==============================================================================
+
+sudo pacman --noconfirm --needed -S \
+  dunst \
+  libnotify \
+  picom
+
+# window manager
+sudo pacman --noconfirm --needed -S \
+  bspwm
+
+# lock screen
+yay --noconfirm --needed -S \
+  betterlockscreen \
+  polybar

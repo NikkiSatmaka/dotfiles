@@ -20,32 +20,35 @@ readonly pkgs_brew="./pkgs_brew"
 readonly pkgs_aur="./pkgs_aur"
 
 
+# aur install
 install_aur() {
-  [ -f "/usr/bin/$1" ] || (
+  if type "$1" > /dev/null 2>&1; then
+    echo "$1 already installed. skipping"
+  else
     cd /tmp || exit
     rm -rf /tmp/"$1"*
-    curl -LO "$aururl/$1.tar.gz" &&
+    curl -LO "$AUR_URL/$1.tar.gz" &&
     tar -xvf "$1".tar.gz >/dev/null 2>&1 &&
     cd "$1" &&
-    makepkg --noconfirm -si >/dev/null 2>&1
+    makepkg -si --noconfirm >/dev/null 2>&1
     cd /tmp || return
-  )
+  fi
 }
 
 
 install_pacman() {
-  [ -f "$1" ] && (
+  if [ -f "$1" ]; then
     grep -v '^#' "$1" \
       | grep -v '^$' \
       | sudo pacman -Syu --noconfirm --needed -
-  )
+  fi
 }
 
 
 install_yay() {
-  [ -f "$1" ] && (
+  if [ -f "$1" ]; then
     grep -v '^#' "$1" | grep -v '^$' | yay -Syua --noconfirm --needed -
-  )
+  fi
 }
 
 
@@ -59,3 +62,5 @@ install_pacman "$pkgs_arch"
 install_aur "$aur_helper"
 
 install_yay "$pkgs_aur"
+
+sudo pacman -S --noconfirm --needed \

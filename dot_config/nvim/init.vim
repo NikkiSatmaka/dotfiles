@@ -17,9 +17,9 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'chriskempson/base16-vim'
 	Plug 'arcticicestudio/nord-vim'
 "{{ Stylize }}
-	" Plug 'vim-airline/vim-airline'
-	" Plug 'vim-airline/vim-airline-themes'
-	Plug 'itchyny/lightline.vim'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	" Plug 'itchyny/lightline.vim'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'nathanaelkane/vim-indent-guides'
 "{{ File management }}
@@ -29,7 +29,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'vimwiki/vimwiki'
 	Plug 'jreybert/vimagit'
 "{{ Junegunn Choi Plugins }}
-	Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all --xdg' }
 	Plug 'junegunn/fzf.vim'
 	Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 	Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
@@ -62,14 +61,14 @@ let mapleader =" "
 let g:rainbow_active = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#wordcount#enabled = 1
-" let g:airline_theme = 'base16_tomorrow'
-" let g:airline_theme = 'nord'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#wordcount#enabled = 1
+let g:airline_theme = 'base16_tomorrow'
+let g:airline_theme = 'nord'
 
-let g:lightline = {
-      \ 'colorscheme': 'Tomorrow_Night',
-      \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'Tomorrow_Night',
+"       \ }
 
 " let g:lightline = {
 "       \ 'colorscheme': 'nord',

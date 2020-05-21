@@ -1,0 +1,46 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# install chemacs and doom-emacs
+#==============================================================================
+
+readonly SRC_DIR="$HOME/.local/src"
+readonly CHEMACS_DIR="$SRC_DIR/chemacs"
+readonly DOOM_DIR="$SRC_DIR/doom-emacs"
+readonly CHEMACS_GIT="https://github.com/plexus/chemacs.git"
+readonly DOOM_GIT="https://github.com/hlissner/doom-emacs.git"
+
+install_chemacs() {
+  if [ -d "$2" ]; then
+    echo "$2 already existed"
+    echo "no changes were performed"
+  else
+    git clone --depth 1 "$1" "$2" || exit
+    cd  "$2" || exit
+    ./install.sh
+  fi
+}
+
+install_doom() {
+  if [ -d "$2" ]; then
+    echo "$2 already existed"
+    echo "no changes were performed"
+  else
+    git clone --depth 1 "$1" "$2" || exit
+    cd  "$2" || exit
+    ./bin/doom install
+  fi
+}
+
+if [ -d "$SRC_DIR" ]; then
+  echo "$SRC_DIR already existed"
+  echo "no changes were performed"
+else
+  echo "creating $SRC_DIR"
+fi
+
+sudo pacman --noconfirm --needed -S emacs
+
+install_chemacs "$CHEMACS_GIT" "$CHEMACS_DIR"
+
+install_doom "$DOOM_GIT" "$DOOM_DIR"

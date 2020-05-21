@@ -1,0 +1,125 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# main (essential) packages & fonts
+#==============================================================================
+
+readonly AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
+readonly AUR_HELPER='yay'
+
+# aur install
+install_aur() {
+  if type "$1" > /dev/null 2>&1; then
+    echo "$1 already installed. skipping"
+  else
+    cd /tmp || exit
+    rm -rf /tmp/"$1"*
+    curl -LO "$AUR_URL/$1.tar.gz" &&
+    tar -xvf "$1".tar.gz >/dev/null 2>&1 &&
+    cd "$1" &&
+    makepkg --noconfirm -si >/dev/null 2>&1
+    cd /tmp || return
+  fi
+}
+
+#==============================================================================
+
+# base devel group
+sudo pacman --noconfirm --needed -S \
+  base-devel
+
+# xorg and drivers
+sudo pacman --noconfirm --needed -S \
+  mesa \
+  xf86-video-intel \
+  vulkan-intel \
+  # xf86-video-ati \
+  # mesa-vdpau \
+  arandr \
+  light \
+  xdotool \
+  xorg-server \
+  xorg-xdpyinfo \
+  xorg-xinit \
+  xorg-xkill \
+  xorg-xprop \
+  xorg-xsetroot \
+  xorg-xrandr \
+  xorg-xwininfo
+
+# yay
+install_aur "$AUR_HELPER"
+
+# dependencies
+yay --noconfirm --needed -S \
+  libxft-bgra
+
+# main pkgs
+sudo pacman --noconfirm --needed -S \
+  alacritty \
+  atool \
+  bat \
+  bash-completion \
+  bc \
+  calcurse \
+  cowsay \
+  dash \
+  diff-so-fancy \
+  dbus \
+  exa \
+  fd \
+  feh \
+  fortune-mod \
+  fzf \
+  git \
+  gnome-keyring \
+  htop \
+  man \
+  man-db \
+  man-pages \
+  mpv \
+  neofetch \
+  neovim \
+  networkmanager \
+  pamixer \
+  pulsemixer \
+  pulseaudio-alsa \
+  pulseaudio-bluetooth \
+  python-pip \
+  qutebrowser \
+  ripgrep \
+  socat \
+  sxhkd \
+  tlp \
+  tmux \
+  unclutter \
+  unrar \
+  unzip \
+  xcape \
+  xclip \
+  xset \
+  wget \
+  zathura-pdf-mupdf \
+  zip \
+  zsh
+
+# # fonts
+# sudo pacman --noconfirm --needed -S \
+#   gnu-free-fonts \
+#   noto-fonts-emoji \
+#   otf-font-awesome \
+#   otf-overpass \
+#   ttf-joypixels \
+#   ttf-junicode \
+#   ttf-nerd-fonts-symbols \
+#   xorg-fonts-type1
+
+# fonts
+yay --noconfirm --needed -S \
+  # ttf-ms-fonts \
+  ttf-symbola-infinality \
+  nerd-fonts-hack \
+  nerd-fonts-jetbrains-mono \
+  nerd-fonts-meslo \
+  nerd-fonts-source-code-pro \
+  nerd-fonts-fira-code
