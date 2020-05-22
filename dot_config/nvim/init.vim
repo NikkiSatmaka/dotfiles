@@ -64,7 +64,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#wordcount#enabled = 1
 let g:airline_theme = 'base16_tomorrow'
-let g:airline_theme = 'nord'
+" let g:airline_theme = 'nord'
 
 " let g:lightline = {
 "       \ 'colorscheme': 'Tomorrow_Night',
