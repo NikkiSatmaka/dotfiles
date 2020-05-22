@@ -27,11 +27,15 @@ google-chrome
 
 ## utilities
 dragon-drag-and-drop
+espanso
 lf
 # qmk
 simple-mtpfs
 # screenkey
 task-spooler
+
+## prompt
+starship
 
 ## window manager
 betterlockscreen
