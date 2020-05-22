@@ -124,7 +124,7 @@ pip_install() {
 
 
 installation_loop() {
-	[ -f "$2" ] && cp "$2" /tmp/pkgs
+	[ -f "$2" ] && cp -f "$2" /tmp/pkgs
 	sed '/^#/d' "$2" | sed '/^$/d' > /tmp/pkgs
 	aur_installed="$(pacman -Qqm)"
 	while read -r package; do
