@@ -26,7 +26,7 @@
   spacing: 0;
   background-color: transparent;
 
-  font: "Knack Nerd Font 14";
+  font: "Hack Nerd Font 14";
   text-color: @text;
 }
 
