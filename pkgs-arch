@@ -96,6 +96,7 @@ sxhkd
 dunst
 libnotify
 picom
+rofi
 
 ## terminal
 alacritty
@@ -237,6 +238,7 @@ xclip
 ## fonts
 gnu-free-fonts
 noto-fonts-emoji
+otf-fantasque-sans-mono
 otf-font-awesome
 otf-overpass
 ttf-joypixels
