@@ -20,7 +20,7 @@ set_wall() {
 	[ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$2"
 	[ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" \
 		-iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$2"
-	feh --bg-fill --no-fehbg "$2" && echo "wallpaper set"
+	pidof Xorg >/dev/null 2>&1 && feh --bg-fill --no-fehbg "$2"
 }
 
 err() {
