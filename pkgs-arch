@@ -1,5 +1,6 @@
 ## groups
 base-devel
+linux-firmware
 pacman-contrib
 
 ## initial deps
@@ -8,6 +9,30 @@ git
 grep
 tar
 wget
+
+## linux kernel
+linux-lts
+linux-lts-headers
+
+## generic packages
+vim
+neovim
+usbutils
+lsof
+dmidecode
+dialog
+nmon
+gnome-keyring
+powertop
+htop
+# gpm
+
+## archives
+zip
+unrar
+unzip
+p7zip
+# lzop
 
 ## intel drivers
 intel-ucode
@@ -34,6 +59,9 @@ xorg-xsetroot
 xorg-xrandr
 xorg-xwininfo
 
+## input drivers
+xf86-input-libinput
+
 ## audio drivers
 pamixer
 pulsemixer
@@ -44,6 +72,15 @@ pulseaudio-bluetooth
 bluez
 bluez-libs
 bluez-utils
+
+## services
+networkmanager
+openssh
+cronie
+numlockon
+# haveged
+# net-snmp
+# samba
 
 ## shell
 bash
@@ -64,10 +101,6 @@ picom
 alacritty
 tmux
 
-# text
-vim
-neovim
-
 ## file manager
 # fff
 nnn
@@ -87,6 +120,7 @@ arch-wiki-docs
 rust-docs
 ruby-docs
 linux-docs
+linux-lts-docs
 
 ## dev
 # python
@@ -96,11 +130,6 @@ linux-docs
 # perl
 # ruby
 # ghc
-
-## archives
-zip
-unrar
-unzip
 
 ## utility
 ncdu
@@ -117,16 +146,25 @@ pass
 # texlive-latexextra
 
 ## system
-# cronie
 # pacutils
 # incron
 
 ## network
-# iproute2
-networkmanager
 # network-manager-applet
 dnscrypt-proxy
+# rsync
+# # traceroute
+# bind-tools
+# dnsutils
 # nmap
+# netdiscover
+# speedtest-cli
+# wavemon
+# net-tools
+# dsniff
+# mitmproxy
+# sslstrip
+# iproute2
 
 ## media
 mpd
@@ -185,8 +223,6 @@ exa
 fd
 fortune-mod
 fzf
-gnome-keyring
-htop
 man
 man-db
 neofetch
@@ -206,6 +242,7 @@ otf-overpass
 ttf-joypixels
 ttf-junicode
 ttf-nerd-fonts-symbols
+# ttf-nerd-fonts-symbols-mono
 xorg-fonts-type1
 
 ## battery
@@ -223,7 +260,6 @@ highlight
 httpie
 # libreoffice-still
 # obs-studio
-openssh
 # pipes.sh
 # speedtest-cli
 transmission-cli
@@ -234,8 +270,11 @@ udiskie
 # xarchiver
 
 ## microcode / drivers / extras
-cups
 dosfstools
 exfat-utils
 ntfs-3g
-# nvidia-lts
+
+## printer
+cups
+ghostscript
+cups-pdf

@@ -85,7 +85,7 @@ fi
 
 refreshkeys() {
 	echo "Refreshing Arch Keyring..."
-	sudo pacman --noconfirm -Syu archlinux-keyring >/dev/null 2>&1
+	sudo pacman --noconfirm -S archlinux-keyring >/dev/null 2>&1
 }
 
 # aur install using tar method
@@ -148,11 +148,14 @@ echo "The script is starting"
 refreshkeys
 
 install_pkg base-devel
+install_pkg pacman-contrib
 install_pkg curl
 install_pkg git
 install_pkg ntp
 
 manual_install "$AUR_HELPER"
+
+sudo pacman -Syu
 
 aur_install libxft-bgra
 
