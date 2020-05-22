@@ -34,6 +34,9 @@ unzip
 p7zip
 # lzop
 
+## network drivers
+# broadcom-wl
+
 ## intel drivers
 intel-ucode
 xf86-video-intel
@@ -41,6 +44,7 @@ vulkan-intel
 
 ## amd drivers
 # amd-ucode
+# xf86-video-amdgpu
 # xf86-video-ati
 # mesa-vdpau
 
