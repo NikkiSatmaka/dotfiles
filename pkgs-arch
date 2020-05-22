@@ -90,6 +90,7 @@ numlockon
 bash
 bash-completion
 dash
+grml-zsh-config
 zsh
 
 ## window manager
