@@ -8,14 +8,17 @@ libxft-bgra
 yay
 
 ## fonts
+siji-git
+ttf-material-design-icons-git
 # ttf-ms-fonts
 ttf-symbola-infinality
+ttf-typicons
 
 ## nerd fonts
 # nerd-fonts-hack
-# nerd-fonts-jetbrains-mono
-# nerd-fonts-meslo
-# nerd-fonts-source-code-pro
+nerd-fonts-jetbrains-mono
+nerd-fonts-meslo
+nerd-fonts-source-code-pro
 # nerd-fonts-fira-code
 
 ## web browser
