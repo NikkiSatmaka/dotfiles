@@ -12,6 +12,7 @@ LICENSE
 README.md
 com.googlecode.iterm2.plist
 10-install-packages.sh
+pkgs-*
 
 # Ignore non-Linux files.
 {{- if ne .chezmoi.os "linux" }}
@@ -29,12 +30,8 @@ com.googlecode.iterm2.plist
 .Xmodmap
 .xprofile
 .Xresources
-pkgs-*
 01-dash-shell
-10-main-pkgs
-11-extra-pkgs
-30-graphical-environment
-40-hardware-specific
+10-install-packages
 50-change-shell
 85-install-doom-emacs
 90-set-wallpaper
