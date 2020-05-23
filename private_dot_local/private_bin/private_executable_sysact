@@ -5,7 +5,7 @@
 MENU="$(rofi -sep "|" -dmenu -i -p \
     'System' -location 3 -xoffset -10 -yoffset 40 \
     -width 10 -hide-scrollbar -line-padding 4 -padding 20 \
-    -lines 4 <<< "🔒 Lock|🐻 Hibernate|🚪 Logout|🔃 Reboot|🖥  Shutdown")"
+    -lines 4 <<< "🔒 Lock|🐻 Hibernate|🚪 Logout|🔃 Reboot|🖥 Shutdown")"
         case "$MENU" in
             *"🔒 Lock") betterlockscreen -l dimblur ;;
             *"🐻 Sleep") betterlockscreen -s dimblur ;;
