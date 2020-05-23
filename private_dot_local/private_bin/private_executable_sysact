@@ -1,15 +1,15 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # A dmenu wrapper script for system functions.
 
-cmds="\
-lock screen	slock
-leave bspwm	kill -TERM $(pidof -s bspwm)
-refresh bspwm	kill -HUP $(pidof -s bspwm)
-reboot		sudo -A reboot
-shutdown	sudo -A shutdown -h now
-"
-
-choice="$(echo "$cmds" | cut -d'	' -f 1 | rofi -dmenu)"
-
-`echo "$cmds" | grep "^$choice	" | cut -d '	' -f2`
+MENU="$(rofi -sep "|" -dmenu -i -p \
+    'System' -location 3 -xoffset -10 -yoffset 40 \
+    -width 10 -hide-scrollbar -line-padding 4 -padding 20 \
+    -lines 4 <<< "🔒 Lock|🐻 Hibernate|🚪 Logout|🔃 Reboot|🖥  Shutdown")"
+        case "$MENU" in
+            *"🔒 Lock") betterlockscreen -l dimblur ;;
+            *"🐻 Sleep") betterlockscreen -s dimblur ;;
+            *"🚪 Logout") bspc quit ;;
+            *"🔃 Reboot") systemctl reboot ;;
+            *"🖥  Shutdow") systemctl -i poweroff
+        esac

@@ -16,14 +16,6 @@ super + space
 super + shift + d
 	dmenu_emoji
 
-# Reload this sxhkd config file
-super + Escape
-	pkill -USR1 -x sxhkd
-
-# Reload wallpaper
-super + alt + w
-	feh --bg-fill --no-fehbg --randomize ~/pictures/wallpapers
-
 # Screenshots
 Print
 	screenshot full
@@ -31,7 +23,7 @@ Print
 shift + Print
 	screenshot select
 
-control + Print
+ctrl + Print
 	screenshot fulltime
 
 super + Print
@@ -44,6 +36,14 @@ super + Print
 # compositor
 super + {_,shift + }c
 	{checkcomp,comptoggle}
+
+# Reload this sxhkd config file
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Pop up powermenu prompt
+super + ctrl + BackSpace
+	sysact
 
 #####################
 # XF86 keys
@@ -180,3 +180,7 @@ super + ctrl + space
 # cancel the preselection for the focused desktop
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# Rotate the tree from the current nodes parent
+super + ctrl + {Right, Left}
+  bspc node @parent -C {forward, backward}

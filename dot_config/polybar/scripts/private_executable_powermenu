@@ -2,10 +2,11 @@
 
 ## Created By Aditya Shakya
 
-MENU="$(rofi -sep "|" -dmenu -i -p 'System' -location 3 -xoffset -10 -yoffset 40 -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "> Lock|> Logout|> Reboot|> Shutdown")"
+MENU="$(rofi -sep "|" -dmenu -i -p 'System' -location 3 -xoffset -10 -yoffset 40 -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< "🔒 Lock|🐻 Hibernate|🚪 Logout|🔃 Reboot|🖥  Shutdown")"
             case "$MENU" in
-                *Lock) slock ;;
-                *Logout) bspc quit ;;
-                *Reboot) systemctl reboot ;;
-                *Shutdown) systemctl -i poweroff
+                *"🔒 Lock") betterlockscreen -l dimblur ;;
+                *"🐻 Hibernate") betterlockscreen -s dimblur ;;
+                *"🚪 Logout") bspc quit ;;
+                *"🔃 Reboot") systemctl reboot ;;
+                *"🖥  Shutdow") systemctl -i poweroff
             esac
