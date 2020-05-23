@@ -100,6 +100,8 @@ let g:rbpt_loadcmd_toggle = 0
 " UI {{{
 syntax enable
 filetype plugin indent on
+set scroll=0
+set scrolloff=5
 set number
 set relativenumber
 set modelines=1
