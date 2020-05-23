@@ -11,5 +11,5 @@ MENU="$(rofi -sep "|" -dmenu -i -p \
             *"🐻 Sleep") betterlockscreen -s dimblur ;;
             *"🚪 Logout") bspc quit ;;
             *"🔃 Reboot") systemctl reboot ;;
-            *"🖥 Shutdown") systemctl -i poweroff
+            *"🖥 Shutdown") systemctl -i poweroff ;;
         esac
