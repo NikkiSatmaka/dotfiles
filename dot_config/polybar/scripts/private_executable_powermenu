@@ -8,5 +8,5 @@ MENU="$(rofi -sep "|" -dmenu -i -p 'System' -location 3 -xoffset -10 -yoffset 40
                 *"🐻 Hibernate") betterlockscreen -s dimblur ;;
                 *"🚪 Logout") bspc quit ;;
                 *"🔃 Reboot") systemctl reboot ;;
-                *"🖥  Shutdow") systemctl -i poweroff
+                *"🖥 Shutdown") systemctl -i poweroff
             esac
