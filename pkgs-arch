@@ -243,15 +243,27 @@ xclip
 
 ## fonts
 gnu-free-fonts
+noto-fonts
 noto-fonts-emoji
+noto-fonts-extra
 otf-fantasque-sans-mono
 otf-font-awesome
 otf-overpass
+ttf-croscore
 ttf-joypixels
 ttf-junicode
+ttf-linux-libertine
 ttf-nerd-fonts-symbols
 # ttf-nerd-fonts-symbols-mono
 xorg-fonts-type1
+
+## chinese fonts
+adobe-source-han-sans-otc-fonts
+adobe-source-han-serif-otc-fonts
+noto-fonts-cjk
+
+## icons
+papirus-icon-theme
 
 ## battery
 acpi_call

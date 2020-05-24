@@ -43,7 +43,7 @@ super + Escape
 
 # Pop up powermenu prompt
 super + ctrl + BackSpace
-	sysact
+	powermenu
 
 #####################
 # XF86 keys

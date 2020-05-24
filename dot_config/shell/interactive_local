@@ -57,7 +57,7 @@ alias b="cd $HOME/.local/bin && ls -a"
 alias cf="cd ${XDG_CONFIG_HOME:-$HOME/.config} && ls -a"
 alias cs="cd ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts && ls -a"
 alias dx="cd $HOME/Dropbox && ls"
-alias o="cd $HOME/dots && ls -a"
+alias o="cd $HOME/.local/share/chezmoi && ls -a"
 alias bos="cd $HOME/Dropbox/Documents/BOS && ls"
 alias st="cd /storage && ls"
 alias mn="cd /mnt && ls -a"
@@ -97,9 +97,10 @@ alias ping="ping -c 3"
 # Directory browsing
 # -----------------------------------------------------------------------------
 
-alias l="exa -Fhl --group-directories-first"  # show files in long format
+alias l="exa -Fhl --group-directories-first --git"  # show files in long format
 alias la="exa -Fha --group-directories-first"  # show all files
-alias ll="exa -Fhla --group-directories-first"  # show all files in long format
+alias ll="exa -Fhla --group-directories-first --git"  # show all files in long format
+alias ltree="exa -FThl --git"  # show all files in tree format
 
 alias lad="exa -Fhd -- .*(/)"  # only show dot-directories
 alias lsa="exa -Fha -- .*(.)"  # only show dot-files

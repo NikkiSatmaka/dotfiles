@@ -83,6 +83,7 @@ export DOOMDIR="${XDG_CONFIG_HOME:-$HOME/.config}/doom"
 
 # Wine
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
+export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 
 # FFF file manager
 export FFF_HIDDEN=0

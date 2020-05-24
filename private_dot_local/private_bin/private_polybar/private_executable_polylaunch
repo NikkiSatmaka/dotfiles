@@ -3,7 +3,7 @@
 
 # Use predefined launch script from premade themes
 if [ -x "${XDG_CONFIG_HOME:-$HOME/.config}/polybar/launch.sh" ]; then
-  . "${XDG_CONFIG_HOME:-$HOME/.config}/polybar/launch.sh"
+  "${XDG_CONFIG_HOME:-$HOME/.config}/polybar/launch.sh"
 
 else
   # Terminate already running bar instances
