@@ -81,7 +81,7 @@ bluez-utils
 networkmanager
 openssh
 cronie
-numlockon
+# numlockx
 # haveged
 # net-snmp
 # samba
@@ -254,7 +254,7 @@ ttf-croscore
 ttf-joypixels
 ttf-junicode
 ttf-linux-libertine
-ttf-nerd-fonts-symbols
+# ttf-nerd-fonts-symbols
 # ttf-nerd-fonts-symbols-mono
 xorg-fonts-type1
 
