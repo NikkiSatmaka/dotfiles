@@ -83,8 +83,8 @@ XF86ScreenSaver
 # 	??
 # XF86WebCam
 # 	??
-# XF86Display
-# 	??
+XF86Display
+	displayselect
 # XF86TaskPane
 # 	$TERMINAL -e htop
 # XF86Mail

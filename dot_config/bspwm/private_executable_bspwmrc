@@ -17,8 +17,8 @@ getcolors
 xrdb ~/.Xresources
 
 ## Configurations -------------------------------#
-borderbase=2
-padding=10
+border=2
+gap=10
 
 # #### Set Coloring ####
 focused="$BLUE"
@@ -27,12 +27,8 @@ active="$MAGENTA"
 select="$GREEN"
 urgent="$RED"
 
-# You need to change this if you have multiple monitors
-bspc monitor -d 1 2 3 4 5 6 7 8 9 0
-
 ###---Monitor And Desktop Settings----###
-bspc config border_width         "$borderbase"
-bspc config window_gap           "$padding"
+bspc config window_gap           "$gap"
 bspc config top_padding          0
 bspc config bottom_padding       0
 bspc config left_padding         0
@@ -41,7 +37,6 @@ bspc config right_padding        0
 bspc config split_ratio           0.50
 bspc config borderless_monocle    true
 bspc config gapless_monocle       true
-bspc config paddingless_monocle   true
 bspc config single_monocle        false
 
 ###---Global Settings---###
@@ -54,16 +49,29 @@ bspc config pointer_action3       resize_corner
 bspc config click_to_focus        none
 
 bspc config focus_follows_pointer      true
+#bspc config pointer_follows_focus true  #Some keybindings automatically enable and disable this setting
 bspc config remove_disabled_monitors   true
 bspc config remove_unplugged_monitors  true
 bspc config merge_overlapping_monitors true
 
 #### BSPWM coloring ####
+##Color settings
+bspc config border_width           "$border"
 bspc config normal_border_color    "$normal"
 bspc config active_border_color    "$active"
 bspc config focused_border_color   "$focused"
 bspc config presel_feedback_color  "$select"
 bspc config urgent_border_color    "$urgent"
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+#bspc monitor -d i ii iii iv v vi vii viii ix x
+#bspc monitor -d One Two Three Four Five Six Seven Eight Nine Ten
+#bspc monitor -d I II III IV V VI VII VIII IX X
+#bspc monitor -d • • • • • • • • • •
+#bspc monitor -d I II III IV V VI
+
+###This creates and names desktops for multiple monitors.
+workspaces_multimonitor &
 
 ## Window rules -------------------------------#
 
