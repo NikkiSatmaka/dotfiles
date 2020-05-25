@@ -32,6 +32,7 @@ pkgs-*
 01-dash-shell
 10-install-packages
 50-change-shell
+80-rofi-dmenu
 85-install-doom-emacs
 90-set-wallpaper
 {{- end }}

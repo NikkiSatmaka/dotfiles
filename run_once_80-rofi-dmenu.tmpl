@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# /usr/bin/dmenu -> /usr/bin/rofi
+#==============================================================================
+
+if [ "$(readlink /usr/bin/dmenu)" = "/usr/bin/rofi" ]; then
+  echo "dmenu is already linked to /usr/bin/rofi"
+  echo "no changes were performed"
+else
+  sudo ln -sfT /usr/bin/rofi /usr/bin/dmenu &&
+    echo "pointed /usr/bin/dmenu symlink to rofi"
+fi
