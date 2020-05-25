@@ -10,7 +10,7 @@ super + Return
 
 # Program Launcher
 super + space
-	rofi -m -1 -show run
+	rofi -m -1 -show combi
 
 # Emoji Launcher
 super + shift + d
@@ -52,7 +52,7 @@ super + ctrl + BackSpace
 XF86AudioMute
 	pulsemixer --toggle-mute
 XF86Audio{Raise,Lower}Volume
-	pulsemixer --change-volume {+,-}5
+	pulsemixer --unmute; pulsemixer --change-volume {+,-}5
 XF86Audio{Next,Prev}
 	mpc {next,prev}
 # XF86Audio{Pause,Play,Stop}
@@ -79,10 +79,12 @@ XF86Sleep
 # 	$TERMINAL
 XF86ScreenSaver
 	mpc -q pause; betterlockscreen -l dimblur
-# XF86WLAN
-# 	??
-# XF86WebCam
-# 	??
+XF86WLAN
+	wifitoggle
+XF86WebCam
+	mpv --no-cache --no-osc --no-input-default-bindings \
+	--input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] \
+	| tail -n 1)
 XF86Display
 	displayselect
 # XF86TaskPane
@@ -92,9 +94,10 @@ XF86Display
 # XF86MyComputer
 # 	$TERMINAL -e $FILE /
 XF86Launch1
-	xset dpms force off
+	powermenu
 XF86TouchpadToggle
-	(synclient | grep "TouchpadOff.*1" && synclient TouchpadOff=0) || synclient TouchpadOff=1
+	(synclient | grep "TouchpadOff.*1" && synclient TouchpadOff=0) \
+	|| synclient TouchpadOff=1
 XF86Touchpad{Off,On}
 	synclient TouchpadOff={1,0}
 

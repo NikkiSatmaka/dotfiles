@@ -1,9 +1,9 @@
 configuration {
 	modi: "window,run,ssh,drun,combi";
 /*	width: 50;*/
-/*	lines: 15;*/
+	lines: 10;
 /*	columns: 1;*/
-/*	font: "mono 12";*/
+	font: "Noto Sans 12";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/
@@ -143,4 +143,4 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
-@import "~/.config/rofi/themes/onedark.rasi"
+@import "/home/nikki/.config/rofi/themes/onedark.rasi"

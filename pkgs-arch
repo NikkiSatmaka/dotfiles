@@ -142,6 +142,7 @@ linux-lts-docs
 broot
 ncdu
 mlocate
+redshift
 tree
 xdg-utils
 xdg-user-dirs

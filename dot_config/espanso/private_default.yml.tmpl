@@ -13,11 +13,11 @@ matches:
 
   # Simple email greetings
   - trigger: ":br"
-    replace: "Best Regards,\nNikki Satmaka"
+    replace: "Best Regards,\n{{ .name }}"
 
   # Dates
-  - trigger: ":date"
-    replace: "{{mydate}}"
+  - trigger: ";date"
+    replace: "{{ "{{" }}mydate{{ "}}" }}"
     vars:
       - name: mydate
         type: date
@@ -26,7 +26,7 @@ matches:
 
   # Now
   - trigger: ":now"
-    replace: "{{mytime}}"
+    replace: "{{ "{{" }}mytime{{ "}}" }}"
     vars:
       - name: mytime
         type: date
@@ -34,26 +34,26 @@ matches:
           format: "%H:%M"
 
   # Timestamp date
-  - trigger: ":tsd"
-    replace: "{{tsdate}}"
+  - trigger: ";ddate"
+    replace: "{{ "{{" }}ddate{{ "}}" }}"
     vars:
-      - name: tsdate
+      - name: ddate
         type: date
         params:
           format: "%Y%m%d"
 
   # Timestamp now
-  - trigger: ":tsn"
-    replace: "{{tsnow}}"
+  - trigger: ";dtnow"
+    replace: "{{ "{{" }}dtnow{{ "}}" }}"
     vars:
-      - name: tsnow
+      - name: dtnow
         type: date
         params:
           format: "%Y%m%d-%H%M%S"
 
   # Shell commands
   - trigger: ":shell"
-    replace: "{{output}}"
+    replace: "{{ "{{" }}output{{ "}}" }}"
     vars:
       - name: output
         type: shell
