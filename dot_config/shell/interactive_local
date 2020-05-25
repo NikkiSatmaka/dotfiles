@@ -310,3 +310,5 @@ n() {
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
+
+ssource ~/.config/broot/launcher/bash/br

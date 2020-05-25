@@ -139,7 +139,9 @@ linux-lts-docs
 # ghc
 
 ## utility
+broot
 ncdu
+mlocate
 tree
 xdg-utils
 xdg-user-dirs
