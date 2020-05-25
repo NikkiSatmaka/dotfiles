@@ -25,6 +25,7 @@ pkgs-*
 .config/mimeapps.list
 .config/user-dirs.dirs
 .config/user-dirs.locale
+.local/share
 .xinitrc
 .Xmodmap
 .xprofile
