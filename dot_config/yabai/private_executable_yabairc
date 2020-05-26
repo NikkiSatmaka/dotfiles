@@ -51,7 +51,7 @@ yabai -m rule --add label="mpv" app="^mpv$" manage=off
 yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
 yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
-yabai -m rule --add label="Digital Colou?r Meter" app="^Digital Colou?r Meter$" sticky=on
+yabai -m rule --add label="Digital Color Meter" app="^Digital Colou?r Meter$" sticky=on
 yabai -m rule --add label="Emacs" app="^Emacs$" manage=on
 
 # ====== List of signals =======================
