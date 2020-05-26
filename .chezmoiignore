@@ -36,7 +36,6 @@ pkgs-*
 10-install-packages
 50-change-shell
 80-rofi-dmenu
-85-install-doom-emacs
 90-set-wallpaper
 99-services
 {{- end }}
@@ -54,4 +53,9 @@ Library
 # Ignore non-Windows files.
 {{- if ne .chezmoi.os "windows" }}
 .config/windows_terminal
+{{- end }}
+
+# Ignore only on Windows.
+{{- if eq .chezmoi.os "windows" }}
+85-install-doom-emacs
 {{- end }}
