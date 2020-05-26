@@ -14,8 +14,8 @@ wget
 chezmoi
 
 ## linux kernel
-linux-lts
-linux-lts-headers
+# linux-lts
+# linux-lts-headers
 
 ## generic packages
 vim

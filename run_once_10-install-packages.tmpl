@@ -78,6 +78,7 @@ if type apt >/dev/null 2>&1; then
 		sudo apt-get install -y "$1"
 	}
 elif type pacman >/dev/null 2>&1; then
+	distro="arch"
 	install_pkg() {
 		sudo pacman --noconfirm --needed -S "$1"
 	}
@@ -153,11 +154,28 @@ install_pkg curl
 install_pkg git
 install_pkg ntp
 
-manual_install "$AUR_HELPER"
+if [ "$distro" = arch ]; then
 
-sudo pacman -Syu
+	# Make pacman and yay colorful and adds eye candy on the progress bar
+	if grep "^Color" /etc/pacman.conf >/dev/null; then
+		:
+	else
+		sudo sed -i "s/^#Color$/Color/" /etc/pacman.conf
+	fi
 
-aur_install libxft-bgra
+	if grep "ILoveCandy" /etc/pacman.conf >/dev/null; then
+		:
+	else
+		sudo sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
+	fi
+
+	manual_install "$AUR_HELPER"
+
+	sudo pacman -Syu
+
+	aur_install libxft-bgra
+
+fi
 
 installation_loop aur "$PKGS_AUR"
 

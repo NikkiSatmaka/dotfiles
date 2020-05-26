@@ -92,7 +92,11 @@
        ;;gist              ; interacting with github gists
        lookup              ; navigate your code and its documentation
        ;;lsp
+{{- if eq .chezmoi.os "darwin" }}
+       macos             ; MacOS-specific commands
+{{- else }}
        ;;macos             ; MacOS-specific commands
+{{- end }}
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        pass              ; password manager for nerds
