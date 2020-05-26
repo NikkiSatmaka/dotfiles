@@ -11,6 +11,7 @@
 LICENSE
 README.md
 com.googlecode.iterm2.plist
+Brew*
 pkgs-*
 
 # Ignore non-Linux files.
@@ -47,6 +48,7 @@ pkgs-*
 .config/yabai
 .Brewfile
 Library
+11-brew-packages
 {{- end }}
 
 # Ignore non-Windows files.

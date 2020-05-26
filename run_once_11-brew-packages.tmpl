@@ -1,0 +1,136 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# main (essential) packages & fonts
+#==============================================================================
+
+### OPTIONS AND VARIABLES ###
+
+readonly BREW_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
+readonly AUR_HELPER='yay'
+readonly SRC_DIR="$HOME/.local/src"
+readonly PKGS_ARCH="$HOME/.local/share/chezmoi/pkgs-arch"
+readonly PKGS_BREW_TAP="$HOME/.local/share/chezmoi/pkgs-brew-tap"
+readonly PKGS_BREW_CASK="$HOME/.local/share/chezmoi/pkgs-brew-cask"
+readonly PKGS_BREW="$HOME/.local/share/chezmoi/pkgs-brew"
+readonly PKGS_AUR="$HOME/.local/share/chezmoi/pkgs-aur"
+
+### FUNCTIONS ###
+
+echoerrcolor() {
+	if (( $colors )); then
+		case $1 in
+			none)
+				str="\e[0;37m"
+				;;
+			green)
+				str="\e[0;32m"
+				;;
+			red)
+				str="\e[0;31m"
+				;;
+			blue)
+				str="\e[1;34m"
+				;;
+			darkcyan)
+				str="\e[0;36m"
+				;;
+			darkgreen)
+				str="\e[1;32m"
+				;;
+			darkred)
+				str="\e[1;31m"
+				;;
+			magenta)
+				str="\e[0;35m"
+				;;
+			darkmagenta)
+				str="\e[1;35m"
+				;;
+
+		esac
+		echo -ne $str >&2;
+	fi
+}
+
+echoerrnocolor() {
+	if (( $colors )); then
+		echo -ne "\e[0m" >&2;
+	fi
+}
+
+echoerr() {
+	if [ $# -gt 1 ]; then
+		color=$1
+		shift
+		echoerrcolor $color
+	fi
+	echo "$@" >&2;
+	if [ $color ]; then
+		echoerrnocolor
+	fi
+}
+
+printferr() { printf "$@" >&2; }
+
+if type apt >/dev/null 2>&1; then
+	install_pkg() {
+		sudo apt-get install -y "$1"
+	}
+elif type pacman >/dev/null 2>&1; then
+	install_pkg() {
+		sudo pacman --noconfirm --needed -S "$1"
+	}
+fi
+
+refreshkeys() {
+	echo "Refreshing Arch Keyring..."
+	sudo pacman --noconfirm -S archlinux-keyring >/dev/null 2>&1
+}
+
+main_install() {
+	install_pkg "$1"
+}
+
+pip_install() {
+	if type pip >/dev/null 2>&1; then
+		:
+	else
+		install_pkg python-pip
+	fi
+	pip install "$1"
+}
+
+brew_install() {
+	if type brew >/dev/null 2>&1; then
+		:
+	else
+		/bin/bash -c "$(curl -fsSL $BREW_URL)"
+	fi
+	brew bundle
+}
+
+
+installation_loop() {
+	[ -f "$2" ] && cp -f "$2" /tmp/pkgs
+	sed '/^#/d' "$2" | sed '/^$/d' > /tmp/pkgs
+	aur_installed="$(pacman -Qqm)"
+	while read -r package; do
+		case "$1" in
+			"aur") aur_install "$package" ;;
+			"apt"|"pacman") main_install "$package" ;;
+			"pip") pip_install "$package" ;;
+		esac
+	done < /tmp/pkgs
+}
+
+systembeepoff() {
+	rmmod pcspkr
+	echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+}
+
+### THE ACTUAL SCRIPT ###
+
+echo "The script is starting"
+
+brew_install

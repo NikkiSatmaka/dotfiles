@@ -10,6 +10,9 @@ grep
 tar
 wget
 
+## dotfiles
+chezmoi
+
 ## linux kernel
 linux-lts
 linux-lts-headers
@@ -144,6 +147,7 @@ ncdu
 mlocate
 redshift
 tree
+trash-cli
 xdg-utils
 xdg-user-dirs
 # syncthing
@@ -153,6 +157,7 @@ xdg-user-dirs
 pass
 
 ## latex
+pandoc
 # texlive-latexextra
 
 ## system
