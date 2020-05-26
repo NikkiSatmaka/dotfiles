@@ -13,6 +13,7 @@ README.md
 com.googlecode.iterm2.plist
 Brew*
 pkgs-*
+tweaks
 
 # Ignore non-Linux files.
 {{- if ne .chezmoi.os "linux" }}

@@ -1,0 +1,5 @@
+[Lenovo X230 Trackpoint Override]
+MatchUdevType=pointingstick
+MatchName=*TPPS/2 IBM TrackPoint*
+MatchDMIModalias=dmi:*svnLENOVO:*:pvrThinkPadX230*
+AttrTrackpointMultiplier=1.0
