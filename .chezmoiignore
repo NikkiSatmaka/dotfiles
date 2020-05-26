@@ -16,6 +16,7 @@ pkgs-*
 # Ignore non-Linux files.
 {{- if ne .chezmoi.os "linux" }}
 .config/bspwm
+.config/broot
 .config/dunst
 .config/espanso
 .config/picom
@@ -36,6 +37,7 @@ pkgs-*
 80-rofi-dmenu
 85-install-doom-emacs
 90-set-wallpaper
+99-services
 {{- end }}
 
 # Ignore non-macOS files.
