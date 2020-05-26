@@ -7,6 +7,7 @@
 ### OPTIONS AND VARIABLES ###
 
 readonly BREW_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
+readonly BREW_FILE='~/.local/share/chezmoi/Brewfile'
 readonly AUR_HELPER='yay'
 readonly SRC_DIR="$HOME/.local/src"
 readonly PKGS_ARCH="$HOME/.local/share/chezmoi/pkgs-arch"
@@ -107,7 +108,7 @@ brew_install() {
 	else
 		/bin/bash -c "$(curl -fsSL $BREW_URL)"
 	fi
-	brew bundle install
+	brew bundle install --no-lock --file=$1
 }
 
 
@@ -133,4 +134,4 @@ systembeepoff() {
 
 echo "The script is starting"
 
-brew_install
+brew_install "$BREW_FILE"

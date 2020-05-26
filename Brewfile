@@ -16,7 +16,7 @@ brew "coreutils"
 brew "cowsay"
 brew "curl"
 brew "diff-so-fancy"
-brew "dnscrypt-proxy", restart_service: changed
+brew "dnscrypt-proxy", restart_service: :changed
 brew "exa"
 brew "fd"
 brew "figlet"
@@ -35,7 +35,7 @@ brew "nnn"
 brew "pandoc"
 brew "pnpm"
 brew "python"
-brew "redshift", restart_service: changed
+brew "redshift", restart_service: :changed
 brew "ripgrep"
 brew "ruby"
 brew "shellcheck"
@@ -47,8 +47,8 @@ brew "wget"
 brew "zsh"
 brew "d12frosted/emacs-plus/emacs-plus"
 brew "federico-terzi/espanso/espanso"
-brew "koekeishiya/formulae/skhd", restart_service: changed
-brew "koekeishiya/formulae/yabai", restart_service: changed
+brew "koekeishiya/formulae/skhd", restart_service: :changed
+brew "koekeishiya/formulae/yabai", restart_service: :changed
 cask "alacritty"
 cask "alfred"
 cask "brave-browser"
