@@ -76,10 +76,12 @@
 # A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
 # ############################################################### #
 
-.load "blacklist_skhdrc"
+# .load "blacklist_skhdrc"
 
 # open terminal, vsocde, and safari with shortcuts
-cmd - return : open -a alacritty
+# cmd - return : open -a alacritty
+# cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty --single-instance -d ~
+# cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
 # cmd + shift - return : code
 # alt - return : open -a Safari
 
