@@ -5,6 +5,18 @@
 padding=12
 gap=06
 
+# set names for spaces
+yabai -m space 1 --label I
+yabai -m space 2 --label II
+yabai -m space 3 --label III
+yabai -m space 4 --label IV
+yabai -m space 5 --label V
+yabai -m space 6 --label VI
+yabai -m space 7 --label VII
+yabai -m space 8 --label VIII
+yabai -m space 9 --label IX
+yabai -m space 10 --label X
+
 # ====== Tiling settings =======================
 
 yabai -m config layout                       bsp
@@ -52,13 +64,15 @@ yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
 yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
 yabai -m rule --add label="Digital Color Meter" app="^Digital Colou?r Meter$" sticky=on
+yabai -m rule --add label="Microsoft AutoUpdate" app="^Microsoft AutoUpdate$" manage=off
+yabai -m rule --add label="Alfred Preferences" app="^Alfred Preferences$" manage=off
 yabai -m rule --add label="Emacs" app="^Emacs$" manage=on
 
 # ====== List of signals =======================
 
-# refresh my Übersicht bar when the space changes
-yabai -m signal --add event=space_changed \
-    action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"spaces-widget\"'"
+# # refresh my Übersicht bar when the space changes
+# yabai -m signal --add event=space_changed \
+#     action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"spaces-widget\"'"
 
 # focus window under cursor when a window is destroyed
 yabai -m signal --add event=window_destroyed \
