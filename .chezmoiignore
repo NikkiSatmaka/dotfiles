@@ -47,6 +47,7 @@ tweaks
 .config/iterm
 .config/skhd
 .config/yabai
+.local/bin/bitbar
 .Brewfile
 Library
 11-brew-packages
