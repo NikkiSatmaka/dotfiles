@@ -87,7 +87,13 @@ FONT=' | font= | trim=true | size='
 # NOTE: Yabai can disable the 16 spaces limit. In my testing, I spawned 97 spaces before everything broke down.
 # Feel free to use this as a template and increase the $SPACES string as you see fit and add to the case statements below.
 
-SPACES="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 0"
+# SPACES="1 2 3 4 5 6 7 8 9 0"
+# SPACES="i ii iii iv v vi vii viii ix x"
+# SPACES="One Two Three Four Five Six Seven Eight Nine Ten"
+SPACES="I II III IV V VI VII VIII IX X"
+# SPACES="• • • • • • • • • •"
+# SPACES="I II III IV V VI"
+
 
 # -------------------------------------------------------------------------#
 # Don't edit anything below this point if you dont know what you're doing! #
