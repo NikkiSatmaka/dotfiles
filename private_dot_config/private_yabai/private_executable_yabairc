@@ -56,18 +56,25 @@ yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password
 yabai -m rule --add label="System Preferences" app="^System Preferences$" manage=off
 yabai -m rule --add label="App Store" app="^App Store$" manage=off
 yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
-yabai -m rule --add label="KeePassXC" app="^KeePassXC$" manage=off
 yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
 yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="Digital Color Meter" app="^Digital Colou?r Meter$" sticky=on
+
+yabai -m rule --add label="Microsoft AutoUpdate" app="^Microsoft AutoUpdate$" manage=off
+yabai -m rule --add label="KeePassXC" app="^KeePassXC$" manage=off
 yabai -m rule --add label="mpv" app="^mpv$" manage=off
+yabai -m rule --add label="Keka" app="^Keka$" manage=off
 yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
+
+yabai -m rule --add label="Brave" app="^Brave$" title="^(Task\ Manager\ \-\ Brave)$" manage=off
+
 yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
-yabai -m rule --add label="Digital Color Meter" app="^Digital Colou?r Meter$" sticky=on
-yabai -m rule --add label="Microsoft AutoUpdate" app="^Microsoft AutoUpdate$" manage=off
+
 yabai -m rule --add label="Alfred Preferences" app="^Alfred Preferences$" manage=off
 yabai -m rule --add label="Bartender Preferences" app="^Bartender 3$" manage=off
 yabai -m rule --add label="BetterTouchTool" app="^BetterTouchTool$" manage=off
+
 yabai -m rule --add label="Emacs" app="^Emacs$" manage=on
 
 # ====== List of signals =======================
@@ -89,7 +96,7 @@ yabai -m signal --add event=application_terminated \
 # kill limelight when an application is activated
 # yabai -m signal --add event=application_activated \
 #     action="pkill -SIGUSR1 limelight &> /dev/null"
-#
+
 yabai -m signal --add event=space_changed action="open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'"
 yabai -m signal --add event=display_added action="open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'"
 yabai -m signal --add event=display_removed action="open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'"
