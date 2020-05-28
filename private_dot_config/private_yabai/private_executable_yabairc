@@ -66,6 +66,8 @@ yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
 yabai -m rule --add label="Digital Color Meter" app="^Digital Colou?r Meter$" sticky=on
 yabai -m rule --add label="Microsoft AutoUpdate" app="^Microsoft AutoUpdate$" manage=off
 yabai -m rule --add label="Alfred Preferences" app="^Alfred Preferences$" manage=off
+yabai -m rule --add label="Bartender Preferences" app="^Bartender 3$" manage=off
+yabai -m rule --add label="BetterTouchTool" app="^BetterTouchTool$" manage=off
 yabai -m rule --add label="Emacs" app="^Emacs$" manage=on
 
 # ====== List of signals =======================
@@ -87,5 +89,11 @@ yabai -m signal --add event=application_terminated \
 # kill limelight when an application is activated
 # yabai -m signal --add event=application_activated \
 #     action="pkill -SIGUSR1 limelight &> /dev/null"
+#
+yabai -m signal --add event=space_changed action="open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'"
+yabai -m signal --add event=display_added action="open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'"
+yabai -m signal --add event=display_removed action="open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'"
+yabai -m signal --add event=display_changed action="open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'"
+yabai -m signal --add event=display_moved action="open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'"
 
 echo "yabai configuration loaded.."
