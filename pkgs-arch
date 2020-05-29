@@ -158,7 +158,11 @@ pass
 
 ## latex
 pandoc
-# texlive-latexextra
+texlive-core
+texlive-bin
+texlive-science
+texlive-latexextra
+gnuplot
 
 ## system
 # pacutils

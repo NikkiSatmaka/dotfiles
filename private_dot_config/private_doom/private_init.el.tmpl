@@ -47,7 +47,7 @@
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
-       ;;zen               ; distraction-free coding or writing
+       zen               ; distraction-free coding or writing
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
@@ -100,7 +100,7 @@
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        pass              ; password manager for nerds
-       ;;pdf               ; pdf enhancements
+       pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
@@ -144,14 +144,19 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org               ; organize your plain life in plain text
-        +dragndrop       ; drag & drop files/images into org buffers
-        ;;+gnuplot         ; plotting tables with org-plot/gnuplot
-        +ipython         ; ipython/jupyter support for babel
-        +pandoc          ; export-with-pandoc support
-        +pomodoro        ; be fruitful with the tomato technique
-        +present         ; using org-mode for presentations
-        +hugo)           ; use Emacs for hugo blogging
+       (org              ; organize your plain life in plain text
+        +brain           ; Enables org-brain integration.
+        +dragndrop       ; Enables drag-and-drop support for images and files; inserts inline previews for images and an icon+link for other media types.
+        +gnuplot         ; Installs gnuplot & gnuplot-mode, which enables rendering images from gnuplot src blocks or plotting tables with org-plot/gnuplot (bound to SPC m b p, by default).
+        +hugo            ; Enables integration with hugo to export from Emacs well-formed (blackfriday) markdown.
+        ;;+ipython         ; (**DEPRECATED**) Enables ipython integration for babel.
+        +journal         ; Enables org-journal integration.
+        +jupyter         ; Enables Jupyter integration for babel.
+        +noter           ; Enables org-noter integration. Keeps notes in sync with a document. Requires pdf-tools (:tools pdf) or DocView or nov.el to be enabled.
+        +pandoc          ; Enables pandoc integration into the Org exporter.
+        +pomodoro        ; Enables a pomodoro timer for clocking time on tasks.
+        +present         ; Enables integration with reveal.js, beamer and org-tree-slide, so Emacs can be used for presentations.
+        +roam)           ; Enables org-roam integration.
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
