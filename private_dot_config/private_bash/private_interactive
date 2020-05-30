@@ -13,6 +13,7 @@
 . ~/.config/shell/interactive
 
 HISTCONTROL=ignoredups
+shopt -s histappend
 HISTSIZE=10000
 HISTDIR="${XDG_DATA_HOME:-$HOME/.local/share}/bash"
 HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/bash/history"

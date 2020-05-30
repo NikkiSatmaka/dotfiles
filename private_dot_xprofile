@@ -40,5 +40,6 @@ picom -b &				# picom for transparency
 dunst &				# dunst for notifications
 udiskie &			# udiskie for automount
 unclutter &			# Remove mouse when idle
+redshift &			# take care of your eyes
 sxhkd &				# keybinding
 xsetroot -cursor_name left_ptr &
