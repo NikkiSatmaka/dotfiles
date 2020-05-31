@@ -1,6 +1,10 @@
 " Nikki NeoVim Config. LAST MAJOR UPDATE: 11/04/20
 
-" Plugin manager {{{
+" Plugin manager {{ "{{{" }}
+
+{{- if eq .chezmoi.os "windows" }}
+call plug#begin('~\AppData\Local\nvim-data\plugged')
+{{- else }}
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
 			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -8,39 +12,41 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-"{{ The Basics }}
+{{- end }}
+"{{ "{{" }} The Basics {{ "}}" }}
 	Plug 'chaimleib/vim-renpy'
 	Plug 'jeetsukumaran/vim-buffergator'
 	Plug 'plasticboy/vim-markdown'
-"{{ Colors }}
+"{{ "{{" }} Colors {{ "}}" }}
 	Plug 'morhetz/gruvbox'
 	Plug 'chriskempson/base16-vim'
 	Plug 'arcticicestudio/nord-vim'
-"{{ Stylize }}
+"{{ "{{" }} Stylize {{ "}}" }}
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	" Plug 'itchyny/lightline.vim'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'nathanaelkane/vim-indent-guides'
-"{{ File management }}
+"{{ "{{" }} File management {{ "}}" }}
 	Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 	" Plug 'ctrlpvim/ctrlp.vim'
-"{{ Productivity }}
+"{{ "{{" }} Productivity {{ "}}" }}
 	Plug 'vimwiki/vimwiki'
 	Plug 'jreybert/vimagit'
-"{{ Junegunn Choi Plugins }}
+    Plug 'justinmk/vim-sneak'
+"{{ "{{" }} Junegunn Choi Plugins {{ "}}" }}
 	Plug 'junegunn/fzf.vim'
 	Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 	Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
-"{{ Tim Pope Plugins }}
+"{{ "{{" }} Tim Pope Plugins {{ "}}" }}
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-eunuch'
-"{{ Parenthesis }}
+"{{ "{{" }} Parenthesis {{ "}}" }}
 	Plug 'alvan/vim-closetag'
 	Plug 'luochen1990/rainbow'
 	" Plug 'raimondi/delimitmate'
-"{{ Syntax Highlighting and Colors }}
+"{{ "{{" }} Syntax Highlighting and Colors {{ "}}" }}
 	Plug 'ap/vim-css-color'
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'kovetskiy/sxhkd-vim'
@@ -50,14 +56,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'davidhalter/jedi-vim'
 	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
-" }}}
+" {{ "}}}" }}
 
-" Basic {{{
+" Basic {{ "{{{" }}
 set nocompatible
 let mapleader =" "
-" }}}
+" {{ "}}}" }}
 
-" Some plugin specific things {{{
+" Some plugin specific things {{ "{{{" }}
 let g:rainbow_active = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
@@ -95,9 +101,9 @@ let g:closetag_shortcut = '>'
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
-" }}}
+" {{ "}}}" }}
 
-" UI {{{
+" UI {{ "{{{" }}
 syntax enable
 filetype plugin indent on
 set scroll=0
@@ -138,9 +144,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-" }}}
+" {{ "}}}" }}
 
-" Searching {{{
+" Searching {{ "{{{" }}
 set incsearch
 nnoremap <leader><space> :nohlsearch<CR>
 set hlsearch
@@ -148,23 +154,23 @@ set hlsearch
 nnoremap S :%s//g<Left><Left>
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-" }}}
+" {{ "}}}" }}
 
-" Section Folding {{{
+" Section Folding {{ "{{{" }}
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=syntax
 nnoremap <space>z za
-" }}}
+" {{ "}}}" }}
 
-" Tabs and Spaces {{{
+" Tabs and Spaces {{ "{{{" }}
 "set shiftwidth=4
 set listchars=tab:__
 "set tabstop=4
-" }}}
+" {{ "}}}" }}
 
-" Spelling {{{
+" Spelling {{ "{{{" }}
 set spell spelllang=en_us
 set spellsuggest=best,10
 map <leader>s :setlocal spell!<CR>
@@ -178,21 +184,21 @@ hi SpellCap cterm=underline ctermfg=blue
 hi clear SpellLocal
 hi SpellLocal cterm=underline ctermfg=green
 set spellfile=$HOME/Dropbox/Backups/vim/en.utf-8.add
-" }}}
+" {{ "}}}" }}
 
-"File Find {{{
+"File Find {{ "{{{" }}
 set path+=**
 set wildmenu
 set wildmode=longest,list,full
-" }}}
+" {{ "}}}" }}
 
-" NerdTree {{{
+" NerdTree {{ "{{{" }}
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp']
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 	autocmd BufWritePre * %s/\s\+$//e
-"}}}
+"{{ "}}}" }}
 
-" Random Options {{{
+" Random Options {{ "{{{" }}
 let g:tex_flavor = "latex"
 set encoding=utf-8
 set nowritebackup
@@ -213,9 +219,9 @@ set noerrorbells visualbell t_vb=
 map Q gq
 " autocmd VimLeave * !pkill -9 "entr"
 "match Error /\t/
-" }}}
+" {{ "}}}" }}
 
-" Status Line {{{
+" Status Line {{ "{{{" }}
 set laststatus=2
 set statusline =\ D:%{getcwd()}  " Working directory
 set statusline+=\ F:%f           " Current file
@@ -223,9 +229,9 @@ set statusline+=\ S:%m           " File's modification state
 set statusline+=\ R:%r           " File's permissions
 set statusline+=\ T:%y           " File's language type
 set statusline+=\ L:%l/%L        " Current line vs lines number
-" }}}
+" {{ "}}}" }}
 
-" CTRLP Plugin {{{
+" CTRLP Plugin {{ "{{{" }}
 "let g:ctrlp_map = '<C-p>'
 "let g:ctrlp_cmd = 'CtrlP'
 "let g:ctrlp_working_path_mode = 'ra'
@@ -254,9 +260,9 @@ imap <C-x><C-l> <plug>(fzf-complete-line)
 " Advanced customization using Vim function
 inoremap <expr> <C-x><C-k> fzf#vim#complete#word({'left': '15%'})
 
-"}}}
+"{{ "}}}" }}
 
-" Tab navigation {{{
+" Tab navigation {{ "{{{" }}
 nnoremap <Leader>n :tabnew<Space>
 nnoremap <Leader>h :tabfirst<CR>
 nnoremap <Leader>j :tabprevious<CR>
@@ -266,9 +272,9 @@ nnoremap <Leader>l :tablast<CR>
 nnoremap <silent> <A-h> :tabprevious<CR>
 nnoremap <silent> <A-l> :tabnext<CR>
 
-" }}}
+" {{ "}}}" }}
 
-" Basic file system bindings {{{
+" Basic file system bindings {{ "{{{" }}
 nnoremap gl $
 nnoremap gh 0
 nnoremap gk H
@@ -280,9 +286,9 @@ nnoremap k gk
 
 nnoremap <leader>q :wq<CR>
 nnoremap <leader>w :w<CR>
-" }}}}
+" {{ "}}}}" }}
 
-" Key settings {{{
+" Key settings {{ "{{{" }}
 noremap <C-j> <C-W><C-J>
 noremap <C-k> <C-W><C-K>
 noremap <C-h> <C-W><C-H>
@@ -299,9 +305,9 @@ map <leader>o :!pandoc % -t beamer -o %:r.pdf &<CR><CR>
 "map <leader>c :!setsid vim_compile %<CR><CR>
 " map <leader>c :!setsid auto_vim_compile % &<CR><CR>
 map <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
-" }}}}
+" {{ "}}}}" }}
 
-" Auto -  file types {{{
+" Auto -  file types {{ "{{{" }}
 autocmd FileType * set tabstop=4|set shiftwidth=4|set noexpandtab
 autocmd FileType,BufRead *.rpy,*.rpyc set tabstop=4|set shiftwidth=4|set expandtab
 autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
@@ -313,9 +319,9 @@ autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markd
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom set filetype=groff
 autocmd BufRead,BufNewFile *.tex set filetype=tex
 " autocmd BufRead,BufNewFile *.md set tw=79
-" }}}
+" {{ "}}}" }}
 
-"SNIPPETS {{{
+"SNIPPETS {{ "{{{" }}
 	inoremap ,<Tab> <Esc>/<++><Enter>"_c4l
 	vnoremap ,<Tab> <Esc>/<++><Enter>"_c4l
 	map ,<Tab> <Esc>/<++><Enter>"_c4l
@@ -359,9 +365,9 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 	autocmd FileType tex inoremap ,ss \subsection{}<++><Esc>4hi
 	autocmd FileType tex inoremap ,p  \paragraph{Paragraph}<Esc>
 	autocmd FileType tex inoremap ,im \begin{figure}<Enter>  \includegraphics[width=\linewidth]{}<Enter>\caption{<++>}<Enter>\label{<++>}<Enter>\end{figure}<Enter><++><Esc>4k%2li
-" }}}
+" {{ "}}}" }}
 
-" Helper functions {{{
+" Helper functions {{ "{{{" }}
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
     execute "normal! vgvy"
@@ -378,6 +384,6 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-" }}}
+" {{ "}}}" }}
 
 " vim:foldmethod=marker:foldlevel=0
