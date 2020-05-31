@@ -43,6 +43,44 @@ tweaks
 99-services
 {{- end }}
 
+{{- if eq .chezmoi.kernel.osrelease "4.4.0-19041-Microsoft" }}
+.config/alacritty
+.config/bspwm
+.config/calcurse
+.config/dunst
+.config/espanso
+.config/fontconfig
+.config/gtk-2.0
+.config/gtk-3.0
+.config/lf
+.config/mpd
+.config/mpv
+.config/ncmpcpp
+.config/picom
+.config/polybar
+.config/redshift
+.config/rofi
+.config/sxhkd
+.config/sxiv
+.config/zathura
+.config/mimeapps.list
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.local
+.xinitrc
+.Xmodmap
+.xprofile
+.Xresources
+01-dash-shell
+10-install-packages
+11-brew-packages
+50-change-shell
+80-rofi-dmenu
+85-install-doom-emacs
+90-set-wallpaper
+99-services
+{{- end }}
+
 # Ignore non-macOS files.
 {{- if ne .chezmoi.os "darwin" }}
 .config/iterm

@@ -189,3 +189,6 @@ pathappend "/usr/lib/w3m" PATH
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap 2>/dev/null
+
+# Enable linux brew.
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
