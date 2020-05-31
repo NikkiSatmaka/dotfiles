@@ -14,6 +14,11 @@ ZINIT[COMPLETIONS_DIR]="${ZINIT[HOME_DIR]}/completions"
 ZINIT[SNIPPETS_DIR]="${ZINIT[HOME_DIR]}/snippets"
 ZINIT[ZCOMPDUMP_PATH]="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 
+# Enable linuxbrew completion.
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 # Initialize completion
 autoload -Uz compinit
 [[ ! -d $ZSH_CACHE_DIR ]] && command mkdir -p "$ZSH_CACHE_DIR"
