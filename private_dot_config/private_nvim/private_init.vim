@@ -1,13 +1,13 @@
 " Nikki NeoVim Config. LAST MAJOR UPDATE: 11/04/20
 
 " Plugin manager {{{
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
 			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall
 endif
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 "{{ The Basics }}
 	Plug 'chaimleib/vim-renpy'
 	Plug 'jeetsukumaran/vim-buffergator'
