@@ -99,11 +99,11 @@ fi
 ##############################################################################
 
 # Enable starship prompt.
-if which starship >/dev/null 2>&1; then
+if type starship >/dev/null 2>&1; then
     eval "$(starship init bash)"
 fi
 
 # Enable direnv.
-if which direnv >/dev/null 2>&1; then
+if type direnv >/dev/null 2>&1; then
     eval "$(direnv hook bash)"
 fi
