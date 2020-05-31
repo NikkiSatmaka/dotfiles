@@ -94,7 +94,7 @@ Library
 
 # Ignore non-Windows files.
 {{- if ne .chezmoi.os "windows" }}
-.config/windows_terminal
+AppData
 {{- end }}
 
 # Ignore only on Windows.
