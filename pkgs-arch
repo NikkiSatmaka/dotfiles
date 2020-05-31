@@ -143,8 +143,9 @@ linux-lts-docs
 
 ## utility
 broot
-ncdu
+lesspipe
 mlocate
+ncdu
 redshift
 tree
 trash-cli
@@ -285,10 +286,12 @@ tlp-rdw
 
 ## extra pkgs
 # android-tools
+# calibre
 # discord
 # dos2unix
 # firefox
 figlet
+# hexchat
 highlight
 httpie
 # libreoffice-still
@@ -296,7 +299,6 @@ httpie
 # pipes.sh
 # speedtest-cli
 transmission-cli
-# tremc-git
 udiskie
 # unimatrix-git
 # woeusb

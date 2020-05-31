@@ -40,3 +40,9 @@ starship
 ## window manager
 betterlockscreen
 polybar
+
+## utility
+direnv
+
+## torrent
+# tremc-git
