@@ -159,6 +159,7 @@ pass
 
 ## latex
 pandoc
+graphviz
 texlive-core
 texlive-bin
 texlive-science
@@ -313,3 +314,8 @@ ntfs-3g
 cups
 ghostscript
 cups-pdf
+
+## emacs deps
+clang
+cmake
+llvm

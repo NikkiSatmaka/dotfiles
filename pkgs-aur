@@ -46,3 +46,6 @@ direnv
 
 ## torrent
 # tremc-git
+
+## emacs deps
+pnpm
