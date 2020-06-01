@@ -43,7 +43,7 @@ tweaks
 99-services
 {{- end }}
 
-{{- if eq .chezmoi.kernel.osrelease "4.4.0-19041-Microsoft" }}
+{{- if eq .chezmoi.kernel.osrelease "4.19.104-microsoft-standard" }}
 .config/alacritty
 .config/bspwm
 .config/calcurse
