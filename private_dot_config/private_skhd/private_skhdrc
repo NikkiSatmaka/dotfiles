@@ -119,14 +119,16 @@ focus, grid, swap, warp, warpnf, resize < m                 : yabai -m window --
 focus, grid, swap, warp, warpnf, resize < alt - f           : yabai -m window --toggle native-fullscreen                      # mnemonic: _f_ullscreen
 focus, grid, swap, warp, warpnf, resize < p                 : yabai -m window --toggle zoom-parent                            # mnemonic: _p_arent
 focus, grid, swap, warp, warpnf, resize < i                 : yabai -m window --toggle split                                  # mnemonic: couldn't think of one!
-# focus, grid, swap, warp, warpnf, resize < t                 : yabai -m window --toggle float && \                             # mnemonic: floa_t_
-                                                                    # /tmp/yabai-restore/$(yabai -m query --windows --window \
-                                                                    # | jq -re '.id').restore 2>/dev/null || true
+# mnemonic: floa_t_
+focus, grid, swap, warp, warpnf, resize < t                 : yabai -m window --toggle float && \
+                                                                    /tmp/yabai-restore/$(yabai -m query --windows --window \
+                                                                    | jq -re '.id').restore 2>/dev/null || true
 focus, grid, swap, warp, warpnf, resize < alt - s           : yabai -m window --toggle sticky                                 # toggle sticky
 focus, grid, swap, warp, warpnf, resize < alt - o           : yabai -m window --toggle topmost                                # toggle topmost (keep above other windows)
-# focus, grid, swap, warp, warpnf, resize < alt - p           : yabai -m window --toggle sticky;\                               # toggle sticky(+float), topmost, picture-in-picture
-                                                                    # yabai -m window --toggle topmost;\
-                                                                    # yabai -m window --toggle pip
+# toggle sticky(+float), topmost, picture-in-picture
+focus, grid, swap, warp, warpnf, resize < alt - p           : yabai -m window --toggle sticky;\
+                                                                    yabai -m window --toggle topmost;\
+                                                                    yabai -m window --toggle pip
 
 # create desktop and follow focus - uses jq for parsing json (brew install jq)
 # focus, grid, swap, warp, warpnf, resize < cmd - n           : yabai -m space --create && \
@@ -140,7 +142,7 @@ focus, grid, swap, warp, warpnf, resize < alt - o           : yabai -m window --
                                                                     # yabai -m space --focus "${index}"
 
 # Global hotkeys which I limit so as to not pollute the global namespace
-# default         < ctrl - return     : open -na Alacritty
+default         < ctrl - return     : open -na Alacritty
 
 # Change focus using standard vi directional keys. Enter changes focus to the
 # biggest window. You'll see this theme repeated over and over again. Since this
@@ -190,8 +192,9 @@ focus           < cmd - 3           : yabai -m display --focus 3
 # Change the layout mode of a desktop to one of the three supported modes.
 focus           < cmd - b           : yabai -m space --layout bsp                                  # mnemonic: _b_sp
 focus           < cmd - f           : yabai -m space --layout float                                # mnemonic: _f_loat
-# focus           < cmd - t           : yabai -m space --layout $(yabai -m query --spaces --space \  # mnemonic: _t_oggle
-                                        # | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+# mnemonic: _t_oggle
+focus           < cmd - t           : yabai -m space --layout $(yabai -m query --spaces --space \
+                                        | jq -r 'if .type == "bsp" then "float" else "bsp" end')
 
 # Grid mode bindings are to resize and place floating windows on your desktop
 # in well known positions. The standard non-modified keys are used to resize
@@ -288,8 +291,7 @@ resize          < shift - j         : yabai -m window --resize bottom:0:-20
 resize          < shift - k         : yabai -m window --resize top:0:20
 resize          < shift - l         : yabai -m window --resize right:-20:0
 
-
 # Restart Yabai
-# focus, grid, swap, warp, warpnf, resize < shift + lctrl + alt - r : /usr/bin/env osascript <<< \
-                                                                        # "display notification \"Restarting Yabai\" with title \"Yabai\""; \
-                                                                        # launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+focus, grid, swap, warp, warpnf, resize < shift + lctrl + alt - r : /usr/bin/env osascript <<< \
+                                                                        "display notification \"Restarting Yabai\" with title \"Yabai\""; \
+                                                                        launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
