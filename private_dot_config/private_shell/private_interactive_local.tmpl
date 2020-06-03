@@ -28,9 +28,6 @@ alias grep="grep --color=auto"
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# Use exa as a modern 'ls'
-alias ls="exa -Fh --group-directories-first"
-
 # Quick chmod ;-)
 alias rw-='chmod 600'
 alias rwx='chmod 700'
@@ -45,22 +42,23 @@ alias .....='cd ../../../..'
 alias ~='cd ~'
 alias -- -='cd -'
 
-# Shortcuts
-alias h="cd $HOME && ls"
-alias dl="cd $HOME/Downloads && ls"
-alias d="cd $HOME/Documents && ls"
-alias mm="cd $HOME/Music && ls"
-alias pp="cd $HOME/Pictures && ls"
-alias ss="cd $HOME/Pictures/screenshots && ls"
-alias vv="cd $HOME/Videos && ls"
-alias b="cd $HOME/.local/bin && ls -a"
-alias cf="cd ${XDG_CONFIG_HOME:-$HOME/.config} && ls -a"
-alias cs="cd ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts && ls -a"
-alias dx="cd $HOME/Dropbox && ls"
-alias o="cd $HOME/.local/share/chezmoi && ls -a"
-alias bos="cd $HOME/Dropbox/Documents/BOS && ls"
-alias st="cd /storage && ls"
-alias mn="cd /mnt && ls -a"
+# cd places
+alias h='cd $HOME && ls'
+alias dl='cd $HOME/Downloads && ls'
+alias d='cd $HOME/Documents && ls'
+alias mm='cd $HOME/Music && ls'
+alias pp='cd $HOME/Pictures && ls'
+alias ss='cd $HOME/Pictures/screenshots && ls'
+alias vv='cd $HOME/Videos && ls'
+alias b='cd $HOME/.local/bin && ls -a'
+alias cf='cd ${XDG_CONFIG_HOME:-$HOME/.config} && ls -a'
+alias cs='cd ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts && ls -a'
+alias dx='cd $HOME/Dropbox && ls'
+alias o='cd $HOME/.local/share/chezmoi && ls -a'
+alias bos='cd $HOME/Dropbox/Documents/BOS && ls'
+alias st='cd /storage && ls'
+alias mn='cd /mnt && ls -a'
+
 alias sd="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/directories"
 alias sf="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/files"
 alias sc="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/commands"
@@ -97,22 +95,45 @@ alias ping="ping -c 3"
 # Directory browsing
 # -----------------------------------------------------------------------------
 
-alias l="exa -Fhl --group-directories-first --git"  # show files in long format
-alias la="exa -Fha --group-directories-first"  # show all files
-alias ll="exa -Fhla --group-directories-first --git"  # show all files in long format
-alias ltree="exa -FThl --git"  # show all files in tree format
+# Use exa as a modern 'ls'
+if type exa &>/dev/null 2>&1; then
+    alias ls="exa --group-directories-first"
 
-alias lad="exa -Fhd -- .*(/)"  # only show dot-directories
-alias lsa="exa -Fha -- .*(.)"  # only show dot-files
-alias lsd="exa -FhlD"  # only show directories
-alias lse="exa -Fhld -- *(/^F)"  # only show empty directories
+    alias l="exa -Fhl --group-directories-first --git"  # show files in long format
+    alias la="exa -Fha --group-directories-first"  # show all files
+    alias ll="exa -Fhla --group-directories-first --git"  # show all files in long format
+    alias ltree="exa -FThl --git"  # show all files in tree format
 
-alias lsnew="exa -rthl -- *(.) | tail $@ 2&>/dev/null"  # only the newest files
-alias lsold="exa -rthl -- *(.) | head $@ 2&>/dev/null"   # display the oldest files
-alias lssmall="exa -hl --sort=size -- *(.) | tail $@ 2&>/dev/null"  # display the smallest files
-alias lsx="exa -l -- *(*) | head $@ 2&>/dev/null"        # only show executables
-alias lssuid="exa -l -- *(s,S) | head $@ 2&>/dev/null"   # only show suid-files
-alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head $@ 2&>/dev/null"    # display the biggest files
+    alias lad="exa -Fhd -- .*(/)"  # only show dot-directories
+    alias lsa="exa -Fha -- .*(.)"  # only show dot-files
+    alias lsd="exa -FhlD"  # only show directories
+    alias lse="exa -Fhld -- *(/^F)"  # only show empty directories
+
+    alias lsnew="exa -rthl -- *(.) | tail $@ 2&>/dev/null"  # only the newest files
+    alias lsold="exa -rthl -- *(.) | head $@ 2&>/dev/null"   # display the oldest files
+    alias lssmall="exa -hl --sort=size -- *(.) | tail $@ 2&>/dev/null"  # display the smallest files
+    alias lsx="exa -l -- *(*) | head $@ 2&>/dev/null"        # only show executables
+    alias lssuid="exa -l -- *(s,S) | head $@ 2&>/dev/null"   # only show suid-files
+    alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head $@ 2&>/dev/null"    # display the biggest files
+else
+    # Detect which `ls` flavor is in use
+    if ls --color > /dev/null 2>&1; then # GNU `ls`
+        colorflag="--color"
+        export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+    else # macOS `ls`
+        colorflag="-G"
+        export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+    fi
+
+    alias ls="ls ${colorflag}"
+
+    alias l="ls -lF ${colorflag}"
+    alias la="ls -AF ${colorflag}"
+    alias ll="ls -lAF ${colorflag}"
+
+    # List only directories
+    alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+fi
 
 
 # File management
@@ -159,13 +180,11 @@ alias sdn="sudo shutdown -h now"
 
 # git aliases
 alias g='git'
-alias gst='git status'
 alias gc='git commit'
 alias ga='git add'
 alias gpl='git pull'
 alias gpom='git pull origin master'
 alias gpu='git push'
-alias gd='git diff'
 alias gch='git checkout'
 alias gnb='git checkout -b'
 alias gac='git add . && git commit'
@@ -179,6 +198,15 @@ alias grm='git remote'
 alias gb='git branch'
 alias gm='git merge'
 alias gf='git fetch'
+
+# Git Diff
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gdn='git diff --name-only'
+
+# Git Status
+alias gs='git status --short'
+alias gss='git show --word-diff=color' # See changes made
 
 # Angular aliases
 alias ngs='ng serve'
