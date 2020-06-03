@@ -14,7 +14,7 @@ export FILE=nnn
 export COLORTERM=truecolor
 export OPENER=xdg-open
 export WM=bspwm
-export BROWSER=brave
+# export BROWSER=brave
 # if [ -n "$DISPLAY" ]; then
 # 	export BROWSER="brave"
 # else

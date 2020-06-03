@@ -56,6 +56,7 @@ mesa
 arandr
 light
 xdotool
+xorg
 xorg-server
 xorg-xdpyinfo
 xorg-xinit
@@ -257,14 +258,19 @@ xcape
 xclip
 
 ## fonts
+awesome-terminal-fonts
 gnu-free-fonts
 noto-fonts
 noto-fonts-emoji
 noto-fonts-extra
 otf-fantasque-sans-mono
+otf-fira-code
 otf-font-awesome
 otf-overpass
 ttf-croscore
+ttf-hack
+ttf-ionicons
+ttf-jetbrains-mono
 ttf-joypixels
 ttf-junicode
 ttf-linux-libertine
@@ -290,7 +296,7 @@ tlp-rdw
 # calibre
 # discord
 # dos2unix
-# firefox
+firefox
 figlet
 # hexchat
 highlight
