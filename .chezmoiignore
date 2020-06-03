@@ -99,4 +99,15 @@ AppData
 
 # Ignore only on Windows.
 {{- if eq .chezmoi.os "windows" }}
+.config
+.local
+.bash_logout
+.bash_profile
+.bashrc
+.profile
+.xinitrc
+.Xmodmap
+.xprofile
+.Xresources
+.zshenv
 {{- end }}
