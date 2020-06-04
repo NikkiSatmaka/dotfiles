@@ -186,6 +186,10 @@ zinit light zdharma/fast-syntax-highlighting
 
 # Load fzf completion
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+ssource /usr/share/fzf/key-bindings.zsh
+ssource /usr/share/fzf/completion.zsh
+ssource /usr/share/doc/fzf/examples/key-bindings.zsh
+ssource /usr/share/doc/fzf/examples/completion.zsh
 
 # Enable direnv.
 if command -v direnv >/dev/null 2>&1; then

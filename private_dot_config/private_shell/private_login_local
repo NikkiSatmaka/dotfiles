@@ -188,9 +188,8 @@ pathappend "$ANDROID_HOME/platform-tools" PATH
 pathappend "/usr/lib/w3m" PATH
 
 # Switch escape and caps if tty and no passwd required:
-sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap 2>/dev/null
+sudo -n loadkeys "${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap" 2>/dev/null
 
 # Enable linuxbrew.
-if [ -d /home/linuxbrew ]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

@@ -9,6 +9,10 @@
 
 # Load fzf completion
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+ssource /usr/share/fzf/key-bindings.bash
+ssource /usr/share/fzf/completion.bash
+ssource /usr/share/doc/fzf/examples/key-bindings.bash
+ssource /usr/share/doc/fzf/examples/completion.bash
 
 . ~/.config/shell/interactive
 
