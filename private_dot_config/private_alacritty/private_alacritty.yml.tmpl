@@ -606,8 +606,8 @@ key_bindings:
   #- { key: Key5,   mods: Shift,         mode: Vi, action: Bracket                 }
 
   # (Windows, Linux, and BSD only)
-  #- { key: V,        mods: Control|Shift,           action: Paste            }
-  #- { key: C,        mods: Control|Shift,           action: Copy             }
+  - { key: V,        mods: Control|Shift,           action: Paste            }
+  - { key: C,        mods: Control|Shift,           action: Copy             }
   #- { key: C,        mods: Control|Shift, mode: Vi, action: ClearSelection   }
   - { key: Insert,   mods: Shift,                   action: PasteSelection   }
   - { key: Key0,     mods: Control,                 action: ResetFontSize    }
@@ -615,8 +615,8 @@ key_bindings:
   - { key: Add,      mods: Control,                 action: IncreaseFontSize }
   - { key: Subtract, mods: Control,                 action: DecreaseFontSize }
   - { key: Minus,    mods: Control,                 action: DecreaseFontSize }
-  - { key: V,        mods: Alt,                     action: Paste            }
-  - { key: C,        mods: Alt,                     action: Copy             }
+  #- { key: V,        mods: Alt,                     action: Paste            }
+  #- { key: C,        mods: Alt,                     action: Copy             }
   - { key: Home,     mods: Alt,                     action: ResetFontSize    }
   - { key: K,        mods: Alt|Shift,               action: IncreaseFontSize }
   - { key: J,        mods: Alt|Shift,               action: DecreaseFontSize }
