@@ -1,116 +1,297 @@
-# open terminal
-cmd + alt - return : open -na Alacritty
+# Modified from https://github.com/alyssais configuration.
+#
+# The following configuration heavily leverages modal keymaps to minimize the
+# pollution of global keybindings. In addition, the modal keymaps facilitate
+# the consistent use of the same keybindings across different modes. For
+# example, this configuration uses 'h', 'l', 'j', and 'k' to represent west,
+# east, south, and north when: changing focus, warping windows, resizing
+# windows, swapping windows, and moving floating windows. Those four keys are
+# mapped differently depending on the current mode to provide a consistent user
+# experience.
+#
+# Six different modes are provided in this configuration in addition to the
+# default mode. The modes are tailored to their respective operations. Common
+# operations are generally available without the need of any modifier keys.
+# When modifier keys are used, they are for infrequent actions or size related
+# actions. Entry into the modal system is via Ctrl - Space, which enters FOCUS
+# mode. From there, any of the other modes can be activated with a single
+# keypress.
+#
+# The following is a high-level summary of the keybindngs:
+#
+# GLOBAL KEYBINDINGS:
+#                    ctrl - space    Enter FOCUS mode
+#                   ctrl - return    Open an iTerm
+#                    cmd - return    Open a floating iTerm
+#
+#
+# KEYBINDINGS AVAILABLE IN ALL MODES:
+#                          escape    Exit current mode
+#                               f    Enter FOCUS mode
+#                               g    Enter GRID mode
+#                               s    Enter SWAP mode
+#                               r    Enter RESIZE mode
+#                               w    Enter WARP mode
+#                       shift - w    Enter WARP NO FOLLOW mode
+#
+#                               q    Close window
+#                               e    Equalize window sizes
+#                               m    Toggle fullscreen
+#                               o    Toggle offset
+#                               p    Toggle parent zoom
+#                               i    Toggle split
+#                               t    Toggle float
+#                               x    Mirror horizontal
+#                               y    Mirror vertical
+#                           space    Rotate desktop 90
+#                   shift - space    Rotate desktop 270
+#
+#
+# FOCUS MODE KEYBINDINGS:
+#              return, h, j, k, l    Focus window (biggest, west, south, north, east)
+#                cmd + h, j, k, l    Set insertion point (west, south, north, east)
+#       1, 2, 3, tab, shift - tab    Focus monitor (1, 2, 3, next, prev)
+# cmd + 1, 2, 3, tab, shift - tab    Focus desktop (1, 2, 3, next, prev)
+#                         cmd - t    Float next window
+#                    cmd - return    Cancel insertion point and float next window
+#                   cmd + b, m, f    Set desktop layout mode (bsp, monocle, float)
+#
+#
+# WARP MODE KEYBINDINGS:
+#              return, h, j, k, l    Warp window (biggest, west, south, north, east)
+#       1, 2, 3, tab, shift - tab    Warp to monitor (1, 2, 3, next, prev) and follow
+# cmd + 1, 2, 3, tab, shift - tab    Warp to desktop (1, 2, 3, next, prev) and follow
+#
+#
+# WARP NO FOLLOW MODE KEYBINDINGS:
+#              return, h, j, k, l    Warp window (biggest, west, south, north, east)
+#       1, 2, 3, tab, shift - tab    Warp to monitor (1, 2, 3, next, prev) and do not follow
+# cmd + 1, 2, 3, tab, shift - tab    Warp to desktop (1, 2, 3, next, prev) and do not follow
+#
+#
+# SWAP MODE KEYBINDINGS:
+#              return, h, j, k, l    Swap window (biggest, west, south, north, east)
+#
+#
+# RESIZE MODE KEYBINDINGS:
+#                      h, j, k, l    Increase window (west, south, north, east)
+#              shift + h, j, k, l    Decrease window (west, south, north, east)
+#
+#
+# GRID MODE KEYBINDINGS:
+#              return, h, j, k, l    Resize & move floating window (center, left, bottom, top, right)
+#      shift + return, h, j, k, l    Resize smaller & move floating window (center, left, bottom, top, right)
+#        cmd + return, h, j, k, l    Resize even smaller & move floating window (center, top-left, bottom-left, bottom-right, top-right)
+#
 
-# focus window
-cmd + alt - h : yabai -m window --focus west \
-    || yabai -m window --focus "$( \
-        (yabai -m query --spaces --display prev) \
-            | jq -re '.[] | select(.visible == 1)."last-window"')" \
-    || yabai -m display --focus prev
-cmd + alt - j : yabai -m window --focus south
-cmd + alt - k : yabai -m window --focus north
-cmd + alt - l : yabai -m window --focus east \
-    || yabai -m window --focus "$( \
-        (yabai -m query --spaces --display next) \
-            | jq -re '.[] | select(.visible == 1)."first-window"')" \
-    || yabai -m display --focus next
+:: default
+:: focus  @  # Focus window, desktop, monitors
+:: grid   @  # Floating window layout
+:: swap   @  # Swap windows
+:: warp   @  # Warp and send to desktop/monitors
+:: warpnf @  # Same, but don't follow focus
+:: resize @  # Resize window operations
 
-# move window
-cmd + shift + alt - h : yabai -m window --warp west
-cmd + shift + alt - j : yabai -m window --warp south
-cmd + shift + alt - k : yabai -m window --warp north
-cmd + shift + alt - l : yabai -m window --warp east
+# CTRL-SPACE is the global hotkey to toggle in/out of modal mode. Entry is
+# always to FOCUS mode. Getting out of any mode can also be done with ESCAPE.
+default                                 < ctrl - space      ; focus
+focus, grid, swap, warp, warpnf, resize < ctrl - space      ; default
+focus, grid, swap, warp, warpnf, resize < escape            ; default
 
-# make floating window fill screen
-cmd + shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
+# Once in FOCUS mode (or any other mode other than default), you can switch
+# modes with single keystroke. (mnemonic: letter corresponds to first letter of
+# mode name, with exception of warpnf, which is a variant invoked with shift)
+focus, grid, swap, warp, warpnf, resize < f                 ; focus
+focus, grid, swap, warp, warpnf, resize < g                 ; grid
+focus, grid, swap, warp, warpnf, resize < s                 ; swap
+focus, grid, swap, warp, warpnf, resize < r                 ; resize
+focus, grid, swap, warp, warpnf, resize < w                 ; warp
+focus, grid, swap, warp, warpnf, resize < shift - w         ; warpnf
 
-# make floating window fill left-half of screen
-cmd + shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
+# The following keybindings are available in all modes.
+focus, grid, swap, warp, warpnf, resize < space             : yabai -m space --rotate 90
+focus, grid, swap, warp, warpnf, resize < shift - space     : yabai -m space --rotate 270
+focus, grid, swap, warp, warpnf, resize < x                 : yabai -m space --mirror x-axis                                  # mnemonic: x-axis
+focus, grid, swap, warp, warpnf, resize < y                 : yabai -m space --mirror y-axis                                  # mnemonic: y-axis
+focus, grid, swap, warp, warpnf, resize < o                 : yabai -m space --toggle padding; yabai -m space --toggle gap    # mnemonic: _o_ffset
+focus, grid, swap, warp, warpnf, resize < b                 : yabai -m space --balance                                        # mnemonic: _b_alance
+focus, grid, swap, warp, warpnf, resize < m                 : yabai -m window --toggle zoom-fullscreen                        # mnemonic: _m_onocle
+focus, grid, swap, warp, warpnf, resize < alt - f           : yabai -m window --toggle native-fullscreen                      # mnemonic: _f_ullscreen
+focus, grid, swap, warp, warpnf, resize < p                 : yabai -m window --toggle zoom-parent                            # mnemonic: _p_arent
+focus, grid, swap, warp, warpnf, resize < i                 : yabai -m window --toggle split                                  # mnemonic: couldn't think of one!
+# mnemonic: floa_t_
+focus, grid, swap, warp, warpnf, resize < t                 : yabai -m window --toggle float && \
+                                                                    /tmp/yabai-restore/$(yabai -m query --windows --window \
+                                                                    | jq -re '.id').restore 2>/dev/null || true
+focus, grid, swap, warp, warpnf, resize < alt - s           : yabai -m window --toggle sticky                                 # toggle sticky
+focus, grid, swap, warp, warpnf, resize < alt - o           : yabai -m window --toggle topmost                                # toggle topmost (keep above other windows)
+# toggle sticky(+float), topmost, picture-in-picture
+focus, grid, swap, warp, warpnf, resize < alt - p           : yabai -m window --toggle sticky;\
+                                                                    yabai -m window --toggle topmost;\
+                                                                    yabai -m window --toggle pip
 
-# make floating window fill right-half of screen
-cmd + shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
+# create desktop and follow focus - uses jq for parsing json (brew install jq)
+# focus, grid, swap, warp, warpnf, resize < cmd - n           : yabai -m space --create && \
+                                                                    # index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                                                                    # yabai -m space --focus "${index}"
 
-# fast focus desktop
-cmd + alt - 1 : open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'; yabai -m space --focus  1
-cmd + alt - 2 : open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'; yabai -m space --focus  2
-cmd + alt - 3 : open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'; yabai -m space --focus  3
-cmd + alt - 4 : open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'; yabai -m space --focus  4
-cmd + alt - 5 : open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'; yabai -m space --focus  5
-cmd + alt - 6 : open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'; yabai -m space --focus  6
-cmd + alt - 7 : open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'; yabai -m space --focus  7
-cmd + alt - 8 : open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'; yabai -m space --focus  8
-cmd + alt - 9 : open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'; yabai -m space --focus  9
-cmd + alt - 0 : open -gj 'bitbar://refreshPlugin?name=yabai.1d.sh'; yabai -m space --focus 10
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+# focus, grid, swap, warp, warpnf, resize < shift + cmd - n   : yabai -m space --create && \
+                                                                    # index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                                                                    # yabai -m window --space "${index}" && \
+                                                                    # yabai -m space --focus "${index}"
 
-# send window to desktop and follow focus
-cmd + shift + alt - 1 : yabai -m window --space  1; yabai -m space --focus  1
-cmd + shift + alt - 2 : yabai -m window --space  2; yabai -m space --focus  2
-cmd + shift + alt - 3 : yabai -m window --space  3; yabai -m space --focus  3
-cmd + shift + alt - 4 : yabai -m window --space  4; yabai -m space --focus  4
-cmd + shift + alt - 5 : yabai -m window --space  5; yabai -m space --focus  5
-cmd + shift + alt - 6 : yabai -m window --space  6; yabai -m space --focus  6
-cmd + shift + alt - 7 : yabai -m window --space  7; yabai -m space --focus  7
-cmd + shift + alt - 8 : yabai -m window --space  8; yabai -m space --focus  8
-cmd + shift + alt - 9 : yabai -m window --space  9; yabai -m space --focus  9
-cmd + shift + alt - 0 : yabai -m window --space 10; yabai -m space --focus 10
+# Global hotkeys which I limit so as to not pollute the global namespace
+default         < ctrl - return     : open -na Alacritty
 
-# Move window to monitor and follow focus
-cmd + alt - m : yabai -m space --display recent; yabai -m display --focus recent
+# Change focus using standard vi directional keys. Enter changes focus to the
+# biggest window. You'll see this theme repeated over and over again. Since this
+# is such a common operation, no modifier keys are used.
+focus           < h                 : yabai -m window --focus west
+focus           < j                 : yabai -m window --focus south
+focus           < k                 : yabai -m window --focus north
+focus           < l                 : yabai -m window --focus east
+focus           < return            : yabai -m window --focus largest
 
-# move window
-cmd + alt - a : yabai -m window --move rel:-20:0
-cmd + alt - s : yabai -m window --move rel:0:20
-cmd + alt - w : yabai -m window --move rel:0:-20
-cmd + alt - d : yabai -m window --move rel:20:0
+# Change the next insertion point to be something other than the default (left)
+# using standard vi directional keys with the Cmd modifier. In addition, to
+# make the next window a floating window, we bind cmd - t (using same mnemonic
+# as above). As these operations are intended for the next window that is
+# opened, we exit FOCUS mode immediately. Finally, to cancel any of these
+# "next" window operations, we bind cmd - return.
+focus           < cmd - h           : yabai -m window --insert west
+focus           < cmd - j           : yabai -m window --insert south
+focus           < cmd - k           : yabai -m window --insert north
+focus           < cmd - l           : yabai -m window --insert east
 
-# Resize windows
-cmd + alt - y : \
-    yabai -m window --resize left:-20:0 ; \
-    yabai -m window --resize right:-20:0
-cmd + alt - u : \
-    yabai -m window --resize bottom:0:20 ; \
-    yabai -m window --resize top:0:20
-cmd + alt - i : \
-    yabai -m window --resize top:0:-20 ; \
-    yabai -m window --resize bottom:0:-20
-cmd + alt - o : \
-    yabai -m window --resize right:20:0 ; \
-    yabai -m window --resize left:20:0
+# Change the desktop focus using numbers corresponding to desktop or cycle
+# through the desktops using tab and shift - tab combination. You'll see this
+# pattern repeated when we get WARP moded as well. The non-modified keys will
+# warp to a desktop, and prefixing with cmd will warp to desktop. Again, the
+# goal was to aim for consistency.
+focus           < shift - tab       : yabai -m space --focus prev
+focus           < tab               : yabai -m space --focus next
+focus           < 1                 : yabai -m space --focus 1
+focus           < 2                 : yabai -m space --focus 2
+focus           < 3                 : yabai -m space --focus 3
+focus           < 4                 : yabai -m space --focus 4
+focus           < 5                 : yabai -m space --focus 5
+focus           < 6                 : yabai -m space --focus 6
+focus           < 7                 : yabai -m space --focus 7
+focus           < 8                 : yabai -m space --focus 8
+focus           < 9                 : yabai -m space --focus 9
+focus           < 0                 : yabai -m space --focus 10
 
-# set insertion point in focused container
-cmd + ctrl + alt - h : yabai -m window --insert west
-cmd + ctrl + alt - j : yabai -m window --insert south
-cmd + ctrl + alt - k : yabai -m window --insert north
-cmd + ctrl + alt - l : yabai -m window --insert east
+# focus monitor
+focus           < cmd + shift - tab : yabai -m display --focus prev
+focus           < cmd - tab         : yabai -m display --focus next
+focus           < cmd - 1           : yabai -m display --focus 1
+focus           < cmd - 2           : yabai -m display --focus 2
+focus           < cmd - 3           : yabai -m display --focus 3
 
-# rotate tree
-cmd + alt - r : yabai -m space --rotate 90
+# Change the layout mode of a desktop to one of the three supported modes.
+focus           < cmd - b           : yabai -m space --layout bsp                                  # mnemonic: _b_sp
+focus           < cmd - f           : yabai -m space --layout float                                # mnemonic: _f_loat
+# mnemonic: _t_oggle
+focus           < cmd - t           : yabai -m space --layout $(yabai -m query --spaces --space \
+                                        | jq -r 'if .type == "bsp" then "float" else "bsp" end')
 
-# toggle desktop offset
-cmd + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+# Grid mode bindings are to resize and place floating windows on your desktop
+# in well known positions. The standard non-modified keys are used to resize
+# the window to the top-half, bottom-half, right-half, left-half, and center of
+# screen respectively.
+grid            < h                 : yabai -m window --grid 1:2:0:0:1:1
+grid            < j                 : yabai -m window --grid 2:1:0:1:1:1
+grid            < k                 : yabai -m window --grid 2:1:0:0:1:1
+grid            < l                 : yabai -m window --grid 1:2:1:0:1:1
+grid            < return            : yabai -m window --grid 6:6:1:1:4:4
 
-# toggle window fullscreen zoom
-cmd + alt - f : yabai -m window --toggle zoom-fullscreen
+# Prefix the above with shift modifier to resize a bit smaller: top-third,
+# bottom-third, left-third, right-third, and smaller center.
+grid            < shift - h         : yabai -m window --grid 1:3:0:0:1:1
+grid            < shift - j         : yabai -m window --grid 3:1:0:2:1:1
+grid            < shift - k         : yabai -m window --grid 3:1:0:0:1:1
+grid            < shift - l         : yabai -m window --grid 1:3:2:0:1:1
+grid            < shift - return    : yabai -m window --grid 4:4:1:1:2:2
 
-# toggle window native fullscreen
-cmd + shift + alt - f : yabai -m window --toggle native-fullscreen
+# Prefix with cmd to resize even smaller and place in corners or center.
+grid            < cmd - h           : yabai -m window --grid 5:5:0:0:1:1
+grid            < cmd - j           : yabai -m window --grid 5:5:0:4:1:1
+grid            < cmd - k           : yabai -m window --grid 5:5:4:4:1:1
+grid            < cmd - l           : yabai -m window --grid 5:5:4:0:1:1
+grid            < cmd - return      : yabai -m window --grid 6:6:2:2:2:2
 
-# float / unfloat window and center on screen
-cmd + alt - t : yabai -m window --toggle float;\
-          yabai -m window --grid 4:4:1:1:2:2
+# Swap windows using standard vi directional keys.
+swap            < h                 : yabai -m window --swap west
+swap            < j                 : yabai -m window --swap south
+swap            < k                 : yabai -m window --swap north
+swap            < l                 : yabai -m window --swap east
+swap            < return            : yabai -m window --swap largest
 
-# toggle sticky
-cmd + alt - s : yabai -m window --toggle sticky
+# Warp windows using standard vi directional keys. These bindings are the same
+# whether you are in WARP or WARPNF mode.
+warp, warpnf    < h                 : yabai -m window --warp west
+warp, warpnf    < j                 : yabai -m window --warp south
+warp, warpnf    < k                 : yabai -m window --warp north
+warp, warpnf    < l                 : yabai -m window --warp east
+warp, warpnf    < return            : yabai -m window --warp largest
 
-# change layout of desktop
-cmd + ctrl + alt - a : yabai -m space --layout bsp
-cmd + ctrl + alt - d : yabai -m space --layout float
+# Warp window to desktop and follow.
+warp            < shift - tab       : yabai -m window --space prev; yabai -m space --focus prev
+warp            < tab               : yabai -m window --space next; yabai -m space --focus next
+warp            < 1                 : yabai -m window --space  1; yabai -m space --focus 1
+warp            < 2                 : yabai -m window --space  2; yabai -m space --focus 2
+warp            < 3                 : yabai -m window --space  3; yabai -m space --focus 3
+warp            < 4                 : yabai -m window --space  4; yabai -m space --focus 4
+warp            < 5                 : yabai -m window --space  5; yabai -m space --focus 5
+warp            < 6                 : yabai -m window --space  6; yabai -m space --focus 6
+warp            < 7                 : yabai -m window --space  7; yabai -m space --focus 7
+warp            < 8                 : yabai -m window --space  8; yabai -m space --focus 8
+warp            < 9                 : yabai -m window --space  9; yabai -m space --focus 9
+warp            < 0                 : yabai -m window --space 10; yabai -m space --focus 10
 
-# balance size of windows
-# shift + alt - 0 : yabai -m space --balance
+# Prefix with cmd to warp window to monitor and follow.
+warp            < cmd + shift - tab : yabai -m window --display prev; yabai -m display --focus prev
+warp            < cmd - tab         : yabai -m window --display next; yabai -m display --focus next
+warp            < cmd - 1           : yabai -m window --display 1; yabai -m display --focus 1
+warp            < cmd - 2           : yabai -m window --display 2; yabai -m display --focus 2
+warp            < cmd - 3           : yabai -m window --display 3; yabai -m display --focus 3
+
+# Warp window to desktop, but do NOT follow.
+warpnf          < shift - tab       : yabai -m window --space prev
+warpnf          < tab               : yabai -m window --space next
+warpnf          < 1                 : yabai -m window --space 1
+warpnf          < 2                 : yabai -m window --space 2
+warpnf          < 3                 : yabai -m window --space 3
+warpnf          < 4                 : yabai -m window --space 4
+warpnf          < 5                 : yabai -m window --space 5
+warpnf          < 6                 : yabai -m window --space 6
+warpnf          < 7                 : yabai -m window --space 7
+warpnf          < 8                 : yabai -m window --space 8
+warpnf          < 9                 : yabai -m window --space 9
+warpnf          < 0                 : yabai -m window --space 10
+
+# Prefix with cmd to warp window to monitor, but do NOT follow.
+warpnf          < cmd + shift - tab : yabai -m window --display prev
+warpnf          < cmd - tab         : yabai -m window --display next
+warpnf          < cmd - 1           : yabai -m window --display 1
+warpnf          < cmd - 2           : yabai -m window --display 2
+warpnf          < cmd - 3           : yabai -m window --display 3
+
+# Increase size of window using standard vi directional keys.
+resize          < h                 : yabai -m window --resize left:-20:0
+resize          < j                 : yabai -m window --resize bottom:0:20
+resize          < k                 : yabai -m window --resize top:0:-20
+resize          < l                 : yabai -m window --resize right:20:0
+
+# Prefix the above with shift to decrease size of window using standard vi
+# directional keys.
+resize          < shift - h         : yabai -m window --resize left:20:0
+resize          < shift - j         : yabai -m window --resize bottom:0:-20
+resize          < shift - k         : yabai -m window --resize top:0:20
+resize          < shift - l         : yabai -m window --resize right:-20:0
 
 # Restart Yabai
-cmd + shift + lctrl + alt - r :
-    /usr/bin/env osascript <<< \
-        "display notification \"Restarting Yabai\" with title \"Yabai\""; \
-    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+focus, grid, swap, warp, warpnf, resize < shift + lctrl + alt - r : /usr/bin/env osascript <<< \
+                                                                        "display notification \"Restarting Yabai\" with title \"Yabai\""; \
+                                                                        launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
