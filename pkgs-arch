@@ -261,7 +261,6 @@ xclip
 awesome-terminal-fonts
 gnu-free-fonts
 noto-fonts
-noto-fonts-emoji
 noto-fonts-extra
 otf-fantasque-sans-mono
 otf-fira-code
@@ -271,25 +270,30 @@ ttf-croscore
 ttf-hack
 ttf-ionicons
 ttf-jetbrains-mono
-ttf-joypixels
 ttf-junicode
 ttf-linux-libertine
 # ttf-nerd-fonts-symbols
 # ttf-nerd-fonts-symbols-mono
 xorg-fonts-type1
 
-## chinese fonts
+## chinese, japanese, korean fonts
 adobe-source-han-sans-otc-fonts
 adobe-source-han-serif-otc-fonts
+adobe-source-han-sans-jp-fonts
+adobe-source-han-sans-kr-fonts
 noto-fonts-cjk
+
+## emoji
+noto-fonts-emoji
+ttf-joypixels
 
 ## icons
 papirus-icon-theme
 
 ## battery
-acpi_call
-tlp
-tlp-rdw
+# acpi_call
+# tlp
+# tlp-rdw
 
 ## extra pkgs
 # android-tools
