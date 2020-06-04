@@ -74,11 +74,11 @@ echoerr() {
 
 printferr() { printf "$@" >&2; }
 
-if type apt >/dev/null 2>&1; then
+if command -v apt >/dev/null 2>&1; then
 	install_pkg() {
 		sudo apt-get install -y "$1"
 	}
-elif type pacman >/dev/null 2>&1; then
+elif command -v pacman >/dev/null 2>&1; then
 	install_pkg() {
 		sudo pacman --noconfirm --needed -S "$1"
 	}
@@ -94,7 +94,7 @@ main_install() {
 }
 
 pip_install() {
-	if type pip >/dev/null 2>&1; then
+	if command -v pip >/dev/null 2>&1; then
 		:
 	else
 		install_pkg python-pip
@@ -103,7 +103,7 @@ pip_install() {
 }
 
 brew_install() {
-	if type brew >/dev/null 2>&1; then
+	if command -v brew >/dev/null 2>&1; then
 		:
 	else
 		/bin/bash -c "$(curl -fsSL $BREW_URL)"

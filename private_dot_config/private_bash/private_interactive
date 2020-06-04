@@ -99,7 +99,7 @@ fi
 ##############################################################################
 
 # Enable linuxbrew completion.
-if type brew &>/dev/null; then
+if command -v brew > /dev/null 2>&1; then
   HOMEBREW_PREFIX="$(brew --prefix)"
   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
     source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
@@ -111,11 +111,11 @@ if type brew &>/dev/null; then
 fi
 
 # Enable starship prompt.
-if type starship >/dev/null 2>&1; then
+if command -v starship > /dev/null 2>&1; then
     eval "$(starship init bash)"
 fi
 
 # Enable direnv.
-if type direnv >/dev/null 2>&1; then
+if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook bash)"
 fi

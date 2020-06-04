@@ -10,8 +10,6 @@ alias bc='bc -l'
 # Makes file commands verbose.
 alias cp="cp -iv"
 alias mv="mv -iv"
-# alias rm="rm -iv"
-# alias rm='echo "Use trp to trash files"; false'
 
 # Displays drives and space in human readable format.
 alias df="df -h"
@@ -70,11 +68,16 @@ alias sr="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/ranger/rc.conf"
 alias sqb="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/qutebrowser/config.py"
 
 # trash command
-alias trp='trash-put -iv'
-alias tre='trash-empty'
-alias trl='trash-list'
-alias trr='trash-restore'
-alias trm='trash-rm'
+if command -v trash-put >/dev/null 2>&1; then
+    alias rm='echo "Use trp to trash files"; false'
+    alias trp='trash-put -iv'
+    alias tre='trash-empty'
+    alias trl='trash-list'
+    alias trr='trash-restore'
+    alias trm='trash-rm'
+else
+    # alias rm="rm -iv"
+fi
 
 alias mkd="mkdir -pv"
 alias yt="youtube-dl --add-metadata -i"
@@ -96,7 +99,8 @@ alias ping="ping -c 3"
 # -----------------------------------------------------------------------------
 
 # Use exa as a modern 'ls'
-if type exa &>/dev/null 2>&1; then
+
+if command -v exa >/dev/null 2>&1; then
     alias ls="exa --group-directories-first"
 
     alias l="exa -Fhl --group-directories-first --git"  # show files in long format
@@ -109,15 +113,15 @@ if type exa &>/dev/null 2>&1; then
     alias lsd="exa -FhlD"  # only show directories
     alias lse="exa -Fhld -- *(/^F)"  # only show empty directories
 
-    alias lsnew="exa -rthl -- *(.) | tail $@ 2&>/dev/null"  # only the newest files
-    alias lsold="exa -rthl -- *(.) | head $@ 2&>/dev/null"   # display the oldest files
-    alias lssmall="exa -hl --sort=size -- *(.) | tail $@ 2&>/dev/null"  # display the smallest files
-    alias lsx="exa -l -- *(*) | head $@ 2&>/dev/null"        # only show executables
-    alias lssuid="exa -l -- *(s,S) | head $@ 2&>/dev/null"   # only show suid-files
-    alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head $@ 2&>/dev/null"    # display the biggest files
+    alias lsnew="exa -rthl -- *(.) | tail $@ >/dev/null 2>&1"  # only the newest files
+    alias lsold="exa -rthl -- *(.) | head $@ >/dev/null 2>&1"   # display the oldest files
+    alias lssmall="exa -hl --sort=size -- *(.) | tail $@ >/dev/null 2>&1"  # display the smallest files
+    alias lsx="exa -l -- *(*) | head $@ >/dev/null 2>&1"        # only show executables
+    alias lssuid="exa -l -- *(s,S) | head $@ >/dev/null 2>&1"   # only show suid-files
+    alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head $@ >/dev/null 2>&1"    # display the biggest files
 else
     # Detect which `ls` flavor is in use
-    if ls --color > /dev/null 2>&1; then # GNU `ls`
+    if ls --color >/dev/null 2>&1; then # GNU `ls`
         colorflag="--color"
         export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
     else # macOS `ls`

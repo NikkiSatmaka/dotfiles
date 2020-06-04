@@ -73,11 +73,11 @@ echoerr() {
 
 printferr() { printf "$@" >&2; }
 
-if type apt >/dev/null 2>&1; then
+if command -v apt >/dev/null 2>&1; then
 	install_pkg() {
 		sudo apt-get install -y "$1"
 	}
-elif type pacman >/dev/null 2>&1; then
+elif command -v pacman >/dev/null 2>&1; then
 	distro="arch"
 	install_pkg() {
 		sudo pacman --noconfirm --needed -S "$1"
@@ -91,7 +91,7 @@ refreshkeys() {
 
 # aur install using tar method
 manual_install() {
-	if type "$1" >/dev/null 2>&1; then
+	if command -v "$1" >/dev/null 2>&1; then
 		echo "$1 already installed. skipping"
 	else
 		cd /tmp || exit
@@ -115,7 +115,7 @@ aur_install() {
 }
 
 pip_install() {
-	if type pip >/dev/null 2>&1; then
+	if command -v pip >/dev/null 2>&1; then
 		:
 	else
 		install_pkg python-pip

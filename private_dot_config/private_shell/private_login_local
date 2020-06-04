@@ -94,7 +94,7 @@ export FFF_KEY_SCROLL_DOWN2='off'
 export FFF_KEY_PARENT2='off'
 export FFF_KEY_CHILD2='off'
 
-if command -v trash-put > /dev/null 2>&1; then
+if command -v trash-put >/dev/null 2>&1; then
 	export FFF_TRASH_CMD='trash-put'
 else
 	export FFF_TRASH_CMD='mv'

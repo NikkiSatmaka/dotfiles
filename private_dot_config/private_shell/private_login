@@ -33,9 +33,9 @@ export LESSEDIT="$EDITOR ?lm+%lm. %f"
 # enable the X Compose key in GTK
 export GTK_IM_MODULE=xim
 
-if which lesspipe >/dev/null 2>&1; then
+if command -v lesspipe >/dev/null 2>&1; then
     eval "$(lesspipe)"
-elif which lesspipe.sh >/dev/null 2>&1; then
+elif command -v lesspipe.sh >/dev/null 2>&1; then
     export LESSOPEN="|lesspipe.sh %s"
 fi
 

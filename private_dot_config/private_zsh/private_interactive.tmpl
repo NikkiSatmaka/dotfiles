@@ -15,7 +15,7 @@ ZINIT[SNIPPETS_DIR]="${ZINIT[HOME_DIR]}/snippets"
 ZINIT[ZCOMPDUMP_PATH]="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 
 # Enable linuxbrew completion.
-if type brew &>/dev/null; then
+if command -v brew > /dev/null 2>&1; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
@@ -150,7 +150,7 @@ bindkey -M vicmd v edit-command-line
 # fi
 
 # # Enable starship prompt.
-# if type starship >/dev/null 2>&1; then
+# if command -v starship >/dev/null 2>&1; then
 #     eval "$(starship init zsh)"
 # fi
 
@@ -188,6 +188,6 @@ zinit light zdharma/fast-syntax-highlighting
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
 # Enable direnv.
-if type direnv >/dev/null 2>&1; then
+if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
 fi
