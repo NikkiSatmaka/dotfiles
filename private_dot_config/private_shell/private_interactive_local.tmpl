@@ -68,6 +68,7 @@ alias sr="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/ranger/rc.conf"
 alias sqb="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/qutebrowser/config.py"
 
 # trash command
+# alias rm="rm -iv"
 if command -v trash-put >/dev/null 2>&1; then
     alias rm='echo "Use trp to trash files"; false'
     alias trp='trash-put -iv'
@@ -75,8 +76,6 @@ if command -v trash-put >/dev/null 2>&1; then
     alias trl='trash-list'
     alias trr='trash-restore'
     alias trm='trash-rm'
-else
-    # alias rm="rm -iv"
 fi
 
 alias mkd="mkdir -pv"
@@ -113,12 +112,12 @@ if command -v exa >/dev/null 2>&1; then
     alias lsd="exa -FhlD"  # only show directories
     alias lse="exa -Fhld -- *(/^F)"  # only show empty directories
 
-    alias lsnew="exa -rthl -- *(.) | tail $@ >/dev/null 2>&1"  # only the newest files
-    alias lsold="exa -rthl -- *(.) | head $@ >/dev/null 2>&1"   # display the oldest files
-    alias lssmall="exa -hl --sort=size -- *(.) | tail $@ >/dev/null 2>&1"  # display the smallest files
-    alias lsx="exa -l -- *(*) | head $@ >/dev/null 2>&1"        # only show executables
-    alias lssuid="exa -l -- *(s,S) | head $@ >/dev/null 2>&1"   # only show suid-files
-    alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head $@ >/dev/null 2>&1"    # display the biggest files
+    alias lsnew="exa -rthl -- *(.) | tail \$@ 2>/dev/null"  # only the newest files
+    alias lsold="exa -rthl -- *(.) | head \$@ 2>/dev/null"   # display the oldest files
+    alias lssmall="exa -hl --sort=size -- *(.) | tail \$@ 2>/dev/null"  # display the smallest files
+    alias lsx="exa -l -- *(*) | head \$@ 2>/dev/null"        # only show executables
+    alias lssuid="exa -l -- *(s,S) | head \$@ 2>/dev/null"   # only show suid-files
+    alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head \$@ 2>/dev/null"    # display the biggest files
 else
     # Detect which `ls` flavor is in use
     if ls --color >/dev/null 2>&1; then # GNU `ls`
