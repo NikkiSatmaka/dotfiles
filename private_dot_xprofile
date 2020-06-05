@@ -39,6 +39,7 @@ remaps &			# run the remaps script, switching caps/esc and more; check it for mo
 picom -b &				# picom for transparency
 dunst &				# dunst for notifications
 udiskie &			# udiskie for automount
+imwheel -b 45 &			# mouse scroll speed
 unclutter &			# Remove mouse when idle
 redshift &			# take care of your eyes
 sxhkd &				# keybinding

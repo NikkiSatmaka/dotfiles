@@ -48,6 +48,12 @@ starship
 betterlockscreen
 polybar
 
+## code editor
+visual-studio-code-bin
+
+## cloud storage sync
+google-drive-ocamlfuse
+
 ## utility
 direnv
 
@@ -55,4 +61,4 @@ direnv
 # tremc-git
 
 ## emacs deps
-pnpm
+# pnpm

@@ -138,7 +138,7 @@ font:
   {{- if eq .chezmoi.os "darwin" }}
   size: 12.0
   {{- else }}
-  size: 8.0
+  size: 10.0
   {{- end }}
 
   # Offset is the extra space around each character. `offset.y` can be thought of
@@ -647,10 +647,10 @@ key_bindings:
   - { key: F,      mods: Command|Control,    action: ToggleFullscreen }
   - { key: K,      mods: Command|Shift,      action: IncreaseFontSize }
   - { key: J,      mods: Command|Shift,      action: DecreaseFontSize }
-  - { key: U,      mods: Command,            action: ScrollPageUp     }
-  - { key: D,      mods: Command,            action: ScrollPageDown   }
-  - { key: K,      mods: Command,            action: ScrollLineUp     }
-  - { key: J,      mods: Command,            action: ScrollLineDown   }
+  #- { key: U,      mods: Command,            action: ScrollPageUp     }
+  #- { key: D,      mods: Command,            action: ScrollPageDown   }
+  #- { key: K,      mods: Command,            action: ScrollLineUp     }
+  #- { key: J,      mods: Command,            action: ScrollLineDown   }
 
 #debug:
   # Display the time it takes to redraw each frame.
