@@ -58,7 +58,7 @@ alias cs='cd ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts && ls -a'
 alias dx='cd $HOME/Dropbox && ls'
 alias o='cd $HOME/.local/share/chezmoi && ls -a'
 alias bos='cd $HOME/Dropbox/Documents/BOS && ls'
-alias st='cd /storage && ls'
+alias dt='cd /data && ls'
 alias mn='cd /mnt && ls -a'
 
 alias sd="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/directories"
@@ -340,10 +340,8 @@ n() {
     fi
 }
 
-{{- if eq .chezmoi.os "linux" }}
-
+{{ if eq .chezmoi.os "linux" -}}
 ssource ~/.config/broot/launcher/bash/br
-{{- else if eq .chezmoi.os "darwin" }}
-
+{{ else if eq .chezmoi.os "darwin" -}}
 ssource ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
-{{- end }}
+{{ end -}}
