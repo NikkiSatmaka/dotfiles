@@ -62,3 +62,6 @@ direnv
 
 ## emacs deps
 pnpm
+
+## cloud sync
+dropbox-cli

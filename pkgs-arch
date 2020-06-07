@@ -54,6 +54,7 @@ vulkan-intel
 
 ## xorg and drivers
 mesa
+# lib32-mesa
 arandr
 light
 xdotool
@@ -346,3 +347,9 @@ cups-pdf
 clang
 cmake
 llvm
+
+## wine
+# wine-staging
+# wine-gecko
+# wine-mono
+# winetricks
