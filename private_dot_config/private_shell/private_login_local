@@ -176,13 +176,13 @@ pathappend "$HOME/.local/bin/bspwm" PATH
 pathappend "$HOME/.local/bin/i3" PATH
 pathappend "$HOME/.local/bin/lf" PATH
 pathappend "$HOME/.local/bin/polybar" PATH
-pathappend "$HOME/.local/cargo/bin" PATH
+pathappend "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin" PATH
+pathappend "${XDG_DATA_HOME:-$HOME/.local/share}/gem/bin" PATH
+pathappend "${XDG_DATA_HOME:-$HOME/.local/share}/go/bin" PATH
+pathappend "${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin" PATH
 pathappend "$HOME/.emacs.d/bin" PATH
 pathappend "$HOME/.local/src/doom-emacs/bin" PATH
 pathappend "/usr/local/go/bin" PATH
-pathappend "$HOME/go/bin" PATH
-pathappend "$GEM_HOME" PATH
-pathappend "${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin" PATH
 pathappend "/usr/local/plan9/bin" PATH
 pathappend "$ANDROID_HOME/platform-tools" PATH
 pathappend "/usr/lib/w3m" PATH
