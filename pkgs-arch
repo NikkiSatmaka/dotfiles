@@ -2,6 +2,7 @@
 base-devel
 linux-firmware
 pacman-contrib
+pacutils
 
 ## initial deps
 curl
@@ -135,7 +136,7 @@ linux-lts-docs
 
 ## dev
 # python
-# jupyter-notebook
+jupyter-notebook
 # nodejs
 # npm
 # yarn
@@ -175,7 +176,6 @@ gnuplot
 ## network
 # network-manager-applet
 dnscrypt-proxy
-# rsync
 # # traceroute
 # bind-tools
 # dnsutils
@@ -206,34 +206,40 @@ mediainfo
 perl-image-exiftool
 sxiv
 
+## js
+stylelint
+
 ## python
-# flake8
-# python-arrow
-# python-beautifulsoup4
-# python-certifi
-# python-colorama
-# python-cryptography
-# python-html5lib
-# python-jedi
-# python-lxml
-# python-markdown
-# python-matplotlib
-# python-numpy
-# python-pandas
-# python-phonenumbers
-python-pip
-# python-progress
-# python-pysocks
-# python-requests
-# python-scipy
-# python-seaborn
-# python-selenium
-# python-soupsieve
-# python-statsmodels
-# python-stem
-# python-pygments
-# python-pynvim
-# python-virtualenv
+bpython
+ipython
+flake8
+python-pipenv
+python-arrow
+python-beautifulsoup4
+python-colorama
+python-cryptography
+python-html5lib
+python-isort
+python-jedi
+python-lxml
+python-markdown
+python-matplotlib
+python-nose
+python-numpy
+python-pandas
+python-phonenumbers
+python-progress
+python-pysocks
+python-pytest
+python-requests
+python-scipy
+python-seaborn
+python-selenium
+python-soupsieve
+python-statsmodels
+python-stem
+python-pygments
+python-pynvim
 
 ## main pkgs
 atool
@@ -306,20 +312,30 @@ figlet
 # hexchat
 highlight
 httpie
-# libreoffice-still
+imwheel
+# libreoffice-fresh
 # obs-studio
 # pipes.sh
+reflector
 # speedtest-cli
-transmission-cli
 udiskie
 # unimatrix-git
 # woeusb
 # xarchiver
 
+## torrent
+# qbittorrent
+rtorrent
+# transmission-cli
+
 ## microcode / drivers / extras
 dosfstools
 exfat-utils
 ntfs-3g
+
+## file sync
+rclone
+rsync
 
 ## printer
 cups

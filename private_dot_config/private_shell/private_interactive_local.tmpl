@@ -58,7 +58,7 @@ alias cs='cd ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts && ls -a'
 alias dx='cd $HOME/Dropbox && ls'
 alias o='cd $HOME/.local/share/chezmoi && ls -a'
 alias bos='cd $HOME/Dropbox/Documents/BOS && ls'
-alias dt='cd /data && ls'
+alias st='cd /storage && ls'
 alias mn='cd /mnt && ls -a'
 
 alias sd="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/directories"
@@ -74,7 +74,7 @@ alias sqb="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/qutebrowser/config.py"
 # trash command
 # alias rm="rm -iv"
 if command -v trash-put >/dev/null 2>&1; then
-    alias rm='echo "Use trp to trash files"; false'
+    # alias rm='echo "Use trp to trash files"; false'
     alias trp='trash-put -iv'
     alias tre='trash-empty'
     alias trl='trash-list'
