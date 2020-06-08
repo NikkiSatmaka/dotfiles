@@ -5,17 +5,44 @@
 # highlighting an area to copy. scrotcucks on suicidewatch right now.
 
 outputdir="$HOME/Pictures/screenshots"
-output="$(date '+%F_%H%M%S').png"
+output="$outputdir/"$(date '+%F_%H%M%S').png""
 
 if [ ! -d "$outputdir" ]; then
 	mkdir -p "$outputdir"
 fi
 
 case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | rofi -dmenu -l 6 -i -p "Screenshot which area?")" in
-	"a selected area") maim -s $outputdir/pic-selected-"$output" ;;
-	"current window") maim -i "$(xdotool getactivewindow)" $outputdir/pic-window-"$output" ;;
-	"full screen") maim $outputdir/pic-full-"$output" ;;
-	"a selected area (copy)") maim -s | xclip -selection clipboard -t image/png ;;
-	"current window (copy)") maim -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png ;;
-	"full screen (copy)") maim | xclip -selection clipboard -t image/png ;;
+	"a selected area")
+		if pidof picom > /dev/null 2>&1; then
+			maim -u -m 9 -c 1,0,1.5,0.2 -l -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+		else
+			maim -u -m 9 -c 1,0,1.5,0.2 -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+		fi
+		;;
+
+	"current window")
+		maim -u -m 9 -i "$(xdotool getactivewindow)" "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+		;;
+
+	"full screen")
+		maim -u -m 9 "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+		;;
+
+	"a selected area (copy)")
+		if pidof picom > /dev/null 2>&1; then
+			maim -u -m 9 -c 1,0,1.5,0.2 -l -s | xclip -se c -t image/png || exit
+		else
+			maim -u -m 9 -c 1,0,1.5,0.2 -s | xclip -se c -t image/png || exit
+		fi
+		;;
+
+	"current window (copy)")
+		maim -u -m 9 -i "$(xdotool getactivewindow)" | xclip -se c -t image/png | exit
+		;;
+
+	"full screen (copy)")
+		maim -u -m 9 | xclip -se c -t image/png || exit
+		;;
 esac
+
+notify-send "Maim" "Screenshot Taken"

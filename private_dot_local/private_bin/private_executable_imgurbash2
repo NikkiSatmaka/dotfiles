@@ -25,16 +25,16 @@
 #           Config & auth logic inspired by https://github.com/jomo/imgur-screenshot/
 # REQUIRED: curl
 # OPTIONAL:
-#    * xsel or xclip for copying URLs to your clipboard (Linux)
+#    * xsel, xclip or wl-copy for copying URLs to your clipboard (Linux)
 #--------------------------------------------------------------------
 #
-# The URLs will be output on your terminal. If you have xsel or xclip they
+# The URLs will be output on your terminal. If you have xsel, xclip or wl-copy they
 # will also be copied on clipboard, which you can usually paste with a CTRL-V.
 
 set -a
 
 readonly SELF=${0##*/}
-readonly VERSION="3.1"
+readonly VERSION="3.2"
 readonly CONF_ROOT="$HOME/.config/imgurbash2"
 readonly CONF_FILE="$CONF_ROOT/config"
 readonly CREDENTIALS_FILE="$CONF_ROOT/credentials.conf"
@@ -234,9 +234,10 @@ copy_to_clipboard() {
 	if [[ "$IS_MACOS" == true ]]; then
 		pbcopy <<< "$input"
 	elif [[ -n "$DISPLAY" ]]; then
-		{ command -v xsel &>/dev/null && echo -n "$input" | xsel --input --primary; } \
-			|| { command -v xclip &>/dev/null && echo -n "$input" | xclip -selection primary; } \
-			|| info -L "Didn't copy to clipboard:  xsel or xclip are not installed."
+		{ command -v xsel &>/dev/null && echo -n "$input" | xsel --input --clipboard; } \
+			|| { command -v xclip &>/dev/null && echo -n "$input" | xclip -selection clipboard; } \
+			|| { command -v wl-copy &>/dev/null && echo -n "$input" | wl-copy; } \
+			|| info -L "Didn't copy to clipboard:  xsel, xclip or wl-copy are not installed."
 	else
 		info -L "Didn't copy to the clipboard:  no \$DISPLAY"
 	fi

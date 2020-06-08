@@ -17,10 +17,30 @@ imgur () {
 }
 
 case "$1" in
-    "full") maim -u -m 9 "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit;;
-    "select") maim -u -m 9 -c 1,0,1.5,0.2 -l -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit ;;
-    "fulltime") menu && maim -m 9 "$output" || exit ;;
-    "selecttime") menu && maim -m 9 -c 1,0,1.5,0.2 -l -s "$output" || exit ;;
+    "full")
+        maim -u -m 9 "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+        ;;
+
+    "select")
+        if pidof picom > /dev/null 2>&1; then
+            maim -u -m 9 -c 1,0,1.5,0.2 -l -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+        else
+            maim -u -m 9 -c 1,0,1.5,0.2 -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+        fi
+        ;;
+
+    "fulltime")
+        menu && maim -m 9 "$output" || exit
+        menu && maim -m 9 "$output" || exit
+        ;;
+
+    "selecttime")
+        if pidof picom > /dev/null 2>&1; then
+            menu && maim -m 9 -c 1,0,1.5,0.2 -l -s "$output" || exit
+        else
+            menu && maim -m 9 -c 1,0,1.5,0.2 -s "$output" || exit
+        fi
+        ;;
 
 esac
 
