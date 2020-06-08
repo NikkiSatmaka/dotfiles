@@ -36,14 +36,15 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 
 {{ if eq .chezmoi.hostname "avalon" -}}
 screenlayout				# xrandr screenlayout
+imwheel -k -b 45 &			# mouse scroll speed
 {{ end -}}
 
+dropbox &
 setwall &				# run the setbg script
 remaps &			# run the remaps script, switching caps/esc and more; check it for more info
 picom -b &				# picom for transparency
 dunst &				# dunst for notifications
 udiskie &			# udiskie for automount
-imwheel -k -b 45 &			# mouse scroll speed
 unclutter &			# Remove mouse when idle
 redshift &			# take care of your eyes
 sxhkd &				# keybinding

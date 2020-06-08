@@ -16,6 +16,11 @@ Brew*
 pkgs-*
 tweaks
 
+{{- if ne .chezmoi.hostname "avalon" -}}
+.local/bin/screenlayout
+.imwheelrc
+{{- end }}
+
 # Ignore non-Linux files.
 {{- if ne .chezmoi.os "linux" }}
 .config/bspwm
