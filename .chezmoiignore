@@ -15,8 +15,10 @@ com.googlecode.iterm2.plist
 Brew*
 pkgs-*
 tweaks
+.config/mimeapps.list
+.local/share
 
-{{- if ne .chezmoi.hostname "avalon" -}}
+{{- if ne .chezmoi.hostname "avalon" }}
 .local/bin/screenlayout
 .imwheelrc
 {{- end }}
