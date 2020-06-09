@@ -174,8 +174,14 @@ alias ncmpcpp="ncmpcpp ncmpcpp_directory=${XDG_CONFIG_HOME:-$HOME/.config}/ncmpc
 alias r="ranger"
 alias xup="xrdb ~/.Xresources"
 alias pman="sudo pacman"
-alias pip="sudo pip"
 alias jp="joplin"
+
+{{- if eq .chezmoi.os "darwin" }}
+alias python='python3'
+alias pip='sudo pip3'
+{{- else }}
+alias pip="sudo pip"
+{{- end }}
 
 # These common commands are just too long! Abbreviate them.
 alias ka="killall"
