@@ -1,28 +1,20 @@
 #!/usr/bin/env bash
 
-## Author : Aditya Shakya (adi1090x)
-## Mail : adi1090x@gmail.com
-## Github : @adi1090x
-## Reddit : @adi1090x
-
+# rofi_command="rofi -theme themes/powermenu.rasi"
 rofi_command="rofi"
 
-uptime=$(uptime -p | sed -e 's/up //g')
-
-# Options
-shutdown=" Shutdown"
-reboot=" Restart"
-lock=" Lock"
-suspend=" Sleep"
-logout=" Logout"
+### Options ###
+power_off="\tshutdown"
+reboot="\treboot"
+lock="\tlock"
+suspend="鈴\tsleep"
+log_out="\tlogout"
 
 # Variable passed to rofi
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options="$power_off\n$reboot\n$lock\n$suspend\n$log_out"
 
-chosen="$(echo -e "$options" \
-    | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
-case $chosen in
-    $shutdown)
+case "$(echo -e "$options" | $rofi_command -dmenu -selected-row 2)" in
+    $power_off)
         systemctl poweroff
         ;;
     $reboot)
@@ -30,13 +22,13 @@ case $chosen in
         ;;
     $lock)
         mpc -q pause
-        betterlockscreen -l dimblur
+        zzz
         ;;
     $suspend)
         mpc -q pause
-        betterlockscreen -s dimblur
+        zzz -f
         ;;
-    $logout)
+    $log_out)
         bspc quit
         ;;
 esac

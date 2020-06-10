@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# If -f, then put computer to sleep.
+# Otherwise, lock screen and turn off monitor.
+
+if [[ $1 == -h ]]; then
+  bin=${0##*/}
+  echo "Usage: $bin [-f]"
+  echo
+  echo "  $bin       # put display to sleep"
+  echo "  $bin -f    # put computer to sleep"
+elif [[ $1 == -f ]]; then
+  echo "Going to sleep..."
+  if command -v betterlockscreen >/dev/null; then
+    pgrep betterlockscreen >/dev/null || betterlockscreen -s dimblur &
+  else
+    systemctl suspend
+  fi
+else
+  echo "Shutting my eyes..."
+  if command -v betterlockscreen >/dev/null; then
+    pgrep betterlockscreen >/dev/null || betterlockscreen -l dimblur &
+  elif command -v slock >/dev/null; then
+    pgrep slock >/dev/null || slock &
+  fi
+  sleep 1
+  xset dpms force off
+fi
