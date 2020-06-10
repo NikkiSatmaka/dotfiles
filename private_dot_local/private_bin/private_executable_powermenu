@@ -4,11 +4,11 @@
 rofi_command="rofi"
 
 ### Options ###
-power_off="\tshutdown"
-reboot="\treboot"
-lock="\tlock"
-suspend="鈴\tsleep"
-log_out="\tlogout"
+power_off=" shutdown"
+reboot=" reboot"
+lock=" lock"
+suspend="鈴 sleep"
+log_out=" logout"
 
 # Variable passed to rofi
 options="$power_off\n$reboot\n$lock\n$suspend\n$log_out"
