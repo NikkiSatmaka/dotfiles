@@ -318,11 +318,13 @@ imwheel
 # obs-studio
 # pipes.sh
 reflector
+slock
 # speedtest-cli
 udiskie
 # unimatrix-git
 # woeusb
 # xarchiver
+zenity
 
 ## torrent
 # qbittorrent
