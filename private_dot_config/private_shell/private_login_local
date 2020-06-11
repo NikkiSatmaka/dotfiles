@@ -186,6 +186,7 @@ pathappend "/usr/local/go/bin" PATH
 pathappend "/usr/local/plan9/bin" PATH
 pathappend "$ANDROID_HOME/platform-tools" PATH
 pathappend "/usr/lib/w3m" PATH
+pathappend "/usr/local/sbin" PATH
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys "${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap" 2>/dev/null

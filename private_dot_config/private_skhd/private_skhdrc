@@ -142,7 +142,7 @@ focus, grid, swap, warp, warpnf, resize < alt - p           : yabai -m window --
                                                                     # yabai -m space --focus "${index}"
 
 # Global hotkeys which I limit so as to not pollute the global namespace
-default         < ctrl - return     : open -na Alacritty
+focus, grid, swap, warp, warpnf, resize < ctrl - return     : open -na Alacritty
 
 # Change focus using standard vi directional keys. Enter changes focus to the
 # biggest window. You'll see this theme repeated over and over again. Since this
