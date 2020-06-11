@@ -207,9 +207,9 @@ alias jp="joplin"
 
 {{- if eq .chezmoi.os "darwin" }}
 alias python='python3'
-# alias pip='sudo pip3'
+alias pip='python -m pip'
 {{- else }}
-# alias pip="sudo pip"
+alias pip='python -m pip'
 {{- end }}
 
 # These common commands are just too long! Abbreviate them.

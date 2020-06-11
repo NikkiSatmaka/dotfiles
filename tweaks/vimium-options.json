@@ -4,6 +4,18 @@
     {
       "pattern": "https?://mail.google.com/*",
       "passKeys": "?jkpxercgils#uld/`"
+    },
+    {
+      "pattern": "https?://drive.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://docs.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.tradingview.com/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": false,
