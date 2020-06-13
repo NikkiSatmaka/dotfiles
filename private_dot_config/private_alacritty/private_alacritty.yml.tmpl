@@ -137,6 +137,8 @@ font:
   # Point size
   {{- if eq .chezmoi.os "darwin" }}
   size: 12.0
+  {{- else if eq .chezmoi.hostname "fenrir" }}
+  size: 8.0
   {{- else }}
   size: 10.0
   {{- end }}
