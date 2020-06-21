@@ -29,7 +29,7 @@ nerd-fonts-source-code-pro
 nerd-fonts-fira-code
 
 ## web browser
-brave-bin
+# brave-bin
 google-chrome
 
 ## utilities
@@ -62,6 +62,7 @@ direnv
 
 ## emacs deps
 pnpm
+rtags
 
 ## cloud sync
 dropbox-cli

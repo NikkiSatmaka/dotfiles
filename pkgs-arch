@@ -109,6 +109,8 @@ dunst
 libnotify
 picom
 rofi
+rofi-calc
+rofi-pass
 
 ## terminal
 alacritty
