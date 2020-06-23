@@ -39,7 +39,7 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export GOKU_EDN_CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/karabiner/karabiner.edn"
 
 # GnuPG
-export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+# export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
