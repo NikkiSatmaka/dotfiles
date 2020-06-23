@@ -76,6 +76,8 @@ yabai -m rule --add label="Bartender Preferences" app="^Bartender 3$" manage=off
 yabai -m rule --add label="BetterTouchTool" app="^BetterTouchTool$" manage=off
 yabai -m rule --add label="Keyboard Maestro" app="^Keyboard Maestro$" manage=off
 yabai -m rule --add label="Karabiner" app="^Karabiner-(Elements|EventViewer)$" manage=off
+yabai -m rule --add label="Inkscape" app="^Inkscape$" manage=off
+yabai -m rule --add label="GIMP" app="^GIMP-2.10$" manage=off
 
 yabai -m rule --add label="Emacs" app="^Emacs$" manage=on
 
