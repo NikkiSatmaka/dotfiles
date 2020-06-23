@@ -281,7 +281,7 @@ alias handbrake="ghb"
 alias listaur="pacman -Qm"
 alias paci="sudo pacman -Qi"
 # alias paci="yay -Qeq | fzf -m --preview "yay -Qi {1}" | xargs -ro yay -Rs"
-alias rank="sudo reflector --verbose -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist"
+alias rank="sudo reflector --verbose --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 
 alias motherboard="cat /sys/devices/virtual/dmi/id/board_{vendor,name,version}"
 
