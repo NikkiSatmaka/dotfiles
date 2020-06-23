@@ -18,6 +18,8 @@ tweaks
 .config/mimeapps.list
 .config/user-dirs.dirs
 .local/share/applications
+.emacs-profile
+.emacs-profiles.el
 
 {{- if ne .chezmoi.hostname "avalon" }}
 .local/bin/screenlayout
