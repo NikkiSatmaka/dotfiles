@@ -16,7 +16,8 @@ Brew*
 pkgs-*
 tweaks
 .config/mimeapps.list
-.local/share
+.config/user-dirs.dirs
+.local/share/applications
 
 {{- if ne .chezmoi.hostname "avalon" }}
 .local/bin/screenlayout

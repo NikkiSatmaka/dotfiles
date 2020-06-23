@@ -52,13 +52,10 @@ polybar
 visual-studio-code-bin
 
 ## cloud storage sync
-google-drive-ocamlfuse
+# google-drive-ocamlfuse
 
 ## utility
 direnv
-
-## torrent
-# tremc-git
 
 ## emacs deps
 pnpm
