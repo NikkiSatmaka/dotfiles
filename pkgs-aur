@@ -19,6 +19,7 @@ ttf-symbola-infinality
 ttf-typicons
 ttf-weather-icons
 ttf-iosevka
+ttf-ricty
 
 ## nerd fonts
 nerd-fonts-hack
@@ -27,6 +28,12 @@ nerd-fonts-jetbrains-mono
 nerd-fonts-meslo
 nerd-fonts-source-code-pro
 nerd-fonts-fira-code
+
+## Themes
+numix-icon-theme-git
+numix-gtk-theme
+pop-gtk-theme-bin
+pop-icon-theme-bin
 
 ## web browser
 # brave-bin
