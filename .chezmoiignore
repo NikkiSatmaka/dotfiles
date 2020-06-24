@@ -32,6 +32,8 @@ tweaks
 .config/broot
 .config/dunst
 .config/espanso
+.config/gtk-2.0
+.config/gtk-3.0
 .config/picom
 .config/polybar
 .config/rofi
