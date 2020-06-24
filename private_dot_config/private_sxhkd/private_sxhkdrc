@@ -29,6 +29,10 @@ ctrl + Print
 super + Print
 	screenshot selecttime
 
+# Screenshots
+super + shift + s
+	maimpick
+
 #####################
 # System Control
 #####################

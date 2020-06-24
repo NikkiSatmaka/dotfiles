@@ -1,11 +1,16 @@
 #!/usr/bin/env sh
 # Simple script that uses maim to take a screenshot
 
-outputdir="$HOME/Pictures/screenshots"
-output="$outputdir/"$(date '+%F_%H%M%S').png""
+# get window title
+# remove punctuation (e.g. "/") and replace whitespace with underscores
+title=$(xtitle | \
+	awk -F "-" '{gsub(/[[:punct:]]/, "") gsub(/\s/, "_"); print $1}')
+date=$(date '+%F_%H%M%S')
+outdir="$HOME/Pictures/screenshots"
+outfile="$outdir/${date}_-_${title}.png"
 
-if [ ! -d "$outputdir" ]; then
-    mkdir -p "$outputdir"
+if [ ! -d "$outdir" ]; then
+    mkdir -p "$outdir"
 fi
 
 menu () {
@@ -13,32 +18,32 @@ menu () {
 }
 
 imgur () {
-    xclip -selection clipboard -t image/png -i "$output" && imgurbash2 "$output"
+    xclip -selection clipboard -t image/png -i "$outfile" && imgurbash2 "$outfile"
 }
 
 case "$1" in
     "full")
-        maim -u -m 9 "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+        maim -u -m 9 "$outfile" && xclip -se c -t image/png -i "$outfile" && imgurbash2 "$outfile" || exit
         ;;
 
     "select")
         if pidof picom > /dev/null 2>&1; then
-            maim -u -m 9 -c 1,0,1.5,0.2 -l -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+            maim -u -m 9 -c 1,0,1.5,0.2 -l -s "$outfile" && xclip -se c -t image/png -i "$outfile" && imgurbash2 "$outfile" || exit
         else
-            maim -u -m 9 -c 1,0,1.5,0.2 -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+            maim -u -m 9 -c 1,0,1.5,0.2 -s "$outfile" && xclip -se c -t image/png -i "$outfile" && imgurbash2 "$outfile" || exit
         fi
         ;;
 
     "fulltime")
-        menu && maim -m 9 "$output" || exit
-        menu && maim -m 9 "$output" || exit
+        menu && maim -m 9 "$outfile" || exit
+        menu && maim -m 9 "$outfile" || exit
         ;;
 
     "selecttime")
         if pidof picom > /dev/null 2>&1; then
-            menu && maim -m 9 -c 1,0,1.5,0.2 -l -s "$output" || exit
+            menu && maim -m 9 -c 1,0,1.5,0.2 -l -s "$outfile" || exit
         else
-            menu && maim -m 9 -c 1,0,1.5,0.2 -s "$output" || exit
+            menu && maim -m 9 -c 1,0,1.5,0.2 -s "$outfile" || exit
         fi
         ;;
 

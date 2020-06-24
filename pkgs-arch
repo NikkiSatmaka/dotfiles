@@ -20,8 +20,6 @@ chezmoi
 # linux-lts-docs
 
 ## generic packages
-vim
-neovim
 usbutils
 lsof
 dmidecode
@@ -31,6 +29,10 @@ gnome-keyring
 powertop
 htop
 # gpm
+
+# * Editors
+vim
+neovim
 
 ## archives
 zip
@@ -56,19 +58,30 @@ vulkan-intel
 ## xorg and drivers
 mesa
 # lib32-mesa
-arandr
-light
+
+# * X Related
 xdotool
 xorg
 xorg-server
-xorg-xdpyinfo
 xorg-xinit
-xorg-xkill
+xorg-xinput
 xorg-xprop
-xorg-xset
-xorg-xsetroot
-xorg-xrandr
 xorg-xwininfo
+xorg-xfontsel
+xorg-xlsfonts
+xorg-xsetroot
+xorg-xev
+xorg-xbacklight
+xorg-xset
+xorg-xrandr
+xorg-xkill
+xorg-xdpyinfo
+light
+arandr
+
+# clipboard
+xsel
+xclip
 
 ## input drivers
 xf86-input-libinput
@@ -202,12 +215,19 @@ youtube-dl
 ## image/video/3d
 ffmpeg
 feh
-# gimp
-imagemagick
-maim
 mediainfo
 perl-image-exiftool
 sxiv
+
+# * Screenshots
+# screenshots
+maim
+# selection
+slop
+
+# * Image Editing
+# gimp
+imagemagick
 
 ## js
 stylelint
@@ -249,12 +269,10 @@ atool
 bat
 bc
 calcurse
-cowsay
 diff-so-fancy
 dbus
 exa
 fd
-fortune-mod
 fzf
 man
 man-db
@@ -263,9 +281,14 @@ ntp
 qutebrowser
 ripgrep
 socat
-unclutter
 xcape
-xclip
+
+## random/fun
+cowsay
+fortune-mod
+
+# hiding mouse
+unclutter
 
 ## fonts
 awesome-terminal-fonts
@@ -306,7 +329,6 @@ papirus-icon-theme
 # tlp-rdw
 
 ## extra pkgs
-# android-tools
 # calibre
 # discord
 # dos2unix
@@ -352,8 +374,12 @@ clang
 cmake
 llvm
 
-## wine
+## *  Wine
 # wine-staging
 # wine-gecko
 # wine-mono
 # winetricks
+
+# * Android
+# for adb
+# android-tools
