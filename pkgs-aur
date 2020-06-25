@@ -3,6 +3,7 @@
 
 ## dependencies
 libxft-bgra
+# lib32-libxft-bgra
 
 ## aur helper
 yay
@@ -41,7 +42,8 @@ google-chrome
 
 ## utilities
 dragon-drag-and-drop
-espanso
+# espanso
+espanso-bin
 lf
 # qmk
 simple-mtpfs
@@ -49,7 +51,8 @@ simple-mtpfs
 task-spooler
 
 ## prompt
-starship
+# starship
+starship-bin
 
 ## window manager
 betterlockscreen
