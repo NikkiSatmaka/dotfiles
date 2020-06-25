@@ -1,6 +1,7 @@
 ## groups
 base-devel
 linux-firmware
+linux-headers
 pacman-contrib
 pacutils
 
