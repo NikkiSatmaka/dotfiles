@@ -1,6 +1,7 @@
 ## groups
 base-devel
 linux-firmware
+linux-headers
 pacman-contrib
 pacutils
 
@@ -303,7 +304,6 @@ xorg-fonts-type1
 
 ## monospace fonts
 otf-fantasque-sans-mono
-otf-fira-code
 ttf-hack
 ttf-jetbrains-mono
 ttf-linux-libertine

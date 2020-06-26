@@ -37,12 +37,6 @@ ssource ~/.config/zsh/interactive_local
 # Automatically cd into typed directory.
 setopt autocd
 
-# Use vim style navigation keys in menu completion
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-
 # Initialize editing command line
 autoload -U edit-command-line && zle -N edit-command-line
 
@@ -62,8 +56,26 @@ setopt extendedhistory
 # Time to wait for additional characters in a sequence
 KEYTIMEOUT=1 # corresponds to 10ms
 
-# Use vim style line editing in zsh
+# * Keybindings
 bindkey -v
+
+# for "leader" keybindings
+bindkey -a -r t
+
+# ** Normal (vicmd)/Visual Mode
+# -a is short for -M vicmd
+# http://zshwiki.org/home/zle/vi-mode
+# enable vi mode on commmand line; no visual
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
+# for bash there is https://github.com/ardagnir/athame
+# alternatively run shell in neovim or emacs
+
+# Use vim style navigation keys in menu completion
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
 # Movement
 bindkey -a 'gg' beginning-of-buffer-or-history
 bindkey -a 'G' end-of-buffer-or-history
@@ -177,12 +189,31 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
+# ** Theme/Appearance
+# more configuration in later section
 zinit ice depth=1
-zinit light romkatv/powerlevel10k
+zinit light "romkatv/powerlevel10k"
 
 # # Load zsh-autosuggestions
-zinit light zsh-users/zsh-autosuggestions
-zinit light zdharma/fast-syntax-highlighting
+zinit ice wait"0b" lucid atload'_zsh_autosuggest_start'
+zinit light "zsh-users/zsh-autosuggestions"
+
+zinit ice wait"0c" lucid \
+        atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+zinit light "zdharma/fast-syntax-highlighting"
+
+# ** Zle Enhancements
+# needs to start before fast syntax highlighting and autosuggestions
+zinit ice wait lucid
+zinit light "zsh-users/zsh-history-substring-search"
+
+# says it needs to be loaded after compinit but works fine with this config
+zinit ice wait lucid
+zinit load "hlissner/zsh-autopair"
+
+# clipboard
+zinit ice wait lucid
+zinit light "kutsan/zsh-system-clipboard"
 
 # Load fzf completion
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
