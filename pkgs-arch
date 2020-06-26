@@ -6,9 +6,13 @@ pacman-contrib
 pacutils
 
 ## * Internet
-connman
+iwd
+# connman
 networkmanager
-# network-manager-applet
+network-manager-applet
+
+## network drivers
+# broadcom-wl
 
 ## * Linux-LTS
 # linux-lts
@@ -52,9 +56,6 @@ nmon
 gnome-keyring
 htop
 # gpm
-
-## network drivers
-# broadcom-wl
 
 ## ** Microcode
 intel-ucode
