@@ -5,20 +5,43 @@ linux-headers
 pacman-contrib
 pacutils
 
+## * Internet
+connman
+networkmanager
+# network-manager-applet
+
+## * Linux-LTS
+# linux-lts
+# linux-lts-headers
+# linux-lts-docs
+
+## * Linux/CK
+linux-ck
+linux-ck-headers
+broadcom-wl-ck
+# virtualbox-ck-host-modules-ivybridge
+# removed from repo-ck
+# virtualbox-ck-host-modules-skylake
+
+## * Filesystem support
+dosfstools
+exfat-utils
+ntfs-3g
+
+# scim -> ibus -> fcitx
+fcitx-im
+fcitx-mozc
+# latex input
+fcitx-table-other
+
 ## initial deps
 curl
-git
 grep
 tar
 wget
 
 ## dotfiles
 chezmoi
-
-## linux kernel
-# linux-lts
-# linux-lts-headers
-# linux-lts-docs
 
 ## generic packages
 usbutils
@@ -27,38 +50,50 @@ dmidecode
 dialog
 nmon
 gnome-keyring
-powertop
 htop
 # gpm
-
-# * Editors
-vim
-neovim
-
-## archives
-zip
-unrar
-unzip
-p7zip
-# lzop
 
 ## network drivers
 # broadcom-wl
 
-## intel drivers
+## ** Microcode
 intel-ucode
-xf86-video-intel
-vulkan-intel
-
-## amd drivers
 # amd-ucode
-# xf86-video-amdgpu
-# xf86-video-ati
-# mesa-vdpau
 
 ## xorg and drivers
 mesa
 # lib32-mesa
+
+## intel-virtual-output
+xf86-video-intel
+vulkan-intel
+
+## amd drivers
+# xf86-video-amdgpu
+# xf86-video-ati
+# mesa-vdpau
+
+# * Security
+# wireguard-tools
+# wireguard-dkms
+# encryption
+# veracrypt
+# secure-delete aur
+# safe-rm aur
+# firewall management
+# ufw
+# password management
+pass
+# lastpass-cli
+# passff-host aur
+# sandboxing
+# firejail
+
+## * VCS
+git
+
+## * SSH
+openssh
 
 # * X Related
 xdotool
@@ -99,8 +134,6 @@ bluez-libs
 bluez-utils
 
 ## services
-networkmanager
-openssh
 cronie
 # numlockx
 # haveged
@@ -113,6 +146,7 @@ bash-completion
 dash
 grml-zsh-config
 shellcheck
+jq
 zsh
 
 ## window manager
@@ -134,7 +168,7 @@ tmux
 ## file manager
 # fff
 nnn
-# ranger
+ranger
 
 ## pdf
 zathura
@@ -154,8 +188,6 @@ linux-docs
 ## dev
 # python
 jupyter-notebook
-# nodejs
-# npm
 # yarn
 # perl
 # ruby
@@ -173,10 +205,6 @@ xdg-utils
 xdg-user-dirs
 # syncthing
 
-## password
-# lastpass-cli
-pass
-
 ## * DOC, PPT, etc. Editing/Conversion
 # libreoffice-fresh
 pandoc
@@ -188,24 +216,15 @@ texlive-latexextra
 gnuplot
 
 ## system
-# pacutils
 # incron
 
-## network
-# network-manager-applet
+# * DNS
+# validating, recursive, caching resolver
+# unbound
+# dnssec validation with unbound
+# expat
+# https://wiki.archlinux.org/index.php/DNSCrypt
 dnscrypt-proxy
-# # traceroute
-# bind-tools
-# dnsutils
-# nmap
-# netdiscover
-# speedtest-cli
-# wavemon
-# net-tools
-# dsniff
-# mitmproxy
-# sslstrip
-# iproute2
 
 ## media
 mpc
@@ -216,6 +235,7 @@ youtube-dl
 
 ## image/video/3d
 ffmpeg
+ffmpegthumbnailer
 feh
 mediainfo
 perl-image-exiftool
@@ -234,18 +254,35 @@ imagemagick
 ## js
 stylelint
 
-## python
+# ** Python
+python-pipenv
+
+# lsp implementation
+python-language-server
+
+# completions, definitions, references, etc. (used by palantir server)
+python-jedi
+# completions and renaming (used by palantir server)
+python-rope
+
+# *** Repl
 bpython
 ipython
+
+# *** Linting
+# wraps pyflakes, pycodestyle, and mccabe
 flake8
-python-pipenv
+# more warnings
+python-pylint
+# type hint linting
+mypy
+
 python-arrow
 python-beautifulsoup4
 python-colorama
 python-cryptography
 python-html5lib
 python-isort
-python-jedi
 python-lxml
 python-markdown
 python-matplotlib
@@ -266,8 +303,11 @@ python-stem
 python-pygments
 python-pynvim
 
+# * Search/Fuzzy finder
+fzf
+ripgrep
+
 ## main pkgs
-atool
 bat
 bc
 calcurse
@@ -275,12 +315,10 @@ diff-so-fancy
 dbus
 exa
 fd
-fzf
 man
 man-db
 neofetch
 ntp
-ripgrep
 socat
 xcape
 
@@ -291,12 +329,13 @@ fortune-mod
 # hiding mouse
 unclutter
 
-## * Fonts
+# * Fonts
 noto-fonts
 gnu-free-fonts
 noto-fonts-extra
 cantarell-fonts
 otf-overpass
+ttf-dejavu
 ttf-croscore
 ttf-ionicons
 ttf-junicode
@@ -331,10 +370,29 @@ arc-gtk-theme
 papirus-icon-theme
 arc-icon-theme
 
-## battery
-# acpi_call
+# # * Power Management/Battery
+# acpi
 # tlp
-# tlp-rdw
+# # for thinkpad charging/discharging rates
+# acpi_call-dkms
+# powertop
+
+# * Archive related
+unrar
+unzip
+zip
+p7zip
+# frontend for archive extraction, creation, etc.
+atool
+
+# * Statistics
+r
+# require for R install package popup
+tk
+
+# * Editors
+vim
+neovim
 
 ## * Browsers
 firefox
@@ -362,22 +420,29 @@ zenity
 
 ## torrent
 # qbittorrent
-rtorrent
+# rtorrent
 # transmission-cli
-
-## microcode / drivers / extras
-dosfstools
-exfat-utils
-ntfs-3g
 
 ## file sync
 rclone
 rsync
 
-## printer
+# * Printing
+# https://wiki.archlinux.org/index.php/CUPS
 cups
 ghostscript
 cups-pdf
+libcups
+splix
+# samsung-unified-driver aur
+# hplip
+# gutenprint
+
+# ** Web - JavaScript, TypeScript, etc.
+nodejs
+npm
+typescript
+typescript-language-server npm
 
 ## emacs deps
 clang
