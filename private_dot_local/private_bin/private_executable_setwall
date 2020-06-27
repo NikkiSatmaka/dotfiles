@@ -7,16 +7,19 @@
 # If wal is installed, also generates a colorscheme.
 
 # Location of link to wallpaper link.
-readonly WALL_DIR="$HOME/Pictures/wallpapers"
-readonly WALL_LOC="$WALL_DIR/wall"
+readonly WALL_DIR="$HOME/pictures/wallpapers"
+# readonly WALL_LOC="$WALL_DIR/wall"
+readonly WALL_LOC="${XDG_CONFIG_HOME:-$HOME/.config}/wall"
 
 
 [ ! -d "$WALL_DIR" ] && mkdir -p "$WALL_DIR"
 
-[ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$WALL_LOC" &&
+# [ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$WALL_LOC" &&
+[ -f "$1" ] && cp -f "$(readlink -f "$1")" "$WALL_LOC" &&
 	notify-send -i "$WALL_LOC" "Changing wallpaper..."
 
-[ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" \
+# [ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" \
+[ -d "$1" ] && cp -f "$(find "$(readlink -f "$1")" \
 	-iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$WALL_LOC" &&
 	notify-send -i "$WALL_LOC" "Random Wallpaper chosen."
 
@@ -24,4 +27,4 @@ readonly WALL_LOC="$WALL_DIR/wall"
 wal -s -i "$(readlink -f "$WALL_LOC")" -o \
 	"${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
 
-feh --bg-fill --no-fehbg "$WALL_LOC"
+feh --bg-fill --no-fehbg --no-xinerama "$WALL_LOC"

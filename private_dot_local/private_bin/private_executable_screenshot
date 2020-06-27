@@ -6,7 +6,7 @@
 title=$(xtitle | \
 	awk -F "-" '{gsub(/[[:punct:]]/, "") gsub(/\s/, "_"); print $1}')
 date=$(date '+%F_%H%M%S')
-outdir="$HOME/Pictures/screenshots"
+outdir="${XDG_PICTURES_DIR:-$HOME/pictures}/screenshots"
 outfile="$outdir/${date}_-_${title}.png"
 
 if [ ! -d "$outdir" ]; then
