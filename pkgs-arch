@@ -443,7 +443,6 @@ splix
 nodejs
 npm
 typescript
-typescript-language-server npm
 
 ## emacs deps
 clang
