@@ -14,35 +14,33 @@ fi
 case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | rofi -dmenu -l 6 -i -p "Screenshot which area?")" in
 	"a selected area")
 		if pidof picom > /dev/null 2>&1; then
-			maim -u -m 9 -c 1,0,1.5,0.2 -l -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+			maim -u -m 9 -c 1,0,1.5,0.2 -l -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" && notify-send "Maim" "Screenshot Taken" || exit
 		else
-			maim -u -m 9 -c 1,0,1.5,0.2 -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+			maim -u -m 9 -c 1,0,1.5,0.2 -s "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" && notify-send "Maim" "Screenshot Taken" || exit
 		fi
 		;;
 
 	"current window")
-		maim -u -m 9 -i "$(xdotool getactivewindow)" "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+		maim -u -m 9 -i "$(xdotool getactivewindow)" "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" && notify-send "Maim" "Screenshot Taken" || exit
 		;;
 
 	"full screen")
-		maim -u -m 9 "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" || exit
+		maim -u -m 9 "$output" && xclip -se c -t image/png -i "$output" && imgurbash2 "$output" && notify-send "Maim" "Screenshot Taken" || exit
 		;;
 
 	"a selected area (copy)")
 		if pidof picom > /dev/null 2>&1; then
-			maim -u -m 9 -c 1,0,1.5,0.2 -l -s | xclip -se c -t image/png || exit
+			maim -u -m 9 -c 1,0,1.5,0.2 -l -s | xclip -se c -t image/png && notify-send "Maim" "Screenshot Taken" || exit
 		else
-			maim -u -m 9 -c 1,0,1.5,0.2 -s | xclip -se c -t image/png || exit
+			maim -u -m 9 -c 1,0,1.5,0.2 -s | xclip -se c -t image/png && notify-send "Maim" "Screenshot Taken" || exit
 		fi
 		;;
 
 	"current window (copy)")
-		maim -u -m 9 -i "$(xdotool getactivewindow)" | xclip -se c -t image/png | exit
+		maim -u -m 9 -i "$(xdotool getactivewindow)" | xclip -se c -t image/png && notify-send "Maim" "Screenshot Taken" | exit
 		;;
 
 	"full screen (copy)")
-		maim -u -m 9 | xclip -se c -t image/png || exit
+		maim -u -m 9 | xclip -se c -t image/png && notify-send "Maim" "Screenshot Taken" || exit
 		;;
 esac
-
-notify-send "Maim" "Screenshot Taken"
