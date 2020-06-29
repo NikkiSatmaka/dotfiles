@@ -27,4 +27,4 @@ readonly WALL_LOC="${XDG_CONFIG_HOME:-$HOME/.config}/wall"
 wal -s -i "$(readlink -f "$WALL_LOC")" -o \
 	"${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
 
-feh --bg-fill --no-fehbg --no-xinerama "$WALL_LOC"
+feh --bg-fill --no-fehbg "$WALL_LOC"
