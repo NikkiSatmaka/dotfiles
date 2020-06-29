@@ -15,8 +15,6 @@ com.googlecode.iterm2.plist
 Brew*
 pkgs-*
 tweaks
-.config/mimeapps.list
-.local/share/applications
 .emacs-profile
 .emacs-profiles.el
 
