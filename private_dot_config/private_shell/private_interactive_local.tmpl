@@ -53,14 +53,14 @@ alias dl='cd $HOME/Downloads && ls'
 alias d='cd $HOME/Documents && ls'
 alias mm='cd $HOME/Music && ls'
 alias pp='cd $HOME/Pictures && ls'
-alias vv='cd $HOME/Videos && ls'
+alias vv='cd $HOME/Movies && ls'
 {{- else }}
 alias dl='cd ${XDG_DOWNLOAD_DIR:-$HOME/downloads} && ls'
 alias d='cd ${XDG_DOCUMENTS_DIR:-$HOME/documents} && ls'
 alias mm='cd ${XDG_MUSIC_DIR:-$HOME/music} && ls'
 alias pp='cd ${XDG_PICTURES_DIR:-$HOME/pictures} && ls'
 alias vv='cd ${XDG_VIDEOS_DIR:-$HOME/videos} && ls'
-{{ end -}}
+{{- end }}
 
 alias b='cd $HOME/.local/bin && ls -a'
 alias cf='cd ${XDG_CONFIG_HOME:-$HOME/.config} && ls -a'

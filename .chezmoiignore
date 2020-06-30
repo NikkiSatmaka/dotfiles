@@ -38,6 +38,7 @@ tweaks
 .config/mimeapps.list
 .config/user-dirs.dirs
 .config/user-dirs.locale
+.local/bin/dmenu*
 .local/share
 .xinitrc
 .Xmodmap
