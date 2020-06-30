@@ -6,7 +6,7 @@ pacman-contrib
 pacutils
 
 ## * Internet
-iwd
+# iwd
 # connman
 networkmanager
 network-manager-applet
