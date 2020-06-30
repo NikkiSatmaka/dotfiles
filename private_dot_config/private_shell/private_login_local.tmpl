@@ -189,6 +189,7 @@ pathappend "/usr/lib/w3m" PATH
 pathappend "/usr/local/sbin" PATH
 {{- if eq .chezmoi.os "darwin" }}
 pathprepend "/usr/local/opt/python/libexec/bin" PATH
+pathprepend "$HOME/Library/Python/3.7/bin" PATH
 {{- end }}
 
 # Switch escape and caps if tty and no passwd required:
