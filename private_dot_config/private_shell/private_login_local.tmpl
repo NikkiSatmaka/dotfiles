@@ -188,7 +188,7 @@ pathappend "$ANDROID_HOME/platform-tools" PATH
 pathappend "/usr/lib/w3m" PATH
 pathappend "/usr/local/sbin" PATH
 {{- if eq .chezmoi.os "darwin" }}
-pathappend "/usr/local/opt/python/libexec/bin" PATH
+pathprepend "/usr/local/opt/python/libexec/bin" PATH
 {{- end }}
 
 # Switch escape and caps if tty and no passwd required:
