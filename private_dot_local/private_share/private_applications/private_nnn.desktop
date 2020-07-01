@@ -2,7 +2,7 @@
 Type=Application
 Name=nnn
 Comment=Terminal file manager
-Exec=nnn
+Exec=/usr/bin/alacritty -e nnn %u
 Terminal=true
 Icon=nnn
 MimeType=inode/directory
