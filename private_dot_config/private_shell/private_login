@@ -21,7 +21,7 @@ export LC_NUMERIC=$LANG
 export LC_TIME=$LANG
 
 # Python
-export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/pythonrc.py"
+# export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/pythonrc.py"
 
 # Less
 #export LESS='-F -g -i -M -R -S -w -X -z-4'
