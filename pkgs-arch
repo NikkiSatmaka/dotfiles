@@ -188,7 +188,7 @@ linux-docs
 
 ## dev
 # python
-jupyter-notebook
+# jupyter-notebook
 # yarn
 # perl
 # ruby
@@ -256,53 +256,53 @@ imagemagick
 stylelint
 
 # ** Python
-python-pipenv
+# python-pipenv
 
 # lsp implementation
-python-language-server
+# python-language-server
 
 # completions, definitions, references, etc. (used by palantir server)
-python-jedi
+# python-jedi
 # completions and renaming (used by palantir server)
-python-rope
+# python-rope
 
 # *** Repl
-bpython
-ipython
+# bpython
+# ipython
 
 # *** Linting
 # wraps pyflakes, pycodestyle, and mccabe
-flake8
+# flake8
 # more warnings
-python-pylint
+# python-pylint
 # type hint linting
-mypy
+# mypy
 
-python-arrow
-python-beautifulsoup4
-python-colorama
-python-cryptography
-python-html5lib
-python-isort
-python-lxml
-python-markdown
-python-matplotlib
-python-nose
-python-numpy
-python-pandas
-python-phonenumbers
-python-progress
-python-pysocks
-python-pytest
-python-requests
-python-scipy
-python-seaborn
-python-selenium
-python-soupsieve
-python-statsmodels
-python-stem
-python-pygments
-python-pynvim
+# python-arrow
+# python-beautifulsoup4
+# python-colorama
+# python-cryptography
+# python-html5lib
+# python-isort
+# python-lxml
+# python-markdown
+# python-matplotlib
+# python-nose
+# python-numpy
+# python-pandas
+# python-phonenumbers
+# python-progress
+# python-pysocks
+# python-pytest
+# python-requests
+# python-scipy
+# python-seaborn
+# python-selenium
+# python-soupsieve
+# python-statsmodels
+# python-stem
+# python-pygments
+# python-pynvim
 
 # * Search/Fuzzy finder
 fzf
