@@ -40,13 +40,13 @@ elif command -v lesspipe.sh >/dev/null 2>&1; then
 fi
 
 # Path settings
-pathprepend ~/bin PATH
+pathprepend "$HOME/bin" PATH
 # export MANPATH=~/share/man:$MANPATH
 pathprepend /usr/local/man MANPATH
 pathprepend /usr/share/man MANPATH
-pathprepend ~/share/man MANPATH
-pathprepend ~/lib LD_LIBRARY_PATH
-pathprepend ~/include CPATH
+pathprepend "$HOME/share/man" MANPATH
+pathprepend "$HOME/lib" LD_LIBRARY_PATH
+pathprepend "$HOME/include" CPATH
 
 # The current directory should never be in $PATH
 pathremove . PATH

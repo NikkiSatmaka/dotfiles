@@ -171,22 +171,22 @@ ex=🎯:\
 "
 
 # Path settings
-pathappend "$HOME/.local/bin" PATH
-pathappend "$HOME/.local/bin/bspwm" PATH
-pathappend "$HOME/.local/bin/i3" PATH
-pathappend "$HOME/.local/bin/lf" PATH
-pathappend "$HOME/.local/bin/polybar" PATH
-pathappend "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin" PATH
-pathappend "${XDG_DATA_HOME:-$HOME/.local/share}/gem/bin" PATH
-pathappend "${XDG_DATA_HOME:-$HOME/.local/share}/go/bin" PATH
-pathappend "${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin" PATH
-pathappend "$HOME/.emacs.d/bin" PATH
-pathappend "$HOME/.local/src/doom-emacs/bin" PATH
-pathappend "/usr/local/go/bin" PATH
-pathappend "/usr/local/plan9/bin" PATH
-pathappend "$ANDROID_HOME/platform-tools" PATH
-pathappend "/usr/lib/w3m" PATH
-pathappend "/usr/local/sbin" PATH
+pathprepend "$HOME/.local/bin" PATH
+pathprepend "$HOME/.local/bin/bspwm" PATH
+pathprepend "$HOME/.local/bin/i3" PATH
+pathprepend "$HOME/.local/bin/lf" PATH
+pathprepend "$HOME/.local/bin/polybar" PATH
+pathprepend "$HOME/.emacs.d/bin" PATH
+pathprepend "$HOME/.local/src/doom-emacs/bin" PATH
+pathprepend "/usr/local/go/bin" PATH
+pathprepend "/usr/local/plan9/bin" PATH
+pathprepend "/usr/lib/w3m" PATH
+pathprepend "/usr/local/sbin" PATH
+pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin" PATH
+pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/gem/bin" PATH
+pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/go/bin" PATH
+pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin" PATH
+pathprepend "$ANDROID_HOME/platform-tools" PATH
 {{- if eq .chezmoi.os "darwin" }}
 pathprepend "/usr/local/opt/python/libexec/bin" PATH
 pathprepend "$HOME/Library/Python/3.7/bin" PATH

@@ -236,7 +236,7 @@ else
     if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
         . "$HOME/miniconda3/etc/profile.d/conda.sh"
     else
-        pathappend "$HOME/miniconda3/bin" PATH
+        pathprepend "$HOME/miniconda3/bin" PATH
     fi
 fi
 unset __conda_setup
