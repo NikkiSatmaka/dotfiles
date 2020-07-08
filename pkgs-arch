@@ -133,6 +133,7 @@ pulseaudio-bluetooth
 bluez
 bluez-libs
 bluez-utils
+blueman
 
 ## services
 cronie

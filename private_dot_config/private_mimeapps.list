@@ -28,3 +28,6 @@ image/x-tga=sxiv.desktop
 image/x-xpixmap=sxiv.desktop
 
 inode/directory=nnn.desktop
+
+application/x-bittorrent=org.qbittorrent.qBittorrent.desktop
+x-scheme-handler/magnet=org.qbittorrent.qBittorrent.desktop
