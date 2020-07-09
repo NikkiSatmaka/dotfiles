@@ -279,30 +279,10 @@ stylelint
 # type hint linting
 # mypy
 
-# python-arrow
-# python-beautifulsoup4
-# python-colorama
-# python-cryptography
-# python-html5lib
 # python-isort
-# python-lxml
-# python-markdown
-# python-matplotlib
 # python-nose
-# python-numpy
-# python-pandas
-# python-phonenumbers
-# python-progress
 # python-pysocks
 # python-pytest
-# python-requests
-# python-scipy
-# python-seaborn
-# python-selenium
-# python-soupsieve
-# python-statsmodels
-# python-stem
-# python-pygments
 # python-pynvim
 
 # * Search/Fuzzy finder
