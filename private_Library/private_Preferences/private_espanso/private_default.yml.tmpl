@@ -8,11 +8,11 @@
 # it gets replaced by the "replace" string.
 matches:
   # Simple text replacement
-  - trigger: ":espanso"
+  - trigger: ";espanso"
     replace: "Hi there!"
 
   # Simple email greetings
-  - trigger: ":br"
+  - trigger: ";br"
     replace: "Best Regards,\n{{ .name }}"
 
   # Dates
@@ -25,7 +25,7 @@ matches:
           format: "%m/%d/%Y"
 
   # Now
-  - trigger: ":now"
+  - trigger: ";now"
     replace: "{{ "{{" }}mytime{{ "}}" }}"
     vars:
       - name: mytime
@@ -52,7 +52,7 @@ matches:
           format: "%Y%m%d-%H%M%S"
 
   # Shell commands
-  - trigger: ":shell"
+  - trigger: ";shell"
     replace: "{{ "{{" }}output{{ "}}" }}"
     vars:
       - name: output
