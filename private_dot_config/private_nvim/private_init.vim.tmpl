@@ -54,7 +54,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'cakebaker/scss-syntax.vim'
 	Plug 'pangloss/vim-javascript'
 	Plug 'vim-syntastic/syntastic'
-	Plug 'davidhalter/jedi-vim'
+	" Plug 'davidhalter/jedi-vim'
 	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 " {{ "}}}" }}
@@ -81,19 +81,19 @@ let g:airline_theme = 'base16_tomorrow'
 "       \ 'colorscheme': 'nord',
 "       \ }
 
-let g:jedi#usages_command = "<A>z"
-let g:jedi#popup_on_dot = 1
-let g:jedi#popup_select_first = 0
-let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#auto_vim_configuration = 0
+" let g:jedi#usages_command = "<A>z"
+" let g:jedi#popup_on_dot = 1
+" let g:jedi#popup_select_first = 0
+" let g:jedi#use_tabs_not_buffers = 1
+" let g:jedi#auto_vim_configuration = 0
 
-augroup pyjedi
-    autocmd!
-    autocmd FileType python setlocal omnifunc=jedi#completions
-                                \ textwidth=79
-                                \ completeopt-=preview
-                                \ formatoptions+=c
-augroup END
+" augroup pyjedi
+"     autocmd!
+"     autocmd FileType python setlocal omnifunc=jedi#completions
+"                                 \ textwidth=79
+"                                 \ completeopt-=preview
+"                                 \ formatoptions+=c
+" augroup END
 
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
@@ -309,7 +309,7 @@ map <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
 " {{ "}}}}" }}
 
 " Auto -  file types {{ "{{{" }}
-autocmd FileType * set tabstop=4|set shiftwidth=4|set noexpandtab
+autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType,BufRead *.rpy,*.rpyc set tabstop=4|set shiftwidth=4|set expandtab
 autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
