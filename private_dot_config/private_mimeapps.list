@@ -31,3 +31,5 @@ inode/directory=nnn.desktop
 
 application/x-bittorrent=org.qbittorrent.qBittorrent.desktop
 x-scheme-handler/magnet=org.qbittorrent.qBittorrent.desktop
+
+application/json=emacs.desktop
