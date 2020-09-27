@@ -20,9 +20,9 @@ network-manager-applet
 # linux-lts-docs
 
 ## * Linux/CK
-linux-ck
-linux-ck-headers
-broadcom-wl-ck
+# linux-ck
+# linux-ck-headers
+# broadcom-wl-ck
 # virtualbox-ck-host-modules-ivybridge
 # removed from repo-ck
 # virtualbox-ck-host-modules-skylake
