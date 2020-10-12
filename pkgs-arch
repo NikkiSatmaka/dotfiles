@@ -19,6 +19,9 @@ network-manager-applet
 # linux-lts-headers
 # linux-lts-docs
 
+## Sudo
+opendoas
+
 ## * Linux/CK
 # linux-ck
 # linux-ck-headers
