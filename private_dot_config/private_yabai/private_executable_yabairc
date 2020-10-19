@@ -79,6 +79,7 @@ yabai -m rule --add label="Karabiner" app="^Karabiner-(Elements|EventViewer)$" m
 yabai -m rule --add label="Inkscape" app="^Inkscape$" manage=off
 yabai -m rule --add label="GIMP" app="^GIMP-2.10$" manage=off
 yabai -m rule --add label="IINA" app="^IINA$" manage=off
+yabai -m rule --add label="VLC" app="^VLC$" manage=off
 
 yabai -m rule --add label="Emacs" app="^Emacs$" manage=on
 
