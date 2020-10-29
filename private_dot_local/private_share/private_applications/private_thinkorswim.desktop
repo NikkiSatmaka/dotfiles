@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=thinkorswim
+Exec="/home/nikki/.local/bin/tos-java-8"
+Icon=/home/nikki/thinkorswim/.install4j/thinkorswim.png
