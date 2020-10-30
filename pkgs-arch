@@ -443,3 +443,8 @@ llvm
 # * Android
 # for adb
 # android-tools
+
+# * VirtualBox
+# virtualbox
+# virtualbox-guest-iso
+# virtualbox-host-modules-arch

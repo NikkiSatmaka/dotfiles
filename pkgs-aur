@@ -73,3 +73,6 @@ rtags
 
 ## cloud sync
 dropbox-cli
+
+## VirtualBox
+virtualbox-ext-oracle
