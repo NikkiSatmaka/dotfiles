@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+# This script is called on startup to remap keys.
+
+# Increase trackpoint speed via xinput
+xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" 1.0
+
+xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Profile Enabled" 1, 0
