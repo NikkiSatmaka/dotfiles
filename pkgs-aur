@@ -2,7 +2,7 @@
 # dashbinsh
 
 ## dependencies
-libxft-bgra
+libxft-bgra-git
 # lib32-libxft-bgra
 
 ## aur helper
