@@ -1,11 +1,30 @@
+## Kernels
+linux
+linux-headers
+linux-docs
+
+## LTS kernels
+# linux-lts
+# linux-lts-headers
+# linux-lts-docs
+
+## hardened kernels (security)
+# linux-hardened
+# linux-hardened-headers
+# linux-hardened-docs
+
+## zen kernels (daily)
+# linux-zen
+# linux-zen-headers
+# linux-zen-docs
+
 ## groups
 base-devel
 linux-firmware
-linux-headers
 pacman-contrib
 pacutils
 
-## * Internet
+## Internet
 # iwd
 # connman
 networkmanager
@@ -14,28 +33,55 @@ network-manager-applet
 ## network drivers
 # broadcom-wl
 
-## * Linux-LTS
-# linux-lts
-# linux-lts-headers
-# linux-lts-docs
+## Bash Tools
+bc
+rsync
+mlocate
+pkgstats
+arch-wiki-lite
+
+## (Un)Compress Tools
+zip
+unzip
+unrar
+p7zip
+lzop
+cpio
+# frontend for archive extraction, creation, etc.
+atool
+
+## AVAHI
+avahi
+nss-mdns
 
 ## Sudo
 opendoas
 
-## * Linux/CK
-# linux-ck
-# linux-ck-headers
-# broadcom-wl-ck
-# virtualbox-ck-host-modules-ivybridge
-# removed from repo-ck
-# virtualbox-ck-host-modules-skylake
+## Audio (ALSA & PULSEAUDIO)
+pamixer
+pulsemixer
+pulseaudio-alsa
+pulseaudio-bluetooth
+alsa-utils
 
-## * Filesystem support
+## bluetooth
+bluez
+bluez-libs
+bluez-utils
+blueman
+
+## Filesystem support
+ntfs-3g
 dosfstools
 exfat-utils
-ntfs-3g
+f2fs-tools
+# autofs
 
-# scim -> ibus -> fcitx
+## SSH
+openssh
+nfs-utils
+
+## Input method
 fcitx-im
 fcitx-mozc
 # latex input
@@ -96,9 +142,6 @@ pass
 ## * VCS
 git
 
-## * SSH
-openssh
-
 # * X Related
 xdotool
 xorg
@@ -119,31 +162,18 @@ xorg-xdpyinfo
 light
 arandr
 
-# clipboard
-xsel
-xclip
-
 ## input drivers
 xf86-input-libinput
 
-## audio drivers
-pamixer
-pulsemixer
-pulseaudio-alsa
-pulseaudio-bluetooth
-
-## bluetooth
-bluez
-bluez-libs
-bluez-utils
-blueman
+# clipboard
+xsel
+xclip
 
 ## services
 cronie
 # numlockx
 # haveged
 # net-snmp
-# samba
 
 ## shell
 bash
@@ -153,6 +183,7 @@ grml-zsh-config
 shellcheck
 jq
 zsh
+fish
 
 ## window manager
 bspwm
@@ -188,7 +219,6 @@ arduino-docs
 arch-wiki-docs
 rust-docs
 ruby-docs
-linux-docs
 
 ## dev
 # python
@@ -201,7 +231,6 @@ linux-docs
 ## utility
 broot
 lesspipe
-mlocate
 ncdu
 redshift
 tree
@@ -294,7 +323,6 @@ ripgrep
 
 ## main pkgs
 bat
-bc
 calcurse
 diff-so-fancy
 dbus
@@ -362,14 +390,6 @@ arc-icon-theme
 # acpi_call-dkms
 # powertop
 
-# * Archive related
-unrar
-unzip
-zip
-p7zip
-# frontend for archive extraction, creation, etc.
-atool
-
 # * Statistics
 r
 # require for R install package popup
@@ -411,7 +431,6 @@ zenity
 
 ## file sync
 rclone
-rsync
 
 # * Printing
 # https://wiki.archlinux.org/index.php/CUPS
@@ -423,6 +442,10 @@ splix
 # samsung-unified-driver aur
 # hplip
 # gutenprint
+
+## SAMBA
+# samba
+# smbnetfs
 
 # ** Web - JavaScript, TypeScript, etc.
 nodejs
