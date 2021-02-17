@@ -16,7 +16,7 @@ ssource /usr/share/doc/fzf/examples/completion.bash
 
 . ~/.config/shell/interactive
 
-HISTCONTROL=ignoredups
+HISTCONTROL=ignoreboth
 shopt -s histappend
 HISTSIZE=10000
 HISTFILESIZE=10000
