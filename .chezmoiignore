@@ -40,6 +40,7 @@ tweaks
 .config/user-dirs.locale
 .local/bin/dmenu*
 .local/share
+.imwheelrc
 .xinitrc
 .Xmodmap
 .xprofile
@@ -79,6 +80,7 @@ tweaks
 .config/mimeapps.list
 .config/user-dirs.dirs
 .config/user-dirs.locale
+.imwheelrc
 .local
 .xinitrc
 .Xmodmap
@@ -118,6 +120,7 @@ Documents
 .bash_logout
 .bash_profile
 .bashrc
+.imwheelrc
 .profile
 .xinitrc
 .Xmodmap
