@@ -115,7 +115,22 @@ Documents
 
 # Ignore only on Windows.
 {{- if eq .chezmoi.os "windows" }}
-.config
+.config/bash
+.config/calcurse
+.config/fontconfig
+.config/mpd
+.config/mpv
+.config/ncmpcpp
+.config/npm
+.config/nvim
+.config/readline
+.config/redshift
+.config/rtorrent
+.config/sh
+.config/shell
+.config/sxiv
+.config/zathura
+.config/zsh
 .local
 .bash_logout
 .bash_profile
