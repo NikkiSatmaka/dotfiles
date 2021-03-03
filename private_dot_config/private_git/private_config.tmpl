@@ -82,7 +82,9 @@
 	cookieFile = ~/.config/git/cookies
 
 [core]
+	{{- if ne .chezmoi.os "windows" }}
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	{{- end }}
 	editor = nvim
 	# Use custom `.gitignore` and `.gitattributes`
 	attributesfile = ~/.config/git/attributes
