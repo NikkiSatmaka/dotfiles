@@ -178,11 +178,27 @@
     // To learn more about actions and keybindings, visit https://aka.ms/terminal-keybindings
     "actions":
     [
+        // Clipboard Integration
         // Copy and paste are bound to Ctrl+Shift+C and Ctrl+Shift+V in your defaults.json.
-        // These two lines additionally bind them to Ctrl+C and Ctrl+V.
+        // These two lines additionally bind them to Alt+C and Alt+V.
         // To learn more about selection, visit https://aka.ms/terminal-selection
-        { "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
-        { "command": "paste", "keys": "ctrl+v" },
+        { "command": { "action": "copy", "singleLine": false }, "keys": "alt+c" },
+        { "command": "paste", "keys": "alt+v" },
+        
+        // Pane Management
+        // { "command": "closePane", "keys": "ctrl+shift+w" },
+        // { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "alt+shift+-" },
+        // { "command": { "action": "splitPane", "split": "vertical" }, "keys": "alt+shift+plus" },
+        // { "command": { "action": "resizePane", "direction": "down" }, "keys": "alt+shift+down" },
+        // { "command": { "action": "resizePane", "direction": "left" }, "keys": "alt+shift+left" },
+        // { "command": { "action": "resizePane", "direction": "right" }, "keys": "alt+shift+right" },
+        // { "command": { "action": "resizePane", "direction": "up" }, "keys": "alt+shift+up" },
+        { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+j" },
+        { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+h" },
+        { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+l" },
+        { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+k" },
+        // { "command": { "action": "moveFocus", "direction": "previous" }, "keys": "ctrl+alt+left" },
+        // { "command": "togglePaneZoom" },
 
         // Press Ctrl+Shift+F to open the search box
         { "command": "find", "keys": "ctrl+shift+f" },
