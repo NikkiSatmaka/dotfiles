@@ -3,14 +3,12 @@
     "workbench.iconTheme": "vscode-icons",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "python.languageServer": "Pylance",
     "terminal.integrated.inheritEnv": false,
     "editor.fontFamily": "'FiraCode NF', 'Cascadia Code PL', Consolas, 'Courier New', monospace",
-    "editor.fontSize": 13
+    "editor.fontSize": 13,
+    "workbench.colorTheme": "One Dark Pro"
 }
