@@ -10,5 +10,6 @@
     "terminal.integrated.inheritEnv": false,
     "editor.fontFamily": "'FiraCode NF', 'Cascadia Code PL', Consolas, 'Courier New', monospace",
     "editor.fontSize": 13,
-    "workbench.colorTheme": "One Dark Pro"
+    "workbench.colorTheme": "One Dark Pro",
+    "vim.useSystemClipboard": true
 }

@@ -20,6 +20,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'plasticboy/vim-markdown'
 "{{ "{{" }} Colors {{ "}}" }}
 	Plug 'morhetz/gruvbox'
+	Plug 'joshdick/onedark.vim'
 	Plug 'chriskempson/base16-vim'
 	Plug 'arcticicestudio/nord-vim'
 "{{ "{{" }} Stylize {{ "}}" }}
@@ -70,15 +71,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#wordcount#enabled = 1
-let g:airline_theme = 'base16_tomorrow'
-" let g:airline_theme = 'nord'
+let g:airline_theme = 'onedark'
 
 " let g:lightline = {
-"       \ 'colorscheme': 'Tomorrow_Night',
-"       \ }
-
-" let g:lightline = {
-"       \ 'colorscheme': 'nord',
+"       \ 'colorscheme': 'one',
 "       \ }
 
 " let g:jedi#usages_command = "<A>z"
@@ -133,8 +129,7 @@ set splitbelow
 set splitright
 set termguicolors
 set t_Co=256
-colorscheme base16-tomorrow-night
-" colorscheme nord
+colorscheme onedark
 highlight Normal guibg=NONE ctermbg=NONE
 
 " Syntastic recommends
