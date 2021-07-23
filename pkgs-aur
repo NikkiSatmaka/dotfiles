@@ -50,10 +50,6 @@ lf
 simple-mtpfs
 task-spooler
 
-## prompt
-# starship
-starship-bin
-
 ## window manager
 betterlockscreen
 polybar

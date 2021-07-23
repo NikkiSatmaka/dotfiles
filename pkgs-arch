@@ -200,6 +200,7 @@ rofi-pass
 ## terminal
 alacritty
 tmux
+starship
 
 ## file manager
 # fff
