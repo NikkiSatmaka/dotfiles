@@ -1,5 +1,5 @@
 {
-  "settingsVersion": "1.66",
+  "settingsVersion": "1.67",
   "exclusionRules": [
     {
       "pattern": "https?://mail.google.com/*",
@@ -15,6 +15,22 @@
     },
     {
       "pattern": "https?://www.tradingview.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://localhost:*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://172.*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://scratch.mit.edu/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://colab.research.google.com/*",
       "passKeys": ""
     }
   ],
