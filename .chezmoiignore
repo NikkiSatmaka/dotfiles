@@ -117,6 +117,7 @@ Documents
 {{- if eq .chezmoi.os "windows" }}
 .config/bash
 .config/calcurse
+.config/Code
 .config/fontconfig
 .config/mpd
 .config/mpv
