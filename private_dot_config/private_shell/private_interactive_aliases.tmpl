@@ -55,11 +55,11 @@ alias mm='cd $HOME/Music && ls'
 alias pp='cd $HOME/Pictures && ls'
 alias vv='cd $HOME/Movies && ls'
 {{- else }}
-alias dl='cd ${XDG_DOWNLOAD_DIR:-$HOME/downloads} && ls'
-alias d='cd ${XDG_DOCUMENTS_DIR:-$HOME/documents} && ls'
-alias mm='cd ${XDG_MUSIC_DIR:-$HOME/music} && ls'
-alias pp='cd ${XDG_PICTURES_DIR:-$HOME/pictures} && ls'
-alias vv='cd ${XDG_VIDEOS_DIR:-$HOME/videos} && ls'
+alias dl='cd ${XDG_DOWNLOAD_DIR:-$HOME/Downloads} && ls'
+alias d='cd ${XDG_DOCUMENTS_DIR:-$HOME/Documents} && ls'
+alias mm='cd ${XDG_MUSIC_DIR:-$HOME/Music} && ls'
+alias pp='cd ${XDG_PICTURES_DIR:-$HOME/Pictures} && ls'
+alias vv='cd ${XDG_VIDEOS_DIR:-$HOME/Videos} && ls'
 {{- end }}
 
 alias b='cd $HOME/.local/bin && ls -a'

@@ -7,7 +7,7 @@
 # If wal is installed, also generates a colorscheme.
 
 # Location of link to wallpaper link.
-readonly WALL_DIR="$HOME/pictures/wallpapers"
+readonly WALL_DIR="$HOME/Pictures/wallpapers"
 # readonly WALL_LOC="$WALL_DIR/wall"
 readonly WALL_LOC="${XDG_CONFIG_HOME:-$HOME/.config}/wall"
 

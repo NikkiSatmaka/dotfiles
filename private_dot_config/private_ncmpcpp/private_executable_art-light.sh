@@ -2,7 +2,7 @@
 
 ## Modified By Aditya Shakya.
 
-MUSIC_DIR=~/music
+MUSIC_DIR=~/Music
 
 COVER=/tmp/cover.jpg
 
