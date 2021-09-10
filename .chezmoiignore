@@ -58,6 +58,7 @@ tweaks
 .config/alacritty
 .config/bspwm
 .config/calcurse
+.config/Code
 .config/dunst
 .config/espanso
 .config/fontconfig
