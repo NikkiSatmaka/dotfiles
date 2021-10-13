@@ -215,12 +215,8 @@ alias pman="sudo pacman"
 alias doas='doas --'
 alias jp="joplin"
 
-{{- if eq .chezmoi.os "darwin" }}
 alias python='python3'
-alias pip='python -m pip'
-{{- else }}
-alias pip='python -m pip'
-{{- end }}
+alias pip='python3 -m pip'
 
 # These common commands are just too long! Abbreviate them.
 alias ka="killall"
