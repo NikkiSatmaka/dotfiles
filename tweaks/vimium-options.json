@@ -32,6 +32,14 @@
     {
       "pattern": "https?://colab.research.google.com/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.netflix.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://clik.tradingacademy.com/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": false,
