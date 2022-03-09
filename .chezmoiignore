@@ -54,7 +54,7 @@ tweaks
 99-services
 {{- end }}
 
-{{- if eq .chezmoi.kernel.osrelease "5.10.16.3-microsoft-standard-WSL2" }}
+{{- if eq .chezmoi.kernel.osrelease "5.10.60.1-microsoft-standard-WSL2" }}
 .config/alacritty
 .config/bspwm
 .config/calcurse

@@ -40,6 +40,10 @@
     {
       "pattern": "https?://clik.tradingacademy.com/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://calendar.google.com/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": false,
