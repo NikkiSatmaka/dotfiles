@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Fira Code', 'Cascadia Code PL', 'Droid Sans Mono', 'Droid Sans Fallback', 'Consolas', 'Courier New', 'monospace'",
     "editor.fontSize": 13,
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "material-icon-theme",
@@ -7,6 +7,8 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    }
+        "*.ipynb": "jupyter-notebook"
+    },
+    "python.languageServer": "Pylance",
+    "terminal.integrated.inheritEnv": false
 }
