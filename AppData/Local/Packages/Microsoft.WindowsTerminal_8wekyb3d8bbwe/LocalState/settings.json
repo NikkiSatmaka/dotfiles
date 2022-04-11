@@ -6,6 +6,7 @@
 // To view the default settings, hold "alt" while clicking on the "Settings" button.
 // For documentation on these settings, see: https://aka.ms/terminal-documentation
 {
+    "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
 
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
