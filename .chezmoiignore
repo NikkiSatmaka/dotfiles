@@ -112,6 +112,7 @@ Library
 {{- if ne .chezmoi.os "windows" }}
 AppData
 Documents
+.wslconfig
 {{- end }}
 
 # Ignore only on Windows.
