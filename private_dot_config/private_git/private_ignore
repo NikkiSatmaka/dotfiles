@@ -40,3 +40,8 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 Brewfile.lock.json
+
+# Environment files #
+#####################
+.env/
+env/
