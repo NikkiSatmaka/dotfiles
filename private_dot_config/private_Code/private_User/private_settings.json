@@ -58,6 +58,9 @@
     "vim.leader": "<space>",
     "vim.handleKeys": {
         "<C-a>": true,
-        "<C-f>": false
-    }
+        "<C-b>": false,
+        "<C-f>": false,
+        "<C-k>": false
+    },
+    "editor.inlineSuggest.enabled": true
 }
