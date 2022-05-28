@@ -3,6 +3,7 @@
     "editor.fontSize": 13,
     "editor.fontLigatures": false,
     "editor.lineNumbers": "relative",
+    "editor.inlineSuggest.enabled": true,
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "material-icon-theme",
     "notebook.lineNumbers": "on",
