@@ -1,23 +1,31 @@
 {
-    "editor.fontFamily": "'FiraCode Nerd Font Mono', 'FiraCode NF', 'Droid Sans Mono', 'Droid Sans Fallback', 'Consolas', 'Courier New', 'monospace'",
+    "editor.fontFamily": "'FiraCode Nerd Font Mono', 'FiraCode NF', Consolas, 'Courier New', 'monospace'",
     "editor.fontSize": 13,
     "editor.fontLigatures": false,
+    "editor.lineNumbers": "relative",
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "material-icon-theme",
-    "editor.suggestSelection": "first",
+    "notebook.lineNumbers": "on",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
     "python.languageServer": "Pylance",
     "terminal.integrated.inheritEnv": false,
+    "vim.leader": "<space>",
     "vim.easymotion": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
-    "vim.insertModeKeyBindings": [
-    ],
+    "vim.smartRelativeLine": true,
+    "vim.sneak": true,
+    "vim.visualstar": true,
+    "vim.handleKeys": {
+        "<C-b>": false,
+        "<C-f>": false,
+        "<C-k>": false
+    },
     "vim.normalModeKeyBindings": [
         {
             "before": ["Y"],
@@ -55,12 +63,18 @@
             "silent": true
         }
     ],
-    "vim.leader": "<space>",
-    "vim.handleKeys": {
-        "<C-a>": true,
-        "<C-b>": false,
-        "<C-f>": false,
-        "<C-k>": false
-    },
-    "editor.inlineSuggest.enabled": true
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+          "before": [">"],
+          "commands": ["editor.action.indentLines"]
+        },
+        {
+          "before": ["<"],
+          "commands": ["editor.action.outdentLines"]
+        },
+        {
+          "before": ["p"],
+          "after": ["p", "g", "v", "y"]
+        }
+      ]
 }
