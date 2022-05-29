@@ -21,6 +21,8 @@
     "vim.hlsearch": true,
     "vim.smartRelativeLine": true,
     "vim.sneak": true,
+    "vim.sneakReplacesF": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
     "vim.visualstar": true,
     "vim.handleKeys": {
         "<C-b>": false,
