@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Description: Start an interactive bash shell.
+
+export nnn="$1"
+
+bash -i

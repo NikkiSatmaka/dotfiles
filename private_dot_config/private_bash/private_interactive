@@ -121,6 +121,17 @@ if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook bash)"
 fi
 
+# Sync subshell $PWD for nnn
+# configure nnn to cd to the $PWD of the exited bash subshell
+nnn_cd()                                                                                                   
+{
+    if ! [ -z "$NNN_PIPE" ]; then
+        printf "%s\0" "0c${PWD}" > "${NNN_PIPE}" !&
+    fi  
+}
+
+trap nnn_cd EXIT
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
