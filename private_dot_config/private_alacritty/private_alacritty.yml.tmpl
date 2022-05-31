@@ -67,7 +67,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.92
+  opacity: 0.9
 
   # Startup Mode (changes require restart)
   #
@@ -118,11 +118,11 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     {{- if eq .chezmoi.os "windows" }}
-    family: Fira Code
+    family: FiraCode NF
     {{- else if eq .chezmoi.os "linux" }}
     family: FiraCode Nerd Font Mono
     {{- else }}
-    family: Fira Code
+    family: Fira Code Nerd Font Mono
     {{- end }}
 
     # The `style` can be specified to pick a specific face.
@@ -135,11 +135,11 @@ font:
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     {{- if eq .chezmoi.os "windows" }}
-    family: Fira Code
+    family: FiraCode NF
     {{- else if eq .chezmoi.os "linux" }}
     family: FiraCode Nerd Font Mono
     {{- else }}
-    family: Fira Code
+    family: Fira Code Nerd Font Mono
     {{- end }}
 
     # The `style` can be specified to pick a specific face.
@@ -152,11 +152,11 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     {{- if eq .chezmoi.os "windows" }}
-    family: Fira Code
+    family: FiraCode NF
     {{- else if eq .chezmoi.os "linux" }}
     family: FiraCode Nerd Font Mono
     {{- else }}
-    family: Fira Code
+    family: Fira Code Nerd Font Mono
     {{- end }}
 
     # The `style` can be specified to pick a specific face.
@@ -169,11 +169,11 @@ font:
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
     {{- if eq .chezmoi.os "windows" }}
-    family: Fira Code
+    family: FiraCode NF
     {{- else if eq .chezmoi.os "linux" }}
     family: FiraCode Nerd Font Mono
     {{- else }}
-    family: Fira Code
+    family: Fira Code Nerd Font Mono
     {{- end }}
 
     # The `style` can be specified to pick a specific face.
@@ -864,14 +864,8 @@ key_bindings:
   - { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
   - { key: Minus,          mods: Control,                         action: DecreaseFontSize }
   - { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }
-  - { key: Home,           mods: Alt,                             action: ResetFontSize    }
-  - { key: K,              mods: Alt|Shift,                       action: IncreaseFontSize }
-  - { key: J,              mods: Alt|Shift,                       action: DecreaseFontSize }
   - { key: U,              mods: Alt,                             action: ScrollPageUp     }
   - { key: D,              mods: Alt,                             action: ScrollPageDown   }
-  - { key: K,              mods: Alt,                             action: ScrollLineUp     }
-  - { key: J,              mods: Alt,                             action: ScrollLineDown   }
-  - { key: Slash,          mods: Control,                         chars: "gc"              }
 
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
@@ -897,12 +891,8 @@ key_bindings:
   - { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
   - { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   - { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
-  - { key: K,              mods: Command|Shift,              action: IncreaseFontSize }
-  - { key: J,              mods: Command|Shift,              action: DecreaseFontSize }
-  #- { key: U,              mods: Command,                    action: ScrollPageUp     }
-  #- { key: D,              mods: Command,                    action: ScrollPageDown   }
-  #- { key: K,              mods: Command,                    action: ScrollLineUp     }
-  #- { key: J,              mods: Command,                    action: ScrollLineDown   }
+  - { key: U,              mods: Alt,                        action: ScrollPageUp     }
+  - { key: D,              mods: Alt,                        action: ScrollPageDown   }
 
 #debug:
   # Display the time it takes to redraw each frame.
@@ -924,3 +914,6 @@ key_bindings:
 
   # Print all received window events.
   #print_events: false
+
+  # Highlight window damage information.
+  #highlight_damage: false
