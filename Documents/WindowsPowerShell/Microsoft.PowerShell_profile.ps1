@@ -15,7 +15,7 @@ if (Get-Command starship -errorAction SilentlyContinue) {
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
 if (Get-Command conda -errorAction SilentlyContinue) {
-  (& "$HOME\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+  (& "$HOME\mambaforge\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
 }
 #endregion
 
