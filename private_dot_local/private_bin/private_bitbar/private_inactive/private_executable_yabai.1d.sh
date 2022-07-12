@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 # <bitbar.title>Yabai-Spaces</bitbar.title>
 # <bitbar.version>v1.0</bitbar.version>
