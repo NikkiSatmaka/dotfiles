@@ -31,6 +31,7 @@ tweaks
 .config/espanso
 .config/gtk-2.0
 .config/gtk-3.0
+.config/nnn
 .config/picom
 .config/polybar
 .config/rofi
@@ -48,8 +49,9 @@ tweaks
 01-dash-shell
 10-install-packages
 50-change-shell
-80-rofi-dmenu
-85-install-doom-emacs
+70-rofi-dmenu
+80-install-doom-emacs
+81-install-mambaforge
 90-set-wallpaper
 99-services
 {{- end }}
