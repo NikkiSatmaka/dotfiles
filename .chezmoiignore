@@ -23,6 +23,10 @@ tweaks
 .imwheelrc
 {{- end }}
 
+{{- if ne .chezmoi.hostname "fenrir" }}
+*fenrir*
+{{- end }}
+
 # Ignore non-Linux files.
 {{- if ne .chezmoi.os "linux" }}
 .config/bspwm
