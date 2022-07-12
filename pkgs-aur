@@ -1,48 +1,52 @@
 ## shell
 # dashbinsh
 
-## dependencies
-libxft-bgra-git
-# lib32-libxft-bgra
+# ## dependencies
+# libxft-bgra-git
 
-## aur helper
-yay
+# ## aur helper
+# paru
+
+## network
+networkmanager-dmenu-git
 
 ## fonts
-siji-git
-ttf-all-the-icons
-ttf-font-logos
-ttf-material-design-icons
-ttf-material-design-icons-git
-ttf-material-design-icons-webfont
-# ttf-ms-win10
-ttf-symbola-infinality
-ttf-typicons
-ttf-weather-icons
-ttf-iosevka
-ttf-ricty
-ttf-eurostile-complete
+ttf-ms-win11-auto
+apple-fonts
+all-repository-fonts
+# siji-ng
+# ttf-all-the-icons
+# ttf-font-logos
+# ttf-material-design-icons-git
+# ttf-ms-win11
+# ttf-symbola-infinality
+# ttf-typicons
+# ttf-weather-icons
+# ttf-iosevka
+# ttf-ricty
+# ttf-eurostile-complete
 
 ## nerd fonts
-nerd-fonts-hack
-nerd-fonts-iosevka
-nerd-fonts-jetbrains-mono
-nerd-fonts-meslo
-nerd-fonts-source-code-pro
 nerd-fonts-fira-code
+nerd-fonts-hack
+nerd-fonts-jetbrains-mono
+# nerd-fonts-iosevka
+# nerd-fonts-meslo
+# nerd-fonts-source-code-pro
 
-## Themes
-numix-icon-theme-git
-numix-gtk-theme
-pop-gtk-theme-bin
-pop-icon-theme-bin
+# ## Themes
+# numix-icon-theme-git
+# numix-gtk-theme
+# pop-gtk-theme-bin
+# pop-icon-theme-bin
 
 ## web browser
 # brave-bin
 google-chrome
 
 ## utilities
-dragon-drag-and-drop
+autojump
+dragon-drop
 # espanso
 espanso-bin
 lf
@@ -50,25 +54,25 @@ lf
 simple-mtpfs
 task-spooler
 
-## window manager
-betterlockscreen
-polybar
+# ## window manager
+# betterlockscreen
+# polybar
 
 ## code editor
 visual-studio-code-bin
 
-## cloud storage sync
-# google-drive-ocamlfuse
+# cloud storage sync
+google-drive-ocamlfuse
 
 ## utility
 direnv
 
-## emacs deps
-pnpm
-rtags
+# ## emacs deps
+# pnpm
+# rtags
 
-## cloud sync
-dropbox-cli
+# ## cloud sync
+# dropbox-cli
 
-## VirtualBox
-virtualbox-ext-oracle
+# ## VirtualBox
+# virtualbox-ext-oracle
