@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Usage:
 # tabc.sh <tabbedid-id> <command>

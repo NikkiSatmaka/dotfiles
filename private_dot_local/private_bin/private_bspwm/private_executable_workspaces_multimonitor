@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #all_monitors=$(xrandr -q | awk '/ connected/ {print $1}')
 #default_screen=$(xrandr | awk '/ connected/ {print $1;exit;}')
 #extra_monitors=$(xrandr -q | awk '/ connected/ {print $1}' | grep -v $default_screen)

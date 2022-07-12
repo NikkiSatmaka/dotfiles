@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Launches an instance of polybar
 
 # Use predefined launch script from premade themes

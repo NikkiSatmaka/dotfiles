@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 screenWidth=5760
 screenHeight=1080

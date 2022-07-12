@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #
 #   checkupdates: Safely print a list of pending updates.
 #
