@@ -4,10 +4,11 @@
 # get window title
 # remove punctuation (e.g. "/") and replace whitespace with underscores
 title=$(xtitle | \
-	awk -F "-" '{gsub(/[[:punct:]]/, "") gsub(/\s/, "_"); print $1}')
+  awk -F "-" '{gsub(/[[:punct:]]/, "") gsub(/\s/, "_"); print $1}')
+date_month=$(date '+%Y-%m')
 date=$(date '+%F_%H%M%S')
-outdir="${XDG_PICTURES_DIR:-$HOME/Pictures}/screenshots"
-outfile="$outdir/${date}_-_${title}.png"
+outdir="${XDG_PICTURES_DIR:-$HOME/Pictures}/screenshots/$date_month"
+outfile="$outdir/${date}_${title}.png"
 
 if [ ! -d "$outdir" ]; then
     mkdir -p "$outdir"
@@ -22,30 +23,34 @@ imgur () {
 }
 
 case "$1" in
-    "full")
-        maim -u -m 9 "$outfile" && xclip -se c -t image/png -i "$outfile" && imgurbash2 "$outfile" || exit
-        ;;
+  "full")
+    maim -u -m 9 "$outfile" && xclip -se c -t image/png -i "$outfile" && imgurbash2 "$outfile" || exit
+    ;;
 
-    "select")
-        if pidof picom > /dev/null 2>&1; then
-            maim -u -m 9 -c 1,0,1.5,0.2 -l -s "$outfile" && xclip -se c -t image/png -i "$outfile" && imgurbash2 "$outfile" || exit
-        else
-            maim -u -m 9 -c 1,0,1.5,0.2 -s "$outfile" && xclip -se c -t image/png -i "$outfile" && imgurbash2 "$outfile" || exit
-        fi
-        ;;
+  "select")
+    if pidof picom > /dev/null 2>&1; then
+        maim -u -m 9 -c 1,0,1.5,0.2 -l -s "$outfile" && xclip -se c -t image/png -i "$outfile" && imgurbash2 "$outfile" || exit
+    else
+        maim -u -m 9 -c 1,0,1.5,0.2 -s "$outfile" && xclip -se c -t image/png -i "$outfile" && imgurbash2 "$outfile" || exit
+    fi
+    ;;
 
-    "fulltime")
-        menu && maim -m 9 "$outfile" || exit
-        menu && maim -m 9 "$outfile" || exit
-        ;;
+  "currentwindow")
+    maim -u -m 9 -i "$(xdotool getactivewindow)" "$outfile" && xclip -se c -t image/png -i "$outfile" && imgurbash2 "$outfile" || exit
+    ;;
 
-    "selecttime")
-        if pidof picom > /dev/null 2>&1; then
-            menu && maim -m 9 -c 1,0,1.5,0.2 -l -s "$outfile" || exit
-        else
-            menu && maim -m 9 -c 1,0,1.5,0.2 -s "$outfile" || exit
-        fi
-        ;;
+  "fulltime")
+    menu && maim -m 9 "$outfile" || exit
+    menu && maim -m 9 "$outfile" || exit
+    ;;
+
+  "selecttime")
+    if pidof picom > /dev/null 2>&1; then
+        menu && maim -m 9 -c 1,0,1.5,0.2 -l -s "$outfile" || exit
+    else
+        menu && maim -m 9 -c 1,0,1.5,0.2 -s "$outfile" || exit
+    fi
+    ;;
 
 esac
 

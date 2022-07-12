@@ -18,20 +18,20 @@ super + shift + d
 
 # Screenshots
 Print
-	screenshot full
-
-shift + Print
 	screenshot select
 
+shift + Print
+	screenshot currentwindow
+
 ctrl + Print
-	screenshot fulltime
+	screenshot full
 
 super + Print
-	screenshot selecttime
+	screenshot fulltime
 
 # Screenshots
 super + shift + s
-	maimpick
+	screenshot
 
 #####################
 # System Control
