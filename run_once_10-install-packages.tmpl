@@ -7,7 +7,7 @@
 ### OPTIONS AND VARIABLES ###
 
 readonly AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
-readonly AUR_HELPER='yay'
+readonly AUR_HELPER='paru'
 readonly SRC_DIR="$HOME/.local/src"
 readonly PKGS_ARCH="$HOME/.local/share/chezmoi/pkgs-arch"
 readonly PKGS_BREW_TAP="$HOME/.local/share/chezmoi/pkgs-brew-tap"
@@ -73,7 +73,7 @@ echoerr() {
 
 printferr() { printf "$@" >&2; }
 
-if command -v apt >/dev/null 2>&1; then
+if command -v apt-get >/dev/null 2>&1; then
 	install_pkg() {
 		sudo apt-get install -y "$1"
 	}
@@ -131,7 +131,7 @@ installation_loop() {
 	while read -r package; do
 		case "$1" in
 			"aur") aur_install "$package" ;;
-			"apt"|"pacman") main_install "$package" ;;
+			"apt-get"|"pacman") main_install "$package" ;;
 			"pip") pip_install "$package" ;;
 		esac
 	done < /tmp/pkgs
@@ -155,26 +155,20 @@ install_pkg git
 install_pkg ntp
 
 if [ "$distro" = arch ]; then
-
-	# Make pacman and yay colorful and adds eye candy on the progress bar
+	# Make pacman colorful and adds eye candy on the progress bar
 	if grep "^Color" /etc/pacman.conf >/dev/null; then
 		:
 	else
 		sudo sed -i "s/^#Color$/Color/" /etc/pacman.conf
 	fi
-
 	if grep "ILoveCandy" /etc/pacman.conf >/dev/null; then
 		:
 	else
 		sudo sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
 	fi
-
 	manual_install "$AUR_HELPER"
-
 	sudo pacman -Syu
-
 	"$AUR_HELPER" -S libxft-bgra-git
-
 fi
 
 installation_loop aur "$PKGS_AUR"
