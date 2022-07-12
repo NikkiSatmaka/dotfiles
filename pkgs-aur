@@ -55,8 +55,8 @@ simple-mtpfs
 task-spooler
 timeshift
 
-# ## window manager
-# betterlockscreen
+## window manager
+betterlockscreen
 # polybar
 
 ## code editor
