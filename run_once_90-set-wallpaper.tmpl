@@ -10,28 +10,28 @@ readonly WALL_DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}/wallpapers"
 readonly WALL_LOC="${XDG_CONFIG_HOME:-$HOME/.config}/wall"
 
 dl_wall() {
-	[ ! -d "$2" ] && mkdir -p "$2" && echo "create folder $2"
-	wall="$2/$(basename "$1")"
-	[ ! -f "$wall" ] && wget -O "$wall" "$1" && echo "wallpaper downloaded"
+  [ ! -d "$2" ] && mkdir -p "$2" && echo "create folder $2"
+  wall="$2/$(basename "$1")"
+  [ ! -f "$wall" ] && wget -O "$wall" "$1" && echo "wallpaper downloaded"
 }
 
 
 set_wall() {
-	# [ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$2"
-	[ -f "$1" ] && cp -f "$(readlink -f "$1")" "$2"
-	# [ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" \
-	[ -d "$1" ] && cp -f "$(find "$(readlink -f "$1")" \
-		-iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$2"
-	if pidof Xorg >/dev/null 2>&1; then
-		echo "Changing wallpaper"
-		feh --bg-fill --no-fehbg "$2"
-	else
-		echo "Not in Xorg"
-	fi
+  # [ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$2"
+  [ -f "$1" ] && cp -f "$(readlink -f "$1")" "$2"
+  # [ -d "$1" ] && ln -sf "$(find "$(readlink -f "$1")" \
+  [ -d "$1" ] && cp -f "$(find "$(readlink -f "$1")" \
+    -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$2"
+  if pidof Xorg >/dev/null 2>&1; then
+    echo "Changing wallpaper"
+    feh --bg-fill --no-fehbg "$2"
+  else
+    echo "Not in Xorg"
+  fi
 }
 
 err() {
-	echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
+  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
 }
 
 

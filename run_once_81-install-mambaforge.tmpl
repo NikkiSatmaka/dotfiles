@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# install mambaforge (https://github.com/mamba-org/mamba)
+#==============================================================================
+
+readonly MAMBA_DIR="$HOME/mambaforge"
+readonly MAMBA_INSTALLER="Mambaforge-$(uname)-$(uname -m).sh"
+readonly MAMBA_URL="https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+
+install_mambaforge() {
+  if [ -d "$2" ]; then
+    echo "$2 already existed"
+    echo "no changes were performed"
+  else
+    curl -L "$1" -o "$3" || exit
+    bash "$3" -b || exit
+  fi
+}
+
+install_mambaforge "$MAMBA_URL" "$MAMBA_DIR" "$MAMBA_INSTALLER"

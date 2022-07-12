@@ -7,10 +7,10 @@
 # change shell
 # test
 if [ "$(basename "$SHELL")" = "zsh" ]; then
-    echo "default shell is already zsh"
-    echo "no changes were performed"
+  echo "default shell is already zsh"
+  echo "no changes were performed"
 else
-    chsh -s /bin/zsh
+  chsh -s /bin/zsh
 fi
 # home
 cd "$HOME" || exit
