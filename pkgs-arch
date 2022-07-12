@@ -35,12 +35,13 @@ network-manager-applet
 
 ## Bash Tools
 bc
-rsync
+# rsync
 mlocate
-pkgstats
-arch-wiki-lite
+fd
+# pkgstats
+# arch-wiki-lite
 
-## (Un)Compress Tools
+## Compression Tools
 zip
 unzip
 unrar
@@ -50,59 +51,60 @@ cpio
 # frontend for archive extraction, creation, etc.
 atool
 
-## AVAHI
-avahi
-nss-mdns
+# ## AVAHI
+# avahi
+# nss-mdns
 
-## Sudo
-opendoas
+# ## Sudo
+# opendoas
 
 ## Audio (ALSA & PULSEAUDIO)
 pamixer
+pipewire
+pipewire-pulse
 pulsemixer
-pulseaudio-alsa
-pulseaudio-bluetooth
-alsa-utils
+# alsa-utils
 
 ## bluetooth
-bluez
-bluez-libs
-bluez-utils
 blueman
 
 ## Filesystem support
-ntfs-3g
+# ntfs-3g
 dosfstools
+usbutils
 exfat-utils
 f2fs-tools
-# autofs
 
 ## SSH
 openssh
 nfs-utils
 
 ## Input method
-fcitx-im
-fcitx-mozc
+fcitx5
+fcitx5-mozc
 # latex input
-fcitx-table-other
+fcitx5-table-other
 
-## initial deps
+## internet protocol
 curl
-grep
-tar
+httpie
 wget
 
 ## dotfiles
 chezmoi
 
+## polkit
+# polkit
+lxqt-policykit
+lxqt-session
+# gnome-keyring
+
 ## generic packages
-usbutils
+binutils
 lsof
 dmidecode
 dialog
 nmon
-gnome-keyring
 htop
 # gpm
 
@@ -131,9 +133,12 @@ vulkan-intel
 # secure-delete aur
 # safe-rm aur
 # firewall management
-# ufw
+ufw
+
 # password management
 pass
+bitwarden
+bitwarden-cli
 # lastpass-cli
 # passff-host aur
 # sandboxing
@@ -142,23 +147,19 @@ pass
 ## * VCS
 git
 
-# * X Related
+## * X Related
 xdotool
 xorg
 xorg-server
-xorg-xinit
-xorg-xinput
-xorg-xprop
-xorg-xwininfo
+xorg-apps
+xorg-drivers
+xorg-xkill
+# xorg-xinit
 xorg-xfontsel
 xorg-xlsfonts
-xorg-xsetroot
 xorg-xev
-xorg-xbacklight
 xorg-xset
 xorg-xrandr
-xorg-xkill
-xorg-xdpyinfo
 light
 arandr
 
@@ -185,27 +186,38 @@ jq
 zsh
 fish
 
+## display manager
+sddm
+
 ## window manager
 bspwm
 sxhkd
+
+## session lock
+xautolock
 
 ## window manager set
 dunst
 libnotify
 picom
+
+## application launcher
 rofi
 rofi-calc
 rofi-pass
+rofimoji
 
 ## terminal
 alacritty
+xterm
 tmux
 starship
 
 ## file manager
 # fff
 nnn
-ranger
+# ranger
+pcmanfm
 
 ## pdf
 zathura
@@ -214,16 +226,15 @@ zathura-pdf-mupdf
 ## docs
 man-pages
 xorg-docs
-python-docs
-python-lxml-docs
-arduino-docs
+# python-docs
+# python-lxml-docs
+# arduino-docs
 arch-wiki-docs
-rust-docs
-ruby-docs
+# rust-docs
+# ruby-docs
 
 ## dev
 # python
-# jupyter-notebook
 # yarn
 # perl
 # ruby
@@ -231,13 +242,17 @@ ruby-docs
 
 ## utility
 broot
+imwheel
 lesspipe
 ncdu
 redshift
 tree
 trash-cli
+gvfs
 xdg-utils
 xdg-user-dirs
+reflector
+udiskie
 # syncthing
 
 ## * DOC, PPT, etc. Editing/Conversion
@@ -245,9 +260,10 @@ xdg-user-dirs
 pandoc
 graphviz
 texlive-core
-texlive-bin
 texlive-science
 texlive-latexextra
+texlive-bibtexextra
+texlive-fontsextra
 gnuplot
 
 ## system
@@ -276,21 +292,17 @@ mediainfo
 perl-image-exiftool
 sxiv
 
-# * Screenshots
-# screenshots
+## Screenshots
+flameshot
 maim
-# selection
 slop
 
-# * Image Editing
-# gimp
+## Image Editing
+gimp
 imagemagick
 
-## js
-stylelint
-
-# ** Python
-# python-pipenv
+# ## js
+# stylelint
 
 # lsp implementation
 # python-language-server
@@ -336,10 +348,6 @@ ntp
 socat
 xcape
 
-## random/fun
-cowsay
-fortune-mod
-
 # hiding mouse
 unclutter
 
@@ -349,6 +357,7 @@ gnu-free-fonts
 noto-fonts-extra
 cantarell-fonts
 otf-overpass
+terminus-font
 ttf-dejavu
 ttf-croscore
 ttf-ionicons
@@ -391,35 +400,25 @@ arc-icon-theme
 # acpi_call-dkms
 # powertop
 
-# * Statistics
-r
-# require for R install package popup
-tk
-
 # * Editors
 vim
 neovim
 
 ## * Browsers
 firefox
-qutebrowser
+# qutebrowser
 
 ## extra pkgs
 # calibre
 # discord
 # dos2unix
-figlet
+# figlet
 # hexchat
 highlight
-httpie
-imwheel
-# obs-studio
-# pipes.sh
-reflector
+obs-studio
 # screenkey
 slock
 # speedtest-cli
-udiskie
 # unimatrix-git
 # woeusb
 # xarchiver
@@ -448,15 +447,10 @@ splix
 # samba
 # smbnetfs
 
-# ** Web - JavaScript, TypeScript, etc.
-nodejs
-npm
-typescript
-
-## emacs deps
-clang
-cmake
-llvm
+# ## emacs deps
+# clang
+# cmake
+# llvm
 
 ## *  Wine
 # wine-staging

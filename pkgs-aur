@@ -53,6 +53,7 @@ lf
 # qmk
 simple-mtpfs
 task-spooler
+timeshift
 
 # ## window manager
 # betterlockscreen
