@@ -42,7 +42,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias ~='cd ~'
+alias ~='cd $HOME'
 alias -- -='cd -'
 
 # cd places
@@ -83,20 +83,18 @@ alias sqb="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/qutebrowser/config.py"
 
 # trash command
 if command -v trash-put >/dev/null 2>&1; then
-    # alias rm='echo "Use trp to trash files"; false'
-    alias trp='trash-put -iv'
-    alias tre='trash-empty'
-    alias trl='trash-list'
-    alias trr='trash-restore'
-    alias trm='trash-rm'
+  # alias rm='echo "Use trp to trash files"; false'
+  alias trp='trash-put -iv'
+  alias tre='trash-empty'
+  alias trl='trash-list'
+  alias trr='trash-restore'
+  alias trm='trash-rm'
 fi
 
 alias mkd="mkdir -pv"
 alias yt="youtube-dl --add-metadata -i"
 alias yta="yt -x -f bestaudio/best"
 alias ffmpeg="ffmpeg -hide_banner"
-
-# alias spt='launchspt'
 
 # Makes `mount` command output pretty and with a human readable format.
 alias mount='mount | column -t'
@@ -113,42 +111,42 @@ alias ping="ping -c 3"
 # Use exa as a modern 'ls'
 
 if command -v exa >/dev/null 2>&1; then
-    alias ls="exa --group-directories-first"
+  alias ls="exa --group-directories-first"
 
-    alias l="exa -Fhl --group-directories-first --git"  # show files in long format
-    alias la="exa -ha --group-directories-first"  # show all files
-    alias ll="exa -Fhla --group-directories-first --git"  # show all files in long format
-    alias ltree="exa -FThl --git"  # show all files in tree format
+  alias l="exa -Fhl --group-directories-first --git"  # show files in long format
+  alias la="exa -ha --group-directories-first"  # show all files
+  alias ll="exa -Fhla --group-directories-first --git"  # show all files in long format
+  alias ltree="exa -FThl --git"  # show all files in tree format
 
-    alias lad="exa -hd -- .*(/)"  # only show dot-directories
-    alias lsa="exa -ha -- .*(.)"  # only show dot-files
-    alias lsd="exa -FhlD"  # only show directories
-    alias lse="exa -Fhld -- *(/^F)"  # only show empty directories
+  alias lad="exa -hd -- .*(/)"  # only show dot-directories
+  alias lsa="exa -ha -- .*(.)"  # only show dot-files
+  alias lsd="exa -FhlD"  # only show directories
+  alias lse="exa -Fhld -- *(/^F)"  # only show empty directories
 
-    alias lsnew="exa -rthl -- *(.) | tail \$@ 2>/dev/null"  # only the newest files
-    alias lsold="exa -rthl -- *(.) | head \$@ 2>/dev/null"   # display the oldest files
-    alias lssmall="exa -hl --sort=size -- *(.) | tail \$@ 2>/dev/null"  # display the smallest files
-    alias lsx="exa -l -- *(*) | head \$@ 2>/dev/null"        # only show executables
-    alias lssuid="exa -l -- *(s,S) | head \$@ 2>/dev/null"   # only show suid-files
-    alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head \$@ 2>/dev/null"    # display the biggest files
+  alias lsnew="exa -rthl -- *(.) | tail \$@ 2>/dev/null"  # only the newest files
+  alias lsold="exa -rthl -- *(.) | head \$@ 2>/dev/null"   # display the oldest files
+  alias lssmall="exa -hl --sort=size -- *(.) | tail \$@ 2>/dev/null"  # display the smallest files
+  alias lsx="exa -l -- *(*) | head \$@ 2>/dev/null"        # only show executables
+  alias lssuid="exa -l -- *(s,S) | head \$@ 2>/dev/null"   # only show suid-files
+  alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head \$@ 2>/dev/null"    # display the biggest files
 else
-    # Detect which `ls` flavor is in use
-    if ls --color >/dev/null 2>&1; then # GNU `ls`
-        colorflag="--color"
-        export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
-    else # macOS `ls`
-        colorflag="-G"
-        export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
-    fi
+  # Detect which `ls` flavor is in use
+  if ls --color >/dev/null 2>&1; then # GNU `ls`
+      colorflag="--color"
+      export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+  else # macOS `ls`
+      colorflag="-G"
+      export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
+  fi
 
-    alias ls="ls ${colorflag}"
+  alias ls="ls ${colorflag}"
 
-    alias l="ls -lF ${colorflag}"
-    alias la="ls -A ${colorflag}"
-    alias ll="ls -lAF ${colorflag}"
+  alias l="ls -lF ${colorflag}"
+  alias la="ls -A ${colorflag}"
+  alias ll="ls -lAF ${colorflag}"
 
-    # List only directories
-    alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+  # List only directories
+  alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 fi
 
 
@@ -157,9 +155,6 @@ fi
 
 # Copies a file securely.
 alias cpv='rsync -ah --info=progress2'
-
-# Finds directories.
-alias fd='find . -type d -name'
 
 # Finds files.
 alias ff='find . -type f -name'
@@ -203,14 +198,17 @@ fi
 
 # Application aliases
 alias v="nvim"
-alias e='emacsclient -n'
-ediff() { e --eval "(ediff-files \"$1\" \"$2\")"; }
 alias vimdiff="nvim -d"
+alias e="emacsclient -n"
+alias em="/usr/bin/emacs -nw"
+alias emacs="emacsclient -c -a 'emacs'"
+ediff() { e --eval "(ediff-files \"$1\" \"$2\")"; }
+
 alias p="pandoc"
 alias m="mpv"
 alias ncmpcpp="ncmpcpp ncmpcpp_directory=${XDG_CONFIG_HOME:-$HOME/.config}/ncmpcpp"
 alias r="ranger"
-alias xup="xrdb ~/.Xresources"
+alias xup="xrdb $HOME/.Xresources"
 alias pman="sudo pacman"
 alias doas='doas --'
 alias jp="joplin"
@@ -299,7 +297,7 @@ alias pg="pwgen -cnBy 15"
 # alias pgx="cat /dev/urandom | tr -dc "[:print:]" | tr -d "[:space:]" | fold -w 25 | grep -E "[A-Z].[0-9].[^a-zA-Z\d]" | head -n 5"
 alias q="exit"
 alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
-alias se="fd -tf .  ~/.bin/ ~/.config | fzf | xargs -r $EDITOR"
+# alias se="fd -tf . $HOME/.bin/ ${XDG_CONFIG_HOME:-$HOME/.config} | fzf | xargs -r $EDITOR"
 alias S="sudo systemctl"
 alias s="systemctl --user"
 alias suckclean="make clean && rm -f config.h && git reset --hard origin/master"
