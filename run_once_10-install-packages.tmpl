@@ -138,15 +138,12 @@ pip_install() {
 
 installation_loop() {
   [ -f "$2" ] && cp -f "$2" /tmp/pkgs
-  # delete comments and empty lines and join lines with spaces
   awk '! /^ *(#|$)/' "$2" | awk -v d=' ' '{s=(NR==1?s:s d)$0}END{print s}' > /tmp/pkgs
-  aur_installed="$(pacman -Qqm)"
-  while read -r packages; do
-    case "$1" in
-      "aur") xargs -a <packages -r -- aur_install ;;
-      "apt-get"|"pacman") xargs -a <packages -r -- main_install ;;
-    esac
-  done < /tmp/pkgs
+  case "$1" in
+    "aur") xargs -a <(cat /tmp/pkgs) -r -- aur_install ;;
+    "apt-get"|"pacman") xargs -a <(cat /tmp/pkgs) -r -- main_install ;;
+    "pip") xargs -a <(cat /tmp/pkgs) -r -- pip_install ;;
+  esac
 }
 
 systembeepoff() {
@@ -183,6 +180,6 @@ if [ "$distro" = arch ]; then
   "$AUR_HELPER" -S libxft-bgra-git
 fi
 
-installation_loop aur "$PKGS_AUR"
-
 installation_loop pacman "$PKGS_ARCH"
+
+installation_loop aur "$PKGS_AUR"
