@@ -123,31 +123,21 @@ pip_install() {
   python3 -m pip install "$1"
 }
 
-# installation_loop() {
-#   [ -f "$2" ] && cp -f "$2" /tmp/pkgs
-#   sed '/^#/d' "$2" | sed '/^$/d' > /tmp/pkgs
-#   aur_installed="$(pacman -Qqm)"
-#   while read -r package; do
-#     case "$1" in
-#       "aur") aur_install "$package" ;;
-#       "apt-get"|"pacman") main_install "$package" ;;
-#       "pip") pip_install "$package" ;;
-#     esac
-#   done < /tmp/pkgs
-# }
-
 installation_loop() {
   [ -f "$2" ] && cp -f "$2" /tmp/pkgs
-  awk '! /^ *(#|$)/' "$2" | awk -v d=' ' '{s=(NR==1?s:s d)$0}END{print s}' > /tmp/pkgs
+  sed '/^#/d' "$2" | sed '/^$/d' | sed ':a; N; $!ba; s/\n/ /g' > /tmp/pkgs
   case "$1" in
     "aur")
-      xargs -a /tmp/pkgs -r -- aur_install
+      xargs -a /tmp/pkgs -r -- "$AUR_HELPER" -S --noconfirm --needed
       ;;
-    "apt-get"|"pacman")
-      xargs -a /tmp/pkgs -r -- main_install
+    "apt-get")
+      xargs -a /tmp/pkgs -r -- sudo apt-get install -y
+      ;;
+    "pacman")
+      xargs -a /tmp/pkgs -r -- sudo pacman --noconfirm --needed -S
       ;;
     "pip")
-      xargs -a /tmp/pkgs -r -- pip_install
+      xargs -a /tmp/pkgs -r -- python3 -m pip install
       ;;
   esac
 }
