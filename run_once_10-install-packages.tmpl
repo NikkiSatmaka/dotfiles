@@ -128,7 +128,7 @@ installation_loop() {
   sed '/^#/d' "$2" | sed '/^$/d' | sed ':a; N; $!ba; s/\n/ /g' > /tmp/pkgs
   case "$1" in
     "aur")
-      xargs -a /tmp/pkgs -r -- "$AUR_HELPER" -S --noconfirm --needed
+      xargs -a /tmp/pkgs -r -- "$AUR_HELPER" -S --needed
       ;;
     "apt-get")
       xargs -a /tmp/pkgs -r -- sudo apt-get install -y
