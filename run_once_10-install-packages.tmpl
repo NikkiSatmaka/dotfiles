@@ -18,128 +18,137 @@ readonly PKGS_AUR="$HOME/.local/share/chezmoi/pkgs-aur"
 ### FUNCTIONS ###
 
 echoerrcolor() {
-	if (( $colors )); then
-		case $1 in
-			none)
-				str="\e[0;37m"
-				;;
-			green)
-				str="\e[0;32m"
-				;;
-			red)
-				str="\e[0;31m"
-				;;
-			blue)
-				str="\e[1;34m"
-				;;
-			darkcyan)
-				str="\e[0;36m"
-				;;
-			darkgreen)
-				str="\e[1;32m"
-				;;
-			darkred)
-				str="\e[1;31m"
-				;;
-			magenta)
-				str="\e[0;35m"
-				;;
-			darkmagenta)
-				str="\e[1;35m"
-				;;
+  if (( $colors )); then
+    case $1 in
+      none)
+        str="\e[0;37m"
+        ;;
+      green)
+        str="\e[0;32m"
+        ;;
+      red)
+        str="\e[0;31m"
+        ;;
+      blue)
+        str="\e[1;34m"
+        ;;
+      darkcyan)
+        str="\e[0;36m"
+        ;;
+      darkgreen)
+        str="\e[1;32m"
+        ;;
+      darkred)
+        str="\e[1;31m"
+        ;;
+      magenta)
+        str="\e[0;35m"
+        ;;
+      darkmagenta)
+        str="\e[1;35m"
+        ;;
 
-		esac
-		echo -ne $str >&2;
-	fi
+    esac
+    echo -ne $str >&2;
+  fi
 }
 
 echoerrnocolor() {
-	if (( $colors )); then
-		echo -ne "\e[0m" >&2;
-	fi
+  if (( $colors )); then
+    echo -ne "\e[0m" >&2;
+  fi
 }
 
 echoerr() {
-	if [ $# -gt 1 ]; then
-		color=$1
-		shift
-		echoerrcolor $color
-	fi
-	echo "$@" >&2;
-	if [ $color ]; then
-		echoerrnocolor
-	fi
+  if [ $# -gt 1 ]; then
+    color=$1
+    shift
+    echoerrcolor $color
+  fi
+  echo "$@" >&2;
+  if [ $color ]; then
+    echoerrnocolor
+  fi
 }
 
 printferr() { printf "$@" >&2; }
 
 if command -v apt-get >/dev/null 2>&1; then
-	install_pkg() {
-		sudo apt-get install -y "$1"
-	}
+  install_pkg() {
+    sudo apt-get install -y "$1"
+  }
 elif command -v pacman >/dev/null 2>&1; then
-	distro="arch"
-	install_pkg() {
-		sudo pacman --noconfirm --needed -S "$1"
-	}
+  distro="arch"
+  install_pkg() {
+    sudo pacman --noconfirm --needed -S "$1"
+  }
 fi
 
 refreshkeys() {
-	echo "Refreshing Arch Keyring..."
-	sudo pacman --noconfirm -S archlinux-keyring
+  echo "Refreshing Arch Keyring..."
+  sudo pacman --noconfirm -S archlinux-keyring
 }
 
 # aur install using tar method
 manual_install() {
-	if command -v "$1" >/dev/null 2>&1; then
-		echo "$1 already installed. skipping"
-	else
-		cd /tmp || exit
-		rm -rf /tmp/"$1"*
-		curl -LO "$AUR_URL/$1.tar.gz" &&
-		tar -xvf "$1".tar.gz &&
-		cd "$1" &&
-		makepkg -si --noconfirm
-		cd /tmp || return
-	fi
+  if command -v "$1" >/dev/null 2>&1; then
+    echo "$1 already installed. skipping"
+  else
+    cd /tmp || exit
+    rm -rf /tmp/"$1"*
+    curl -LO "$AUR_URL/$1.tar.gz" &&
+    tar -xvf "$1".tar.gz &&
+    cd "$1" &&
+    makepkg -si --noconfirm
+    cd /tmp || return
+  fi
 }
 
 
 main_install() {
-	install_pkg "$1"
+  install_pkg "$1"
 }
 
 aur_install() {
-	echo "$aur_installed" | grep "^$1$" >/dev/null 2>&1 && return
-	"$AUR_HELPER" -S --noconfirm "$1"
+  echo "$aur_installed" | grep "^$1$" >/dev/null 2>&1 && return
+  "$AUR_HELPER" -S --noconfirm --needed "$1"
 }
 
 pip_install() {
-	if command -v pip >/dev/null 2>&1; then
-		:
-	else
-		install_pkg python-pip
-	fi
-	pip install "$1"
+  if command -v pip >/dev/null 2>&1; then
+    :
+  else
+    install_pkg python-pip
+  fi
+  pip install "$1"
 }
 
+# installation_loop() {
+#   [ -f "$2" ] && cp -f "$2" /tmp/pkgs
+#   sed '/^#/d' "$2" | sed '/^$/d' > /tmp/pkgs
+#   aur_installed="$(pacman -Qqm)"
+#   while read -r package; do
+#     case "$1" in
+#       "aur") aur_install "$package" ;;
+#       "apt-get"|"pacman") main_install "$package" ;;
+#       "pip") pip_install "$package" ;;
+#     esac
+#   done < /tmp/pkgs
+# }
 
 installation_loop() {
-	[ -f "$2" ] && cp -f "$2" /tmp/pkgs
-	sed '/^#/d' "$2" | sed '/^$/d' > /tmp/pkgs
-	aur_installed="$(pacman -Qqm)"
-	while read -r package; do
-		case "$1" in
-			"aur") aur_install "$package" ;;
-			"apt-get"|"pacman") main_install "$package" ;;
-			"pip") pip_install "$package" ;;
-		esac
-	done < /tmp/pkgs
+  [ -f "$2" ] &&
+  sed '/^#/d' "$2" | sed '/^$/d' > /tmp/pkgs
+  aur_installed="$(pacman -Qqm)"
+  case "$1" in
+    "aur") aur_install "$(awk '{print $1}' /tmp/pkgs)" ;;
+    "apt-get"|"pacman") main_install "$(awk '{print $1}' /tmp/pkgs)" ;;
+  esac
 }
 
 systembeepoff() {
-	rmmod pcspkr
-	echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+  rmmod pcspkr
+  echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 }
 
 ### THE ACTUAL SCRIPT ###
@@ -155,20 +164,20 @@ install_pkg git
 install_pkg ntp
 
 if [ "$distro" = arch ]; then
-	# Make pacman colorful and adds eye candy on the progress bar
-	if grep "^Color" /etc/pacman.conf >/dev/null; then
-		:
-	else
-		sudo sed -i "s/^#Color$/Color/" /etc/pacman.conf
-	fi
-	if grep "ILoveCandy" /etc/pacman.conf >/dev/null; then
-		:
-	else
-		sudo sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
-	fi
-	manual_install "$AUR_HELPER"
-	sudo pacman -Syu
-	"$AUR_HELPER" -S libxft-bgra-git
+  # Make pacman colorful and adds eye candy on the progress bar
+  if grep "^Color" /etc/pacman.conf >/dev/null; then
+    :
+  else
+    sudo sed -i "s/^#Color$/Color/" /etc/pacman.conf
+  fi
+  if grep "ILoveCandy" /etc/pacman.conf >/dev/null; then
+    :
+  else
+    sudo sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
+  fi
+  manual_install "$AUR_HELPER"
+  sudo pacman -Syu
+  "$AUR_HELPER" -S libxft-bgra-git
 fi
 
 installation_loop aur "$PKGS_AUR"
