@@ -138,11 +138,12 @@ pip_install() {
 
 installation_loop() {
   [ -f "$2" ] &&
-  sed '/^#/d' "$2" | sed '/^$/d' > /tmp/pkgs
+  # delete comments and empty lines and join lines with spaces
+  sed '/^#/d' "$2" | sed '/^$/d' | sed ':a; N; $!ba; s/\n/ /g' > /tmp/pkgs &&
   aur_installed="$(pacman -Qqm)"
   case "$1" in
-    "aur") awk '{print $1}' /tmp/pkgs | aur_install ;;
-    "apt-get"|"pacman") awk '{print $1}' /tmp/pkgs | main_install ;;
+    "aur") aur_install "$(cat /tmp/pkgs)" ;;
+    "apt-get"|"pacman") main_install "$(cat /tmp/pkgs)" ;;
   esac
 }
 
