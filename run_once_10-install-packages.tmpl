@@ -141,8 +141,8 @@ installation_loop() {
   sed '/^#/d' "$2" | sed '/^$/d' > /tmp/pkgs
   aur_installed="$(pacman -Qqm)"
   case "$1" in
-    "aur") aur_install "$(awk '{print $1}' /tmp/pkgs)" ;;
-    "apt-get"|"pacman") main_install "$(awk '{print $1}' /tmp/pkgs)" ;;
+    "aur") awk '{print $1}' /tmp/pkgs | aur_install ;;
+    "apt-get"|"pacman") awk '{print $1}' /tmp/pkgs | main_install ;;
   esac
 }
 
