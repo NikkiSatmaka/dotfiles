@@ -173,7 +173,6 @@ if [ "$distro" = arch ]; then
   fi
   manual_install "$AUR_HELPER"
   sudo pacman -Syu
-  "$AUR_HELPER" -S libxft-bgra-git
 fi
 
 installation_loop pacman "$PKGS_ARCH"
