@@ -141,16 +141,16 @@ installation_loop() {
   awk '! /^ *(#|$)/' "$2" | awk -v d=' ' '{s=(NR==1?s:s d)$0}END{print s}' > /tmp/pkgs
   case "$1" in
     "aur")
-      xargs -a <(cat /tmp/pkgs) -r -- "$AUR_HELPER" -S --noconfirm --needed
+      xargs -a <$(cat /tmp/pkgs) -r -- "$AUR_HELPER" -S --noconfirm --needed
       ;;
     "apt-get")
-      xargs -a <(cat /tmp/pkgs) -r -- sudo apt-get install -y
+      xargs -a <$(cat /tmp/pkgs) -r -- sudo apt-get install -y
       ;;
     "pacman")
-      xargs -a <(cat /tmp/pkgs) -r -- sudo pacman --noconfirm --needed -S
+      xargs -a <$(cat /tmp/pkgs) -r -- sudo pacman --noconfirm --needed -S
       ;;
     "pip")
-      xargs -a <(cat /tmp/pkgs) -r -- python3 -m pip install
+      xargs -a <$(cat /tmp/pkgs) -r -- python3 -m pip install
       ;;
   esac
 }
