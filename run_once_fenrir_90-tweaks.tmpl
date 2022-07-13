@@ -12,11 +12,11 @@ install_tweak(){
     sudo cp "$1" "$2"
 }
 
-sudo mkdir -p {LIBINPUT_DIR,UDEV_DIR,XORG_DIR}
+sudo mkdir -p {"$LIBINPUT_DIR","$UDEV_DIR","$XORG_DIR"}
 
-sudo cp "./tweaks/etc/libinput/local-overrides.quirks" "$LIBINPUT_DIR"
-sudo cp "./tweaks/etc/udev/rules.d/10-trackpoint.rules" "$UDEV_DIR"
-sudo cp "./tweaks/etc/X11/xorg.conf.d/20-intel.conf" "$XORG_DIR"
-sudo cp "./tweaks/etc/X11/xorg.conf.d/20-trackpoint.conf" "$XORG_DIR"
-sudo cp "./tweaks/etc/X11/xorg.conf.d/30-touchpad.conf" "$XORG_DIR"
-sudo cp "./tweaks/etc/X11/xorg.conf.d/50-mouse-acceleration.conf" "$XORG_DIR"
+sudo cp "${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/libinput/local-overrides.quirks" "$LIBINPUT_DIR"
+sudo cp "{$XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/udev/rules.d/10-trackpoint.rules" "$UDEV_DIR"
+sudo cp "{$XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/X11/xorg.conf.d/20-intel.conf" "$XORG_DIR"
+sudo cp "{$XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/X11/xorg.conf.d/20-trackpoint.conf" "$XORG_DIR"
+sudo cp "{$XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/X11/xorg.conf.d/30-touchpad.conf" "$XORG_DIR"
+sudo cp "{$XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/X11/xorg.conf.d/50-mouse-acceleration.conf" "$XORG_DIR"
