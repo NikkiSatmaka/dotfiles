@@ -75,12 +75,12 @@ printferr() { printf "$@" >&2; }
 
 if command -v apt-get >/dev/null 2>&1; then
   install_pkg() {
-    sudo apt-get install -y "$1"
+    sudo apt-get install -y
   }
 elif command -v pacman >/dev/null 2>&1; then
   distro="arch"
   install_pkg() {
-    sudo pacman --noconfirm --needed -S "$1"
+    sudo pacman --noconfirm --needed -S
   }
 fi
 
@@ -120,7 +120,7 @@ pip_install() {
   else
     install_pkg python-pip
   fi
-  pip install "$1"
+  python3 -m pip install
 }
 
 # installation_loop() {
