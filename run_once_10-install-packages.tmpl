@@ -142,8 +142,8 @@ installation_loop() {
   awk '! /^ *(#|$)/' "$2" | awk -v d=' ' '{s=(NR==1?s:s d)$0}END{print s}' > /tmp/pkgs &&
   aur_installed="$(pacman -Qqm)"
   case "$1" in
-    "aur") xargs -a <(awk '/./' /tmp/pkgs) -r -- aur_install ;;
-    "apt-get"|"pacman") xargs -a <(awk '/./' /tmp/pkgs) -r -- main_install ;;
+    "aur") xargs -a <$(awk '/./' /tmp/pkgs) -r -- aur_install ;;
+    "apt-get"|"pacman") xargs -a <$(awk '/./' /tmp/pkgs) -r -- main_install ;;
   esac
   rm -f /tmp/pkgs
 }
