@@ -17,8 +17,7 @@ readonly DOOM_GIT="https://github.com/hlissner/doom-emacs.git"
 #     echo "no changes were performed"
 #   else
 #     git clone --depth 1 "$1" "$2" || exit
-#     cd  "$2" || exit
-#     ./install.sh
+#     "$2"/install.sh
 #   fi
 # }
 
@@ -28,8 +27,7 @@ install_doom() {
     echo "no changes were performed"
   else
     git clone --depth 1 "$1" "$2" || exit
-    cd  "$2" || exit
-    ./bin/doom install
+    "$2"/bin/doom install --force --no-config --env --install --no-fonts --hooks
   fi
 }
 
