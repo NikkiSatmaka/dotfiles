@@ -137,7 +137,7 @@ pip_install() {
 # }
 
 installation_loop() {
-  [ -f "$2" ] &&
+  [ -f "$2" ] && cp -f "$2" /tmp/pkgs
   # delete comments and empty lines and join lines with spaces
   awk '! /^ *(#|$)/' "$2" | awk -v d=' ' '{s=(NR==1?s:s d)$0}END{print s}' > /tmp/pkgs &&
   aur_installed="$(pacman -Qqm)"
