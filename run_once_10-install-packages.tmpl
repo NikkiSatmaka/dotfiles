@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 #==============================================================================
 # main (essential) packages & fonts
@@ -75,12 +75,12 @@ printferr() { printf "$@" >&2; }
 
 if command -v apt-get >/dev/null 2>&1; then
   install_pkg() {
-    sudo apt-get install -y
+    sudo apt-get install -y "$1"
   }
 elif command -v pacman >/dev/null 2>&1; then
   distro="arch"
   install_pkg() {
-    sudo pacman --noconfirm --needed -S
+    sudo pacman --noconfirm --needed -S "$1"
   }
 fi
 
@@ -120,7 +120,7 @@ pip_install() {
   else
     install_pkg python-pip
   fi
-  python3 -m pip install
+  python3 -m pip install "$1"
 }
 
 # installation_loop() {
@@ -140,9 +140,10 @@ installation_loop() {
   [ -f "$2" ] && cp -f "$2" /tmp/pkgs
   awk '! /^ *(#|$)/' "$2" | awk -v d=' ' '{s=(NR==1?s:s d)$0}END{print s}' > /tmp/pkgs
   case "$1" in
-    "aur") xargs -a <(cat /tmp/pkgs) -r -- aur_install ;;
-    "apt-get"|"pacman") xargs -a <(cat /tmp/pkgs) -r -- main_install ;;
-    "pip") xargs -a <(cat /tmp/pkgs) -r -- pip_install ;;
+    "aur") xargs -a <(cat /tmp/pkgs) -r -- "$AUR_HELPER" -S --noconfirm --needed ;;
+    "apt-get") xargs -a <(cat /tmp/pkgs) -r -- sudo apt-get install -y ;;
+    "pacman") xargs -a <(cat /tmp/pkgs) -r -- sudo pacman --noconfirm --needed -S ;;
+    "pip") xargs -a <(cat /tmp/pkgs) -r -- python3 -m pip install ;;
   esac
 }
 
