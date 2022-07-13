@@ -29,7 +29,7 @@ ttf-all-the-icons
 ## nerd fonts
 nerd-fonts-fira-code
 nerd-fonts-hack
-nerd-fonts-jetbrains-mono
+# nerd-fonts-jetbrains-mono
 # nerd-fonts-iosevka
 # nerd-fonts-meslo
 # nerd-fonts-source-code-pro
@@ -62,8 +62,8 @@ betterlockscreen
 ## code editor
 visual-studio-code-bin
 
-# cloud storage sync
-google-drive-ocamlfuse
+# ## cloud storage sync
+# google-drive-ocamlfuse
 
 ## utility
 direnv
