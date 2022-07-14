@@ -8,11 +8,13 @@ LIBINPUT_DIR="/etc/libinput"
 UDEV_DIR="/etc/udev/rules.d"
 XORG_DIR="/etc/X11/xorg.conf.d"
 
-install_tweak(){
-    sudo cp "$1" "$2"
-}
+# install_tweak(){
+#     sudo cp "$1" "$2"
+# }
 
-sudo mkdir -p {"$LIBINPUT_DIR","$UDEV_DIR","$XORG_DIR"}
+# sudo mkdir -p "$LIBINPUT_DIR"
+sudo mkdir -p "$UDEV_DIR"
+sudo mkdir -p "$XORG_DIR"
 
 # sudo cp "${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/libinput/local-overrides.quirks" "$LIBINPUT_DIR"
 sudo cp "${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/udev/rules.d/10-trackpoint.rules" "$UDEV_DIR"
