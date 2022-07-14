@@ -171,6 +171,11 @@ if [ "$distro" = arch ]; then
   else
     sudo sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
   fi
+  if grep "^ParallelDownloads" /etc/pacman.conf >/dev/null; then
+    :
+  else
+    sudo sed -i "s/^#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
+  fi
   manual_install "$AUR_HELPER"
   sudo pacman -Syu
 fi
