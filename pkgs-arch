@@ -410,15 +410,14 @@ firefox
 # qutebrowser
 
 ## extra pkgs
-# calibre
-# discord
+calibre
+discord
 # dos2unix
 # figlet
 # hexchat
 highlight
 obs-studio
 # screenkey
-slock
 # speedtest-cli
 # unimatrix-git
 # woeusb
@@ -426,7 +425,7 @@ slock
 zenity
 
 ## torrent
-# qbittorrent
+qbittorrent
 # rtorrent
 # transmission-cli
 

@@ -80,13 +80,13 @@ if command -v apt-get >/dev/null 2>&1; then
 elif command -v pacman >/dev/null 2>&1; then
   distro="arch"
   install_pkg() {
-    sudo pacman --noconfirm --needed -S "$1"
+    sudo pacman -S --noconfirm --needed "$1"
   }
 fi
 
 refreshkeys() {
   echo "Refreshing Arch Keyring..."
-  sudo pacman --noconfirm -S archlinux-keyring
+  sudo pacman -S --noconfirm archlinux-keyring
 }
 
 # aur install using tar method
@@ -134,7 +134,7 @@ installation_loop() {
       xargs -a /tmp/pkgs -r -- sudo apt-get install -y
       ;;
     "pacman")
-      xargs -a /tmp/pkgs -r -- sudo pacman --noconfirm --needed -S
+      xargs -a /tmp/pkgs -r -- sudo pacman -S --noconfirm --needed
       ;;
     "pip")
       xargs -a /tmp/pkgs -r -- python3 -m pip install
