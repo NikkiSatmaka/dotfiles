@@ -37,7 +37,7 @@ lc() {
 # cd when exiting nnn
 n() {
     # Block nesting of nnn in subshells
-    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+    if [[ "${NNNLVL:-0}" -ge 1 ]]; then
         echo "nnn is already running"
         return
     fi
@@ -63,8 +63,17 @@ n() {
     fi
 }
 
-{{ if eq .chezmoi.os "linux" -}}
-ssource ~/.config/broot/launcher/bash/br
-{{ else if eq .chezmoi.os "darwin" -}}
-ssource ~/Library/Preferences/org.dystroy.broot/launcher/bash/br
-{{ end -}}
+# broot function
+br() {
+    local cmd cmd_file code
+    cmd_file=$(mktemp)
+    if broot --outcmd "$cmd_file" "$@"; then
+        cmd=$(<"$cmd_file")
+        rm -f "$cmd_file"
+        eval "$cmd"
+    else
+        code=$?
+        rm -f "$cmd_file"
+        return "$code"
+    fi
+}
