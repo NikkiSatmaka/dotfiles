@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# install arch linux package stats
+#==============================================================================
+
+sudo pacman -S --noconfirm --needed pkgstats
+
+sudo systemctl start pkgstats.timer
