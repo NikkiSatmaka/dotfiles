@@ -61,31 +61,14 @@ arandr
 light
 xdotool
 
-## useful tools
-# arch-wiki-lite
-fd
-mlocate
-pkgstats
-rsync
-
-## Compression Tools
-zip
-unzip
-unrar
-p7zip
-lzop
-cpio
-# frontend for archive extraction, creation, etc.
-atool
-
 ## AVAHI
 nss-mdns
 
 ## bluetooth
 blueman
 
-# ## Sudo
-# opendoas
+## sudo replacement
+opendoas
 
 ## Audio (ALSA & PULSEAUDIO)
 pamixer
@@ -111,6 +94,12 @@ usbutils
 openssh
 nfs-utils
 
+## polkit
+# polkit
+lxqt-policykit
+lxqt-session
+# gnome-keyring
+
 ## Input method
 fcitx5-im
 fcitx5-chinese-addons
@@ -120,6 +109,15 @@ fcitx5-lua
 # latex input
 fcitx5-table-other
 
+## Compression Tools
+atool
+cpio
+lzop
+p7zip
+unrar
+unzip
+zip
+
 ## internet protocol
 curl
 httpie
@@ -128,61 +126,33 @@ wget
 ## dotfiles
 chezmoi
 
-## polkit
-# polkit
-lxqt-policykit
-lxqt-session
-# gnome-keyring
-
-## generic packages
-lsof
-dmidecode
-dialog
-nmon
-htop
-# gpm
-
-# * Security
-# wireguard-tools
-# wireguard-dkms
-# encryption
-# veracrypt
-# secure-delete aur
-# safe-rm aur
-# firewall management
+## security
+# firejail
 ufw
+# veracrypt
+# wireguard-tools
 
-# password management
-pass
+## password management
 bitwarden
 bitwarden-cli
-# lastpass-cli
+# pass
 # passff-host aur
-# sandboxing
-# firejail
-
-## * VCS
-git
-
-# clipboard
-xsel
-xclip
 
 ## services
 cronie
+# incron
 # numlockx
 # haveged
-# net-snmp
 
 ## shell
 bash
 bash-completion
 dash
-grml-zsh-config
-shellcheck
-jq
-zsh
 fish
+grml-zsh-config
+jq
+shellcheck
+zsh
 
 ## display manager
 sddm
@@ -192,9 +162,6 @@ awesome
 bspwm
 sxhkd
 volumeicon
-
-## session lock
-xautolock
 
 ## window manager set
 dunst
@@ -265,9 +232,6 @@ texlive-bibtexextra
 texlive-fontsextra
 gnuplot
 
-## system
-# incron
-
 # * DNS
 # validating, recursive, caching resolver
 # unbound
@@ -281,7 +245,7 @@ mpc
 mpd
 mpv
 ncmpcpp
-youtube-dl
+yt-dlp
 
 ## image/video/3d
 ffmpeg
@@ -329,45 +293,51 @@ imagemagick
 # python-pytest
 # python-pynvim
 
-# * Search/Fuzzy finder
-fzf
-ripgrep
-
-## main pkgs
-bat
-calcurse
-diff-so-fancy
-exa
-fd
-man
-man-db
-neofetch
-ntp
-socat
-xcape
+## appearance / theme
+adapta-gtk-theme
+arc-gtk-theme
+arc-icon-theme
+lxappearance
+papirus-icon-theme
 
 ## hiding mouse
 unclutter
 
-## appearance / theme
-## icons
-adapta-gtk-theme
-arc-gtk-theme
-arc-icon-theme
-papirus-icon-theme
+## useful tools
+# arch-wiki-lite
+bat
+calcurse
+diff-so-fancy
+dmidecode
+exa
+fd
+fzf
+git
+htop
+lsof
+man-db
+mlocate
+neofetch
+neovim
+nmon
+ntp
+pkgstats
+ripgrep
+rsync
+socat
+vim
+xcape
+xclip
+xsel
 
-# # * Power Management/Battery
+## Power Management/Battery
 # acpi
 # tlp
 # # for thinkpad charging/discharging rates
 # acpi_call-dkms
 # powertop
 
-# * Editors
-vim
-neovim
-
-## * Browsers
+## Browsers
 firefox
 # qutebrowser
 
