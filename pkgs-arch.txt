@@ -78,30 +78,34 @@ cpio
 # frontend for archive extraction, creation, etc.
 atool
 
-# ## AVAHI
-# avahi
-# nss-mdns
+## AVAHI
+nss-mdns
+
+## bluetooth
+blueman
 
 # ## Sudo
 # opendoas
 
 ## Audio (ALSA & PULSEAUDIO)
 pamixer
+pavucontrol
 pipewire
 pipewire-jack
 pipewire-pulse
 pulsemixer
 # alsa-utils
 
-## bluetooth
-blueman
-
 ## Filesystem support
-# ntfs-3g
+btrfs-progs
 dosfstools
-usbutils
+exfatprogs
 exfat-utils
 f2fs-tools
+mtools
+ntfs-3g
+udftools
+usbutils
 
 ## SSH
 openssh
