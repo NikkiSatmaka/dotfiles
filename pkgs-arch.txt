@@ -80,8 +80,11 @@ openssh
 nfs-utils
 
 ## Input method
-fcitx5
+fcitx5-im
+fcitx5-chinese-addons
+fcitx5-hangul
 fcitx5-mozc
+fcitx5-lua
 # latex input
 fcitx5-table-other
 
@@ -193,6 +196,7 @@ sddm
 awesome
 bspwm
 sxhkd
+volumeicon
 
 ## session lock
 xautolock
