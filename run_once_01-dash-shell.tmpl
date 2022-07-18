@@ -7,7 +7,7 @@
 readonly HOOK_FILE="/usr/share/libalpm/hooks/dashbinsh.hook"
 
 if [ "$(readlink /bin/sh)" = "bash" ]; then
-  sudo pacman --noconfirm --needed -S dash || exit
+  sudo pacman -S --noconfirm --needed dash || exit
   sudo ln -sfT dash /usr/bin/sh &&
     echo "pointed /bin/sh symlink to dash"
 else

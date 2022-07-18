@@ -80,13 +80,13 @@ if command -v apt >/dev/null 2>&1; then
 	}
 elif command -v pacman >/dev/null 2>&1; then
 	install_pkg() {
-		sudo pacman --noconfirm --needed -S "$1"
+		sudo pacman -S --noconfirm --needed "$1"
 	}
 fi
 
 refreshkeys() {
 	echo "Refreshing Arch Keyring..."
-	sudo pacman --noconfirm -S archlinux-keyring >/dev/null 2>&1
+	sudo pacman -S --noconfirm archlinux-keyring >/dev/null 2>&1
 }
 
 main_install() {
