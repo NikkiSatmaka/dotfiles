@@ -10,6 +10,7 @@ readonly AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
 readonly AUR_HELPER='paru'
 readonly SRC_DIR="$HOME/.local/src"
 readonly PKGS_ARCH="$HOME/.local/share/chezmoi/pkgs-arch.txt"
+readonly PKGS_FONTS="$HOME/.local/share/chezmoi/pkgs-arch-fonts.txt"
 readonly PKGS_BREW_TAP="$HOME/.local/share/chezmoi/pkgs-brew-tap.txt"
 readonly PKGS_BREW_CASK="$HOME/.local/share/chezmoi/pkgs-brew-cask.txt"
 readonly PKGS_BREW="$HOME/.local/share/chezmoi/pkgs-brew.txt"
@@ -185,5 +186,7 @@ if [ "$distro" = arch ]; then
 fi
 
 installation_loop pacman "$PKGS_ARCH"
+
+installation_loop pacman "$PKGS_FONTS"
 
 installation_loop aur "$PKGS_AUR"

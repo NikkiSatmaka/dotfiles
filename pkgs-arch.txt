@@ -342,50 +342,15 @@ ntp
 socat
 xcape
 
-# hiding mouse
+## hiding mouse
 unclutter
 
-# * Fonts
-noto-fonts
-gnu-free-fonts
-noto-fonts-extra
-cantarell-fonts
-otf-overpass
-terminus-font
-ttf-dejavu
-ttf-croscore
-ttf-ionicons
-ttf-junicode
-xorg-fonts-type1
-
-## monospace fonts
-otf-fantasque-sans-mono
-ttf-hack
-ttf-jetbrains-mono
-ttf-linux-libertine
-
-## other languages
-noto-fonts-cjk
-otf-ipafont
-adobe-source-han-sans-otc-fonts
-adobe-source-han-serif-otc-fonts
-adobe-source-han-sans-jp-fonts
-adobe-source-han-sans-kr-fonts
-
-## unicode
-noto-fonts-emoji
-ttf-joypixels
-awesome-terminal-fonts
-otf-font-awesome
-# ttf-nerd-fonts-symbols
-# ttf-nerd-fonts-symbols-mono
-
-
-## * Appearance/Theming
+## appearance / theme
 ## icons
+adapta-gtk-theme
 arc-gtk-theme
-papirus-icon-theme
 arc-icon-theme
+papirus-icon-theme
 
 # # * Power Management/Battery
 # acpi
