@@ -30,16 +30,43 @@ pacutils
 networkmanager
 network-manager-applet
 
-## network drivers
+## network drivers (for thinkpad 11e)
 # broadcom-wl
 
-## Bash Tools
-bc
-# rsync
-mlocate
-fd
-# pkgstats
+## Microcode
+intel-ucode
+# amd-ucode
+
+## xorg and drivers
+mesa
+# lib32-mesa
+
+## intel-virtual-output
+# xf86-video-intel
+vulkan-intel
+
+## amd drivers
+# xf86-video-amdgpu
+# xf86-video-ati
+# mesa-vdpau
+
+## Xorg Related
+xorg
+xorg-apps
+xorg-drivers
+xorg-fonts
+xorg-xfontsel
+xorg-xlsfonts
+arandr
+light
+xdotool
+
+## useful tools
 # arch-wiki-lite
+fd
+mlocate
+pkgstats
+rsync
 
 ## Compression Tools
 zip
@@ -61,6 +88,7 @@ atool
 ## Audio (ALSA & PULSEAUDIO)
 pamixer
 pipewire
+pipewire-jack
 pipewire-pulse
 pulsemixer
 # alsa-utils
@@ -103,30 +131,12 @@ lxqt-session
 # gnome-keyring
 
 ## generic packages
-binutils
 lsof
 dmidecode
 dialog
 nmon
 htop
 # gpm
-
-## ** Microcode
-intel-ucode
-# amd-ucode
-
-## xorg and drivers
-mesa
-# lib32-mesa
-
-## intel-virtual-output
-xf86-video-intel
-vulkan-intel
-
-## amd drivers
-# xf86-video-amdgpu
-# xf86-video-ati
-# mesa-vdpau
 
 # * Security
 # wireguard-tools
@@ -149,25 +159,6 @@ bitwarden-cli
 
 ## * VCS
 git
-
-## * X Related
-xdotool
-xorg
-xorg-server
-xorg-apps
-xorg-drivers
-xorg-xkill
-# xorg-xinit
-xorg-xfontsel
-xorg-xlsfonts
-xorg-xev
-xorg-xset
-xorg-xrandr
-light
-arandr
-
-## input drivers
-xf86-input-libinput
 
 # clipboard
 xsel
@@ -230,7 +221,6 @@ zathura-pdf-mupdf
 
 ## docs
 man-pages
-xorg-docs
 # python-docs
 # python-lxml-docs
 # arduino-docs
@@ -343,7 +333,6 @@ ripgrep
 bat
 calcurse
 diff-so-fancy
-dbus
 exa
 fd
 man
