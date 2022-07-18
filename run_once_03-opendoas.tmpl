@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# install opendoas
+#==============================================================================
+
+ETC_DIR="/etc"
+
+# install_tweak(){
+#     sudo cp "$1" "$2"
+# }
+
+sudo pacman -S --noconfirm --needed opendoas
+
+sudo cp "${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/doas.conf" "$ETC_DIR"
+
+sudo chown -c root:root "$ETC_DIR/doas.conf"
+sudo chmod -c 0400 "$ETC_DIR/doas.conf"

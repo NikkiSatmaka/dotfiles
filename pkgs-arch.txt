@@ -67,9 +67,6 @@ nss-mdns
 ## bluetooth
 blueman
 
-## sudo replacement
-opendoas
-
 ## Audio (ALSA & PULSEAUDIO)
 pamixer
 pavucontrol
