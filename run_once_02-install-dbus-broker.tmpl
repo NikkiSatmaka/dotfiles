@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# install dbus-broker
+#==============================================================================
+
+sudo pacman -S --noconfirm --needed dbus-broker
+
+sudo systemctl disable dbus.service
+
+sudo systemctl enable dbus-broker.service
