@@ -13,12 +13,10 @@ networkmanager-dmenu-git
 ## fonts
 ttf-ms-win11-auto
 apple-fonts
-all-repository-fonts
-# siji-ng
+siji-ng
 ttf-all-the-icons
-# ttf-font-logos
-# ttf-material-design-icons-git
-# ttf-ms-win11
+ttf-font-logos
+ttf-material-design-icons-git
 # ttf-symbola-infinality
 # ttf-typicons
 # ttf-weather-icons
@@ -49,6 +47,7 @@ autojump
 dragon-drop
 # espanso
 espanso-bin
+fsearch
 lf
 # qmk
 simple-mtpfs
