@@ -125,7 +125,8 @@ chezmoi
 
 ## security
 # firejail
-ufw
+firewalld
+# ufw
 # veracrypt
 # wireguard-tools
 
