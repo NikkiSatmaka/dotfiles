@@ -15,6 +15,7 @@ install_mambaforge() {
   else
     curl -L "$1" -o "$3" || exit
     bash "$3" -b || exit
+    rm "$3"
   fi
 }
 
