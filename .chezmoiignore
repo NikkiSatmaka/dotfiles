@@ -8,6 +8,7 @@
 # See https://www.chezmoi.io/docs/reference/#chezmoiignore
 
 *.gz
+*.txt
 LICENSE
 README.md
 README.org
@@ -18,17 +19,25 @@ tweaks
 .emacs-profile
 .emacs-profiles.el
 
+# ignore if not on avalon
 {{- if ne .chezmoi.hostname "avalon" }}
 .local/bin/screenlayout
 .imwheelrc
 {{- end }}
 
+# ignore if not on fenrir
 {{- if ne .chezmoi.hostname "fenrir" }}
 *fenrir*
 {{- end }}
 
-# Ignore non-Linux files.
+# ignore only on desktops, such as avalon
+{{- if eq .chezmoi.hostname "avalon" }}
+laptop*
+{{- end }}
+
+# ignore if not on linux
 {{- if ne .chezmoi.os "linux" }}
+.config/awesome
 .config/bspwm
 .config/broot
 .config/dunst
@@ -62,6 +71,7 @@ tweaks
 99-services
 {{- end }}
 
+# ignore if on wsl
 {{- if eq .chezmoi.kernel.osrelease "5.10.102.1-microsoft-standard-WSL2" }}
 .config/alacritty
 .config/bspwm
@@ -108,7 +118,7 @@ tweaks
 99-services
 {{- end }}
 
-# Ignore non-macOS files.
+# ignore if not on macos
 {{- if ne .chezmoi.os "darwin" }}
 .config/iterm
 .config/skhd
@@ -119,14 +129,14 @@ Library
 11-brew-packages
 {{- end }}
 
-# Ignore non-Windows files.
+# ignore if not on windows
 {{- if ne .chezmoi.os "windows" }}
 AppData
 Documents
 .wslconfig
 {{- end }}
 
-# Ignore only on Windows.
+# ignore only on windows
 {{- if eq .chezmoi.os "windows" }}
 .config/bash
 .config/calcurse
