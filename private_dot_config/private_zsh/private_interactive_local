@@ -98,9 +98,6 @@ KEYTIMEOUT=1 # corresponds to 10ms
 # load .inputrc
 #eval "$(sed -rn 's/^([^#].*?): (.*)$/bindkey \1 \2/p' ~/.inputrc)"
 
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh
-ssource ~/.config/zsh/.p10k.zsh
-
 # ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 # if [[ "$(tput colors)" == "256" ]]; then
@@ -144,10 +141,10 @@ ssource /usr/share/fzf/completion.zsh
 ssource /usr/share/doc/fzf/examples/key-bindings.zsh
 ssource /usr/share/doc/fzf/examples/completion.zsh
 
-# # Enable direnv.
-# if command -v direnv >/dev/null 2>&1; then
-#     eval "$(direnv hook zsh)"
-# fi
+# Enable direnv.
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

@@ -1,7 +1,3 @@
-# ZINIT PATH
-declare -A ZINIT
-ZINIT[ZCOMPDUMP_PATH]=""${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}""
-
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -42,9 +38,6 @@ zstyle ":history-search-multi-word" page-size "11"
 zinit ice wait"1" lucid
 zinit load zdharma-continuum/history-search-multi-word
 
-# Snippet
-zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
-
 # zsh vim
 zinit ice depth"1"
 zinit light jeffreytse/zsh-vi-mode
@@ -57,7 +50,7 @@ zinit load hlissner/zsh-autopair
 zinit ice wait lucid
 zinit light kutsan/zsh-system-clipboard
 
-# direnv
-zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
-    atpull'%atclone' pick"direnv" src"zhook.zsh" for \
-        direnv/direnv
+# # direnv
+# zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+#     atpull'%atclone' pick"direnv" src"zhook.zsh" for \
+#         direnv/direnv
