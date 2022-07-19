@@ -15,9 +15,6 @@ matches:
   - trigger: ":br"
     replace: "Best Regards,\n{{ .name }}"
 
-  - trigger: ":yooooo"
-    replace: "APA KABAR YOOOO \n{{ .name }}"
-
   # Dates
   - trigger: ":date"
     replace: "{{ "{{" }}mydate{{ "}}" }}"
