@@ -327,12 +327,12 @@ xcape
 xclip
 xsel
 
-## Power Management/Battery
+## power management/battery
 # acpi
-# tlp
-# # for thinkpad charging/discharging rates
 # acpi_call-dkms
-# powertop
+# acpid
+# tlp
+powertop
 
 ## Browsers
 firefox

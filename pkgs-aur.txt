@@ -10,6 +10,9 @@
 ## network
 networkmanager-dmenu-git
 
+## power management/battery
+laptop-mode-tools
+
 ## fonts
 ttf-ms-win11-auto
 apple-fonts
