@@ -74,6 +74,7 @@ laptop*
 # ignore if on wsl
 {{- if eq .chezmoi.kernel.osrelease "5.10.102.1-microsoft-standard-WSL2" }}
 .config/alacritty
+.config/awesome
 .config/bspwm
 .config/calcurse
 .config/Code
