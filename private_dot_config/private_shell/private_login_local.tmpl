@@ -203,7 +203,7 @@ pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin" PATH
 pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/gem/bin" PATH
 pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/go/bin" PATH
 pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin" PATH
-pathprepend "$PNPM_HOME" $PATH
+pathprepend "$PNPM_HOME" PATH
 pathprepend "$ANDROID_HOME/platform-tools" PATH
 {{- if eq .chezmoi.os "darwin" }}
 pathprepend "/usr/local/opt/python/libexec/bin" PATH
