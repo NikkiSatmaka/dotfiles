@@ -115,8 +115,10 @@ laptop*
 11-brew-packages
 50-change-shell
 70-rofi-dmenu
-80-install-doom-emacs
-81-install-mambaforge
+80-install-lunarvim
+81-install-doom-emacs
+82-install-mambaforge
+83-install-nvchad
 90-set-wallpaper
 99-services
 {{- end }}
