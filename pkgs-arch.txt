@@ -296,6 +296,7 @@ adapta-gtk-theme
 arc-gtk-theme
 arc-icon-theme
 lxappearance
+materia-gtk-theme
 papirus-icon-theme
 
 ## hiding mouse
@@ -323,6 +324,7 @@ pkgstats
 ripgrep
 rsync
 socat
+thefuck
 vim
 xcape
 xclip
