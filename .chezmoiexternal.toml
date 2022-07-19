@@ -1,0 +1,8 @@
+[".config/nvim"]
+    type = "git-repo"
+    url = "https://github.com/NvChad/NvChad.git"
+    refreshPeriod = "168h"
+["AppData/Local/nvim"]
+    type = "git-repo"
+    url = "https://github.com/NvChad/NvChad.git"
+    refreshPeriod = "168h"
