@@ -1,11 +1,11 @@
 # Path to the bash it configuration
-# export BASH_IT=~/.bash_it
+export BASH_IT=~/.config/bash_it
 
 # Theme (from ~/.bash_it/themes/)
-# export BASH_IT_THEME=powerline
+export BASH_IT_THEME=powerline
 
 # Load Bash It
-# . $BASH_IT/bash_it.sh
+. $BASH_IT/bash_it.sh
 
 # Load fzf completion
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
