@@ -98,9 +98,8 @@ KEYTIMEOUT=1 # corresponds to 10ms
 # load .inputrc
 #eval "$(sed -rn 's/^([^#].*?): (.*)$/bindkey \1 \2/p' ~/.inputrc)"
 
-# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# # [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-# ssource ~/.config/zsh/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+ssource ~/.config/zsh/.p10k.zsh
 
 # ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
