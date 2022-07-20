@@ -33,12 +33,6 @@ if [ -t 0 ]; then
     fi
 fi
 
-# gnome-terminal doesn't advertise its 256 colour support.
-if [ "$COLORTERM" = gnome-terminal -a "$TERM" = xterm ]; then
-#    export TERM=gnome-256color
-    export TERM=xterm-256color
-fi
-
 # WSL 2 specific settings.
 if grep -q "microsoft" /proc/version >/dev/null 2>&1; then
     # Requires: https://sourceforge.net/projects/vcxsrv/ (or alternative)
