@@ -40,13 +40,15 @@ imwheel -k -b 45 &  # mouse scroll speed
 {{ end -}}
 
 {{ if eq .chezmoi.hostname "fenrir" -}}
-trackpoint &  # run the trackpoint script, speeding up trackpoint speed
+# trackpoint &  # run the trackpoint script, speeding up trackpoint speed
 {{ end -}}
 
 dropbox &
+lxsession &
 blueman-applet &
 nm-applet &
 flameshot &
+volumeicon &
 emacs --daemon &
 pcmanfm --desktop &
 setwall &     # run the setbg script
