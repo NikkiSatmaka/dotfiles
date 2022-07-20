@@ -87,13 +87,13 @@ setopt extendedhistory
 # Time to wait for additional characters in a sequence
 KEYTIMEOUT=1 # corresponds to 10ms
 
-# # * Keybindings
-# bindkey -v
+# * Keybindings
+bindkey -v
 
-# # for "leader" keybindings
-# bindkey -a -r t
+# for "leader" keybindings
+bindkey -a -r t
 
-# ssource ~/.config/zsh/interactive_vi_mode
+ssource ~/.config/zsh/interactive_vi_mode
 
 # load .inputrc
 #eval "$(sed -rn 's/^([^#].*?): (.*)$/bindkey \1 \2/p' ~/.inputrc)"
