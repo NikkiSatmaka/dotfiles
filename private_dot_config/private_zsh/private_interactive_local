@@ -65,6 +65,8 @@ if [[ $ZSH_VERSION == 5.<->* ]]; then
     alias -g EA9="|& awk '{print \$9}'"
 fi
 
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+
 # Automatically cd into typed directory.
 setopt autocd
 
@@ -129,17 +131,17 @@ ssource ~/.config/zsh/interactive_vi_mode
 #     eval $(dircolors =(cat ~/.shell/plugins/dircolors-solarized/dircolors.256dark ~/.shell/dircolors.extra))
 # fi
 
-# # Enable starship prompt.
-# if command -v starship >/dev/null 2>&1; then
-#     eval "$(starship init zsh)"
-# fi
-
 # Load fzf completion
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 ssource /usr/share/fzf/key-bindings.zsh
 ssource /usr/share/fzf/completion.zsh
 ssource /usr/share/doc/fzf/examples/key-bindings.zsh
 ssource /usr/share/doc/fzf/examples/completion.zsh
+
+# # Enable starship prompt.
+# if command -v starship >/dev/null 2>&1; then
+#     eval "$(starship init zsh)"
+# fi
 
 # Enable direnv.
 if command -v direnv >/dev/null 2>&1; then
