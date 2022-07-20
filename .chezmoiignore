@@ -18,6 +18,7 @@ pkgs-*
 tweaks
 .emacs-profile
 .emacs-profiles.el
+80-install-lunarvim
 
 # ignore if not on avalon
 {{- if ne .chezmoi.hostname "avalon" }}
