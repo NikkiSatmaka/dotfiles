@@ -177,7 +177,8 @@ if [ "$distro" = arch ]; then
   else
     sudo sed -i "s/^#ParallelDownloads/ParallelDownloads/" /etc/pacman.conf
   fi
-  manual_install "$AUR_HELPER"
+  # manual_install "$AUR_HELPER"
+  manual_install paru-bin
   sudo pacman -Syu
 fi
 
