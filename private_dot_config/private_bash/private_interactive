@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # # Path to the bash it configuration
 # export BASH_IT="${XDG_CONFIG_HOME:-$HOME/.config}/bash_it"
 
