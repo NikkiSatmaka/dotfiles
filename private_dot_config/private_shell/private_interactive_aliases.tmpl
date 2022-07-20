@@ -258,7 +258,8 @@ alias handbrake="ghb"
 alias listaur="pacman -Qm"
 alias paci="sudo pacman -Qi"
 # alias paci="yay -Qeq | fzf -m --preview "yay -Qi {1}" | xargs -ro yay -Rs"
-alias rank="sudo reflector --verbose --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirror-update="sudo reflector --verbose -c Indonesia -c Japan -c Singapore -c Taiwan --sort rate --save /etc/pacman.d/mirrorlist"
+alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 alias motherboard="cat /sys/devices/virtual/dmi/id/board_{vendor,name,version}"
 
