@@ -28,14 +28,14 @@ alias diff="diff --color=auto"
 
 # Colorizes the `grep` output.
 alias grep="grep --color=auto"
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
 
 # Quick chmod ;-)
-alias rw-='chmod 600'
-alias rwx='chmod 700'
-alias r--='chmod 644'
-alias r-x='chmod 755'
+alias rw-="chmod 600"
+alias rwx="chmod 700"
+alias r--="chmod 644"
+alias r-x="chmod 755"
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..='cd ..'
@@ -91,9 +91,34 @@ if command -v trash-put >/dev/null 2>&1; then
   alias trm='trash-rm'
 fi
 
+# ps
+alias psa="ps auxf"
+alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias psmem='ps auxf | sort -nr -k 4'
+alias pscpu='ps auxf | sort -nr -k 3'
+
+# get error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
+
+# gpg encryption
+# verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+# receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+
+# yt-dlp (youtube-dl)
+alias yt="yt-dlp --add-metadata -i"
+alias yta-aac="yt-dlp --extract-audio --audio-format aac "
+alias yta-best="yt-dlp --extract-audio --audio-format best "
+alias yta-flac="yt-dlp --extract-audio --audio-format flac "
+alias yta-m4a="yt-dlp --extract-audio --audio-format m4a "
+alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 "
+alias yta-opus="yt-dlp --extract-audio --audio-format opus "
+alias yta-vorbis="yt-dlp --extract-audio --audio-format vorbis "
+alias yta-wav="yt-dlp --extract-audio --audio-format wav "
+alias ytv-best="yt-dlp -f bestvideo+bestaudio "
+
 alias mkd="mkdir -pv"
-alias yt="youtube-dl --add-metadata -i"
-alias yta="yt -x -f bestaudio/best"
 alias ffmpeg="ffmpeg -hide_banner"
 
 # Makes `mount` command output pretty and with a human readable format.
@@ -108,8 +133,7 @@ alias ping="ping -c 3"
 # Directory browsing
 # -----------------------------------------------------------------------------
 
-# Use exa as a modern 'ls'
-
+# Use "exa" as a modern "ls"
 if command -v exa >/dev/null 2>&1; then
   alias ls="exa --group-directories-first"
 
@@ -210,7 +234,7 @@ alias ncmpcpp="ncmpcpp ncmpcpp_directory=${XDG_CONFIG_HOME:-$HOME/.config}/ncmpc
 alias r="ranger"
 alias xup="xrdb $HOME/.Xresources"
 alias pman="sudo pacman"
-alias doas='doas --'
+alias doas="doas --"
 alias jp="joplin"
 
 alias python='python3'
@@ -254,11 +278,17 @@ alias gopherdrive="sshfs hexdsl@206.189.5.169:/home/hexdsl/gopher/ /storage/goph
 
 alias handbrake="ghb"
 
+# get fastest mirrors
+alias mirror-update="sudo reflector --verbose -c Indonesia -c Japan -c Singapore -c Taiwan --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+
 # Apps aliases
 alias listaur="pacman -Qm"
 alias paci="sudo pacman -Qi"
 # alias paci="yay -Qeq | fzf -m --preview "yay -Qi {1}" | xargs -ro yay -Rs"
-alias mirror-update="sudo reflector --verbose -c Indonesia -c Japan -c Singapore -c Taiwan --sort rate --save /etc/pacman.d/mirrorlist"
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 alias motherboard="cat /sys/devices/virtual/dmi/id/board_{vendor,name,version}"
