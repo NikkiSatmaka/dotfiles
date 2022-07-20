@@ -129,20 +129,16 @@ installation_loop() {
   sed '/^#/d' "$2" | sed '/^$/d' | sed ':a; N; $!ba; s/\n/ /g' > /tmp/pkgs.txt
   case "$1" in
     "aur")
-      # xargs -a /tmp/pkgs.txt -r -- "$AUR_HELPER" -S --needed
-      "$AUR_HELPER" -S --needed < /tmp/pkgs.txt
+      xargs -a /tmp/pkgs.txt -r -- "$AUR_HELPER" -S --needed
       ;;
     "apt-get")
-      # xargs -a /tmp/pkgs.txt -r -- sudo apt-get install -y
-      sudo apt-get install -y < /tmp/pkgs.txt
+      xargs -a /tmp/pkgs.txt -r -- sudo apt-get install -y
       ;;
     "pacman")
-      # xargs -a /tmp/pkgs.txt -r -- sudo pacman -S --noconfirm --needed
-      sudo pacman -S --noconfirm --needed < /tmp/pkgs.txt
+      xargs -a /tmp/pkgs.txt -r -- sudo pacman -S --noconfirm --needed
       ;;
     "pip")
-      # xargs -a /tmp/pkgs.txt -r -- python3 -m pip install
-      python3 -m pip install < /tmp/pkgs.txt
+      xargs -a /tmp/pkgs.txt -r -- python3 -m pip install
       ;;
   esac
 }
