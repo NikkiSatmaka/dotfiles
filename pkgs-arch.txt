@@ -95,7 +95,8 @@ nfs-utils
 # polkit
 lxqt-policykit
 lxqt-session
-# gnome-keyring
+gnome-keyring
+seahorse
 
 ## Input method
 fcitx5-im
@@ -153,6 +154,7 @@ shellcheck
 zsh
 
 ## display manager
+lightdm
 sddm
 
 ## window manager
