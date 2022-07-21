@@ -1,15 +1,15 @@
 #!/usr/bin/env sh
 
 #==============================================================================
-# /bin/sh -> dash
+# install kmonad kbd
 #==============================================================================
 
 readonly SYSTEMD_UNIT="/etc/systemd/kmonad.service"
-readonly KMONAD_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/kmonad"
-readonly KMONAD_CONFIG="colemak-dh-wide-extend-ansi.kbd"
+readonly KMONAD_TARGET="/etc/kmonad/config.kbd"
+readonly KMONAD_SRC_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/kmonad"
+readonly KMONAD_SRC="colemak-dh-wide-extend-ansi.kbd"
 
-cp -f "$KMONAD_CONFIG_DIR/$KMONAD_CONFIG" "$KMONAD_CONFIG_DIR/config.kbd"
-
+sudo install -Dm 644 "$KMONAD_SRC_DIR/$KMONAD_SRC" "$KMONAD_TARGET"
 
 if [ -f "$SYSTEMD_UNIT" ]; then
   echo "kmonad systemd unit already exists"
@@ -23,7 +23,7 @@ Description=kmonad keyboard config
 [Service]
 Restart=always
 RestartSec=3
-ExecStart=/usr/bin/kmonad /home/nikki/.config/kmonad/config.kbd
+ExecStart=/usr/bin/kmonad %E/kmonad/config.kbd
 Nice=-20
 
 [Install]
