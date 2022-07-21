@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# /bin/sh -> dash
+#==============================================================================
+
+readonly SYSTEMD_UNIT="/etc/systemd/kmonad.service"
+readonly KMONAD_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/kmonad"
+readonly KMONAD_CONFIG="colemak-dh-wide-extend-ansi.kbd"
+
+cp -f "$KMONAD_CONFIG_DIR/$KMONAD_CONFIG" "$KMONAD_CONFIG_DIR/config.kbd"
+
+
+if [ -f "$SYSTEMD_UNIT" ]; then
+  echo "kmonad systemd unit already exists"
+  echo "no changes were performed"
+  exit
+else
+  sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
+[Unit]
+Description=kmonad keyboard config
+
+[Service]
+Restart=always
+RestartSec=3
+ExecStart=/usr/bin/kmonad /home/nikki/.config/kmonad/config.kbd
+Nice=-20
+
+[Install]
+WantedBy=default.target
+_EOF_
+  sudo chmod 644 "$SYSTEMD_UNIT" &&
+  echo "kmonad systemd unit created"
+fi
