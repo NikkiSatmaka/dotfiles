@@ -12,15 +12,14 @@ readonly KEYRING="chaotic-keyring.pkg.tar.zst"
 readonly MIRRORLIST="chaotic-mirrorlist.pkg.tar.zst"
 readonly KEYSERVER="keyserver.ubuntu.com"
 
-sudo pacman-key --recv-key "$KEY" --keyserver "$KEYSERVER"
-sudo pacman-key --lsign-key "$KEY" 
-sudo pacman -U "$URL/$KEYRING" "$URL/$MIRRORLIST"
-
-if grep -q '^\[$REPO\]' "$PACMAN_CONF_FILE"; then
+if grep -q "^\[$REPO\]" "$PACMAN_CONF_FILE"; then
   echo "$REPO repo already exists"
   echo "no changes were performed"
   exit
 else
+  sudo pacman-key --recv-key "$KEY" --keyserver "$KEYSERVER"
+  sudo pacman-key --lsign-key "$KEY" 
+  sudo pacman -U "$URL/$KEYRING" "$URL/$MIRRORLIST"
   sudo tee -a "$PACMAN_CONF_FILE" >/dev/null 2>&1 << _EOF_ &&
 
 [chaotic-aur]
