@@ -5,7 +5,9 @@
 # libxft-bgra-git
 
 # ## aur helper
-# paru
+# paru-bin
+powerpill
+rate-mirrors-bin
 
 ## network
 networkmanager-dmenu-git
