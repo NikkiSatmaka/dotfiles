@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# add pacman third-party repositories
+#==============================================================================
+
+readonly PACMAN_CONF_FILE="/etc/pacman.conf"
+readonly KEY="FBA220DFC880C036"
+readonly REPO="chaotic-aur"
+readonly URL="https://cdn-mirror.chaotic.cx/chaotic-aur"
+readonly KEYRING="chaotic-keyring.pkg.tar.zst"
+readonly MIRRORLIST="chaotic-mirrorlist.pkg.tar.zst"
+readonly KEYSERVER="keyserver.ubuntu.com"
+
+sudo pacman-key --recv-key "$KEY" --keyserver "$KEYSERVER"
+sudo pacman-key --lsign-key "$KEY" 
+sudo pacman -U "$URL/$KEYRING" "$URL/$MIRRORLIST"
+
+if grep -q '^\[$REPO\]' "$PACMAN_CONF_FILE"; then
+  echo "$REPO repo already exists"
+  echo "no changes were performed"
+  exit
+else
+  sudo tee -a "$PACMAN_CONF_FILE" >/dev/null 2>&1 << _EOF_ &&
+
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+_EOF_
+  echo "$REPO repo has been added"
+fi
