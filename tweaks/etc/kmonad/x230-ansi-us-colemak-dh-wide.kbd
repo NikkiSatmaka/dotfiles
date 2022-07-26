@@ -86,14 +86,18 @@
   ee  (tap-next esc @ext)
   /c  (tap-hold-next-release 500 / rctl)
   tm  (tap-next tab lmet)
-  [m  (tap-hold-next 500 [ rmet))
-  \m  (tap-hold-next 500 \ rmet))
+  [m  (tap-hold-next 500 [ rmet)
+  \m  (tap-hold-next 500 \ rmet)
+)
 
 ;; Sticky keys
 
 (defalias
-  sl (sticky-key 300 lsft)
-  sr (sticky-key 300 rsft))
+  ;; sl (sticky-key 300 lsft)  ;; not supported yet
+  ;; sr (sticky-key 300 rsft)  ;; not supported yet
+  sl lsft
+  sr rsft
+)
 
 ;; Other aliases.  Yay Haskell ^-^
 
@@ -110,7 +114,8 @@
   <-  #( < -   )
   ->  #( - >   )
   =>  #( = >   )
-  ::  #( : :   ))
+  ::  #( : :   )
+)
 
 (defalias
   cpy C-c
@@ -121,7 +126,8 @@
   fnd C-f
   bk A-lft
   fw A-rght
-  £ S-3  ;;UK pound sign)
+  £ S-3  ;;UK pound sign
+)
 
 
 ;;; Layers
@@ -169,7 +175,7 @@ esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home end  ins  
 ;; Extend layer.
 (deflayer extend
        mute vold volu
-@cmk pp   rew  prev next ejec refr brdn brup www  mail prg1 prg2 home end  ins  del
+@cmk _    _    _    _    _    _    brdn brup _    _    _    _    home end  ins  del
   @qwe f1   f2   f3   f4   f5   f6   f12  f7   f8   f9   f10   f11  ret
   @tm  esc  @bk  @fnd @fw  ins  prnt pgup home up   end  caps  f13  @\m
   @ee  lalt lmet lsft lctl ralt slck pgdn lft  down rght del        ret
@@ -183,9 +189,9 @@ esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home end  ins  
        _    _    _
 _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _     _
-  _    S-1  S-2  S-3  S-4  S-5  =    7    8    9    +    «    »
-  _    \_   [    {    \(   S-6  *    4    5    6    -    _          _
-  _    ]    }    \)   S-7  `    0    1    2    3    /               _
+  _    S-1  S-2  S-3  S-4  S-5  «    =    7    8    9    +    /     _
+  _    \_   [    {    \(   S-6  »    *    4    5    6    -          _
+  _    ]    }    \)   S-7  `    _    0    1    2    3               _
   _    _    _    _              _              _    _    _     _    _    _
                                                                _    _    _
 )
