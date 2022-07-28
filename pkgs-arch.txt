@@ -1,7 +1,7 @@
 ## Kernels
-linux
-linux-headers
-linux-docs
+# linux
+# linux-headers
+# linux-docs
 
 ## LTS kernels
 # linux-lts
@@ -13,10 +13,10 @@ linux-docs
 # linux-hardened-headers
 # linux-hardened-docs
 
-## zen kernels (daily)
-# linux-zen
-# linux-zen-headers
-# linux-zen-docs
+# zen kernels (daily)
+linux-zen
+linux-zen-headers
+linux-zen-docs
 
 ## groups
 base-devel
@@ -31,7 +31,7 @@ networkmanager
 network-manager-applet
 
 ## network drivers (for thinkpad 11e)
-# broadcom-wl
+# broadcom-wl-dkms
 
 ## Microcode
 intel-ucode

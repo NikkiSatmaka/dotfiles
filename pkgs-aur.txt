@@ -1,9 +1,6 @@
 ## shell
 # dashbinsh
 
-# ## dependencies
-# libxft-bgra-git
-
 # ## aur helper
 # paru-bin
 powerpill
@@ -14,6 +11,9 @@ networkmanager-dmenu-git
 
 ## power management/battery
 laptop-mode-tools
+
+# plymouth
+plymouth-git
 
 ## fonts
 ttf-ms-win11-auto
