@@ -41,7 +41,6 @@ fi
 
 # Path settings
 pathprepend "$HOME/bin" PATH
-# export MANPATH=~/share/man:$MANPATH
 pathprepend /usr/local/man MANPATH
 pathprepend /usr/share/man MANPATH
 pathprepend "$HOME/share/man" MANPATH
