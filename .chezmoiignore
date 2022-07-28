@@ -112,6 +112,8 @@ laptop*
 01-dash-shell
 02-install-dbus-broker
 03-opendoas
+04-chaotic-aur-repo
+05-kmonad-colemak
 10-install-packages
 11-brew-packages
 50-change-shell
