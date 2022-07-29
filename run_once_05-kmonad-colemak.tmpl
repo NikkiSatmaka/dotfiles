@@ -6,6 +6,7 @@
 
 readonly SYSTEMD_UNIT="/etc/systemd/system/kmonad.service"
 readonly KMONAD_TARGET="/etc/kmonad/config.kbd"
+readonly UDEV_RULES="/etc/udev/rules.d/99-kmonad.rules"
 readonly KMONAD_SRC_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/kmonad"
 # readonly KMONAD_SRC="colemak-dh-wide-extend-ansi.kbd"
 readonly KMONAD_SRC="x230-ansi-us-colemak-dh-wide.kbd"
@@ -14,8 +15,6 @@ sudo install -Dm 644 "$KMONAD_SRC_DIR/$KMONAD_SRC" "$KMONAD_TARGET"
 
 if [ -f "$SYSTEMD_UNIT" ]; then
   echo "kmonad systemd unit already exists"
-  echo "no changes were performed"
-  exit
 else
   sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
 [Unit]
@@ -33,3 +32,46 @@ _EOF_
   sudo chmod 644 "$SYSTEMD_UNIT" &&
   echo "kmonad systemd unit created"
 fi
+
+# add group uinput
+if getent group uinput >/dev/null 2>&1; then
+  echo "uinput group already exists"
+else
+  sudo groupadd uinput &&
+  echo "uinput group created"
+fi
+
+# adding user to uinput group
+if id -nG "$USER" | grep -qw input; then
+  echo "user is already a member of input group"
+else
+  sudo usermod -a -G input "$USER" &&
+  echo "user is now a member of input group"
+fi
+
+# adding user to input group
+if id -nG "$USER" | grep -qw uinput; then
+  echo "user is already a member of uinput group"
+else
+  sudo usermod -a -G uinput "$USER" &&
+  echo "user is now a member of uinput group"
+fi
+
+# create udev rule
+if [ -f "$UDEV_RULES" ]; then
+  echo "udev rules already exists"
+else
+  sudo tee "$UDEV_RULES" >/dev/null 2>&1 << _EOF_ &&
+sudo tee $UDEV_RULES >/dev/null 2>&1 << _EOF_ &&
+KERNEL=="uinput" \
+, MODE="0660" \
+, GROUP="uinput" \
+, OPTIONS+="static_node=uinput"
+_EOF_
+  sudo chmod 644 "$UDEV_RULES" &&
+  echo "udev rules created"
+fi
+
+sudo modprobe uinput
+
+sudo systemctl enable kmonad.service
