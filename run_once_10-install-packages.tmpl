@@ -9,12 +9,12 @@
 readonly AUR_URL='https://aur.archlinux.org/cgit/aur.git/snapshot'
 readonly AUR_HELPER='paru'
 readonly SRC_DIR="$HOME/.local/src"
-readonly PKGS_ARCH="$HOME/.local/share/chezmoi/pkgs-arch.txt"
-readonly PKGS_FONTS="$HOME/.local/share/chezmoi/pkgs-arch-fonts.txt"
-readonly PKGS_BREW_TAP="$HOME/.local/share/chezmoi/pkgs-brew-tap.txt"
-readonly PKGS_BREW_CASK="$HOME/.local/share/chezmoi/pkgs-brew-cask.txt"
-readonly PKGS_BREW="$HOME/.local/share/chezmoi/pkgs-brew.txt"
-readonly PKGS_AUR="$HOME/.local/share/chezmoi/pkgs-aur.txt"
+readonly PKGS_ARCH="{{ .chezmoi.sourceDir }}/pkgs-arch.txt"
+readonly PKGS_FONTS="{{ .chezmoi.sourceDir }}/pkgs-arch-fonts.txt"
+readonly PKGS_BREW_TAP="{{ .chezmoi.sourceDir }}/pkgs-brew-tap.txt"
+readonly PKGS_BREW_CASK="{{ .chezmoi.sourceDir }}/pkgs-brew-cask.txt"
+readonly PKGS_BREW="{{ .chezmoi.sourceDir }}/pkgs-brew.txt"
+readonly PKGS_AUR="{{ .chezmoi.sourceDir }}/pkgs-aur.txt"
 
 ### FUNCTIONS ###
 

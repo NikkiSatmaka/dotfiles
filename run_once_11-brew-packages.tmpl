@@ -7,14 +7,13 @@
 ### OPTIONS AND VARIABLES ###
 
 readonly BREW_URL='https://raw.githubusercontent.com/Homebrew/install/master/install.sh'
-readonly BREW_FILE='~/.local/share/chezmoi/Brewfile'
-readonly AUR_HELPER='yay'
+readonly BREW_FILE='{{ .chezmoi.sourceDir }}/Brewfile'
 readonly SRC_DIR="$HOME/.local/src"
-readonly PKGS_ARCH="$HOME/.local/share/chezmoi/pkgs-arch"
-readonly PKGS_BREW_TAP="$HOME/.local/share/chezmoi/pkgs-brew-tap"
-readonly PKGS_BREW_CASK="$HOME/.local/share/chezmoi/pkgs-brew-cask"
-readonly PKGS_BREW="$HOME/.local/share/chezmoi/pkgs-brew"
-readonly PKGS_AUR="$HOME/.local/share/chezmoi/pkgs-aur"
+readonly PKGS_ARCH="{{ .chezmoi.sourceDir }}/pkgs-arch"
+readonly PKGS_BREW_TAP="{{ .chezmoi.sourceDir }}/pkgs-brew-tap"
+readonly PKGS_BREW_CASK="{{ .chezmoi.sourceDir }}/pkgs-brew-cask"
+readonly PKGS_BREW="{{ .chezmoi.sourceDir }}/pkgs-brew"
+readonly PKGS_AUR="{{ .chezmoi.sourceDir }}/pkgs-aur"
 
 ### FUNCTIONS ###
 
