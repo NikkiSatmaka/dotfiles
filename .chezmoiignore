@@ -141,6 +141,7 @@ Library
 {{- if ne .chezmoi.os "windows" }}
 AppData
 Documents
+.local/bin/windows
 .wslconfig
 {{- end }}
 
