@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+#==============================================================================
+# Installing Nerd Fonts
+#==============================================================================
+
+readonly FONTDIR="$HOME/.local/share/fonts"
+readonly NERDFONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download"
+readonly NERDFONT_VERSION="v2.1.0"
+
+CURRENT_DIR="$(pwd)"
+TEMP="/tmp"
+
+fonts=( 
+  "FiraCode" 
+  "Go-Mono" 
+  "Hack" 
+  "Inconsolata" 
+  "Iosevka" 
+  "JetBrainsMono" 
+  "Mononoki" 
+  "RobotoMono" 
+  "SourceCodePro" 
+)
+
+mkdir -p $FONTDIR
+
+cd $TEMP
+
+for font in ${fonts[@]}
+do
+  # check whether font is already installed
+  if [ -d "$FONTDIR/$font" ]; then
+    echo "Font $font is already installed"
+    continue
+  fi
+  # check whether font archive has been downloaded
+  if [ -f "$TEMP/$font.zip" ]; then
+    echo "Font $font archive already exists"
+    # delete existing archive
+    rm "$TEMP/$font.zip"
+  fi
+  # download font
+  wget -O "$font.zip" "$NERDFONT_URL/$NERDFONT_VERSION/$font.zip"
+  # extract font
+  unzip "$font.zip" -d "$FONTDIR/$font"
+done
+
+fc-cache
+
+cd "$CURRENT_DIR"
