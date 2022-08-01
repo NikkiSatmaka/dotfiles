@@ -16,6 +16,8 @@
 {{- $git_name := promptString "Git username for the author/committer" }}
 {{- $git_email := promptString "Git email address for the author/committer" }}
 
+{{- $distro := promptString "What linux distro is this? debian/arch/fedora" }}
+
 [gpg]
   recipient = "id for the encrypt key"
 
@@ -25,3 +27,6 @@
     [data.git]
         name = "{{ $git_name }}"
         email = "{{ $git_email }}"
+
+[install]
+    distro = "{{ $distro }}"
