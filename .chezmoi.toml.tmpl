@@ -22,11 +22,11 @@
   recipient = "id for the encrypt key"
 
 [data]
-    name = "{{ $name }}"
+  name = "{{ $name }}"
 
-    [data.git]
-        name = "{{ $git_name }}"
-        email = "{{ $git_email }}"
+  [data.git]
+    name = "{{ $git_name }}"
+    email = "{{ $git_email }}"
 
-[install]
+  [data.system]
     distro = "{{ $distro }}"
