@@ -2,6 +2,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
 export XDG_CONFIG_DIRS="/etc/xdg"
 
@@ -38,13 +39,14 @@ export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/pass"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export GOKU_EDN_CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/karabiner/karabiner.edn"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/config.toml"
+export FFMPEG_DATADIR="${XDG_CONFIG_HOME:-$HOME/.config}/ffmpeg"
 
 # GnuPG
 # export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
-export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+#export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
@@ -77,6 +79,17 @@ export BUNDLE_USER_PLUGIN="${XDG_DATA_HOME:-$HOME/.local/share}/bundle"
 # go
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 
+# haskell
+export CABAL_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/cabal/config"
+export CABAL_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/cabal"
+export STACK_ROOT="${XDG_DATA_HOME:-$HOME/.local/share}/stack"
+
+# latex
+export TEXMFHOME="${XDG_DATA_HOME:-$HOME/.local/share}/texmf"
+export TEXMFVAR="${XDG_CACHE_HOME:-$HOME/.cache}/texlive/texmf-var"
+export TEXMFCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/texlive/texmf-config"
+export TEXMACS_HOME_PATH="${XDG_STATE_HOME:-$HOME/.local/state}/texmacs"
+
 # electron
 # export ELECTRON_TRASH=trash-cli code
 
@@ -99,6 +112,15 @@ export DOOMDIR="${XDG_CONFIG_HOME:-$HOME/.config}/doom"
 # Wine
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
+
+# Xmonad
+XMONAD_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/xmonad"
+XMONAD_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/xmonad"
+XMONAD_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/xmonad"
+
+# AWS
+export AWS_SHARED_CREDENTIALS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/aws/credentials"
+export AWS_CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/aws/config"
 
 # FFF file manager
 export FFF_HIDDEN=0
