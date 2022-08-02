@@ -47,6 +47,8 @@ Nice=-20
 [Install]
 WantedBy=default.target
 _EOF_
+    sudo chmod 644 "$SYSTEMD_UNIT" &&
+    echo "kmonad systemd unit created"
   elif [ $kmonad_loc == "/usr/local/bin/kmonad" ]; then
     sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
 [Unit]
@@ -61,9 +63,9 @@ Nice=-20
 [Install]
 WantedBy=default.target
 _EOF_
+    sudo chmod 644 "$SYSTEMD_UNIT" &&
+    echo "kmonad systemd unit created"
   fi
-  sudo chmod 644 "$SYSTEMD_UNIT" &&
-  echo "kmonad systemd unit created"
 fi
 
 # add group uinput
