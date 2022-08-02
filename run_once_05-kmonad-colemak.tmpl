@@ -33,7 +33,7 @@ else
   # find kmonad location
   kmonad_loc=$(which kmonad)
   echo "kmonad is at $kmonad_loc"
-  if $kmonad_loc="/usr/bin/kmonad"; then
+  if [ $kmonad_loc == "/usr/bin/kmonad" ]; then
     sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
 [Unit]
 Description=kmonad keyboard config
@@ -47,7 +47,7 @@ Nice=-20
 [Install]
 WantedBy=default.target
 _EOF_
-  elif $kmonad_loc="/usr/local/bin/kmonad"; then
+  if [ $kmonad_loc == "/usr/local/bin/kmonad" ]; then
     sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
 [Unit]
 Description=kmonad keyboard config
