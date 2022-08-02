@@ -41,7 +41,7 @@ do
     rm "$TEMP/$font.zip"
   fi
   # download font
-  wget -O "$font.zip" "$NERDFONT_URL/$NERDFONT_VERSION/$font.zip"
+  curl -LO "$NERDFONT_URL/$NERDFONT_VERSION/$font.zip"
   # extract font
   unzip "$font.zip" -d "$FONTDIR/$font"
 done

@@ -12,7 +12,7 @@ readonly WALL_LOC="${XDG_CONFIG_HOME:-$HOME/.config}/wall"
 dl_wall() {
   [ ! -d "$2" ] && mkdir -p "$2" && echo "create folder $2"
   wall="$2/$(basename "$1")"
-  [ ! -f "$wall" ] && wget -O "$wall" "$1" && echo "wallpaper downloaded"
+  [ ! -f "$wall" ] && curl -L "$1" -o "$wall" && echo "wallpaper downloaded"
 }
 
 
