@@ -47,7 +47,7 @@ Nice=-20
 [Install]
 WantedBy=default.target
 _EOF_
-  if [ $kmonad_loc == "/usr/local/bin/kmonad" ]; then
+  elif [ $kmonad_loc == "/usr/local/bin/kmonad" ]; then
     sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
 [Unit]
 Description=kmonad keyboard config
