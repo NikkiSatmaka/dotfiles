@@ -30,7 +30,11 @@ sudo install -Dm 644 "$KMONAD_SRC_DIR/$KMONAD_SRC" "$KMONAD_TARGET"
 if [ -f "$SYSTEMD_UNIT" ]; then
   echo "kmonad systemd unit already exists"
 else
-  sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
+  # find kmonad location
+  kmonad_loc=$(which kmonad)
+  echo "kmonad is at $kmonad_loc"
+  if $kmonad_loc="/usr/bin/kmonad"; then
+    sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
 [Unit]
 Description=kmonad keyboard config
 
@@ -43,6 +47,21 @@ Nice=-20
 [Install]
 WantedBy=default.target
 _EOF_
+  elif $kmonad_loc="/usr/local/bin/kmonad"; then
+    sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
+[Unit]
+Description=kmonad keyboard config
+
+[Service]
+Restart=always
+RestartSec=3
+ExecStart=/usr/local/bin/kmonad %E/kmonad/config.kbd
+Nice=-20
+
+[Install]
+WantedBy=default.target
+_EOF_
+  fi
   sudo chmod 644 "$SYSTEMD_UNIT" &&
   echo "kmonad systemd unit created"
 fi
