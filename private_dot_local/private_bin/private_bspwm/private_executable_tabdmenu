@@ -9,7 +9,7 @@ newwindow() {
   # Bspwm only
   case "$command" in
     kitty|st) $command & ;;
-    *) $TERM -e "$command" & ;;
+    *) $TERMINAL -e "$command" & ;;
   esac
   bspc subscribe node_add | while read -r add
   do
@@ -25,7 +25,7 @@ newwindow() {
   # Generic wm
   # case "$command" in
   #   kitty|st) $command & ;;
-  #   *) $TERM -e $command & ;;
+  #   *) $TERMINAL -e $command & ;;
   # esac
   # sleep 0.1
   # newwindowid=$(xdotool getwindowfocus)

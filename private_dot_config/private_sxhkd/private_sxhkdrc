@@ -6,7 +6,7 @@
 
 # Terminal Emulator
 super + Return
-	$TERM
+	$TERMINAL
 
 # Program Launcher
 super + space
@@ -68,19 +68,19 @@ XF86Audio{Rewind,Forward}
 XF86AudioMicMute
 	pulsemixer --id source-1 --toggle-mute
 # XF86AudioMedia
-# 	$TERM -e ncmpcpp
+# 	$TERMINAL -e ncmpcpp
 XF86MonBrightness{Up,Down}
 	light {-A,-U} 5
 # XF86PowerOff
 	# powermenu
 # XF86Calculator
-# 	$TERM -e bc
+# 	$TERMINAL -e bc
 XF86Sleep
 	mpc -q pause; betterlockscreen -s dimblur
 # XF86WWW
 # 	$BROWSER
 # XF86DOS
-# 	$TERM
+# 	$TERMINAL
 XF86ScreenSaver
 	mpc -q pause; betterlockscreen -l dimblur
 XF86WLAN
@@ -92,11 +92,11 @@ XF86WebCam
 XF86Display
 	displayselect
 # XF86TaskPane
-# 	$TERM -e htop
+# 	$TERMINAL -e htop
 # XF86Mail
-# 	$TERM -e neomutt
+# 	$TERMINAL -e neomutt
 # XF86MyComputer
-# 	$TERM -e $FILE /
+# 	$TERMINAL -e $FILE /
 XF86Launch1
 	powermenu
 XF86TouchpadToggle
