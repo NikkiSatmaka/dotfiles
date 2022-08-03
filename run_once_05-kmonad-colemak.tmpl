@@ -9,9 +9,12 @@ readonly BINARY_DIR="/usr/local/bin"
 readonly KMONAD_TARGET="/etc/kmonad/config.kbd"
 readonly UDEV_RULES="/etc/udev/rules.d/99-kmonad.rules"
 readonly KMONAD_SRC_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/kmonad"
-readonly KMONAD_BINARY_URL="https://github.com/kmonad/kmonad/releases/download/0.4.1/kmonad-0.4.1-linux"
+readonly KMONAD_URL="https://github.com/kmonad/kmonad/releases/download"
 # readonly KMONAD_SRC="colemak-dh-wide-extend-ansi.kbd"
 readonly KMONAD_SRC="x230-ansi-us-colemak-dh-wide.kbd"
+
+readonly KMONAD_BINARY_VERSION="0.4.1"
+readonly KMONAD_BINARY_URL="$KMONAD_URL/$KMONAD_BINARY_VERSION/kmonad-$KMONAD_BINARY_VERSION-linux"
 
 # install kmonad if not already installed
 if command -v kmonad >/dev/null 2>&1; then
@@ -35,7 +38,7 @@ else
   kmonad_loc=$(which kmonad)
   echo "kmonad is at $kmonad_loc"
   if [ $kmonad_loc == "/usr/bin/kmonad" ]; then
-    sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
+    sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_
 [Unit]
 Description=kmonad keyboard config
 
@@ -48,10 +51,8 @@ Nice=-20
 [Install]
 WantedBy=default.target
 _EOF_
-    sudo chmod 644 "$SYSTEMD_UNIT" &&
-    echo "kmonad systemd unit created"
   elif [ $kmonad_loc == "/usr/local/bin/kmonad" ]; then
-    sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_ &&
+    sudo tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_
 [Unit]
 Description=kmonad keyboard config
 
@@ -64,9 +65,9 @@ Nice=-20
 [Install]
 WantedBy=default.target
 _EOF_
-    sudo chmod 644 "$SYSTEMD_UNIT" &&
-    echo "kmonad systemd unit created"
   fi
+  sudo chmod 644 "$SYSTEMD_UNIT" &&
+  echo "kmonad systemd unit created"
 fi
 
 # add group uinput
