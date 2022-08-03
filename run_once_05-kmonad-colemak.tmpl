@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 #==============================================================================
 # install kmonad kbd
@@ -19,8 +19,9 @@ if command -v kmonad >/dev/null 2>&1; then
 else
   echo "kmonad binary not found, installing..."
   # install kmonad
-  curl -sL "$KMONAD_BINARY_URL" -o /tmp/kmonad
-  sudo install -m 755 /tmp/kmonad "$BINARY_DIR"
+  curl -sL "$KMONAD_BINARY_URL" -o /tmp/kmonad &&
+  sudo install -m 755 /tmp/kmonad "$BINARY_DIR" &&
+  rm /tmp/kmonad
 fi
 
 # install kmonad kbd config
@@ -97,7 +98,6 @@ if [ -f "$UDEV_RULES" ]; then
   echo "udev rules already exists"
 else
   sudo tee "$UDEV_RULES" >/dev/null 2>&1 << _EOF_ &&
-sudo tee $UDEV_RULES >/dev/null 2>&1 << _EOF_ &&
 KERNEL=="uinput" \
 , MODE="0660" \
 , GROUP="uinput" \
