@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "'FiraCode Nerd Font Mono', 'FiraCode NF', Consolas, 'Courier New', 'monospace'",
+    "editor.fontFamily": "'FiraCode Nerd Font', 'FiraCode NF', Consolas, 'Courier New', 'monospace'",
     "editor.fontSize": 13,
     "editor.fontLigatures": false,
     "editor.lineNumbers": "relative",
