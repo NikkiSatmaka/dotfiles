@@ -1,6 +1,5 @@
 {
     "editor.fontFamily": "'FiraCode Nerd Font', 'FiraCode NF', Consolas, 'Courier New', 'monospace'",
-    "editor.fontSize": 13,
     "editor.fontLigatures": false,
     "editor.lineNumbers": "relative",
     "editor.inlineSuggest.enabled": true,
@@ -79,5 +78,7 @@
           "before": ["p"],
           "after": ["p", "g", "v", "y"]
         }
-    ]
+    ],
+    "aws.profile": "profile:nikki",
+    "aws.telemetry": false
 }
