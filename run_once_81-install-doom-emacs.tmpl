@@ -4,6 +4,7 @@
 # install doom-emacs
 #==============================================================================
 
+readonly SYSTEMD_UNIT="${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/emacs.service"
 readonly EMACS_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/emacs" 
 readonly DOOM_GIT="https://github.com/hlissner/doom-emacs.git"
 
@@ -17,6 +18,31 @@ install_doom() {
   fi
 }
 
-sudo pacman -S --noconfirm --needed emacs
+# sudo pacman -S --noconfirm --needed emacs
 
 install_doom "$DOOM_GIT" "$EMACS_DIR"
+
+# install systemd unit file
+if [ -f "$SYSTEMD_UNIT" ]; then
+  echo "emacs systemd unit already exists"
+else
+  tee "$SYSTEMD_UNIT" >/dev/null 2>&1 << _EOF_
+[Unit]
+Description=Emacs text editor
+Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+Environment=SSH_AUTH_SOCK=%t/keyring/ssh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+_EOF_
+  echo "emacs systemd unit created"
+fi
+
+systemctl enable --user emacs
+systemctl start --user emacs
