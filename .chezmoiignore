@@ -18,7 +18,55 @@ pkgs-*
 tweaks
 .emacs-profile
 .emacs-profiles.el
+
+.Xmodmap
 80-install-lunarvim
+
+# temporarily ignore
+.config/bspwm
+.config/calcurse
+.config/dunst
+.config/gtk-2.0
+.config/gtk-3.0
+.config/jupyter
+.config/lf
+.config/lvim
+.config/mimeapps.list
+.config/mpd
+.config/ncmpcpp
+.config/picom
+.config/polybar
+.config/redshift
+.config/rofi
+.config/rtorrent
+.config/sxhkd
+.config/sxiv
+.config/tmux
+.config/zathura
+.local/bin/bitbar
+.local/bin/bspwm
+.local/bin/lf
+.local/bin/polybar
+.local/share/kbd
+.xinitrc
+.xprofile
+
+.local/bin
+.local/share
+
+01-dash-shell
+02-install-dbus-broker
+03-opendoas
+04-chaotic-aur-repo
+05-kmonad-colemak
+10-install-packages
+11-brew-packages
+50-change-shell
+70-rofi-dmenu
+80-install-lunarvim
+83-install-nvchad
+90-set-wallpaper
+99-services
 
 # ignore if not on avalon
 {{- if ne .chezmoi.hostname "avalon" }}
