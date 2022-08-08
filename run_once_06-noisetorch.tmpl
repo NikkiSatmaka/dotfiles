@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+#==============================================================================
+# install noisetorch (https://github.com/noisetorch/NoiseTorch)
+#==============================================================================
+
+readonly NOISETORCH_URL="https://github.com/noisetorch/NoiseTorch/releases/download"
+readonly NOISETORCH_VERSION="v0.12.2"
+readonly NOISETORCH_RELEASE_URL="$NOISETORCH_URL/$NOISETORCH_VERSION/NoiseTorch_x64_$NOISETORCH_VERSION.tgz"
+
+# install noisetorch if not already installed
+if command -v noisetorch >/dev/null 2>&1; then
+  echo "noisetorch is already installed"
+else
+  echo "noisetorch binary not found, installing..."
+  # install noisetorch
+  curl -sL "$NOISETORCH_RELEASE_URL" -o /tmp/noisetorch.tgz &&
+  tar -C $HOME -h -xzf /tmp/noisetorch.tgz &&
+  rm /tmp/noisetorch.tgz
+fi
