@@ -13,7 +13,7 @@ matches:
 
   # Simple email greetings
   - trigger: ":br"
-    replace: "Best Regards,\n{{ .name }}"
+    replace: "Best Regards,\n{{ .git.name }}"
 
   # Dates
   - trigger: ":date"
