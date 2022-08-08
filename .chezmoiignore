@@ -48,6 +48,7 @@ tweaks
 .local/bin/lf
 .local/bin/polybar
 .local/share/kbd
+.imwheelrc
 .xinitrc
 .xprofile
 
