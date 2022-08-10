@@ -1,6 +1,6 @@
 {
     "editor.fontFamily": "'FiraCode Nerd Font', 'FiraCode NF', Consolas, 'Courier New', 'monospace'",
-    "editor.fontLigatures": false,
+    "editor.fontLigatures": true,
     "editor.lineNumbers": "relative",
     "editor.inlineSuggest.enabled": true,
     "window.titleBarStyle": "custom",
