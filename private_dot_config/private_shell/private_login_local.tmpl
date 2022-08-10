@@ -18,9 +18,9 @@ export OPENER=xdg-open
 # export WM=bspwm
 # export BROWSER=brave
 # if [ -n "$DISPLAY" ]; then
-# 	export BROWSER="brave"
+#   export BROWSER="brave"
 # else
-# 	export BROWSER="w3m"
+#   export BROWSER="w3m"
 # fi
 
 # ~/ Clean-up:
@@ -50,9 +50,9 @@ export DICS="/usr/share/stardict/dic/"
 #export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
-export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
-export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
-export KAGGLE_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/kaggle"		# Kaggle API credentials
+export QT_QPA_PLATFORMTHEME="gtk2"  # Have QT use gtk2 theme.
+export MOZ_USE_XINPUT2="1"  # Mozilla smooth scrolling/touchpads.
+export KAGGLE_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/kaggle"  # Kaggle API credentials
 
 # java fixes
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -132,9 +132,9 @@ export FFF_KEY_PARENT2='off'
 export FFF_KEY_CHILD2='off'
 
 if command -v trash-put >/dev/null 2>&1; then
-	export FFF_TRASH_CMD='trash-put'
+  export FFF_TRASH_CMD='trash-put'
 else
-	export FFF_TRASH_CMD='mv'
+  export FFF_TRASH_CMD='mv'
 fi
 
 # NNN file manager
@@ -239,3 +239,8 @@ sudo -n loadkeys "${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap"
 # Enable linuxbrew.
 test -x ~/.linuxbrew/bin/brew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -x /home/linuxbrew/.linuxbrew/bin/brew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Enable Nix
+if [ -e /home/{{ .name }}/.nix-profile/etc/profile.d/nix.sh ]; then
+  . /home/{{ .name }}/.nix-profile/etc/profile.d/nix.sh;
+fi

@@ -51,6 +51,7 @@ tweaks
 .imwheelrc
 .xinitrc
 .xprofile
+.Xresources
 
 .local/bin
 .local/share
