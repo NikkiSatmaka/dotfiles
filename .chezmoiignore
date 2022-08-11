@@ -43,18 +43,15 @@ tweaks
 .config/sxiv
 .config/tmux
 .config/zathura
-.local/bin/bitbar
-.local/bin/bspwm
-.local/bin/lf
-.local/bin/polybar
-.local/share/kbd
 .imwheelrc
 .xinitrc
 .xprofile
 .Xresources
 
-.local/bin
+.local/bin/*
+!.local/bin/rclone*
 .local/share
+.local/share/kbd
 
 01-dash-shell
 02-install-dbus-broker
