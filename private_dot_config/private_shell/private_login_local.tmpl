@@ -3,7 +3,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:/var/lib/snapd/desktop:$HOME/.local/share/flatpak/exports/share:"
 export XDG_CONFIG_DIRS="/etc/xdg"
 
 # Preferred programs
@@ -211,7 +211,7 @@ ex=🎯:\
 "
 
 # Path settings
-pathprepend "$HOME/.local/bin/*" PATH
+pathprepend "$HOME/.local/bin" PATH
 pathprepend "$HOME/.emacs.d/bin" PATH
 pathprepend "${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin" PATH
 pathprepend "/usr/local/go/bin" PATH
