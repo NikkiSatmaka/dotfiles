@@ -17,6 +17,7 @@
 {{- $git_email := promptString "Git email address for the author/committer" }}
 
 {{- $distro := promptString "What linux distro is this? debian/arch/fedora" }}
+{{- $wsl := promptString "Is this wsl? true/false" }}
 
 [gpg]
   recipient = "id for the encrypt key"
@@ -30,3 +31,4 @@
 
   [data.system]
     distro = "{{ $distro }}"
+    wsl = "{{ $wsl }}"

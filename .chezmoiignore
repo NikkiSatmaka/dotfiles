@@ -63,7 +63,6 @@ tweaks
 50-change-shell
 70-rofi-dmenu
 80-install-lunarvim
-83-install-nvchad
 90-set-wallpaper
 99-services
 
@@ -122,7 +121,7 @@ laptop*
 {{- end }}
 
 # ignore if on wsl
-{{- if eq .chezmoi.kernel.osrelease "5.10.102.1-microsoft-standard-WSL2" }}
+{{- if eq .system.wsl "true" }}
 .config/alacritty
 .config/awesome
 .config/bspwm
@@ -167,8 +166,6 @@ laptop*
 70-rofi-dmenu
 80-install-lunarvim
 81-install-doom-emacs
-82-install-mambaforge
-83-install-nvchad
 90-set-wallpaper
 99-services
 {{- end }}
