@@ -109,6 +109,7 @@ laptop*
 01-dash-shell
 02-install-dbus-broker
 03-opendoas
+06-noisetorch
 10-install-packages
 50-change-shell
 70-rofi-dmenu
@@ -160,6 +161,7 @@ laptop*
 03-opendoas
 04-chaotic-aur-repo
 05-kmonad-colemak
+06-noisetorch
 10-install-packages
 11-brew-packages
 50-change-shell
@@ -168,6 +170,7 @@ laptop*
 81-install-doom-emacs
 90-set-wallpaper
 99-services
+debian_01-nerd_fonts
 {{- end }}
 
 # ignore if not on macos
