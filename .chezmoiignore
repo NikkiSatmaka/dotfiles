@@ -20,7 +20,6 @@ tweaks
 .emacs-profiles.el
 
 .Xmodmap
-80-install-lunarvim
 
 # temporarily ignore
 .config/bspwm
@@ -62,7 +61,6 @@ tweaks
 11-brew-packages
 50-change-shell
 70-rofi-dmenu
-80-install-lunarvim
 90-set-wallpaper
 99-services
 
@@ -166,7 +164,6 @@ laptop*
 11-brew-packages
 50-change-shell
 70-rofi-dmenu
-80-install-lunarvim
 81-install-doom-emacs
 90-set-wallpaper
 99-services

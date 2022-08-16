@@ -4,13 +4,13 @@
 # install lunarvim (https://github.com/LunarVim/LunarVim)
 #==============================================================================
 
-readonly LUNAR_INSTALLER="install.sh"
+readonly LUNAR_INSTALLER="/tmp/install.sh"
 readonly LUNAR_URL="https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh"
 
-install_dependencies() {
-  sudo pacman -S --noconfirm --needed python-pip rust
-  paru -S --needed pnpm-bin
-}
+# install_dependencies() {
+#   sudo pacman -S --noconfirm --needed python-pip rust
+#   paru -S --needed pnpm-bin
+# }
 
 install_lunarvim() {
   curl -L "$1" -o "$2" || exit
@@ -18,6 +18,6 @@ install_lunarvim() {
   rm "$2"
 }
 
-install_dependencies
+# install_dependencies
 
 install_lunarvim "$LUNAR_URL" "$LUNAR_INSTALLER"
