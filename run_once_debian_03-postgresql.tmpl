@@ -6,61 +6,42 @@
 
 readonly USR_KEYRING_DIR="/usr/share/keyrings"
 readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
-readonly POSTGRESQL_SOURCE="$APT_SOURCE_DIR/postgresql.list"
-readonly PGADMIN_SOURCE="$APT_SOURCE_DIR/pgadmin.list"
 
 readonly POSTGRESQL_KEYRING_URL="https://www.postgresql.org/media/keys/ACCC4CF8.asc"
-readonly POSTGRESQL_KEYRING_TMP="/tmp/postgresql"
 readonly POSTGRESQL_KEYRING_GPG="/tmp/postgresql.gpg"
-readonly POSTGRESQL_KEYRING_DEST="$USR_KEYRING_DIR/postgresql.gpg"
+readonly POSTGRESQL_KEYRING_DEST="$USR_KEYRING_DIR/postgresql-archive-keyring.gpg"
+readonly POSTGRESQL_SOURCE="$APT_SOURCE_DIR/postgresql.list"
+readonly POSTGRESQL_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/postgresql-archive-keyring.gpg] http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main"
 
 readonly PGADMIN_KEYRING_URL="https://www.pgadmin.org/static/packages_pgadmin_org.pub"
-readonly PGADMIN_KEYRING_TMP="/tmp/pgadmin"
 readonly PGADMIN_KEYRING_GPG="/tmp/pgadmin.gpg"
-readonly PGADMIN_KEYRING_DEST="$USR_KEYRING_DIR/pgadmin.gpg"
+readonly PGADMIN_KEYRING_DEST="$USR_KEYRING_DIR/pgadmin-archive-keyring.gpg"
+readonly PGADMIN_SOURCE="$APT_SOURCE_DIR/pgadmin.list"
+readonly PGADMIN_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/pgadmin-archive-keyring.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bullseye pgadmin4 main"
 
-
-install_keyring() {
-  if [[ -f $4 ]]; then
-    echo "$4 already exists"
+add_apt_keyring() {
+  if [[ -f "$3" ]]; then
+    echo "$3 already exists"
     exit
   fi
-  curl -sL $1 -o $2 || exit
-  gpg --dearmor $2 || exit
-  if [[ ! -f $3 ]]; then
-    echo "$3 not found"
-    exit
-  fi
-  echo "installing keyring to $4"
-  sudo install -Dm 644 $3 $4
+  curl -sL "$1" | gpg --dearmor > "$2" || exit
+  echo "installing keyring to $3"
+  sudo install -o root -g root -Dm 644 "$2" "$3"
 }
 
-add_postgresql_source() {
-  if [[ -f $1 ]]; then
+add_apt_source() {
+  if [[ -f "$1" ]]; then
     echo "$1 already exists"
     exit
   fi
-  echo "adding postgresql source"
-  sudo tee $1 >/dev/null 2>&1 << _EOF_
-deb [arch=amd64 signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main
+  echo "adding apt source to $1"
+  sudo tee "$1" >/dev/null 2>&1 << _EOF_ &&
+$2
 _EOF_
+  sudo chmod 644 "$1"
 }
 
-add_pgadmin_source() {
-  if [[ -f $1 ]]; then
-    echo "$1 already exists"
-    exit
-  fi
-  echo "adding pgadmin source"
-  sudo tee $1 >/dev/null 2>&1 << _EOF_
-deb [arch=amd64 signed-by=/usr/share/keyrings/pgadmin.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bullseye pgadmin4 main
-_EOF_
-}
-
-install_keyring $POSTGRESQL_KEYRING_URL $POSTGRESQL_KEYRING_TMP $POSTGRESQL_KEYRING_GPG $POSTGRESQL_KEYRING_DEST
-
-install_keyring $PGADMIN_KEYRING_URL $PGADMIN_KEYRING_TMP $PGADMIN_KEYRING_GPG $PGADMIN_KEYRING_DEST
-
-add_postgresql_source $POSTGRESQL_SOURCE
-
-add_pgadmin_source $PGADMIN_SOURCE
+add_apt_keyring "$POSTGRESQL_KEYRING_URL" "$POSTGRESQL_KEYRING_GPG" "$POSTGRESQL_KEYRING_DEST"
+add_apt_keyring "$PGADMIN_KEYRING_URL" "$PGADMIN_KEYRING_GPG" "$PGADMIN_KEYRING_DEST"
+add_apt_source "$POSTGRESQL_SOURCE" "$POSTGRESQL_CONTENT"
+add_apt_source "$PGADMIN_SOURCE" "$PGADMIN_CONTENT"
