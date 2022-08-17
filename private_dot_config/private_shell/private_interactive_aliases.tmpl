@@ -196,7 +196,7 @@ alias magit="nvim -c MagitOnly"
 # alias weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport"
 
 # tmux aliases
-alias tmux="tmux -f \${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
+# alias tmux="tmux -f \${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
 alias ta='tmux attach'
 alias tl='tmux ls'
 
@@ -238,6 +238,7 @@ alias r="ranger"
 alias xup="xrdb -merge $HOME/.Xresources"
 alias doas="doas --"
 alias jp="joplin"
+alias yarn='yarn --use-yarnrc "${XDG_CONFIG_HOME:-$HOME/.config}/yarn/config"'
 
 alias python='python3'
 alias pip='python3 -m pip'
