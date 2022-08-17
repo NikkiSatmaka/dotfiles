@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+#==============================================================================
+# Installing Neovim
+#==============================================================================
+
+readonly NEOVIM_URL="https://github.com/neovim/neovim/releases/download"
+readonly NEOVIM_VERSION="v0.7.2"
+readonly OUTPUT="nvim-linux64.deb"
+
+CURRENT_DIR="$(pwd)"
+TEMP="/tmp"
+
+install_neovim() {
+  # check if neovim is already installed
+  if command -v nvim >/dev/null 2>&1; then
+    echo "neovim is already installed"
+    exit
+  fi
+  echo "neovim not found, installing..."
+  # download neovim
+  curl -L "$1" -o "$2" || exit
+  # install neovim
+  sudo apt install -y "$2" || exit
+  rm "$2"
+}
+
+install_neovim "$NEOVIM_URL/$NEOVIM_VERSION/$OUTPUT" "$TEMP/$OUTPUT"
