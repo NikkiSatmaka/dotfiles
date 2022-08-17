@@ -12,32 +12,27 @@ readonly PGADMIN_SOURCE="$APT_SOURCE_DIR/pgadmin.list"
 readonly POSTGRESQL_KEYRING_URL="https://www.postgresql.org/media/keys/ACCC4CF8.asc"
 readonly POSTGRESQL_KEYRING_TMP="/tmp/postgresql"
 readonly POSTGRESQL_KEYRING_GPG="/tmp/postgresql.gpg"
+readonly POSTGRESQL_KEYRING_DEST="$USR_KEYRING_DIR/postgresql.gpg"
 
 readonly PGADMIN_KEYRING_URL="https://www.pgadmin.org/static/packages_pgadmin_org.pub"
 readonly PGADMIN_KEYRING_TMP="/tmp/pgadmin"
 readonly PGADMIN_KEYRING_GPG="/tmp/pgadmin.gpg"
+readonly PGADMIN_KEYRING_DEST="$USR_KEYRING_DIR/pgadmin.gpg"
 
-add_postgresql_keyring() {
+
+install_keyring() {
+  if [[ -f $4 ]]; then
+    echo "$4 already exists"
+    exit
+  fi
   curl -sL $1 -o $2 || exit
   gpg --dearmor $2 || exit
   if [[ ! -f $3 ]]; then
-    echo "/tmp/postgresql.gpg not found"
+    echo "$3 not found"
     exit
   fi
-  echo "installig postgresql.gpg keyring"
+  echo "installing keyring to $4"
   sudo install -Dm 644 $3 $4
-}
-
-add_pgadmin_keyring() {
-  curl -sL $1 -o $2 || exit
-  gpg --dearmor $2 || exit
-  if [[ ! -f $3 ]]; then
-    echo "/tmp/pgadmin.gpg not found"
-    exit
-  else
-    echo "installig pgadmin.gpg keyring"
-    sudo install -Dm 644 $3 $4
-  fi
 }
 
 add_postgresql_source() {
@@ -46,7 +41,7 @@ add_postgresql_source() {
     exit
   fi
   echo "adding postgresql source"
-  sudo tee $1 >/dev/null 2>&1 << _EOF_ &&
+  sudo tee $1 >/dev/null 2>&1 << _EOF_
 deb [arch=amd64 signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main
 _EOF_
 }
@@ -57,14 +52,14 @@ add_pgadmin_source() {
     exit
   fi
   echo "adding pgadmin source"
-  sudo tee $1 >/dev/null 2>&1 << _EOF_ &&
+  sudo tee $1 >/dev/null 2>&1 << _EOF_
 deb [arch=amd64 signed-by=/usr/share/keyrings/pgadmin.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bullseye pgadmin4 main
 _EOF_
 }
 
-add_postgresql_keyring $POSTGRESQL_KEYRING_URL $POSTGRESQL_KEYRING_TMP $POSTGRESQL_KEYRING_GPG $USR_KEYRING_DIR
+install_keyring $POSTGRESQL_KEYRING_URL $POSTGRESQL_KEYRING_TMP $POSTGRESQL_KEYRING_GPG $POSTGRESQL_KEYRING_DEST
 
-add_pgadmin_keyring $PGADMIN_KEYRING_URL $PGADMIN_KEYRING_TMP $PGADMIN_KEYRING_GPG $USR_KEYRING_DIR
+install_keyring $PGADMIN_KEYRING_URL $PGADMIN_KEYRING_TMP $PGADMIN_KEYRING_GPG $PGADMIN_KEYRING_DEST
 
 add_postgresql_source $POSTGRESQL_SOURCE
 
