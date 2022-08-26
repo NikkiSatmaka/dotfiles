@@ -168,6 +168,8 @@ laptop*
 90-set-wallpaper
 99-services
 debian_01-nerd_fonts
+debian_03-postgresql
+debian_04-vscode
 {{- end }}
 
 # ignore if not on macos
