@@ -171,6 +171,7 @@ laptop*
 debian_01-nerd_fonts
 debian_03-postgresql
 debian_04-vscode
+debian_05-chrome
 {{- end }}
 
 # ignore if not on macos
