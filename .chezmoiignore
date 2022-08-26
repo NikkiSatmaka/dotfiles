@@ -20,6 +20,7 @@ tweaks
 .emacs-profiles.el
 
 .Xmodmap
+.config/nixpkgs
 
 # temporarily ignore
 .config/bspwm
