@@ -53,12 +53,14 @@ tweaks
 .local/share
 .local/share/kbd
 
+05-kmonad-colemak
 10-install-packages
 11-brew-packages
 50-change-shell
 70-rofi-dmenu
-90-set-wallpaper
-99-services
+zz_80-install-lunarvim
+zz_90-set-wallpaper
+zz_99-services
 
 # ignore if not on avalon
 {{- if ne .chezmoi.hostname "avalon" }}
@@ -74,7 +76,6 @@ tweaks
 # ignore only on desktops, such as avalon
 {{- if eq .chezmoi.hostname "avalon" }}
 laptop*
-05-kmonad-colemak
 {{- end }}
 
 # ignore if not on linux
@@ -108,12 +109,12 @@ laptop*
 10-install-packages
 50-change-shell
 70-rofi-dmenu
-80-install-lunarvim
-81-install-doom-emacs
-82-install-mambaforge
-83-install-nvchad
-90-set-wallpaper
-99-services
+zz_80-install-lunarvim
+zz_81-install-doom-emacs
+zz_82-install-mambaforge
+zz_83-install-nvchad
+zz_90-set-wallpaper
+zz_99-services
 {{- end }}
 
 # ignore if not on arch linux
@@ -171,13 +172,13 @@ laptop*
 11-brew-packages
 50-change-shell
 70-rofi-dmenu
-81-install-doom-emacs
-90-set-wallpaper
-99-services
 debian_01-nerd_fonts
 debian_03-postgresql
 debian_04-vscode
 debian_05-chrome
+zz_81-install-doom-emacs
+zz_90-set-wallpaper
+zz_99-services
 {{- end }}
 
 # ignore if not on macos
