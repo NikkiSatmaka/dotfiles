@@ -13,14 +13,14 @@ install_nvm() {
   # install nvm if not already installed
   if [[ -d "$NVM_DIR" ]] || command -v nvm >/dev/null 2>&1; then
     echo "nvm is already installed"
-  else
-    echo "nvm binary not found, installing..."
-    mkdir "$NVM_DIR" || exit
-    # install nvm
-    curl -sL "$1" -o "$2" || exit
-    bash "$2" || exit
-    rm "$2"
+    exit
   fi
+  echo "nvm binary not found, installing..."
+  mkdir "$NVM_DIR" || exit
+  # install nvm
+  curl -sL "$1" -o "$2" || exit
+  bash "$2" || exit
+  rm "$2"
 }
 
 install_nvm "$NVM_URL" "$NVM_INSTALLER"
