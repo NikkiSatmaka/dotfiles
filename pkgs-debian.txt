@@ -3,6 +3,7 @@ converseen
 curl
 # dnscrypt-proxy
 emacs
+exa
 fd-find
 fish
 # flatpak
