@@ -1,4 +1,5 @@
 bat
+calibre
 converseen
 curl
 # dnscrypt-proxy
@@ -8,19 +9,23 @@ fd-find
 fish
 # flatpak
 fzf
+gimp
 git
 glances
 htop
 mpv
 # neovim
 nnn
+obs-studio
 pipenv
+rclone
 # resolvconf
 ripgrep
 shellcheck
 # snapd
 timeshift
 trash-cli
+wget
 yt-dlp
 # zram-tools
 zsh
