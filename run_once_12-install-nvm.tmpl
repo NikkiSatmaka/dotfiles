@@ -24,3 +24,7 @@ install_nvm() {
 }
 
 install_nvm "$NVM_URL" "$NVM_INSTALLER"
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+nvm install --lts  # install lts
