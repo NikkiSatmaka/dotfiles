@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+#==============================================================================
+# Installing Docker-CE
+#==============================================================================
+
+readonly USR_KEYRING_DIR="/usr/share/keyrings"
+readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
+
+readonly DOCKER_KEYRING_URL="https://download.docker.com/linux/debian/gpg"
+readonly DOCKER_KEYRING_GPG="/tmp/docker.gpg"
+readonly DOCKER_KEYRING_DEST="$USR_KEYRING_DIR/docker-archive-keyring.gpg"
+readonly DOCKER_SOURCE="$APT_SOURCE_DIR/docker.list"
+readonly DOCKER_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian bullseye stable"
+
+add_apt_keyring() {
+  if [[ -f "$3" ]]; then
+    echo "$3 already exists"
+    exit
+  fi
+  curl -sL "$1" | gpg --dearmor > "$2" || exit
+  echo "installing keyring to $3"
+  sudo install -o root -g root -Dm 644 "$2" "$3"
+}
+
+add_apt_source() {
+  if [[ -f "$1" ]]; then
+    echo "$1 already exists"
+    exit
+  fi
+  echo "adding apt source to $1"
+  sudo tee "$1" >/dev/null 2>&1 << _EOF_ &&
+$2
+_EOF_
+  sudo chmod 644 "$1"
+}
+
+add_apt_keyring "$DOCKER_KEYRING_URL" "$DOCKER_KEYRING_GPG" "$DOCKER_KEYRING_DEST"
+add_apt_source "$DOCKER_SOURCE" "$DOCKER_CONTENT"
