@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+#==============================================================================
+# install NVM (https://github.com/nvm-sh/nvm)
+#==============================================================================
+
+readonly NVM_INSTALLER="/tmp/install.sh"
+readonly NVM_VERSION="v0.39.1"
+readonly NVM_URL="https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh"
+readonly NVM_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/nvm"
+
+install_nvm() {
+  # install nvm if not already installed
+  if command -v nvm >/dev/null 2>&1; then
+    echo "nvm is already installed"
+  else
+    echo "nvm binary not found, installing..."
+    # install nvm
+    curl -sL "$1" -o "$2" || exit
+    bash "$2" || exit
+    rm "$2"
+  fi
+}
+
+install_nvm "$NVM_URL" "$NVM_INSTALLER"
