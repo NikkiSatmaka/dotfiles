@@ -1,24 +1,22 @@
 bat
 converseen
 dnscrypt-proxy
-docker
 emacs
 fd-find
 fish
-flatpak
+# flatpak
 fzf
 glances
 htop
 mpv
-neovim
+# neovim
 nnn
-resolvconf
+# resolvconf
 ripgrep
 shellcheck
-snapd
+# snapd
 timeshift
 trash-cli
-wl-clipboard
 yt-dlp
-zram-tools
+# zram-tools
 zsh
