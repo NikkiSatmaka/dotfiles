@@ -53,11 +53,6 @@ tweaks
 .local/share
 .local/share/kbd
 
-01-dash-shell
-02-install-dbus-broker
-03-opendoas
-04-chaotic-aur-repo
-05-kmonad-colemak
 10-install-packages
 11-brew-packages
 50-change-shell
@@ -118,6 +113,16 @@ laptop*
 83-install-nvchad
 90-set-wallpaper
 99-services
+{{- end }}
+
+# ignore if not on arch linux
+{{- if ne .system.distro "arch" }}
+*arch*
+{{- end }}
+
+# ignore if not on debian
+{{- if ne .system.distro "debian" }}
+*debian*
 {{- end }}
 
 # ignore if on wsl

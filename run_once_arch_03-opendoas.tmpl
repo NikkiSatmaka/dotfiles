@@ -6,13 +6,6 @@
 
 ETC_DIR="/etc"
 
-# install_tweak(){
-#     sudo install -Dm 644 "$1" "$2"
-# }
-
 sudo pacman -S --noconfirm --needed opendoas
 
-sudo install -Dm 644 "${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/doas.conf" "$ETC_DIR"
-
-sudo chown -c root:root "$ETC_DIR/doas.conf"
-sudo chmod -c 0400 "$ETC_DIR/doas.conf"
+sudo install -o root -g root -Dm 400 "${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi/tweaks/etc/doas.conf" "$ETC_DIR"
