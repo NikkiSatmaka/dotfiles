@@ -6,6 +6,9 @@
 
 readonly RUSTUP_INSTALLER="/tmp/install_rustup.sh"
 readonly RUSTUP_URL="https://sh.rustup.rs"
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+export RUSTUP_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/rustup"
+
 
 install_rustup() {
   # install rustup if not already installed
@@ -21,3 +24,5 @@ install_rustup() {
 }
 
 install_rustup "$RUSTUP_URL" "$RUSTUP_INSTALLER"
+
+source "$CARGO_HOME/env"
