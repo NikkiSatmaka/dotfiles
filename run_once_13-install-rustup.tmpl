@@ -27,4 +27,6 @@ install_rustup "$RUSTUP_URL" "$RUSTUP_INSTALLER"
 
 source "$CARGO_HOME/env"
 
-export PATH="${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin:$PATH"
+# export PATH="${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin:$PATH"
+
+rustup default stable
