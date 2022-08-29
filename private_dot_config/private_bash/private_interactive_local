@@ -116,6 +116,7 @@ fi
 
 # Enable NVM
 ssource "$NVM_DIR/nvm.sh"
+ssource "$NVM_DIR/bash_completion" 
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
