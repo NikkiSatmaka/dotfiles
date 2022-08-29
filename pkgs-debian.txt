@@ -1,11 +1,13 @@
 bat
 converseen
-dnscrypt-proxy
+curl
+# dnscrypt-proxy
 emacs
 fd-find
 fish
 # flatpak
 fzf
+git
 glances
 htop
 mpv

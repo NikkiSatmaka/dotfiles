@@ -74,6 +74,7 @@ tweaks
 # ignore only on desktops, such as avalon
 {{- if eq .chezmoi.hostname "avalon" }}
 laptop*
+05-kmonad-colemak
 {{- end }}
 
 # ignore if not on linux
