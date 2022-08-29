@@ -12,9 +12,9 @@ readonly EXA_BASH="/tmp/exa"
 readonly EXA_FISH="/tmp/exa.fish"
 readonly EXA_ZSH="/tmp/_exa"
 
-readonly EXA_BASH_DIR="/etc/bash_completion.d"
-readonly EXA_FISH_DIR="/usr/share/fish/vendor_completions.d"
-readonly EXA_ZSH_DIR="/usr/local/share/zsh/site-functions"
+readonly EXA_BASH_DIR="/etc/bash_completion.d/exa"
+readonly EXA_FISH_DIR="/usr/share/fish/vendor_completions.d/exa.fish"
+readonly EXA_ZSH_DIR="/usr/local/share/zsh/site-functions/_exa"
 
 download_completion() {
   curl -sL "$1" -o "$2"
@@ -22,10 +22,10 @@ download_completion() {
 
 install_completion() {
   if [[ -f "$3" ]]; then
-    echo "completion already installed"
-    exit
+    echo "$3 already installed"
+    return
   fi
-  if [[ -f "$2"]]; then
+  if [[ -f "$2" ]]; then
     echo "deleting temp file"
     rm -rf "$2"
   fi
@@ -33,7 +33,7 @@ install_completion() {
   sudo install -Dm 644 "$2" "$3"
 }
 
-if ! command -v exa; then
+if ! command -v exa >/dev/null 2>&1; then
   echo "exa could not be found"
   exit
 fi
