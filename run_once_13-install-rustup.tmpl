@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+#==============================================================================
+# install rustup (https://rustup.rs/)
+#==============================================================================
+
+readonly RUSTUP_INSTALLER="/tmp/install_rustup.sh"
+readonly RUSTUP_URL="https://sh.rustup.rs "
+
+install_rustup() {
+  # install rustup if not already installed
+  if command -v rustup >/dev/null 2>&1; then
+    echo "rustup is already installed"
+  else
+    echo "rustup binary not found, installing..."
+    # install rustup
+    curl --proto '=https' --tlsv1.2 -sSf "$1" -o "$2" || exit
+    sh "$2" -y --no-modify-path || exit
+    rm "$2"
+  fi
+}
+
+install_rustup "$RUSTUP_URL" "$RUSTUP_INSTALLER"
