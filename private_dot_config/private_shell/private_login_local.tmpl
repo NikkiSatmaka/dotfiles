@@ -3,8 +3,12 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:/var/lib/snapd/desktop:$HOME/.local/share/flatpak/exports/share:"
+export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export XDG_CONFIG_DIRS="/etc/xdg"
+
+export XDG_DATA_DIRS="/var/lib/snapd/desktop:$XDG_DATA_DIRS"
+export XDG_DATA_DIRS="${XDG_DATA_HOME:-$HOME/.local/share}/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
+export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
 
 # Preferred programs
 export TERM=xterm-256color
