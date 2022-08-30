@@ -66,11 +66,10 @@ alias vv="cd ${XDG_VIDEOS_DIR:-$HOME/Videos} && ls"
 # commonly visited directories
 alias b="cd $HOME/.local/bin && ls -a"
 alias cf="cd ${XDG_CONFIG_HOME:-$HOME/.config} && ls -a"
-alias cs="cd ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts && ls -a"
 alias dx="cd $HOME/Dropbox && ls"
 alias o="cd ${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi && ls -a"
 alias mn="cd /mnt && ls -a"
-alias dt="cd /mnt/data/{{ .name }} && ls"
+alias dt="cd $HOME/data && ls"
 alias ws="cd $HOME/workspace && ls"
 
 alias sd="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/directories"
