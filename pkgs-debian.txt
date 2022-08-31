@@ -2,6 +2,7 @@ bat
 calibre
 converseen
 curl
+dbus-user-session
 # dnscrypt-proxy
 emacs
 exa
