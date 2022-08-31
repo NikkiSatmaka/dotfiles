@@ -1,0 +1,202 @@
+;;                             Full 104 key ANSI
+;;
+;; KMonad configuration for a full 104 key ANSI.  I tried to recreate the
+;; physical layout of the board as best as I could.
+;;
+;; Template for a new layer:
+;;
+;; (deflayer name
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+;;   _    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+;;   _    _    _              _              _    _    _    _               _    _    _     _    _   
+;; )
+
+;; Set input/output sinks, as well as the X11 dependent part of the
+;; config.
+;;
+;; After setting the proper input device, set a faster default key
+;; repeat with `xset'.  First number is how long (in ms) the key has to
+;; be held down before repeating starts.  Second number is repetitions
+;; per second after that.
+;;
+;; I then set my compose key, namely Alt_R (which is a key that will not
+;; be on a layout by itself, but KMonad uses it internally for Unicode
+;; things).
+;;
+;; The name given as the first argument to `uinput-sink' will be the
+;; name given to the virtual keyboard that KMonad creates.
+
+(defcfg
+  ;; For Linux
+  ;; input (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  ;; output (uinput-sink
+  ;;         "KMonad: X230"
+  ;;         "sleep 0.2s; xset r rate 200 20; sleep 0.2s; setxkbmap -option compose:menu")
+  ;; cmp-seq cmps
+  
+  ;; For Windows
+  input  (low-level-hook)
+  output (send-event-sink)
+
+  allow-cmd true
+  fallthrough true
+)
+
+;;; Aliases
+
+;; I very much prefer a very dense layout and ensure that my grid can
+;; fit in 5-character wide columns.  This means I rename anything that
+;; is longer than 4 characters to some alias.
+;;
+;; First up are layer shortcuts.
+
+(defalias
+  ext (layer-toggle extend)               ;; Toggling the extend Layer
+  sym (layer-toggle symbols)              ;; Toggling the symbol layer
+  qwe (layer-switch qwerty)               ;; Switching to the qwerty layer
+  cmk (layer-switch colemak)              ;; Switch back to a normal layer
+)
+
+;; Next I define all things tap (holds, nexts, etc.).
+;; The functions are defined thusly:
+;;
+;; `tap-next': Button1 is for tapping, Button2 is for holding.  Once the
+;;  button is pressed kmonad waits for the next input.  If it's the
+;;  release of the same button, Button1 gets tapped.  If it's the
+;;  pressing of another key (Key1), Button2 gets pressed *before*
+;;  handling the press of Key1.
+;;
+;; `tap-hold-next': This works like `tap-next', but takes an additional
+;; timeout, after which Button2 is also pressed.  This prevents
+;; situations when you want to use a modifier but then change your mind,
+;; but also don't want to emit Button1 when the key is released.
+;;
+;; `tap-hold-next-release': Works like `tap-hold-next' in the timeout
+;; department, but decides which key to press before the timeout in a
+;; slightly different way.  Instead of looking at the key (Key1) that we
+;; pressed down, we look at keys that were pressed `after' us¹.  If such
+;; a key is released before we release Key1, Button2 is pressed.  If the
+;; next event is the release of Key1, we tap Button1 instead.  This
+;; (while sounding a bit weird) is very comfortable when applied to keys
+;; that get pressed reasonable often when typing normally.  ¹: This is
+;; important in that no key that was pressed before Key1 has any
+;; influence over this.
+
+(defalias
+  ec  (tap-next esc lctl)
+  ee  (tap-next esc @ext)
+  /c  (tap-hold-next-release 500 / rctl)
+  tm  (tap-next tab lmet)
+  [m  (tap-hold-next 500 [ rmet)
+  \m  (tap-hold-next 500 \ rmet)
+)
+
+;; Sticky keys
+
+(defalias
+  ;; sl (sticky-key 300 lsft)  ;; not supported yet
+  ;; sr (sticky-key 300 rsft)  ;; not supported yet
+  sl lsft
+  sr rsft
+)
+
+;; Other aliases.  Yay Haskell ^-^
+
+(defalias
+  Ins (around lsft ins)
+  >>= #( > > = )
+  =<< #( = < < )
+  <*> #( < * > )
+  *>  #( * >   )
+  <*  #( < *   )
+  <$> #( < $ > )
+  <&> #( < & > )
+  <|> #( < | > )
+  <-  #( < -   )
+  ->  #( - >   )
+  =>  #( = >   )
+  ::  #( : :   )
+)
+
+(defalias
+  cpy C-c
+  pst C-v
+  cut C-x
+  udo C-z
+  all C-a
+  fnd C-f
+  bk A-lft
+  fw A-rght
+  £ S-3  ;;UK pound sign
+)
+
+
+;;; Layers
+
+;; First up is the source (base) layer; this is used to set the default
+;; keys that will be overwritten later.  It is `not' a layer that will
+;; be used in the actual layout.
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        sys  slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn  kp7  kp8  kp9  kp+
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret                        kp4  kp5  kp6
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght  kp0  kp.
+)
+
+;; ;; Colemak layer.
+;; ;; Since this is the first layer, it's the layout KMonad starts in.
+;; (deflayer colemak
+;;   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        sys  slck pause
+;;   grv  1    2    3    4    5    6    7    8    9    0    -     =    bspc ins  home pgup  nlck kp/  kp*  kp-
+;;   @tm  q    w    f    p    b    j    l    u    y    '    [   ]      @\m  del  end  pgdn  kp7  kp8  kp9  kp+
+;;   @ee  a    r    s    t    g    m    n    e    i    o    ;   ret                         kp4  kp5  kp6
+;;   @sl  x    c    d    v    z    k    h    ,    .    @/c  @sr                  up         kp1  kp2  kp3  kprt
+;;   lmet lalt lctl           spc            @sym rctl ralt rmet            left down rght  kp0  kp.
+;; )
+
+;; Colemak layer wide.
+;; Since this is the first layer, it's the layout KMonad starts in.
+(deflayer colemak
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        sys  slck pause
+  grv  1    2    3    4    5    6    =    7    8    9    0     -    bspc ins  home pgup  nlck kp/  kp*  kp-
+  @tm  q    w    f    p    b    [    j    l    u    y    '     ;    @\m  del  end  pgdn  kp7  kp8  kp9  kp+
+  @ee  a    r    s    t    g    ]    m    n    e    i    o     ret                       kp4  kp5  kp6
+  @sl  x    c    d    v    z    /    k    h    ,    .    @sr                  up         kp1  kp2  kp3  kprt
+  lmet lalt lctl           spc            @sym rctl ralt rmet            left down rght  kp0  kp.
+)
+
+
+;; Extend layer.
+(deflayer extend
+  @cmk _    _    _    _    _    _    brdn brup _    _    _    _          sys  slck pause
+  @qwe f1   f2   f3   f4   f5   f6   f12  f7   f8   f9   f10   f11  ret  ins  home pgup  nlck kp/  kp*  kp-
+  @tm  esc  @bk  @fnd @fw  ins  prnt pgup home up   end  caps  f13  @\m  del  end  pgdn  kp7  kp8  kp9  kp+
+  @ee  lalt lmet lsft lctl ralt slck pgdn lft  down rght del   ret                       kp4  kp5  kp6
+  @sl  @cut @cpy @pst @pst @udo comp prnt bks  tab  cmp  @sr                  up         kp1  kp2  kp3  kprt
+  lmet lalt lctl           ret            @sym rctl ralt rmet            left down rght  kp0  kp.
+)
+
+;; Symbol layer.
+(deflayer symbols
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    S-1  S-2  S-3  S-4  S-5  «    =    7    8    9    +    /    _     _    _    _     _    _    _    _
+  _    \_   [    {    \(   S-6  »    *    4    5    6    -    _                          _    _    _
+  _    ]    }    \)   S-7  `    _    0    1    2    3    _                    _          _    _    _    _
+  _    _    _              _              _    _    _    _               _    _    _     _    _   
+)
+
+;; Qwerty layer, in case someone else has to use my keyboard.
+(deflayer qwerty
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        sys  slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
+  @tm  q    w    e    r    t    y    u    i    o    p    [    ]    @\m   del  end  pgdn  kp7  kp8  kp9  kp+
+  @ee  a    s    d    f    g    h    j    k    l    ;    '    ret                        kp4  kp5  kp6
+  @sl  z    x    c    v    b    n    m    ,    .    /    @sr                  up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght  kp0  kp.
+)
