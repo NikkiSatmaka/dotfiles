@@ -236,9 +236,10 @@ pathprepend "$HOME/Library/Python/3.7/bin" PATH
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys "${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap" 2>/dev/null
 
-# Enable linuxbrew.
+# Enable homebrew.
 test -x ~/.linuxbrew/bin/brew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -x /home/linuxbrew/.linuxbrew/bin/brew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+test -x /opt/homebrew/bin/brew && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Enable Nix
 ssource "$HOME/.nix-profile/etc/profile.d/nix.sh"
