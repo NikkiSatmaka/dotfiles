@@ -99,6 +99,7 @@ laptop*
 .xinitrc
 .Xmodmap
 .xprofile
+.xsessionrc
 .Xresources
 01-dash-shell
 02-install-dbus-broker
