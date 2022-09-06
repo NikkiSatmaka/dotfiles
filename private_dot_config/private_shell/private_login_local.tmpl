@@ -228,10 +228,6 @@ pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/go/bin" PATH
 pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin" PATH
 pathprepend "$PNPM_HOME" PATH
 pathprepend "$ANDROID_HOME/platform-tools" PATH
-{{- if eq .chezmoi.os "darwin" }}
-pathprepend "/usr/local/opt/python/libexec/bin" PATH
-pathprepend "$HOME/Library/Python/3.7/bin" PATH
-{{- end }}
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys "${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap" 2>/dev/null
@@ -240,6 +236,14 @@ sudo -n loadkeys "${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap"
 test -x ~/.linuxbrew/bin/brew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -x /home/linuxbrew/.linuxbrew/bin/brew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 test -x /opt/homebrew/bin/brew && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+{{- if eq .chezmoi.os "darwin" }}
+pathprepend "/usr/local/opt/python/libexec/bin" PATH
+pathprepend "$(brew --prefix)/opt/coreutils/libexec/gnubin" PATH
+pathprepend "$(brew --prefix)/opt/moreutils/libexec/gnubin" PATH
+pathprepend "$(brew --prefix)/opt/findutils/libexec/gnubin" PATH
+pathprepend "$(brew --prefix)/opt/gnu-sed/libexec/gnubin" PATH
+{{- end }}
 
 # Enable Nix
 ssource "$HOME/.nix-profile/etc/profile.d/nix.sh"
