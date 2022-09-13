@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 #==============================================================================
-# Installing Google Chrome
+# Installing OpenVPN
 #==============================================================================
 
 readonly USR_KEYRING_DIR="/usr/share/keyrings"
 readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
 
-readonly CHROME_KEYRING_URL="https://dl.google.com/linux/linux_signing_key.pub"
-readonly CHROME_KEYRING_GPG="/tmp/google-chrome.gpg"
-readonly CHROME_KEYRING_DEST="$USR_KEYRING_DIR/google-chrome.gpg"
-readonly CHROME_SOURCE="$APT_SOURCE_DIR/google-chrome.list"
-readonly CHROME_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb stable main"
+readonly OPENVPN_KEYRING_URL="https://swupdate.openvpn.net/repos/openvpn-repo-pkg-key.pub"
+readonly OPENVPN_KEYRING_GPG="/tmp/openvpn.gpg"
+readonly OPENVPN_KEYRING_DEST="$USR_KEYRING_DIR/openvpn-archive-keyring.gpg"
+readonly OPENVPN_SOURCE="$APT_SOURCE_DIR/openvpn3.list"
+readonly OPENVPN_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/openvpn-archive-keyring.gpg] https://swupdate.openvpn.net/community/openvpn3/repos bullseye main"
 
 add_apt_keyring() {
   if [[ -f "$3" ]]; then
@@ -35,5 +35,5 @@ _EOF_
   sudo chmod 644 "$1"
 }
 
-add_apt_keyring "$CHROME_KEYRING_URL" "$CHROME_KEYRING_GPG" "$CHROME_KEYRING_DEST"
-add_apt_source "$CHROME_SOURCE" "$CHROME_CONTENT"
+add_apt_keyring "$OPENVPN_KEYRING_URL" "$OPENVPN_KEYRING_GPG" "$OPENVPN_KEYRING_DEST"
+add_apt_source "$OPENVPN_SOURCE" "$OPENVPN_CONTENT"
