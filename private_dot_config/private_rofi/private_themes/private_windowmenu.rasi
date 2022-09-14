@@ -23,5 +23,5 @@ prompt {
  * font, so use a monospace one.
  */
 element {
-  font: "Fira Code 12";
+  font: "FiraCode Nerd Font 12";
 }

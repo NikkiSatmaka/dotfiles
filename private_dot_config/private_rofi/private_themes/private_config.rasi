@@ -27,7 +27,7 @@ configuration {
   blue:    #61bfff;
 
   text-font:      "Fira Sans 15";
-  text-mono-font: "Fira Code 13";
+  text-mono-font: "FiraCode Nerd Font 13";
   icon-font:      "Hurmit Nerd Font 26";
 
   background-color: transparent;
