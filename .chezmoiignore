@@ -40,7 +40,6 @@ tweaks
 .config/rtorrent
 .config/sxhkd
 .config/sxiv
-.config/tmux
 .config/zathura
 .imwheelrc
 .xinitrc
