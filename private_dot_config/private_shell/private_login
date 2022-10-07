@@ -40,6 +40,8 @@ elif command -v lesspipe.sh >/dev/null 2>&1; then
 fi
 
 # Path settings
+pathprepend "/sbin" PATH
+pathprepend "/usr/sbin" PATH
 pathprepend "$HOME/bin" PATH
 pathprepend /usr/local/man MANPATH
 pathprepend /usr/share/man MANPATH
