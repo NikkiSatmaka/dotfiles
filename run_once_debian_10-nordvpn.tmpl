@@ -40,3 +40,5 @@ add_apt_source "$NORDVPN_SOURCE" "$NORDVPN_CONTENT"
 
 sudo apt-get update 
 sudo apt-get install nordvpn
+
+sudo usermod -aG nordvpn $USER
