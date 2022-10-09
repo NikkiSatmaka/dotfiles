@@ -37,3 +37,6 @@ _EOF_
 
 add_apt_keyring "$CHROME_KEYRING_URL" "$CHROME_KEYRING_GPG" "$CHROME_KEYRING_DEST"
 add_apt_source "$CHROME_SOURCE" "$CHROME_CONTENT"
+
+sudo apt-get update
+sudo apt-get install google-chrome-stable

@@ -45,3 +45,6 @@ add_apt_keyring "$POSTGRESQL_KEYRING_URL" "$POSTGRESQL_KEYRING_GPG" "$POSTGRESQL
 add_apt_keyring "$PGADMIN_KEYRING_URL" "$PGADMIN_KEYRING_GPG" "$PGADMIN_KEYRING_DEST"
 add_apt_source "$POSTGRESQL_SOURCE" "$POSTGRESQL_CONTENT"
 add_apt_source "$PGADMIN_SOURCE" "$PGADMIN_CONTENT"
+
+sudo apt-get update
+sudo apt-get install postgresql postgresql-contrib pgadmin4

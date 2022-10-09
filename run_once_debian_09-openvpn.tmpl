@@ -37,3 +37,6 @@ _EOF_
 
 add_apt_keyring "$OPENVPN_KEYRING_URL" "$OPENVPN_KEYRING_GPG" "$OPENVPN_KEYRING_DEST"
 add_apt_source "$OPENVPN_SOURCE" "$OPENVPN_CONTENT"
+
+sudo apt-get update
+sudo apt-get install openvpn3
