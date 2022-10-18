@@ -1,5 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+# -*- coding: utf-8 -*-
 
-echo "Uploading /mnt/data/nikki/entertainment to gdrive_id:entertainment"
-rclone copy -Pv /mnt/data/nikki/entertainment gdrive_id:entertainment
+echo "Uploading $HOME/data/entertainment to gdrive_id:entertainment"
+rclone copy -Pv $HOME/data/entertainment gdrive_id:entertainment
 read

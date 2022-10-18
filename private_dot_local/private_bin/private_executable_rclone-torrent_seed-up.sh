@@ -1,5 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+# -*- coding: utf-8 -*-
 
-echo "Uploading /mnt/data/nikki/torrent-seed to gdrive_id:torrent-seed"
-rclone copy -Pv /mnt/data/nikki/torrent-seed gdrive_id:torrent-seed
+echo "Uploading $HOME/data/torrent-seed to gdrive_id:torrent-seed"
+rclone copy -Pv $HOME/data/torrent-seed gdrive_id:torrent-seed
 read
