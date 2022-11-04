@@ -81,5 +81,6 @@
         }
     ],
     "aws.profile": "profile:nikki",
-    "aws.telemetry": false
+    "aws.telemetry": false,
+    "python.analysis.stubPath": ""
 }
