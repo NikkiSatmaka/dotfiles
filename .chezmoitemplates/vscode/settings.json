@@ -3,6 +3,7 @@
     "editor.fontLigatures": true,
     "editor.lineNumbers": "relative",
     "editor.inlineSuggest.enabled": true,
+    "editor.guides.bracketPairs": true,
     "window.titleBarStyle": "custom",
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "material-icon-theme",
