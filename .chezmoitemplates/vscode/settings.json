@@ -140,5 +140,8 @@
         }
     ],
     "aws.profile": "profile:nikki",
-    "aws.telemetry": false
+    "aws.telemetry": false,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    }
 }
