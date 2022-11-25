@@ -1,6 +1,6 @@
 # maybe?
 .idea
-*.log
+log/
 tmp/
 
 # Compiled source #
