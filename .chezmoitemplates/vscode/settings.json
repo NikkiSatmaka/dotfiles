@@ -1,32 +1,69 @@
 {
+    // Editor
     "editor.fontFamily": "'FiraCode Nerd Font', 'FiraCode NF', Consolas, 'Courier New', 'monospace'",
     "editor.fontLigatures": true,
     "editor.lineNumbers": "relative",
     "editor.inlineSuggest.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.renderWhitespace": "all",
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true
-        }
+    // Files
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/node_modules": true,
+        "**/.next": true,
+        "**/package-lock.json": true,
+        "**/yarn.lock": true,
+        "**/npm-debug.log": true,
+        "**/dist": true,
+        "**/*.bs.js": true,
+        "vendor": true
     },
-    "isort.args": ["--profile", "black"],
-    "window.titleBarStyle": "custom",
+    "files.associations": {
+        "*.toml": "toml",
+        "*.njk": "html"
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.eol": "\n",
+    // Workbench
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "material-icon-theme",
+    "workbench.preferredDarkColorTheme": "One Dark Pro",
+    "workbench.preferredLightColorTheme": "Atom One Light",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
-    "notebook.lineNumbers": "on",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "python.languageServer": "Pylance",
-    "python.analysis.typeCheckingMode": "basic",
-    "python.formatting.provider": "black",
+    // Window
+    "window.autoDetectColorScheme": true,
+    "window.titleBarStyle": "custom",
+    "window.newWindowDimensions": "maximized",
+    // Breadcrumbs
+    "breadcrumbs.filePath": "on",
+    "breadcrumbs.enabled": true,
+    // Search
+    "search.smartCase": true,
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/.git": true,
+        "dist": true,
+        "out": true,
+        "coverage": true
+    },
+    // Terminal
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.fontSize": 15,
     "terminal.integrated.inheritEnv": false,
+    // Vim
     "vim.leader": "<space>",
-    "vim.easymotion": true,
+    "vim.debug.silent": true,
+    "vim.cursorStylePerMode.normal": "underline",
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
@@ -41,6 +78,7 @@
         "<C-f>": false,
         "<C-k>": false
     },
+    // Vim KeyBindings
     "vim.normalModeKeyBindings": [
         {
             "before": ["Y"],
@@ -91,5 +129,24 @@
             "before": ["p"],
             "after": ["p", "g", "v", "y"]
         }
-    ]
+    ],
+    // Easymotion
+    "vim.easymotion": true,
+    "vim.easymotionMarkerBackgroundColor": "yellow",
+    "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf:",
+    "vim.easymotionMarkerForegroundColorOneChar": "black",
+    // Python
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.formatting.provider": "black",
+    "isort.args": ["--profile", "black"],
+    // Jupyter
+    "notebook.lineNumbers": "on"
 }
