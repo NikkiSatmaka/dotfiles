@@ -62,8 +62,6 @@
     "terminal.integrated.inheritEnv": false,
     // Vim
     "vim.leader": "<space>",
-    "vim.debug.silent": true,
-    "vim.cursorStylePerMode.normal": "underline",
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
@@ -73,12 +71,12 @@
     "vim.sneakReplacesF": true,
     "vim.sneakUseIgnorecaseAndSmartcase": true,
     "vim.visualstar": true,
+    // Vim KeyBindings
     "vim.handleKeys": {
         "<C-b>": false,
         "<C-f>": false,
         "<C-k>": false
     },
-    // Vim KeyBindings
     "vim.normalModeKeyBindings": [
         {
             "before": ["Y"],
@@ -148,5 +146,9 @@
     "python.formatting.provider": "black",
     "isort.args": ["--profile", "black"],
     // Jupyter
-    "notebook.lineNumbers": "on"
+    "notebook.lineNumbers": "on",
+    // JSON
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
