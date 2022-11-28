@@ -4,11 +4,15 @@
     "editor.lineNumbers": "relative",
     "editor.inlineSuggest.enabled": true,
     "editor.guides.bracketPairs": true,
-    "editor.formatOnSave": true,
     "editor.renderWhitespace": "all",
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
     },
+    "isort.args": ["--profile", "black"],
     "window.titleBarStyle": "custom",
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "material-icon-theme",
@@ -39,107 +43,53 @@
     },
     "vim.normalModeKeyBindings": [
         {
-            "before": [
-                "Y"
-            ],
-            "after": [
-                "y",
-                "$"
-            ]
+            "before": ["Y"],
+            "after": ["y", "$"]
         },
         {
-            "before": [
-                "j"
-            ],
-            "after": [
-                "g",
-                "j"
-            ]
+            "before": ["j"],
+            "after": ["g", "j"]
         },
         {
-            "before": [
-                "k"
-            ],
-            "after": [
-                "g",
-                "k"
-            ]
+            "before": ["k"],
+            "after": ["g", "k"]
         },
         {
-            "before": [
-                "<Up>"
-            ],
-            "after": [
-                "g",
-                "<Up>"
-            ]
+            "before": ["<Up>"],
+            "after": ["g", "<Up>"]
         },
         {
-            "before": [
-                "<Down>"
-            ],
-            "after": [
-                "g",
-                "<Down>"
-            ]
+            "before": ["<Down>"],
+            "after": ["g", "<Down>"]
         }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [
-                "<leader>",
-                "d"
-            ],
-            "after": [
-                "d",
-                "d"
-            ]
+            "before": ["<leader>", "d"],
+            "after": ["d", "d"]
         },
         {
-            "before": [
-                "<C-n>"
-            ],
-            "commands": [
-                ":nohl"
-            ]
+            "before": ["<C-n>"],
+            "commands": [":nohl"]
         },
         {
-            "before": [
-                "K"
-            ],
-            "commands": [
-                "lineBreakInsert"
-            ],
+            "before": ["K"],
+            "commands": ["lineBreakInsert"],
             "silent": true
         }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
-            "before": [
-                ">"
-            ],
-            "commands": [
-                "editor.action.indentLines"
-            ]
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
         },
         {
-            "before": [
-                "<"
-            ],
-            "commands": [
-                "editor.action.outdentLines"
-            ]
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
         },
         {
-            "before": [
-                "p"
-            ],
-            "after": [
-                "p",
-                "g",
-                "v",
-                "y"
-            ]
+            "before": ["p"],
+            "after": ["p", "g", "v", "y"]
         }
     ]
 }
