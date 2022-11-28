@@ -147,6 +147,14 @@
     "isort.args": ["--profile", "black"],
     // Jupyter
     "notebook.lineNumbers": "on",
+    // JavaScript
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    // TypeScript
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     // JSON
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
