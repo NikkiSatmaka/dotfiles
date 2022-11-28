@@ -6,6 +6,9 @@
     "editor.guides.bracketPairs": true,
     "editor.formatOnSave": true,
     "editor.renderWhitespace": "all",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
     "window.titleBarStyle": "custom",
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "material-icon-theme",
@@ -138,10 +141,5 @@
                 "y"
             ]
         }
-    ],
-    "aws.profile": "profile:nikki",
-    "aws.telemetry": false,
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    }
+    ]
 }
