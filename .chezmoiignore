@@ -80,6 +80,7 @@ laptop*
 .config/awesome
 .config/bspwm
 .config/broot
+.config/Code
 .config/dunst
 .config/espanso
 .config/gtk-2.0
@@ -203,7 +204,6 @@ Documents
 {{- if eq .chezmoi.os "windows" }}
 .config/bash
 .config/calcurse
-.config/Code
 .config/fontconfig
 .config/lvim
 .config/mpd
