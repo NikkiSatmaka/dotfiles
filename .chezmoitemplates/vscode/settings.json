@@ -158,5 +158,7 @@
     // JSON
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "r.rterm.linux": "/home/nikki/micromamba/envs/r/bin/radian",
+    "r.rterm.mac": "/home/nikki/micromamba/envs/r/bin/radian"
 }
