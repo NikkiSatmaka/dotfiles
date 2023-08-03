@@ -3,9 +3,9 @@
 
 {{ if eq .chezmoi.os "darwin" -}}
 echo "Syncing Download gdrive:entertainment/books/calibre_library to $HOME/Documents/calibre_library"
-rclone sync -Pv gdrive_id:entertainment/books/calibre_library $HOME/Documents/calibre_library
+rclone sync -Pv gdrive_rfid:entertainment/books/calibre_library $HOME/Documents/calibre_library
 {{ else -}}
 echo "Syncing Download gdrive:entertainment/books/calibre_library to $HOME/data/calibre_library"
-rclone sync -Pv gdrive_id:entertainment/books/calibre_library $HOME/data/calibre_library
+rclone sync -Pv gdrive_rfid:entertainment/books/calibre_library $HOME/data/calibre_library
 {{ end -}}
 read
