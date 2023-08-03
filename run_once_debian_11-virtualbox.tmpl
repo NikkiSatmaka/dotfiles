@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 #==============================================================================
-# Installing Docker-CE
+# Installing VirtualBox
 #==============================================================================
 
 readonly USR_KEYRING_DIR="/usr/share/keyrings"
 readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
 
-readonly DOCKER_KEYRING_URL="https://download.docker.com/linux/debian/gpg"
-readonly DOCKER_KEYRING_GPG="/tmp/docker.gpg"
-readonly DOCKER_KEYRING_DEST="$USR_KEYRING_DIR/docker-keyring.gpg"
-readonly DOCKER_SOURCE="$APT_SOURCE_DIR/docker.list"
-readonly DOCKER_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/docker-keyring.gpg] https://download.docker.com/linux/debian bookworm stable"
+readonly VIRTUALBOX_KEYRING_URL="https://www.virtualbox.org/download/oracle_vbox_2016.asc"
+readonly VIRTUALBOX_KEYRING_GPG="/tmp/virtualbox.gpg"
+readonly VIRTUALBOX_KEYRING_DEST="$USR_KEYRING_DIR/virtualbox-archive-keyring.gpg"
+readonly VIRTUALBOX_SOURCE="$APT_SOURCE_DIR/virtualbox.list"
+readonly VIRTUALBOX_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/virtualbox-archive-keyring.gpg] https://download.virtualbox.org/virtualbox/debian bookworm contrib"
 
 add_apt_keyring() {
   if [[ -f "$3" ]]; then
@@ -35,10 +35,8 @@ _EOF_
   sudo chmod 644 "$1"
 }
 
-add_apt_keyring "$DOCKER_KEYRING_URL" "$DOCKER_KEYRING_GPG" "$DOCKER_KEYRING_DEST"
-add_apt_source "$DOCKER_SOURCE" "$DOCKER_CONTENT"
+add_apt_keyring "$VIRTUALBOX_KEYRING_URL" "$VIRTUALBOX_KEYRING_GPG" "$VIRTUALBOX_KEYRING_DEST"
+add_apt_source "$VIRTUALBOX_SOURCE" "$VIRTUALBOX_CONTENT"
 
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
-sudo usermod -aG docker $USER
+# sudo apt-get install virtualbox-7.0

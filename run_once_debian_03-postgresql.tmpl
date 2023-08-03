@@ -11,13 +11,13 @@ readonly POSTGRESQL_KEYRING_URL="https://www.postgresql.org/media/keys/ACCC4CF8.
 readonly POSTGRESQL_KEYRING_GPG="/tmp/postgresql.gpg"
 readonly POSTGRESQL_KEYRING_DEST="$USR_KEYRING_DIR/postgresql-archive-keyring.gpg"
 readonly POSTGRESQL_SOURCE="$APT_SOURCE_DIR/postgresql.list"
-readonly POSTGRESQL_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/postgresql-archive-keyring.gpg] http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main"
+readonly POSTGRESQL_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/postgresql-archive-keyring.gpg] http://apt.postgresql.org/pub/repos/apt bookworm-pgdg main"
 
 readonly PGADMIN_KEYRING_URL="https://www.pgadmin.org/static/packages_pgadmin_org.pub"
 readonly PGADMIN_KEYRING_GPG="/tmp/pgadmin.gpg"
 readonly PGADMIN_KEYRING_DEST="$USR_KEYRING_DIR/pgadmin-archive-keyring.gpg"
 readonly PGADMIN_SOURCE="$APT_SOURCE_DIR/pgadmin.list"
-readonly PGADMIN_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/pgadmin-archive-keyring.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bullseye pgadmin4 main"
+readonly PGADMIN_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/pgadmin-archive-keyring.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bookworm pgadmin4 main"
 
 add_apt_keyring() {
   if [[ -f "$3" ]]; then
