@@ -9,9 +9,9 @@ readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
 
 readonly NORDVPN_KEYRING_URL="https://repo.nordvpn.com/gpg/nordvpn_public.asc"
 readonly NORDVPN_KEYRING_GPG="/tmp/nordvpn.gpg"
-readonly NORDVPN_KEYRING_DEST="$USR_KEYRING_DIR/nordvpn-keyring.gpg"
+readonly NORDVPN_KEYRING_DEST="$USR_KEYRING_DIR/nordvpn-archive-keyring.gpg"
 readonly NORDVPN_SOURCE="$APT_SOURCE_DIR/nordvpn.list"
-readonly NORDVPN_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/nordvpn-keyring.gpg] https://repo.nordvpn.com/deb/nordvpn/debian stable main"
+readonly NORDVPN_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/nordvpn-archive-keyring.gpg] https://repo.nordvpn.com/deb/nordvpn/debian stable main"
 
 add_apt_keyring() {
   if [[ -f "$3" ]]; then
@@ -38,7 +38,7 @@ _EOF_
 add_apt_keyring "$NORDVPN_KEYRING_URL" "$NORDVPN_KEYRING_GPG" "$NORDVPN_KEYRING_DEST"
 add_apt_source "$NORDVPN_SOURCE" "$NORDVPN_CONTENT"
 
-sudo apt-get update 
-sudo apt-get install nordvpn
+sudo apt-get update
+sudo apt-get install -y nordvpn
 
 sudo usermod -aG nordvpn $USER

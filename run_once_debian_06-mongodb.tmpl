@@ -39,4 +39,4 @@ add_apt_keyring "$MONGODB_KEYRING_URL" "$MONGODB_KEYRING_GPG" "$MONGODB_KEYRING_
 add_apt_source "$MONGODB_SOURCE" "$MONGODB_CONTENT"
 
 sudo apt-get update
-sudo apt-get install mongodb-org
+sudo apt-get install -y mongodb-org
