@@ -143,7 +143,6 @@
     },
     "python.languageServer": "Pylance",
     "python.analysis.typeCheckingMode": "basic",
-    "python.formatting.provider": "black",
     "isort.args": ["--profile", "black"],
     // Jupyter
     "notebook.lineNumbers": "on",
