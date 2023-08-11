@@ -1,0 +1,6 @@
+[".config/nvim"]
+    type = "git-repo"
+    url = "https://github.com/NvChad/NvChad"
+    refreshPeriod = "168h"
+    [".config/nvim".clone]
+        args = ["--depth=1"]
