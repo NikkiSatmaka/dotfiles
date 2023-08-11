@@ -33,6 +33,7 @@ tweaks
 .config/mimeapps.list
 .config/mpd
 .config/ncmpcpp
+.config/nixpkgs
 .config/picom
 .config/polybar
 .config/redshift
