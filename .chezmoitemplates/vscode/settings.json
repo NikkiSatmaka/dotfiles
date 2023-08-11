@@ -31,10 +31,10 @@
     "files.insertFinalNewline": true,
     "files.eol": "\n",
     // Workbench
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.preferredDarkColorTheme": "One Dark Pro",
-    "workbench.preferredLightColorTheme": "Atom One Light",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+    "workbench.preferredLightColorTheme": "Catppuccin Latte",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
