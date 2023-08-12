@@ -4,8 +4,8 @@
 
 # Preferred programs
 export PAGER=less
-export EDITOR="emacsclient -t -a ''"
-export VISUAL="emacsclient -c -a emacs"
+export EDITOR=nvim
+export VISUAL=nvim
 
 export CVS_RSH=ssh
 export RSYNC_RSH=ssh
