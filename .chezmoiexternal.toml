@@ -1,5 +1,11 @@
+[".tmux/plugins/tpm"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tpm"
+    refreshPeriod = "168h"
+
 [".config/nvim"]
     type = "git-repo"
     url = "https://github.com/NvChad/NvChad"
     [".config/nvim".clone]
         args = ["--depth=1"]
+
