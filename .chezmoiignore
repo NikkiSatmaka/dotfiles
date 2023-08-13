@@ -86,7 +86,6 @@ laptop*
 .config/espanso
 .config/gtk-2.0
 .config/gtk-3.0
-.config/nnn
 .config/picom
 .config/polybar
 .config/rofi
@@ -210,6 +209,7 @@ Documents
 .config/mpd
 .config/mpv
 .config/ncmpcpp
+.config/nnn
 .config/npm
 .config/nvim
 .config/readline
