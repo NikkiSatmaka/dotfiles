@@ -39,6 +39,6 @@ add_apt_keyring "$DOCKER_KEYRING_URL" "$DOCKER_KEYRING_GPG" "$DOCKER_KEYRING_DES
 add_apt_source "$DOCKER_SOURCE" "$DOCKER_CONTENT"
 
 sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 sudo usermod -aG docker $USER
