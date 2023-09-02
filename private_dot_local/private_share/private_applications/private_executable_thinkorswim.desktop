@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=thinkorswim
+Exec="/home/nikki/thinkorswim/thinkorswim"  %U
+Icon=/home/nikki/thinkorswim/.install4j/thinkorswim.png
+StartupWMClass=install4j-com-devexperts-jnlp-Launcher

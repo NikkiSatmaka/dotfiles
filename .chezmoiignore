@@ -49,7 +49,7 @@ tweaks
 
 .local/bin/*
 !.local/bin/rclone*
-.local/share
+.local/share/applications/*
 .local/share/kbd
 
 05-kmonad-colemak
@@ -74,6 +74,8 @@ zz_99-services
 # ignore only on desktops, such as avalon
 {{- if eq .chezmoi.hostname "avalon" }}
 laptop*
+!.local/share/applications/noisetorch.desktop
+!.local/share/applications/thinkorswim.desktop
 {{- end }}
 
 # ignore if not on linux

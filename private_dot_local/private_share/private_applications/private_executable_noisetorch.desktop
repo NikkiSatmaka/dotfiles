@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=NoiseTorch
+Comment=Create a virtual microphone that suppresses noise, in any application.
+Exec=noisetorch
+Icon=noisetorch
+Terminal=false
+Type=Application
+Categories=Audio;AudioVideo;Utility;
