@@ -58,8 +58,6 @@
     },
     // Terminal
     "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.fontSize": 15,
-    "terminal.integrated.inheritEnv": false,
     // Vim
     "vim.leader": "<space>",
     "vim.incsearch": true,
