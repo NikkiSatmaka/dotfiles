@@ -73,7 +73,8 @@
     "vim.handleKeys": {
         "<C-b>": false,
         "<C-f>": false,
-        "<C-k>": false
+        "<C-k>": false,
+        "<C-p>": false
     },
     "vim.normalModeKeyBindings": [
         {
