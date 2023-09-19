@@ -43,6 +43,7 @@ Brewfile.lock.json
 
 # Environment files #
 #####################
+*env/
 .env/
 .venv/
 .conda_env/
