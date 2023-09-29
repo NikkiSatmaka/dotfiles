@@ -310,7 +310,7 @@ bat
 calcurse
 diff-so-fancy
 dmidecode
-exa
+eza
 fd
 fzf
 git

@@ -134,25 +134,25 @@ alias ping="ping -c 3"
 # Directory browsing (list)
 # -----------------------------------------------------------------------------
 # Use "exa" as a modern "ls"
-if command -v exa >/dev/null 2>&1; then
-  alias ls="exa --group-directories-first"
+if command -v eza >/dev/null 2>&1; then
+  alias ls="eza --group-directories-first"
 
-  alias l="exa -Fhl --group-directories-first --git"  # show files in long format
-  alias la="exa -ha --group-directories-first"  # show all files
-  alias ll="exa -Fhla --group-directories-first --git"  # show all files in long format
-  alias ltree="exa -FThl --git"  # show all files in tree format
+  alias l="eza -Fhl --group-directories-first --git"  # show files in long format
+  alias la="eza -ha --group-directories-first"  # show all files
+  alias ll="eza -Fhla --group-directories-first --git"  # show all files in long format
+  alias ltree="eza -FThl --git"  # show all files in tree format
 
-  alias lad="exa -hd -- .*(/)"  # only show dot-directories
-  alias lsa="exa -ha -- .*(.)"  # only show dot-files
-  alias lsd="exa -FhlD"  # only show directories
-  alias lse="exa -Fhld -- *(/^F)"  # only show empty directories
+  alias lad="eza -hd -- .*(/)"  # only show dot-directories
+  alias lsa="eza -ha -- .*(.)"  # only show dot-files
+  alias lsd="eza -FhlD"  # only show directories
+  alias lse="eza -Fhld -- *(/^F)"  # only show empty directories
 
-  alias lsnew="exa -rthl -- *(.) | tail \$@ 2>/dev/null"  # only the newest files
-  alias lsold="exa -rthl -- *(.) | head \$@ 2>/dev/null"   # display the oldest files
-  alias lsx="exa -l -- *(*) | head \$@ 2>/dev/null"        # only show executables
-  alias lssuid="exa -l -- *(s,S) | head \$@ 2>/dev/null"   # only show suid-files
-  alias lssmall="exa -hl --sort=size -- *(.) | tail \$@ 2>/dev/null"  # display the smallest files
-  alias lsbig="exa -hl --sort=size -- *(.) | grep -v total | head \$@ 2>/dev/null"    # display the biggest files
+  alias lsnew="eza -rthl -- *(.) | tail \$@ 2>/dev/null"  # only the newest files
+  alias lsold="eza -rthl -- *(.) | head \$@ 2>/dev/null"   # display the oldest files
+  alias lsx="eza -l -- *(*) | head \$@ 2>/dev/null"        # only show executables
+  alias lssuid="eza -l -- *(s,S) | head \$@ 2>/dev/null"   # only show suid-files
+  alias lssmall="eza -hl --sort=size -- *(.) | tail \$@ 2>/dev/null"  # display the smallest files
+  alias lsbig="eza -hl --sort=size -- *(.) | grep -v total | head \$@ 2>/dev/null"    # display the biggest files
 else
   # Detect which `ls` flavor is in use
   if ls --color >/dev/null 2>&1; then # GNU `ls`

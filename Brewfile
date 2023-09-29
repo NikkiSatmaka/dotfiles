@@ -21,7 +21,7 @@ brew "curl"
 brew "diff-so-fancy"
 brew "direnv"
 brew "dnscrypt-proxy", restart_service: true
-brew "exa"
+brew "eza"
 brew "fd"
 brew "gmp"
 brew "figlet"

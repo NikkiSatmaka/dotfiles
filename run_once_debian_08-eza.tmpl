@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+#==============================================================================
+# Installing eza
+#==============================================================================
+
+readonly USR_KEYRING_DIR="/usr/share/keyrings"
+readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
+
+readonly EZA_KEYRING_URL="https://raw.githubusercontent.com/eza-community/eza/main/deb.asc"
+readonly EZA_KEYRING_GPG="/tmp/gierens.gpg"
+readonly EZA_KEYRING_DEST="$USR_KEYRING_DIR/gierens-archive-keyring.gpg"
+readonly EZA_SOURCE="$APT_SOURCE_DIR/gierens.list"
+readonly EZA_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/gierens-archive-keyring.gpg] http://deb.gierens.de stable main"
+
+readonly EZA_BASH_URL="https://raw.githubusercontent.com/eza-community/eza/main/completions/bash/eza"
+readonly EZA_FISH_URL="https://raw.githubusercontent.com/eza-community/eza/main/completions/fish/eza.fish"
+readonly EZA_ZSH_URL="https://raw.githubusercontent.com/eza-community/eza/main/completions/zsh/_eza"
+
+readonly EZA_BASH="/tmp/eza"
+readonly EZA_FISH="/tmp/eza.fish"
+readonly EZA_ZSH="/tmp/_eza"
+
+readonly EZA_BASH_DIR="/etc/bash_completion.d/eza"
+readonly EZA_FISH_DIR="/usr/share/fish/vendor_completions.d/eza.fish"
+readonly EZA_ZSH_DIR="/usr/local/share/zsh/site-functions/_eza"
+
+add_apt_keyring() {
+  if [[ -f "$3" ]]; then
+    echo "$3 already exists"
+    exit
+  fi
+  curl -sL "$1" | gpg --dearmor > "$2" || exit
+  echo "installing keyring to $3"
+  sudo install -o root -g root -Dm 644 "$2" "$3"
+}
+
+add_apt_source() {
+  if [[ -f "$1" ]]; then
+    echo "$1 already exists"
+    exit
+  fi
+  echo "adding apt source to $1"
+  sudo tee "$1" >/dev/null 2>&1 << _EOF_ &&
+$2
+_EOF_
+  sudo chmod 644 "$1"
+}
+
+download_completion() {
+  curl -sL "$1" -o "$2"
+}
+
+install_completion() {
+  if [[ -f "$3" ]]; then
+    echo "$3 already installed"
+    return
+  fi
+  if [[ -f "$2" ]]; then
+    echo "deleting temp file"
+    rm -rf "$2"
+  fi
+  download_completion "$1" "$2"
+  sudo install -Dm 644 "$2" "$3"
+}
+
+add_apt_keyring "$EZA_KEYRING_URL" "$EZA_KEYRING_GPG" "$EZA_KEYRING_DEST"
+add_apt_source "$EZA_SOURCE" "$EZA_CONTENT"
+
+sudo apt-get update
+sudo apt-get install -y eza
+
+if ! command -v eza >/dev/null 2>&1; then
+  echo "eza could not be found"
+  exit
+fi
+
+install_completion "$EZA_BASH_URL" "$EZA_BASH" "$EZA_BASH_DIR"
+install_completion "$EZA_FISH_URL" "$EZA_FISH" "$EZA_FISH_DIR"
+install_completion "$EZA_ZSH_URL" "$EZA_ZSH" "$EZA_ZSH_DIR"

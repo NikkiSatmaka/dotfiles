@@ -7,7 +7,7 @@ broot
 cmake
 coreutils
 curl
-exa
+eza
 fd
 findutils
 fzf
