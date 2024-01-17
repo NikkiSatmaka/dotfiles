@@ -31,10 +31,10 @@
     "files.insertFinalNewline": true,
     "files.eol": "\n",
     // Workbench
-    "workbench.colorTheme": "One Dark Pro",
+    "workbench.colorTheme": "Bluloco Dark",
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.preferredDarkColorTheme": "One Dark Pro",
-    "workbench.preferredLightColorTheme": "Atom One Light",
+    "workbench.preferredDarkColorTheme": "Bluloco Dark",
+    "workbench.preferredLightColorTheme": "Bluloco Light",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
@@ -137,7 +137,7 @@
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": "explicit"
         }
     },
     "python.languageServer": "Pylance",
