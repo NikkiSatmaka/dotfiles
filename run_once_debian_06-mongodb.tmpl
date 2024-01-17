@@ -7,11 +7,11 @@
 readonly USR_KEYRING_DIR="/usr/share/keyrings"
 readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
 
-readonly MONGODB_KEYRING_URL="https://www.mongodb.org/static/pgp/server-6.0.asc"
+readonly MONGODB_KEYRING_URL="https://pgp.mongodb.com/server-7.0.asc"
 readonly MONGODB_KEYRING_GPG="/tmp/mongodb.gpg"
 readonly MONGODB_KEYRING_DEST="$USR_KEYRING_DIR/mongodb-archive-keyring.gpg"
 readonly MONGODB_SOURCE="$APT_SOURCE_DIR/mongodb.list"
-readonly MONGODB_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/mongodb-archive-keyring.gpg] http://repo.mongodb.org/apt/debian bullseye/mongodb-org/6.0 main"
+readonly MONGODB_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/mongodb-archive-keyring.gpg] http://repo.mongodb.org/apt/debian bookworm/mongodb-org/7.0 main"
 
 add_apt_keyring() {
   if [[ -f "$3" ]]; then
