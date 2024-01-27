@@ -134,7 +134,7 @@
     "vim.easymotionMarkerForegroundColorOneChar": "black",
     // Python
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit"
@@ -145,6 +145,10 @@
     "isort.args": ["--profile", "black"],
     // Jupyter
     "notebook.lineNumbers": "on",
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "notebook.source.organizeImports": "explicit"
+    },
     // JavaScript
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
