@@ -137,15 +137,15 @@ alias ping="ping -c 3"
 if command -v eza >/dev/null 2>&1; then
   alias ls="eza --group-directories-first"
 
-  alias l="eza -Fhl --group-directories-first --git"  # show files in long format
+  alias l="eza -hlF --group-directories-first --git"  # show files in long format
   alias la="eza -ha --group-directories-first"  # show all files
-  alias ll="eza -Fhla --group-directories-first --git"  # show all files in long format
-  alias ltree="eza -FThl --git"  # show all files in tree format
+  alias ll="eza -hlaF --group-directories-first --git"  # show all files in long format
+  alias ltree="eza -ThlF --git"  # show all files in tree format
 
   alias lad="eza -hd -- .*(/)"  # only show dot-directories
   alias lsa="eza -ha -- .*(.)"  # only show dot-files
-  alias lsd="eza -FhlD"  # only show directories
-  alias lse="eza -Fhld -- *(/^F)"  # only show empty directories
+  alias lsd="eza -hlDF"  # only show directories
+  alias lse="eza -hldF -- *(/^F)"  # only show empty directories
 
   alias lsnew="eza -rthl -- *(.) | tail \$@ 2>/dev/null"  # only the newest files
   alias lsold="eza -rthl -- *(.) | head \$@ 2>/dev/null"   # display the oldest files
