@@ -1,45 +1,34 @@
-## dotfiles
-chezmoi
-
-## main pkgs
+bash
 bat
 broot
-cmake
+chezmoi
 coreutils
-curl
+diff-so-fancy
+dnscrypt-proxy
 eza
 fd
+ffmpeg
 findutils
 fzf
-git
-go
-httpie
+gnupg
+hashicorp/tap/terraform
 imagemagick
-lf
+inetutils
+lazygit
 moreutils
-mpv
 neovim
 nnn
-pandoc
-pnpm
-python
-redshift
+openvpn
+pgcli
+putty
+qmk/qmk/qmk
+rclone
 ripgrep
 shellcheck
+starship
+texinfo
 tmux
 trash-cli
-vim
 wget
-
-## shell
-bash-completion@2
-zsh
-
-## window manager
-koekeishiya/formulae/skhd
-koekeishiya/formulae/yabai
-
-## extra pkgs
-dnscrypt-proxy
-d12frosted/emacs-plus/emacs-plus
-federico-terzi/espanso/espanso
+yt-dlp
+zellij
