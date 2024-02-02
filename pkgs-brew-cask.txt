@@ -3,6 +3,7 @@ background-music
 calibre
 dbeaver-community
 discord
+docker
 firefox
 font-fira-code-nerd-font
 font-meslo-lg-nerd-font
