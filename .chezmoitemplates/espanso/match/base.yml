@@ -1,21 +1,27 @@
-# espanso configuration file
+# espanso match file
 
-# This is the default configuration file, change it as you like it
-# You can refer to the official documentation:
-# https://espanso.org/docs/
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
 
-# Matches are the substitution rules, when you type the "trigger" string
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
   # Simple text replacement
-  # - trigger: ":espanso"
-  #   replace: "Hi there!"
+  - trigger: ":espanso"
+    replace: "Hi there!"
 
-  # Simple email greetings
   - trigger: ":br"
-    replace: "Best Regards,\n{{ .git.name }}"
+    replace: |-
+      Best Regards,
+      {{ .git.name }}
 
-  # Dates
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
   - trigger: ":date"
     replace: "{{ "{{" }}mydate{{ "}}" }}"
     vars:
@@ -23,7 +29,7 @@ matches:
         type: date
         params:
           format: "%m/%d/%Y"
-  
+
   # Dates 'YYYY-mm-dd'
   - trigger: ":ymd"
     replace: "{{ "{{" }}mydate{{ "}}" }}"
@@ -60,21 +66,14 @@ matches:
         params:
           format: "%H:%M"
 
-  # Shell commands
+
+  # Print the output of a shell command
   - trigger: ":shell"
     replace: "{{ "{{" }}output{{ "}}" }}"
     vars:
       - name: output
         type: shell
         params:
-          cmd: "echo Hello from your shell"
+          cmd: echo Hello from your shell
 
-# Dating expansion
-  - trigger: ":op1"
-    replace: "Hmm.. aku liat2 foto kamu aku jadi nyadar deh 🤔"
-
-  - trigger: ":op2"
-    replace: "Nyadar kalo kamu tuh ternyata mirip sama bintang film favorit aku"
-
-  - trigger: ":op3"
-    replace: "Padahal dia kan gemesin dan dicintai banyak orang di seluruh dunia lohh 😉"
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
