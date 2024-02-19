@@ -6,6 +6,9 @@
     "editor.inlineSuggest.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.renderWhitespace": "all",
+    // Extensions
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
     // Files
     "files.exclude": {
         "**/.git": true,
@@ -16,6 +19,8 @@
         "**/Thumbs.db": true,
         "**/node_modules": true,
         "**/.next": true,
+        "**/.conda_env": true,
+        "**/tmp": true,
         "**/package-lock.json": true,
         "**/yarn.lock": true,
         "**/npm-debug.log": true,
@@ -30,6 +35,13 @@
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
     "files.eol": "\n",
+    "files.watcherExclude": {
+        "**/.git": true,
+        "**/node_modules": true,
+        "**/.conda_env": true,
+        "**/tmp": true,
+        "**/dist": true
+    },
     // Workbench
     "workbench.colorTheme": "Bluloco Dark",
     "workbench.iconTheme": "material-icon-theme",
@@ -47,11 +59,14 @@
     "breadcrumbs.enabled": true,
     // Search
     "search.smartCase": true,
+    "search.followSymlinks": false,
     "search.exclude": {
         "**/node_modules": true,
         "**/bower_components": true,
         "**/*.code-search": true,
         "**/.git": true,
+        "**/.conda_env": true,
+        "**/tmp": true,
         "dist": true,
         "out": true,
         "coverage": true
