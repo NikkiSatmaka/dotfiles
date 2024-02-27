@@ -30,7 +30,9 @@
     },
     "files.associations": {
         "*.toml": "toml",
-        "*.njk": "html"
+        "*.njk": "html",
+        "*.sql": "jinja-sql",
+        "*.yml": "jinja-yaml"
     },
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
