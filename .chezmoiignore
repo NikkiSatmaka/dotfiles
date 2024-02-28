@@ -55,6 +55,7 @@ tweaks
 05-kmonad-colemak
 10-install-packages
 11-brew-packages
+12-install-nvm
 70-rofi-dmenu
 zz_80-install-lunarvim
 zz_90-set-wallpaper
