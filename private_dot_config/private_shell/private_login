@@ -24,8 +24,8 @@ export LC_TIME=$LANG
 # export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/pythonrc.py"
 
 # Less
-#export LESS='-F -g -i -M -R -S -w -X -z-4'
-export LESS='-R'
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+# export LESS='-R'
 export LESSCHARSET='UTF-8'
 export LESSHISTFILE='-'
 export LESSEDIT="$EDITOR ?lm+%lm. %f"
