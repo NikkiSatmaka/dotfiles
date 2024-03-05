@@ -7,11 +7,11 @@
 readonly USR_KEYRING_DIR="/usr/share/keyrings"
 readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
 
-readonly KUBERNETES_KEYRING_URL="https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+readonly KUBERNETES_KEYRING_URL="https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key"
 readonly KUBERNETES_KEYRING_GPG="/tmp/kubernetes.gpg"
 readonly KUBERNETES_KEYRING_DEST="$USR_KEYRING_DIR/kubernetes-archive-keyring.gpg"
 readonly KUBERNETES_SOURCE="$APT_SOURCE_DIR/kubernetes.list"
-readonly KUBERNETES_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main"
+readonly KUBERNETES_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /"
 
 add_apt_keyring() {
   if [[ -f "$3" ]]; then
