@@ -111,9 +111,6 @@ if command -v thefuck >/dev/null 2>&1; then
     eval "$(thefuck --alias)"
 fi
 
-# Enable rye
-ssource "$RYE_HOME/env"
-
 # added by Nix installer
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
     . "$HOME/.nix-profile/etc/profile.d/nix.sh"

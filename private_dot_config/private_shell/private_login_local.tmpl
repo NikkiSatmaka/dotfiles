@@ -237,6 +237,7 @@ pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/go/bin" PATH
 pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin" PATH
 pathprepend "$PNPM_HOME" PATH
 pathprepend "$ANDROID_HOME/platform-tools" PATH
+pathprepend "$RYE_HOME/shims" PATH
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys "${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap" 2>/dev/null
