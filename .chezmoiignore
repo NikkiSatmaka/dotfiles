@@ -205,33 +205,21 @@ Documents
 
 # ignore only on windows
 {{- if eq .chezmoi.os "windows" }}
-.config/bash
-.config/calcurse
-.config/fontconfig
-.config/lvim
-.config/mpd
-.config/mpv
-.config/ncmpcpp
-.config/nnn
-.config/npm
-.config/nvim
-.config/readline
-.config/redshift
-.config/rtorrent
-.config/sh
-.config/shell
-.config/sxiv
-.config/zathura
-.config/zsh
-.local
+.config/*
+!.config/git
+!.config/starship
+.local/bin
 .bash_logout
 .bash_profile
 .bashrc
 .imwheelrc
 .profile
+.tmux/plugins/tpm
 .xinitrc
 .Xmodmap
 .xprofile
 .Xresources
 .zshenv
+*-install-*
+AppData/Roaming/mpv
 {{- end }}
