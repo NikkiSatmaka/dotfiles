@@ -9,6 +9,9 @@
     // Extensions
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
+    "settingsSync.ignoredExtensions": [
+        "ms-vscode-remote.remote-wsl"
+    ],
     // Files
     "files.exclude": {
         "**/.git": true,
