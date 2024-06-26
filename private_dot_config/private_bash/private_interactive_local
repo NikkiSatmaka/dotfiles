@@ -94,6 +94,11 @@ fi
 # End of added from wsl 2 ubuntu bashrc
 ##############################################################################
 
+# Initialize and terraform completion
+if [ -x /usr/bin/terraform ]; then
+    complete -C /usr/bin/terraform terraform
+fi
+
 # Enable linuxbrew completion.
 if command -v brew > /dev/null 2>&1; then
   HOMEBREW_PREFIX="$(brew --prefix)"

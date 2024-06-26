@@ -73,6 +73,13 @@ setopt autocd
 # Initialize editing command line
 autoload -U edit-command-line && zle -N edit-command-line
 
+# Initialize bashcompinit and terraform completion
+if [ -x /usr/bin/terraform ]; then
+    autoload -U +X bashcompinit && bashcompinit
+    complete -o nospace -C /usr/bin/terraform terraform
+fi
+
+
 # Enable interactive comments (# on the command line)
 setopt interactivecomments
 
