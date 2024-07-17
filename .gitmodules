@@ -1,3 +1,0 @@
-[submodule ".chezmoitemplates/mpv"]
-	path = .chezmoitemplates/mpv
-	url = git@github.com:NikkiSatmaka/mpv-config.git

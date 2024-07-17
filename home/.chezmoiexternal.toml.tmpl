@@ -1,0 +1,10 @@
+{{- if eq .chezmoi.os "linux" }}
+[".config/mpv"]
+    type = "git-repo"
+    url = "git@github.com:NikkiSatmaka/mpv-config.git"
+{{- end }}
+{{- if eq .chezmoi.os "windows" }}
+["AppData/Roaming/mpv"]
+    type = "git-repo"
+    url = "git@github.com:NikkiSatmaka/mpv-config.git"
+{{- end }}
