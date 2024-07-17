@@ -348,7 +348,7 @@ alias rofitop="rofi -show top -modi top"
 # alias xp="xprop | grep -E "^(WM_CLASS|_NET_WM_NAME|WM_NAME)""
 alias instagram="instaloader --no-video-thumbnails --no-metadata-json --no-captions"
 
-{{- if eq .system.distro "arch" }}
+{{- if eq .osid "linux-arch" }}
 # Aliases for software managment
 # pacman or pm
 alias update="sudo pacman -Syyu"
