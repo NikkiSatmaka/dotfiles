@@ -10,6 +10,6 @@
 # # Load Bash It
 # . "$BASH_IT"/bash_it.sh
 
-. ~/.config/shell/interactive
+. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive"
 
-ssource ~/.config/bash/interactive_local
+ssource "${XDG_CONFIG_HOME:-$HOME/.config}/bash/interactive_local"

@@ -2,5 +2,5 @@
 # sequence, which means this file suddenly has to cater for two different
 # shells.
 
-. ~/.config/sh/env
-. ~/.config/sh/login
+. "${XDG_CONFIG_HOME:-$HOME/.config}/sh/env"
+. "${XDG_CONFIG_HOME:-$HOME/.config}/sh/login"

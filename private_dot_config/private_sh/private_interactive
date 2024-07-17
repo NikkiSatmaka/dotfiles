@@ -1,1 +1,1 @@
-. ~/.config/shell/interactive
+. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive"

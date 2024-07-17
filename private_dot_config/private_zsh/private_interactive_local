@@ -102,7 +102,7 @@ bindkey -v
 # for "leader" keybindings
 bindkey -a -r t
 
-ssource ~/.config/zsh/interactive_vi_mode
+ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/interactive_vi_mode"
 
 # load .inputrc
 #eval "$(sed -rn 's/^([^#].*?): (.*)$/bindkey \1 \2/p' ~/.inputrc)"

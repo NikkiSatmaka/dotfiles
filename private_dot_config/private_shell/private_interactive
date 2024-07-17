@@ -51,4 +51,4 @@ fi
 #     export LIBGL_ALWAYS_INDIRECT=1
 # fi
 
-ssource ~/.config/shell/interactive_local
+ssource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive_local"

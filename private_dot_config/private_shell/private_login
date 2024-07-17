@@ -53,4 +53,4 @@ pathprepend "$HOME/include" CPATH
 pathremove . PATH
 pathremove "" PATH
 
-ssource ~/.config/shell/login_local
+ssource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/login_local"

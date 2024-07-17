@@ -1,2 +1,2 @@
 # WARNING: this will $BASH_ENV to get a correct startup sequence
-. ~/.config/shell/env
+. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env"

@@ -9,14 +9,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh
-ssource ~/.config/zsh/.p10k.zsh
+ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.p10k.zsh"
 
 # Enable linuxbrew completion.
 if command -v brew > /dev/null 2>&1; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-ssource ~/.config/zsh/interactive_zinit
+ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/interactive_zinit"
 
 # Initialize completion
 autoload -Uz compinit
@@ -29,6 +29,6 @@ compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
 zstyle ':completion:*' menu select=4
 zmodload zsh/complist
 
-. ~/.config/shell/interactive
+. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive"
 
-ssource ~/.config/zsh/interactive_local
+ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/interactive_local"
