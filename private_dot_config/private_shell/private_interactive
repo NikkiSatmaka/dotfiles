@@ -14,7 +14,7 @@ if [ -t 0 ]; then
 
     # enable colours
     if [ `tput colors` -ge 8 ]; then
-        export GREP_COLOR='37;45'
+        export GREP_COLORS='37;45'
 
         export LESS_TERMCAP_mb=$'\E[01;31m'      # begin blinking
         export LESS_TERMCAP_md=$'\E[01;31m'      # begin bold
