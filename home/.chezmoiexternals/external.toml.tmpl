@@ -1,0 +1,23 @@
+[".tmux/plugins/tpm"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tpm.git"
+    refreshPeriod = "168h"
+
+[".config/nvim"]
+    type = "git-repo"
+    url = "https://github.com/NvChad/NvChad.git"
+    [".config/nvim".clone]
+        args = ["--depth=1"]
+
+{{- if eq .chezmoi.os "linux" }}
+[".config/mpv"]
+    type = "git-repo"
+    url = "git@github.com:NikkiSatmaka/mpv-config.git"
+    private = true
+{{- end }}
+
+{{- if eq .chezmoi.os "windows" }}
+["AppData/Roaming/mpv"]
+    type = "git-repo"
+    url = "git@github.com:NikkiSatmaka/mpv-config.git"
+{{- end }}
