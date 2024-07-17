@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=rtorrent-magnet
-Exec=rtorrent-magnet %U
-MimeType=x-scheme-handler/magnet;
-NoDisplay=true
