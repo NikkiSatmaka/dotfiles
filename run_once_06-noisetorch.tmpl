@@ -4,9 +4,10 @@
 # install noisetorch (https://github.com/noisetorch/NoiseTorch)
 #==============================================================================
 
-readonly NOISETORCH_URL="https://github.com/noisetorch/NoiseTorch/releases/download"
+readonly NOISETORCH_URL="https://github.com/noisetorch/NoiseTorch/releases/latest/download"
+
 readonly NOISETORCH_VERSION="v0.12.2"
-readonly NOISETORCH_RELEASE_URL="$NOISETORCH_URL/$NOISETORCH_VERSION/NoiseTorch_x64_$NOISETORCH_VERSION.tgz"
+readonly NOISETORCH_RELEASE_URL="$NOISETORCH_URL/NoiseTorch_x64_$NOISETORCH_VERSION.tgz"
 
 # install noisetorch if not already installed
 if command -v noisetorch >/dev/null 2>&1; then
