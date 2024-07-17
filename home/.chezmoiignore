@@ -120,17 +120,18 @@ zz_99-services
 {{- end }}
 
 # ignore if not on arch linux
-{{- if ne .system.distro "arch" }}
+{{- if ne .osid "linux-arch" }}
 *arch*
 {{- end }}
 
 # ignore if not on debian
-{{- if ne .system.distro "debian" }}
+{{- if ne .osid "linux-debian" }}
 *debian*
 {{- end }}
 
-# ignore if on wsl
-{{- if eq .system.wsl "true" }}
+# ignore if on WSL
+{{- if eq .chezmoi.os "linux" }}
+{{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 .config/alacritty
 .config/awesome
 .config/bspwm
@@ -182,6 +183,7 @@ debian_05-chrome
 zz_81-install-doom-emacs
 zz_90-set-wallpaper
 zz_99-services
+{{-   end }}
 {{- end }}
 
 # ignore if not on macos
