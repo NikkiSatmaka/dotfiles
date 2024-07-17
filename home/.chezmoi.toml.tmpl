@@ -25,10 +25,9 @@
   recipient = "id for the encrypt key"
 
 [data]
-  name = "{{ $name }}"
-
-  [data.git]
-    name = "{{ $git_name }}"
-    email = "{{ $git_email }}"
-
+  name = {{ $name | quote }}
   osid = {{ $osID | quote }}
+  
+  [data.git]
+    name = {{ $git_name | quote }}
+    email = {{ $git_email | quote }}
