@@ -16,8 +16,10 @@
 {{- $git_name := promptString "Git username for the author/committer" }}
 {{- $git_email := promptString "Git email address for the author/committer" }}
 
-{{- $distro := promptString "What linux distro is this? debian/arch/fedora" }}
-{{- $wsl := promptString "Is this wsl? true/false" }}
+{{- $osID := .chezmoi.os -}}
+{{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
 
 [gpg]
   recipient = "id for the encrypt key"
@@ -29,6 +31,4 @@
     name = "{{ $git_name }}"
     email = "{{ $git_email }}"
 
-  [data.system]
-    distro = "{{ $distro }}"
-    wsl = "{{ $wsl }}"
+  osid = {{ $osID | quote }}
