@@ -5,10 +5,8 @@
 #==============================================================================
 
 readonly FONTDIR="$HOME/.local/share/fonts"
-readonly NERDFONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download"
-readonly NERDFONT_VERSION="v3.2.1"
+readonly NERDFONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download"
 
-CURRENT_DIR="$(pwd)"
 TEMP="/tmp"
 
 fonts=(
@@ -25,27 +23,25 @@ fonts=(
 
 mkdir -p $FONTDIR
 
-cd $TEMP
-
-for font in ${fonts[@]}
+for font in "${fonts[@]}";
 do
   # check whether font is already installed
-  if [ -d "$FONTDIR/$font" ]; then
+  if [[ -d "$FONTDIR/$font" ]]; then
     echo "Font $font is already installed"
     continue
   fi
   # check whether font archive has been downloaded
-  if [ -f "$TEMP/$font.zip" ]; then
+  if [[ -f "$TEMP/$font.tar.xz" ]]; then
     echo "Font $font archive already exists"
     # delete existing archive
-    rm "$TEMP/$font.zip"
+    rm "$TEMP/$font.tar.xz"
   fi
   # download font
-  curl -LO "$NERDFONT_URL/$NERDFONT_VERSION/$font.zip"
+  echo "Installing Font $font"
+  curl --location "$NERDFONT_URL/$font.tar.xz" --progress-bar --output "$TEMP/$font.tar.xz"
   # extract font
-  unzip "$font.zip" -d "$FONTDIR/$font"
+  mkdir -p "$FONTDIR/$font"
+  tar -xf "$TEMP/$font.tar.xz" --exclude '*.txt' --exclude '*.md' -C "$FONTDIR/$font"
 done
 
 fc-cache -f
-
-cd "$CURRENT_DIR"
