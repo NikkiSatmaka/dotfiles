@@ -48,10 +48,10 @@
         "**/dist": true
     },
     // Workbench
-    "workbench.colorTheme": "Bluloco Dark",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.preferredDarkColorTheme": "Bluloco Dark",
-    "workbench.preferredLightColorTheme": "Bluloco Light",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+    "workbench.preferredLightColorTheme": "Catppuccin Latte",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
