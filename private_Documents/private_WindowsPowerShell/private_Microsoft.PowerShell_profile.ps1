@@ -11,10 +11,3 @@ $ENV:STARSHIP_CONFIG = "$HOME\config\starship\config.toml"
 if (Get-Command starship -errorAction SilentlyContinue) {
   Invoke-Expression (&starship init powershell)
 }
-
-# #region conda initialize
-# # !! Contents within this block are managed by 'conda init' !!
-# if (Get-Command conda -errorAction SilentlyContinue) {
-#   (& "$HOME\mambaforge\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
-# }
-# #endregion
