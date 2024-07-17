@@ -41,7 +41,13 @@ do
   curl --location "$NERDFONT_URL/$font.tar.xz" --progress-bar --output "$TEMP/$font.tar.xz"
   # extract font
   mkdir -p "$FONTDIR/$font"
-  tar -xf "$TEMP/$font.tar.xz" --exclude '*.txt' --exclude '*.md' -C "$FONTDIR/$font"
+  tar -xf "$TEMP/$font.tar.xz" \
+    --exclude='LICENSE*' \
+    --exclude='README*' \
+    --exclude='*.txt' \
+    --exclude='*.md' \
+    --directory="$FONTDIR/$font"
 done
 
+echo "Refreshing fonts"
 fc-cache -f
