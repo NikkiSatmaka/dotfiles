@@ -1,0 +1,12 @@
+import:
+  - ~/.config/alacritty/themes/catppuccin.yaml
+live_config_reload: true
+
+window:
+  dynamic_padding: true
+  opacity: 0.9
+
+font:
+  normal:
+    family: FiraCode Nerd Font
+  size: 11.0
