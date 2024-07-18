@@ -120,12 +120,12 @@ zz_99-services
 
 # ignore if not on arch linux
 {{- if ne .osid "linux-arch" }}
-*arch*
+**/*arch*
 {{- end }}
 
 # ignore if not on debian
 {{- if ne .osid "linux-debian" }}
-*debian*
+**/*debian*
 {{- end }}
 
 # ignore if on WSL
