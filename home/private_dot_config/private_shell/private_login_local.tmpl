@@ -6,9 +6,11 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export XDG_CONFIG_DIRS="/etc/xdg"
 
-export XDG_DATA_DIRS="/var/lib/snapd/desktop:$XDG_DATA_DIRS"
-export XDG_DATA_DIRS="${XDG_DATA_HOME:-$HOME/.local/share}/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
-export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
+# Desktop Applications
+pathprepend "/var/lib/snapd/desktop" XDG_DATA_DIRS  # snap
+pathprepend "$HOME/.nix-profile/share" XDG_DATA_DIRS  # nix
+pathprepend "/var/lib/flatpak/exports/share" XDG_DATA_DIRS  # flatpak
+pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/flatpak/exports/share" XDG_DATA_DIRS  # flatpak
 
 # Preferred programs
 export TERM=xterm-256color
@@ -19,13 +21,6 @@ export IMAGE=sxiv
 export FILE=nnn
 export COLORTERM=truecolor
 export OPENER=xdg-open
-# export WM=bspwm
-# export BROWSER=brave
-# if [ -n "$DISPLAY" ]; then
-#   export BROWSER="brave"
-# else
-#   export BROWSER="w3m"
-# fi
 
 # ~/ Clean-up:
 #export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
@@ -45,13 +40,15 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export GOKU_EDN_CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/karabiner/karabiner.edn"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/config.toml"
 export FFMPEG_DATADIR="${XDG_CONFIG_HOME:-$HOME/.config}/ffmpeg"
+export PYTHON_HISTORY="{XDG_STATE_HOME:-$HOME/.local/state}/python/history"
+export PYTHONPYCACHEPREFIX="${XDG_CACHE_HOME:-$HOME/.cache}/python"
+export PYTHONUSERBASE="${XDG_DATA_HOME:-$HOME/.local/share}/python"
 
 # GnuPG
 # export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
-#export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export QT_QPA_PLATFORMTHEME="gtk2"  # Have QT use gtk2 theme.
@@ -159,69 +156,6 @@ export NNN_PLUG='o:fzopen;C:diffs;v:imgview;i:imgur;p:pdfview;m:mediainf;d:dragd
 
 # Calibre Ebook Management
 export CALIBRE_USE_DARK_PALETTE=1
-
-# This is the list for lf icons:
-export LF_ICONS="di=📁:\
-fi=📃:\
-tw=🤝:\
-ow=📂:\
-ln=⛓:\
-or=❌:\
-ex=🎯:\
-*.txt=✍:\
-*.mom=✍:\
-*.me=✍:\
-*.ms=✍:\
-*.png=🖼:\
-*.ico=🖼:\
-*.jpg=📸:\
-*.jpeg=📸:\
-*.gif=🖼:\
-*.svg=🗺:\
-*.xcf=🖌:\
-*.html=🌎:\
-*.xml=📰:\
-*.gpg=🔒:\
-*.css=🎨:\
-*.pdf=📚:\
-*.djvu=📚:\
-*.epub=📚:\
-*.csv=📓:\
-*.xlsx=📓:\
-*.tex=📜:\
-*.md=📘:\
-*.r=📊:\
-*.R=📊:\
-*.rmd=📊:\
-*.Rmd=📊:\
-*.mp3=🎵:\
-*.opus=🎵:\
-*.ogg=🎵:\
-*.m4a=🎵:\
-*.flac=🎼:\
-*.mkv=🎥:\
-*.mp4=🎥:\
-*.webm=🎥:\
-*.mpeg=🎥:\
-*.avi=🎥:\
-*.zip=📦:\
-*.rar=📦:\
-*.7z=📦:\
-*.tar.gz=📦:\
-*.z64=🎮:\
-*.v64=🎮:\
-*.n64=🎮:\
-*.1=ℹ:\
-*.nfo=ℹ:\
-*.info=ℹ:\
-*.log=📙:\
-*.iso=📀:\
-*.img=📀:\
-*.bib=🎓:\
-*.ged=👪:\
-*.part=💔:\
-*.torrent=🔽:\
-"
 
 # Path settings
 pathprepend "$HOME/.local/bin" PATH
