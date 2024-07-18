@@ -1,4 +1,5 @@
-{{- if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.os "linux" -}}
+
 [".local/share/fonts/FiraCode"]
     type = "archive"
     url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz"
@@ -9,43 +10,4 @@
     refreshPeriod = "168h"
     include = ["*.ttf", "*.otf"]
 
-[".local/share/fonts/Hack"]
-    type = "archive"
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.tar.xz"
-    format = "tar.xz"
-    exact = true
-    private = true
-    stripComponents = 0
-    refreshPeriod = "168h"
-    include = ["*.ttf", "*.otf"]
-
-[".local/share/fonts/JetBrainsMono"]
-    type = "archive"
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz"
-    format = "tar.xz"
-    exact = true
-    private = true
-    stripComponents = 0
-    refreshPeriod = "168h"
-    include = ["*.ttf", "*.otf"]
-
-[".local/share/fonts/Mononoki"]
-    type = "archive"
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Mononoki.tar.xz"
-    format = "tar.xz"
-    exact = true
-    private = true
-    stripComponents = 0
-    refreshPeriod = "168h"
-    include = ["*.ttf", "*.otf"]
-
-[".local/share/fonts/SourceCodePro"]
-    type = "archive"
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/SourceCodePro.tar.xz"
-    format = "tar.xz"
-    exact = true
-    private = true
-    stripComponents = 0
-    refreshPeriod = "168h"
-    include = ["*.ttf", "*.otf"]
 {{- end }}
