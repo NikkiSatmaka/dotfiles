@@ -360,7 +360,6 @@ zenity
 
 ## torrent
 qbittorrent
-# rtorrent
 # transmission-cli
 
 ## file sync
