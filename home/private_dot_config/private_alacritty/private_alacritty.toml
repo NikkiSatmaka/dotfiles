@@ -1,0 +1,11 @@
+import = ["~/.config/alacritty/themes/catppuccin.toml"]
+live_config_reload = true
+
+[window]
+dynamic_padding = true
+opacity = 0.9
+blue = true
+
+[font]
+normal = { family = "FiraCode Nerd Font" }
+size = 11.00
