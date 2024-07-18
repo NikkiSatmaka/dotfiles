@@ -38,7 +38,6 @@ tweaks
 .config/polybar
 .config/redshift
 .config/rofi
-.config/rtorrent
 .config/sxhkd
 .config/sxiv
 .config/zathura
@@ -152,7 +151,6 @@ zz_99-services
 .config/polybar
 .config/redshift
 .config/rofi
-.config/rtorrent
 .config/sxhkd
 .config/sxiv
 .config/zathura
