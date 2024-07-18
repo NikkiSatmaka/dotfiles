@@ -15,7 +15,7 @@ matches:
   - trigger: ":br"
     replace: |-
       Best Regards,
-      {{ .git.name }}
+      {{ .name }}
 
   # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
 

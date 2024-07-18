@@ -1,20 +1,19 @@
 # -*-mode:conf-toml-*- vim:ft=toml
 
-# ~/.local/share/chezmoi/.chezmoi.toml.tmpl
-# =============================================================================
-# Used to customize configuration when doing a `chezmoi init`.
-#
-# This template file will trigger prompts to fill-in machine-specific
-# templateable values. The resulting file is then created at
-# `~/.config/chezmoi/chezmoi.toml`
-# See https://www.chezmoi.io/docs/how-to/
-#
-# {{- /* This file supports Go's text/template language. */}}
+{{/* boolean feature tags */}}
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{- "" -}}
 
-{{- $name := promptString "Username for chezmoi" }}
+{{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
+{{-   $ephemeral = true -}}
+{{-   $headless = true -}}
+{{- end -}}
 
-{{- $git_name := promptString "Git username for the author/committer" }}
-{{- $git_email := promptString "Git email address for the author/committer" }}
+{{- $name := promptString "Your full name" }}
+{{- $email := promptString "Your email address" }}
 
 {{- $osID := .chezmoi.os -}}
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
@@ -26,8 +25,5 @@
 
 [data]
   name = {{ $name | quote }}
+  email = {{ $email | quote }}
   osid = {{ $osID | quote }}
-  
-  [data.git]
-    name = {{ $git_name | quote }}
-    email = {{ $git_email | quote }}
