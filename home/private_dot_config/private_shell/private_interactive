@@ -1,10 +1,6 @@
-alias please='sudo'
-
 mcd() {
-    test -z "$1" && echo mcd: no path given && return
-    test -d "$1" && print "mcd: Directory $1 already exists"
-    mkdir -p -- "$1"
-    cd -- "$1"
+    mkdir -p "$1"
+    cd "$1"
 }
 
 # if in a terminal
@@ -23,32 +19,13 @@ if [ -t 0 ]; then
         export LESS_TERMCAP_so=$'\E[00;47;30m'   # begin standout-mode
         export LESS_TERMCAP_ue=$'\E[0m'          # end underline
         export LESS_TERMCAP_us=$'\E[01;32m'      # begin underline
-        # export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
-        # export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
-        # export LESS_TERMCAP_me="$(printf '%b' '[0m')"
-        # export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
-        # export LESS_TERMCAP_se="$(printf '%b' '[0m')"
-        # export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
-        # export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
     fi
 fi
 
-# WSL 2 specific settings.
-if grep -q "microsoft" /proc/version >/dev/null 2>&1; then
-    # Requires: https://sourceforge.net/projects/vcxsrv/ (or alternative)
-    export DISPLAY="$(/sbin/ip route | awk '/default/ { print $3 }'):0"
-    export LIBGL_ALWAYS_INDIRECT=1
+# gnome-terminal doesn't advertise its 256 colour support.
+if [ "$COLORTERM" = gnome-terminal -a "$TERM" = xterm ]; then
+#    export TERM=gnome-256color
+    export TERM=xterm-256color
 fi
-
-# # WSL 1 specific settings.
-# if grep -qE "(Microsoft|WSL)" /proc/version >/dev/null 2>&1; then
-#     if [ "$(umask)" = "0000" ]; then
-#         umask 0022
-#     fi
-
-#     # Requires: https://sourceforge.net/projects/vcxsrv/ (or alternative)
-#     export DISPLAY=:0
-#     export LIBGL_ALWAYS_INDIRECT=1
-# fi
 
 ssource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive_local"
