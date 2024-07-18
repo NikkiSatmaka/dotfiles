@@ -50,7 +50,7 @@ com.googlecode.iterm2.plist
 .emacs-profile
 .emacs-profiles.el
 .config/doom
-zz_81-install-doom-emacs
+.chezmoiscripts/zz_81-install-doom-emacs
 
 # old executables
 .local/bin/*
