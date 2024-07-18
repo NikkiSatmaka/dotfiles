@@ -1,5 +1,9 @@
-ssource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive_aliases"
-ssource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive_aliases_git"
+if [ -d "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias.d" ]; then
+  for i in "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias.d"/* ; do
+    ssource "$i"
+  done
+  unset i
+fi
 
 # functions
 dc() {
