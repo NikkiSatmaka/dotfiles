@@ -13,13 +13,6 @@ LICENSE
 README.md
 README.org
 com.googlecode.iterm2.plist
-Brew*
-pkgs-*
-tweaks
-.emacs-profile
-.emacs-profiles.el
-
-.Xmodmap
 
 # temporarily ignore
 .config/bspwm
@@ -30,7 +23,6 @@ tweaks
 .config/jupyter
 .config/lf
 .config/lvim
-.config/mimeapps.list
 .config/mpd
 .config/ncmpcpp
 .config/nixpkgs
@@ -38,28 +30,62 @@ tweaks
 .config/polybar
 .config/redshift
 .config/rofi
+.config/skhd
 .config/sxhkd
 .config/sxiv
+.config/yabai
 .config/zathura
+
+# old config using arch and bspwm
 .imwheelrc
 .xinitrc
+.Xmodmap
 .xprofile
 .Xresources
+.chezmoiscripts/zz_90-set-wallpaper
+.chezmoiscripts/zz_99-services
+.chezmoiscripts/fenrir_90-tweaks
 
+# doom emacs config
+.emacs-profile
+.emacs-profiles.el
+.config/doom
+zz_81-install-doom-emacs
+
+# old executables
 .local/bin/*
 !.local/bin/rclone*
 .local/share/applications/*
 .local/share/kbd
 
-05-kmonad-colemak
-10-install-packages
-11-brew-packages
-12-install-nvm
-70-rofi-dmenu
-debian_08-eza
-zz_80-install-lunarvim
-zz_90-set-wallpaper
-zz_99-services
+# scripts
+.chezmoiscripts/05-kmonad-colemak
+.chezmoiscripts/10-install-packages-debian
+.chezmoiscripts/10-install-packages
+.chezmoiscripts/11-brew-packages
+.chezmoiscripts/12-install-nvm
+.chezmoiscripts/13-install-rustup
+.chezmoiscripts/50-change-shell
+.chezmoiscripts/70-rofi-dmenu
+.chezmoiscripts/arch_01-dash-shell
+.chezmoiscripts/arch_02-install-dbus-broker
+.chezmoiscripts/arch_03-opendoas
+.chezmoiscripts/arch_04-chaotic-aur-repo
+.chezmoiscripts/debian_03-postgresql
+.chezmoiscripts/debian_06-mongodb
+.chezmoiscripts/debian_07-docker
+.chezmoiscripts/debian_08-eza
+.chezmoiscripts/debian_09-openvpn3
+.chezmoiscripts/debian_11-virtualbox
+.chezmoiscripts/debian_12-kubernetes
+.chezmoiscripts/debian_13-zulu-java
+.chezmoiscripts/zz_80-install-lunarvim
+
+# .chezmoiscripts/06-noisetorch
+# .chezmoiscripts/debian_01-nerd_fonts
+# .chezmoiscripts/debian_04-vscode
+# .chezmoiscripts/debian_05-chrome
+# .chezmoiscripts/debian_10-nordvpn
 
 # ignore if not on avalon
 {{- if ne .chezmoi.hostname "avalon" }}
@@ -69,53 +95,16 @@ zz_99-services
 
 # ignore if not on fenrir
 {{- if ne .chezmoi.hostname "fenrir" }}
-*fenrir*
-{{- end }}
-
-# ignore only on desktops, such as avalon
-{{- if eq .chezmoi.hostname "avalon" }}
-laptop*
-!.local/share/applications/noisetorch.desktop
-!.local/share/applications/thinkorswim.desktop
+**/*fenrir*
 {{- end }}
 
 # ignore if not on linux
 {{- if ne .chezmoi.os "linux" }}
-.config/awesome
-.config/bspwm
 .config/broot
 .config/Code
-.config/dunst
 .config/espanso
-.config/gtk-2.0
-.config/gtk-3.0
-.config/picom
-.config/polybar
-.config/rofi
-.config/sxhkd
-.config/mimeapps.list
 .config/user-dirs.dirs
 .config/user-dirs.locale
-.local/bin/dmenu*
-.local/share
-.imwheelrc
-.xinitrc
-.Xmodmap
-.xprofile
-.xsessionrc
-.Xresources
-01-dash-shell
-02-install-dbus-broker
-03-opendoas
-06-noisetorch
-10-install-packages
-50-change-shell
-70-rofi-dmenu
-zz_80-install-lunarvim
-zz_81-install-doom-emacs
-zz_83-install-nvchad
-zz_90-set-wallpaper
-zz_99-services
 {{- end }}
 
 # ignore if not on arch linux
@@ -131,56 +120,16 @@ zz_99-services
 # ignore if on WSL
 {{- if eq .chezmoi.os "linux" }}
 {{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-.config/alacritty
-.config/awesome
-.config/bspwm
-.config/calcurse
-.config/Code
-.config/dunst
-.config/espanso
-.config/fontconfig
-.config/gtk-2.0
-.config/gtk-3.0
-.config/kitty
-.config/lf
-.config/mpd
-.config/mpv
-.config/ncmpcpp
-.config/npm
-.config/picom
-.config/polybar
-.config/redshift
-.config/rofi
-.config/sxhkd
-.config/sxiv
-.config/zathura
-.config/mimeapps.list
-.config/user-dirs.dirs
-.config/user-dirs.locale
-.imwheelrc
+.config/*
+!.config/bash
+!.config/broot
+!.config/sh
+!.config/git
+!.config/shell
+!.config/tmux
+!.config/zsh
 .local
-.xinitrc
-.Xmodmap
-.xprofile
-.Xresources
-01-dash-shell
-02-install-dbus-broker
-03-opendoas
-04-chaotic-aur-repo
-05-kmonad-colemak
-06-noisetorch
-10-install-packages
-10-install-packages-debian
-11-brew-packages
-50-change-shell
-70-rofi-dmenu
-debian_01-nerd_fonts
-debian_03-postgresql
-debian_04-vscode
-debian_05-chrome
-zz_81-install-doom-emacs
-zz_90-set-wallpaper
-zz_99-services
+.chezmoiscripts
 {{-   end }}
 {{- end }}
 
@@ -190,9 +139,8 @@ zz_99-services
 .config/skhd
 .config/yabai
 .local/bin/bitbar
-.Brewfile
+.chezmoiscripts/11-brew-packages
 Library
-11-brew-packages
 {{- end }}
 
 # ignore if not on windows
@@ -220,6 +168,5 @@ Documents
 .xprofile
 .Xresources
 .zshenv
-*-install-*
-AppData/Roaming/mpv
+.chezmoiscripts
 {{- end }}
