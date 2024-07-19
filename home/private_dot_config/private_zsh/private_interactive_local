@@ -149,6 +149,14 @@ ssource /usr/share/doc/fzf/examples/completion.zsh
 ssource /opt/homebrew/opt/fzf/shell/completion.zsh
 ssource /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 
+# load zsh completion for opensuse in /etc/zsh_completion.d
+if [ -d "/etc/zsh_completion.d" ]; then
+  for i in "/etc/zsh_completion.d"/* ; do
+    ssource "$i"
+  done
+  unset i
+fi
+
 # # Enable starship prompt.
 # if command -v starship >/dev/null 2>&1; then
 #     eval "$(starship init zsh)"
