@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # -*- coding: utf-8 -*-
 
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if ne .chezmoi.hostname "avalon" -}}
 echo "Syncing Upload $HOME/Documents/calibre_library to gdrive_rfid:entertainment/books/calibre_library"
 rclone sync -Pv $HOME/Documents/calibre_library gdrive_rfid:entertainment/books/calibre_library
 {{ else -}}
