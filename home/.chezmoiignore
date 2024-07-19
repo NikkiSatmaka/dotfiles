@@ -18,6 +18,7 @@ com.googlecode.iterm2.plist
 .config/bspwm
 .config/calcurse
 .config/dunst
+.config/fontconfig
 .config/gtk-2.0
 .config/gtk-3.0
 .config/jupyter
