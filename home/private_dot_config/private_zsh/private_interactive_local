@@ -157,6 +157,9 @@ if [ -d "/etc/zsh_completion.d" ]; then
   unset i
 fi
 
+# load user installed zsh completions
+fpath+="${ZDOTDIR:-$HOME/.config/zsh}/completions"
+
 # # Enable starship prompt.
 # if command -v starship >/dev/null 2>&1; then
 #     eval "$(starship init zsh)"
@@ -167,8 +170,16 @@ if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
 fi
 
+# Enable pipx.
+if command -v pipx >/dev/null 2>&1; then
+    eval "$(register-python-argcomplete pipx)"
+fi
+
 # Enable NVM
 ssource "$NVM_DIR/nvm.sh"
+
+# Reload completions
+autoload -U compinit && compinit
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
