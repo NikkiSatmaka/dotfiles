@@ -142,6 +142,8 @@ ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/interactive_vi_mode"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 ssource /usr/share/fzf/key-bindings.zsh
 ssource /usr/share/fzf/completion.zsh
+ssource /usr/share/fzf/shell/key-bindings.zsh
+ssource /usr/share/fzf/shell/completion.zsh
 ssource /usr/share/doc/fzf/examples/key-bindings.zsh
 ssource /usr/share/doc/fzf/examples/completion.zsh
 ssource /opt/homebrew/opt/fzf/shell/completion.zsh
