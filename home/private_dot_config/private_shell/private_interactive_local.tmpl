@@ -118,6 +118,12 @@ fi
 # Enable rye
 ssource "$RYE_HOME/env"
 
+# Enable pyenv
+[ -d "$PYENV_ROOT/bin" ] && pathprepend "$PYENV_ROOT/bin" PATH
+if command -v pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 # added by Nix installer
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
     . "$HOME/.nix-profile/etc/profile.d/nix.sh"
