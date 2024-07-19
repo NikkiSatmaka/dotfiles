@@ -29,6 +29,10 @@ compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
 zstyle ':completion:*' menu select=4
 zmodload zsh/complist
 
+# Initialize completion from bash
+autoload -U +X bashcompinit
+bashcompinit
+
 . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive"
 
 ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/interactive_local"

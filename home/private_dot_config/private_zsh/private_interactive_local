@@ -171,12 +171,8 @@ fi
 # Enable NVM
 ssource "$NVM_DIR/nvm.sh"
 
-# Reload completions
-autoload -U compinit && compinit
-
 # Initialize bashcompinit and terraform completion
 if [ -x /usr/bin/terraform ]; then
-    autoload -U +X bashcompinit && bashcompinit
     complete -o nospace -C /usr/bin/terraform terraform
 fi
 
