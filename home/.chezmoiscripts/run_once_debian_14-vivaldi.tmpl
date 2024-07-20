@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+#==============================================================================
+# Installing Vivaldi
+#==============================================================================
+
+readonly USR_KEYRING_DIR="/usr/share/keyrings"
+readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
+
+readonly VIVALDI_KEYRING_URL="https://repo.vivaldi.com/archive/linux_signing_key.pub"
+readonly VIVALDI_KEYRING_GPG="/tmp/vivaldi-browser.gpg"
+readonly VIVALDI_KEYRING_DEST="$USR_KEYRING_DIR/vivaldi-browser.gpg"
+readonly VIVALDI_SOURCE="$APT_SOURCE_DIR/vivaldi-browser.list"
+readonly VIVALDI_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/vivaldi-browser.gpg] https://repo.vivaldi.com/archive/deb stable main"
+
+add_apt_keyring() {
+  if [[ -f "$3" ]]; then
+    echo "$3 already exists"
+    exit
+  fi
+  curl -sL "$1" | gpg --dearmor > "$2" || exit
+  echo "installing keyring to $3"
+  sudo install -o root -g root -Dm 644 "$2" "$3"
+}
+
+add_apt_source() {
+  if [[ -f "$1" ]]; then
+    echo "$1 already exists"
+    exit
+  fi
+  echo "adding apt source to $1"
+  sudo tee "$1" >/dev/null 2>&1 << _EOF_ &&
+$2
+_EOF_
+  sudo chmod 644 "$1"
+}
+
+add_apt_keyring "$VIVALDI_KEYRING_URL" "$VIVALDI_KEYRING_GPG" "$VIVALDI_KEYRING_DEST"
+add_apt_source "$VIVALDI_SOURCE" "$VIVALDI_CONTENT"
+
+sudo apt-get update
+sudo apt-get install -y vivaldi-stable
