@@ -14,6 +14,7 @@
 
 {{- $name := promptString "Your full name" }}
 {{- $email := promptString "Your email address" }}
+{{- $git_email := promptString "Git email address for the author/committer" }}
 
 {{- $osID := .chezmoi.os -}}
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
@@ -27,3 +28,6 @@
   name = {{ $name | quote }}
   email = {{ $email | quote }}
   osid = {{ $osID | quote }}
+
+  [data.git]
+    email = {{ $git_email | quote }}
