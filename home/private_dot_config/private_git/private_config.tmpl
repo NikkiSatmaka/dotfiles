@@ -37,6 +37,12 @@
 	separator = yellow
 	function = blue
 
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+
 [pretty]
 	line = "%C(auto)%h %<|(60,trunc)%s %C(green)%ad%C(auto)%d"
 	detail = "%C(auto)%h %s%n  %C(yellow)by %C(blue)%an %C(magenta)<%ae> [%G?] %C(green)%ad%n %C(auto)%d%n"
@@ -73,7 +79,7 @@
 	# Specify the username of the author/committer.
 	name = "{{ .name }}"
 	# Specify the email address of the author/committer.
-	email = "{{ .email }}"
+	email = "{{ .git.email }}"
 
 [init]
 	defaultBranch = main
