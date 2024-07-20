@@ -76,6 +76,8 @@
         "out": true,
         "coverage": true
     },
+    // Telemetry
+    "telemetry.telemetryLevel": "off",
     // Terminal
     "terminal.integrated.copyOnSelection": true,
     // Vim
