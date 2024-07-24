@@ -1,0 +1,11 @@
+[Unit]
+Description=Kanata keyboard remapper
+Documentation=https://github.com/jtroo/kanata
+
+[Service]
+Type=simple
+ExecStart=/home/nikki/.local/bin/kanata --cfg /home/nikki/.config/kanata/kanata.kbd
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

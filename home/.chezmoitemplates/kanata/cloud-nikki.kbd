@@ -1,0 +1,77 @@
+(defcfg
+  linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd
+  process-unmapped-keys yes
+)
+
+(defalias
+  ext (layer-while-held extend)           ;; Temporarily change to the extend Layer
+  ;; sym (layer-while-held symbols)          ;; Temporarily change to the symbol layer
+  ;; qwe (layer-switch qwerty)               ;; Switch to the qwerty layer
+  ;; cmk (layer-switch colemak)              ;; Switch back to a normal layer
+)
+
+(defalias
+  ec  (tap-hold         200 200 esc lctl)
+  ee  (tap-hold          50 200 esc @ext)
+  /c  (tap-hold-release 200 500 /   rctl)
+  tm  (tap-hold         200 200 tab lmet)
+  [m  (tap-hold         200 500 [   rmet)
+  \m  (tap-hold         200 500 \   rmet)
+)
+
+(defalias
+  osl (one-shot-press 2000 lsft)
+  osr (one-shot-press 2000 rsft)
+  oal (one-shot-press 2000 lalt)
+  oml (one-shot-press 2000 lmet)
+  ocl (one-shot-press 2000 lctl)
+  oar (one-shot-press 2000 ralt)
+)
+
+(defalias
+  cpy C-ins
+  pst S-ins
+  cut C-x
+  udo C-z
+  all C-a
+  fnd C-f
+  bk A-lft
+  fw A-rght
+)
+
+;;; Layers
+
+;; First up is the source (base) layer; this is used to set the default
+;; keys that will be overwritten later.  It is `not' a layer that will
+;; be used in the actual layout.
+(defsrc
+  esc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt comp rctl
+)
+
+;; Colemak layer wide.
+;; Since this is the first layer, it's the layout KMonad starts in.
+(deflayer colemak
+  esc
+  grv  1    2    3    4    5    6    =    7    8    9    0    -    bspc
+  @tm  q    w    f    p    b    [    j    l    u    y    '    ;    @\m
+  @ee  a    r    s    t    g    ]    m    n    e    i    o    ret
+  @osl  x    c    d    v    z    /    k    h    ,    .    @osr
+  ;; lmet lalt lctl           spc            @sym rctl ralt
+  lctl lmet lalt           spc            ralt comp rctl
+)
+
+;; Extend layer.
+(deflayer extend
+  caps
+  lrld f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ret
+  @tm  esc  @bk  @fnd @fw  ins  prnt pgup home up   end  caps f13  @\m
+  @ee  @oal @oml @osl @ocl @oar slck pgdn lft  down rght del       ret
+  @osl  @cut @cpy @pst @pst @udo comp prnt bks  tab  menu           @osr
+  ;; lmet lalt lctl           ret            @sym rctl ralt
+  lctl lmet lalt           ret            ralt comp rctl
+)
