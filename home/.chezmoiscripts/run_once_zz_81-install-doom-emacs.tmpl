@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
 #==============================================================================
-# install doom-emacs
+# install doomemacs
 #==============================================================================
 
 readonly EMACS_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/emacs"
-readonly DOOM_GIT="https://github.com/hlissner/doom-emacs.git"
+readonly DOOM_GIT="https://github.com/doomemacs/doomemacs.git"
 
 install_doom() {
   if [ -d "$2" ]; then
