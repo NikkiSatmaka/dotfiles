@@ -5,7 +5,9 @@
 
 (defalias
   ext (layer-while-held extend)           ;; Temporarily change to the extend Layer
-  ;; sym (layer-while-held symbols)          ;; Temporarily change to the symbol layer
+  sym (layer-while-held symbols)          ;; Temporarily change to the symbol layer
+  num (layer-while-held num)              ;; Temporarily change to the num layer
+  nav (layer-while-held nav)              ;; Temporarily change to the nav layer
   ;; qwe (layer-switch qwerty)               ;; Switch to the qwerty layer
   ;; cmk (layer-switch colemak)              ;; Switch back to a normal layer
 )
@@ -39,6 +41,22 @@
   fw A-rght
 )
 
+(defalias
+ ;; alias keys in layer1
+  s1 S-1  ;; @s1 as !
+  s2 S-2  ;; @s2 as @
+  s3 S-3  ;; @s3 as #
+  s4 S-4  ;; @s4 as $
+  s5 S-5  ;; @s5 as %
+  s6 S-6  ;; @s6 as ^
+  s7 S-7  ;; @s7 as &
+  s8 S-8  ;; @s8 as *
+  s9 S-9  ;; @s9 as (
+  s0 S-0  ;; @s0 as )
+  scbl S-[ ;; @scbl as {
+  scbr S-] ;; @scbr as }
+)
+
 ;;; Layers
 
 ;; First up is the source (base) layer; this is used to set the default
@@ -60,18 +78,40 @@
   grv  1    2    3    4    5    6    =    7    8    9    0    -    bspc
   @tm  q    w    f    p    b    [    j    l    u    y    '    ;    @\m
   @ee  a    r    s    t    g    ]    m    n    e    i    o    ret
-  @osl  x    c    d    v    z    /    k    h    ,    .    @osr
-  ;; lmet lalt lctl           spc            @sym rctl ralt
-  lctl lmet lalt           spc            ralt comp rctl
+  @osl x    c    d    v    z    /    k    h    ,    .    @osr
+  lmet lalt lctl           spc            @num rctl ralt
+  ;; lctl lmet lalt           spc            ralt comp rctl
 )
 
 ;; Extend layer.
 (deflayer extend
   caps
-  lrld f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ret
-  @tm  esc  @bk  @fnd @fw  ins  prnt pgup home up   end  caps f13  @\m
-  @ee  @oal @oml @osl @ocl @oar slck pgdn lft  down rght del       ret
-  @osl  @cut @cpy @pst @pst @udo comp prnt bks  tab  menu           @osr
-  ;; lmet lalt lctl           ret            @sym rctl ralt
-  lctl lmet lalt           ret            ralt comp rctl
+  lrld f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
+  _    esc  @bk  @fnd @fw  ins  _    pgup home up   end  caps grv  _
+  _    @oal @oml @osl @ocl @oar _    pgdn lft  down rght del       prnt
+  _    @cut @cpy @pst lmet @udo _    ret  bspc tab  menu           _
+  _    _    _              _              _    _    _
+  ;; _    _    _              _              @sym _    _
+  ;; lmet lalt lctl           spc            @sym rctl ralt
+  ;; lctl lmet lalt           spc            ralt comp rctl
 )
+
+;; Extend layer.
+(deflayer num
+  _
+  _    _    _    _    _    _    _    _    _    _    _    _    _     _
+  _    _    _    _    _    nlk  _    =    7    8    9    +    /     -
+  _    @oal @oml @osl @ocl @oar _    @s8  4    5    6    -          _
+  _    _    menu tab  bspc ret  _    0    1    2    3               _
+  _    _    _              _              _    _    _
+)
+
+;; ;; Symbol layer.
+;; (deflayer symbols
+;;   _
+;;   _    _    _    _    _    _    _    _    _    _    _    _    _     _
+;;   _    S-1  S-2  S-3  S-4  S-5  «    =    7    8    9    +    /     _
+;;   _    \_   [    {    \(   S-6  »    *    4    5    6    -          _
+;;   _    ]    }    \)   S-7  `    _    0    1    2    3               _
+;;   _    _    _              _              _    _    _
+;; )
