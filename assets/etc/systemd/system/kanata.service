@@ -3,9 +3,11 @@ Description=Kanata keyboard remapper
 Documentation=https://github.com/jtroo/kanata
 
 [Service]
+Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
+Environment=DISPLAY=:0
 Type=simple
-ExecStart=/home/nikki/.local/bin/kanata --cfg /home/nikki/.config/kanata/kanata.kbd
+ExecStart=/usr/bin/sh -c 'exec $$(which kanata) --cfg $${XDG_CONFIG_HOME:-$HOME/.config}/kanata/kanata.kbd'
 Restart=no
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
