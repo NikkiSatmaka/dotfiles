@@ -81,6 +81,8 @@ alias sv="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/nvim/init.vim"
 alias sr="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/ranger/rc.conf"
 alias sqb="$EDITOR ${XDG_CONFIG_HOME-$HOME/.config}/qutebrowser/config.py"
 
+alias ssha="eval $(ssh-agent) && ssh-add"
+
 # trash command
 if command -v trash-put >/dev/null 2>&1; then
   # alias rm="echo "Use trp to trash files"; false"
@@ -289,11 +291,6 @@ alias fake1g="fallocate -l 1G test.img"
 alias fe="fzf | xargs -r -I % $EDITOR %"
 alias fixsum="updpkgsums"
 alias free="free -h"
-alias gameserverdrive="sshfs root@68.183.36.163:/root/ /storage/gameserver"
-alias gameserver="ssh -v root@68.183.36.163"
-alias glhack="glhack --windowed"
-alias googledrive="google-drive-ocamlfuse /mnt/google"
-alias gopherdrive="sshfs hexdsl@206.189.5.169:/home/hexdsl/gopher/ /storage/gopher"
 
 alias handbrake="ghb"
 
