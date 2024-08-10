@@ -99,6 +99,11 @@ com.googlecode.iterm2.plist
 **/*fenrir*
 {{- end }}
 
+# ignore if not on cloud-nikki
+{{- if ne .chezmoi.hostname "cloud-nikki" }}
+.config/environment.d/ssh_askpass.conf
+{{- end }}
+
 # ignore if not on linux
 {{- if ne .chezmoi.os "linux" }}
 .config/broot
