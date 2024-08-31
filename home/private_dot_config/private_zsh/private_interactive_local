@@ -179,6 +179,11 @@ if command -v helm >/dev/null 2>&1; then
     source <(helm completion zsh)
 fi
 
+# Enable minikube
+if command -v helm >/dev/null 2>&1; then
+    source <(minikube completion zsh)
+fi
+
 # Enable uv completion.
 if command -v uv >/dev/null 2>&1; then
     eval "$(uv generate-shell-completion zsh)"
