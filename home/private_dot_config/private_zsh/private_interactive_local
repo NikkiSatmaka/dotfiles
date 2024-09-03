@@ -192,11 +192,6 @@ fi
 # Enable NVM
 ssource "$NVM_DIR/nvm.sh"
 
-# Initialize bashcompinit and terraform completion
-if [ -x /usr/bin/terraform ]; then
-    complete -o nospace -C /usr/bin/terraform terraform
-fi
-
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
 export MAMBA_EXE="$HOME/.local/bin/micromamba";
