@@ -98,6 +98,14 @@ if command -v brew >/dev/null 2>&1; then
     fi
 fi
 
+# load user bash completion
+if [ -d "$HOME/.config/bash/completions" ]; then
+  for i in "$HOME/.config/bash/completions"/* ; do
+    ssource "$i"
+  done
+  unset i
+fi
+
 # Enable starship prompt.
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init bash)"
