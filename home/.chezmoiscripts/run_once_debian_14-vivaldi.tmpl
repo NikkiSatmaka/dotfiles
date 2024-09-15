@@ -8,10 +8,10 @@ readonly USR_KEYRING_DIR="/usr/share/keyrings"
 readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
 
 readonly VIVALDI_KEYRING_URL="https://repo.vivaldi.com/archive/linux_signing_key.pub"
-readonly VIVALDI_KEYRING_GPG="/tmp/vivaldi-browser.gpg"
-readonly VIVALDI_KEYRING_DEST="$USR_KEYRING_DIR/vivaldi-browser.gpg"
-readonly VIVALDI_SOURCE="$APT_SOURCE_DIR/vivaldi-browser.list"
-readonly VIVALDI_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/vivaldi-browser.gpg] https://repo.vivaldi.com/archive/deb stable main"
+readonly VIVALDI_KEYRING_GPG="/tmp/vivaldi.gpg"
+readonly VIVALDI_KEYRING_DEST="$USR_KEYRING_DIR/vivaldi.gpg"
+readonly VIVALDI_SOURCE="$APT_SOURCE_DIR/vivaldi.list"
+readonly VIVALDI_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/vivaldi.gpg] https://repo.vivaldi.com/archive/deb stable main"
 
 add_apt_keyring() {
   if [[ -f "$3" ]]; then
