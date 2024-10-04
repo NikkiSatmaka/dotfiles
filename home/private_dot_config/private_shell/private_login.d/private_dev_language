@@ -45,3 +45,7 @@ export R_HOME_USER="${XDG_CONFIG_HOME:-$HOME/.config}/R"
 export R_PROFILE_USER="${XDG_CONFIG_HOME:-$HOME/.config}/R/profile"
 export R_HISTFILE="${XDG_CONFIG_HOME:-$HOME/.config}/R/history"
 export R_LIBS_USER="$HOME/.local/lib/R/library"
+
+# Vagrant
+export VAGRANT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/vagrant"
+export VAGRANT_ALIAS_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/vagrant/aliases"
