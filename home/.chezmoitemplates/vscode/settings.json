@@ -183,6 +183,17 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    // Terraform
+    "[terraform]": {
+        "editor.defaultFormatter": "gamunu.opentofu",
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file"
+    },
+    "[terraform-vars]": {
+        "editor.defaultFormatter": "gamunu.opentofu",
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file"
+    },
     "r.rterm.linux": "/home/nikki/micromamba/envs/r/bin/radian",
     "r.rterm.mac": "/home/nikki/micromamba/envs/r/bin/radian",
     "codesnap.shutterAction": "copy"
