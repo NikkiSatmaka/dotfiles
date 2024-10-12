@@ -49,3 +49,9 @@ export R_LIBS_USER="$HOME/.local/lib/R/library"
 # Vagrant
 export VAGRANT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/vagrant"
 export VAGRANT_ALIAS_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/vagrant/aliases"
+export VAGRANT_DEFAULT_PROVIDER=libvirt
+
+# Ansible
+export ANSIBLE_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/ansible"
+export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible.cfg"
+export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/ansible/galaxy_cache"
