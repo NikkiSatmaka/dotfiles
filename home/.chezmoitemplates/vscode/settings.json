@@ -39,6 +39,7 @@
     },
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
     "files.eol": "\n",
     "files.watcherExclude": {
         "**/.git": true,
