@@ -123,6 +123,11 @@ if command -v terraform >/dev/null 2>&1; then
     complete -C terraform terraform
 fi
 
+# Enable terragrunt completion.
+if command -v terragrunt >/dev/null 2>&1; then
+    complete -C terragrunt terragrunt
+fi
+
 # Enable opentofu completion.
 if command -v tofu >/dev/null 2>&1; then
     complete -C tofu tofu
