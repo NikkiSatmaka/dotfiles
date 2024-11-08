@@ -6,6 +6,16 @@
     "editor.inlineSuggest.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.renderWhitespace": "all",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "keyword.other.dotenv",
+                "settings": {
+                    "foreground": "#FF000000"
+                }
+            }
+        ]
+    },
     // Extensions
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
@@ -35,7 +45,8 @@
         "*.toml": "toml",
         "*.njk": "html",
         "*.sql": "jinja-sql",
-        "*.yml": "jinja-yaml"
+        "*.yml": "jinja-yaml",
+        ".env*": "dotenv"
     },
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
@@ -174,11 +185,13 @@
     },
     // JavaScript
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
     },
     // TypeScript
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
     },
     // JSON
     "[json]": {
