@@ -28,6 +28,7 @@ export BUNDLE_USER_PLUGIN="${XDG_DATA_HOME:-$HOME/.local/share}/bundle"
 
 # go
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
+export GOMODCACHE="${XDG_CACHE_HOME:-$HOME/.cache}/go/mod"
 
 # haskell
 export CABAL_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/cabal/config"
