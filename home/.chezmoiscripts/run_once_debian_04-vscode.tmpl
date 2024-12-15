@@ -11,7 +11,7 @@ readonly VSCODE_KEYRING_URL="https://packages.microsoft.com/keys/microsoft.asc"
 readonly VSCODE_KEYRING_GPG="/tmp/microsoft.gpg"
 readonly VSCODE_KEYRING_DEST="$USR_KEYRING_DIR/microsoft-archive-keyring.gpg"
 readonly VSCODE_SOURCE="$APT_SOURCE_DIR/vscode.list"
-readonly VSCODE_CONTENT="deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main"
+readonly VSCODE_CONTENT="deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main"
 
 add_apt_keyring() {
   if [[ -f "$3" ]]; then
