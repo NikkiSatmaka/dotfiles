@@ -6,6 +6,7 @@ export PYTHONUSERBASE="${XDG_DATA_HOME:-$HOME/.local/share}/python"
 export IPYTHONDIR="${XDG_CONFIG_HOME:-$HOME/.config}/jupyter"
 export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/jupyter"
 export RYE_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/rye"
+export PIXI_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pixi"
 
 # java fixes
 export _JAVA_AWT_WM_NONREPARENTING=1
