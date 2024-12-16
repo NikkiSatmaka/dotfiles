@@ -46,9 +46,5 @@ Brewfile.lock.json
 *env/
 .env/
 .venv/
-.conda_env/
-.mamba_env/
 env/
 venv/
-conda_env/
-mamba_env/

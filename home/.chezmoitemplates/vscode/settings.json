@@ -32,7 +32,6 @@
         "**/Thumbs.db": true,
         "**/node_modules": true,
         "**/.next": true,
-        "**/.conda_env": true,
         "**/tmp": true,
         "**/package-lock.json": true,
         "**/yarn.lock": true,
@@ -55,7 +54,6 @@
     "files.watcherExclude": {
         "**/.git": true,
         "**/node_modules": true,
-        "**/.conda_env": true,
         "**/tmp": true,
         "**/dist": true
     },
@@ -82,7 +80,6 @@
         "**/bower_components": true,
         "**/*.code-search": true,
         "**/.git": true,
-        "**/.conda_env": true,
         "**/tmp": true,
         "dist": true,
         "out": true,
@@ -208,7 +205,5 @@
         "editor.formatOnSave": true,
         "editor.formatOnSaveMode": "file"
     },
-    "r.rterm.linux": "/home/nikki/micromamba/envs/r/bin/radian",
-    "r.rterm.mac": "/home/nikki/micromamba/envs/r/bin/radian",
     "codesnap.shutterAction": "copy"
 }
