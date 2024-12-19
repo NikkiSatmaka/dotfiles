@@ -5,7 +5,8 @@
 
 [".config/nvim"]
     type = "git-repo"
-    url = "https://github.com/LazyVim/starter.git"
+    url = "git@github.com:NikkiSatmaka/nvim.git"
+    private = true
 
 {{- if eq .chezmoi.os "linux" }}
 [".config/mpv"]
@@ -18,4 +19,5 @@
 ["AppData/Roaming/mpv"]
     type = "git-repo"
     url = "git@github.com:NikkiSatmaka/mpv-config.git"
+    private = true
 {{- end }}
