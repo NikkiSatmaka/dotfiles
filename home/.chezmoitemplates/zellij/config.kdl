@@ -277,6 +277,10 @@ default_mode "locked"
 //
 // theme_dir "/tmp"
 
+env {
+    TERM "xterm-256color"
+}
+
 // Toggle enabling the mouse mode.
 // On certain configurations, or terminals this could
 // potentially interfere with copying text.
