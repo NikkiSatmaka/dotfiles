@@ -8,6 +8,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Redefine standard commands to improve their behavior
 # -----------------------------------------------------------------------------
 
+# Kitty SSH
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
 # Starts calculator with math support.
 alias bc="bc -l"
 
