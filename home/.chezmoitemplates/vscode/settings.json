@@ -175,12 +175,12 @@
     // JavaScript
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
+        "editor.formatOnSave": true
     },
     // TypeScript
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
+        "editor.formatOnSave": true
     },
     // JSON
     "[json]": {
@@ -188,13 +188,29 @@
     },
     // Terraform
     "[terraform]": {
-        "editor.defaultFormatter": "gamunu.opentofu",
+        "editor.defaultFormatter": "hashicorp.terraform",
         "editor.formatOnSave": true,
         "editor.formatOnSaveMode": "file"
     },
     "[terraform-vars]": {
-        "editor.defaultFormatter": "gamunu.opentofu",
+        "editor.defaultFormatter": "hashicorp.terraform",
         "editor.formatOnSave": true,
         "editor.formatOnSaveMode": "file"
+    },
+    // TOML
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    // YAML
+    "[yaml]": {
+        "editor.autoIndent": "advanced",
+        // "editor.defaultFormatter": "kennylong.kubernetes-yaml-formatter",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
     }
 }
