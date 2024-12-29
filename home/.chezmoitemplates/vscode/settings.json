@@ -157,15 +157,15 @@
     "codesnap.shutterAction": "copy",
     // Python
     "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff",
-        "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit"
-        }
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4
     },
     "python.languageServer": "Pylance",
     "python.analysis.typeCheckingMode": "basic",
-    "isort.args": ["--profile", "black"],
     // Jupyter
     "notebook.lineNumbers": "on",
     "notebook.formatOnSave.enabled": true,
