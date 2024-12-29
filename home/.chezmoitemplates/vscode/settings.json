@@ -226,7 +226,7 @@
     "editor.defaultFormatter": "tamasfe.even-better-toml",
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
-    "editor.tabSize": 4
+    "editor.tabSize": 2
   },
   // YAML
   "[yaml]": {
@@ -234,6 +234,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
-    "editor.tabSize": 4
+    "editor.tabSize": 2
   }
 }
