@@ -153,6 +153,8 @@
     "vim.easymotionMarkerBackgroundColor": "yellow",
     "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf:",
     "vim.easymotionMarkerForegroundColorOneChar": "black",
+    // Other
+    "codesnap.shutterAction": "copy",
     // Python
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff",
@@ -194,6 +196,5 @@
         "editor.defaultFormatter": "gamunu.opentofu",
         "editor.formatOnSave": true,
         "editor.formatOnSaveMode": "file"
-    },
-    "codesnap.shutterAction": "copy"
+    }
 }
