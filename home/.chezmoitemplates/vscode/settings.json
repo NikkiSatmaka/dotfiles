@@ -1,241 +1,239 @@
 {
-    // Editor
-    "editor.fontFamily": "'FiraCode Nerd Font', 'Fira Code', 'Symbols Nerd Font', 'monospace'",
-    "editor.fontLigatures": true,
-    "editor.lineNumbers": "relative",
-    "editor.inlineSuggest.enabled": true,
-    "editor.guides.bracketPairs": true,
-    "editor.renderWhitespace": "all",
-    // Extensions
-    "extensions.autoCheckUpdates": false,
-    "extensions.autoUpdate": false,
-    "settingsSync.ignoredExtensions": [
-        "ms-vscode-remote.remote-wsl"
-    ],
-    // Files
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/node_modules": true,
-        "**/.next": true,
-        "**/tmp": true,
-        "**/package-lock.json": true,
-        "**/yarn.lock": true,
-        "**/npm-debug.log": true,
-        "**/dist": true,
-        "**/*.bs.js": true,
-        "vendor": true
+  // Editor
+  "editor.fontFamily": "'FiraCode Nerd Font', 'Fira Code', 'Symbols Nerd Font', 'monospace'",
+  "editor.fontLigatures": true,
+  "editor.lineNumbers": "relative",
+  "editor.inlineSuggest.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.renderWhitespace": "all",
+  // Extensions
+  "extensions.autoCheckUpdates": false,
+  "extensions.autoUpdate": false,
+  "settingsSync.ignoredExtensions": ["ms-vscode-remote.remote-wsl"],
+  // Files
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/tmp": true,
+    "**/package-lock.json": true,
+    "**/yarn.lock": true,
+    "**/npm-debug.log": true,
+    "**/dist": true,
+    "**/*.bs.js": true,
+    "vendor": true
+  },
+  "files.associations": {
+    "*.toml": "toml",
+    "*.njk": "html",
+    "*.sql": "jinja-sql",
+    "*.yml": "jinja-yaml",
+    ".env*": "dotenv"
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.eol": "\n",
+  "files.watcherExclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/tmp": true,
+    "**/dist": true
+  },
+  // Workbench
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+  "workbench.preferredLightColorTheme": "Catppuccin Latte",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  // Window
+  "window.autoDetectColorScheme": true,
+  "window.titleBarStyle": "custom",
+  "window.newWindowDimensions": "maximized",
+  // Breadcrumbs
+  "breadcrumbs.filePath": "on",
+  "breadcrumbs.enabled": true,
+  // Search
+  "search.smartCase": true,
+  "search.followSymlinks": false,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.git": true,
+    "**/tmp": true,
+    "dist": true,
+    "out": true,
+    "coverage": true
+  },
+  // Telemetry
+  "telemetry.telemetryLevel": "off",
+  // Terminal
+  "terminal.integrated.copyOnSelection": true,
+  // Vim
+  "vim.leader": "<space>",
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.smartRelativeLine": true,
+  "vim.sneak": true,
+  "vim.sneakReplacesF": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "vim.visualstar": true,
+  // Vim KeyBindings
+  "vim.handleKeys": {
+    "<C-b>": false,
+    "<C-f>": false,
+    "<C-k>": false,
+    "<C-p>": false
+  },
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["Y"],
+      "after": ["y", "$"]
     },
-    "files.associations": {
-        "*.toml": "toml",
-        "*.njk": "html",
-        "*.sql": "jinja-sql",
-        "*.yml": "jinja-yaml",
-        ".env*": "dotenv"
+    {
+      "before": ["j"],
+      "after": ["g", "j"]
     },
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.eol": "\n",
-    "files.watcherExclude": {
-        "**/.git": true,
-        "**/node_modules": true,
-        "**/tmp": true,
-        "**/dist": true
+    {
+      "before": ["k"],
+      "after": ["g", "k"]
     },
-    // Workbench
-    "workbench.colorTheme": "Catppuccin Mocha",
-    "workbench.iconTheme": "catppuccin-mocha",
-    "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
-    "workbench.preferredLightColorTheme": "Catppuccin Latte",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+    {
+      "before": ["<Up>"],
+      "after": ["g", "<Up>"]
     },
-    // Window
-    "window.autoDetectColorScheme": true,
-    "window.titleBarStyle": "custom",
-    "window.newWindowDimensions": "maximized",
-    // Breadcrumbs
-    "breadcrumbs.filePath": "on",
-    "breadcrumbs.enabled": true,
-    // Search
-    "search.smartCase": true,
-    "search.followSymlinks": false,
-    "search.exclude": {
-        "**/node_modules": true,
-        "**/bower_components": true,
-        "**/*.code-search": true,
-        "**/.git": true,
-        "**/tmp": true,
-        "dist": true,
-        "out": true,
-        "coverage": true
-    },
-    // Telemetry
-    "telemetry.telemetryLevel": "off",
-    // Terminal
-    "terminal.integrated.copyOnSelection": true,
-    // Vim
-    "vim.leader": "<space>",
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.smartRelativeLine": true,
-    "vim.sneak": true,
-    "vim.sneakReplacesF": true,
-    "vim.sneakUseIgnorecaseAndSmartcase": true,
-    "vim.visualstar": true,
-    // Vim KeyBindings
-    "vim.handleKeys": {
-        "<C-b>": false,
-        "<C-f>": false,
-        "<C-k>": false,
-        "<C-p>": false
-    },
-    "vim.normalModeKeyBindings": [
-        {
-            "before": ["Y"],
-            "after": ["y", "$"]
-        },
-        {
-            "before": ["j"],
-            "after": ["g", "j"]
-        },
-        {
-            "before": ["k"],
-            "after": ["g", "k"]
-        },
-        {
-            "before": ["<Up>"],
-            "after": ["g", "<Up>"]
-        },
-        {
-            "before": ["<Down>"],
-            "after": ["g", "<Down>"]
-        }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["<leader>", "d"],
-            "after": ["d", "d"]
-        },
-        {
-            "before": ["<C-n>"],
-            "commands": [":nohl"]
-        },
-        {
-            "before": ["K"],
-            "commands": ["lineBreakInsert"],
-            "silent": true
-        }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": [">"],
-            "commands": ["editor.action.indentLines"]
-        },
-        {
-            "before": ["<"],
-            "commands": ["editor.action.outdentLines"]
-        },
-        {
-            "before": ["p"],
-            "after": ["p", "g", "v", "y"]
-        }
-    ],
-    // Easymotion
-    "vim.easymotion": true,
-    "vim.easymotionMarkerBackgroundColor": "yellow",
-    "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf:",
-    "vim.easymotionMarkerForegroundColorOneChar": "black",
-    // Other
-    "codesnap.shutterAction": "copy",
-    // Python
-    "[python]": {
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
-        },
-        "editor.defaultFormatter": "charliermarsh.ruff",
-        "editor.formatOnSave": true,
-        "editor.tabSize": 4
-    },
-    "python.languageServer": "Pylance",
-    "python.analysis.typeCheckingMode": "basic",
-    // Jupyter
-    "notebook.lineNumbers": "on",
-    "notebook.formatOnSave.enabled": true,
-    "notebook.codeActionsOnSave": {
-        "notebook.source.organizeImports": "explicit"
-    },
-    // JavaScript
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    // TypeScript
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    // JSON
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2
-    },
-    "[json][jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2
-    },
-    // Docker
-    "[dockercompose]": {
-        "editor.autoIndent": "advanced",
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "editor.insertSpaces": true,
-        "editor.quickSuggestions": {
-            "other": true,
-            "comments": false,
-            "strings": true
-        },
-        "editor.tabSize": 2
-    },
-    "[dockerfile]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker",
-        "editor.formatOnSave": true
-    },
-    // Terraform
-    "[terraform]": {
-        "editor.defaultFormatter": "hashicorp.terraform",
-        "editor.formatOnSave": true,
-        "editor.formatOnSaveMode": "file"
-    },
-    "[terraform-vars]": {
-        "editor.defaultFormatter": "hashicorp.terraform",
-        "editor.formatOnSave": true,
-        "editor.formatOnSaveMode": "file"
-    },
-    // TOML
-    "[toml]": {
-        "editor.defaultFormatter": "tamasfe.even-better-toml",
-        "editor.formatOnSave": true,
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4
-    },
-    // YAML
-    "[yaml]": {
-        "editor.autoIndent": "advanced",
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4
+    {
+      "before": ["<Down>"],
+      "after": ["g", "<Down>"]
     }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["lineBreakInsert"],
+      "silent": true
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"]
+    }
+  ],
+  // Easymotion
+  "vim.easymotion": true,
+  "vim.easymotionMarkerBackgroundColor": "yellow",
+  "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf:",
+  "vim.easymotionMarkerForegroundColorOneChar": "black",
+  // Other
+  "codesnap.shutterAction": "copy",
+  // Python
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
+  },
+  "python.languageServer": "Pylance",
+  "python.analysis.typeCheckingMode": "basic",
+  // Jupyter
+  "notebook.lineNumbers": "on",
+  "notebook.formatOnSave.enabled": true,
+  "notebook.codeActionsOnSave": {
+    "notebook.source.organizeImports": "explicit"
+  },
+  // JavaScript
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  // TypeScript
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  // JSON
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[json][jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  // Docker
+  "[dockercompose]": {
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.tabSize": 2
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker",
+    "editor.formatOnSave": true
+  },
+  // Terraform
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file"
+  },
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file"
+  },
+  // TOML
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
+  },
+  // YAML
+  "[yaml]": {
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
+  }
 }
