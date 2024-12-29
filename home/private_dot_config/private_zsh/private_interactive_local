@@ -83,7 +83,7 @@ HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
 [[ ! -d $HISTDIR ]] && command mkdir -p "$HISTDIR"
 SAVEHIST=$HISTSIZE
 setopt appendhistory
-setopt incappendhistory
+setopt sharehistory
 setopt extendedhistory
 setopt histignorespace
 
