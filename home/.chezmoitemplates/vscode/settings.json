@@ -189,6 +189,23 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 2
     },
+    // Docker
+    "[dockercompose]": {
+        "editor.autoIndent": "advanced",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.tabSize": 2
+    },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker",
+        "editor.formatOnSave": true
+    },
     // Terraform
     "[terraform]": {
         "editor.defaultFormatter": "hashicorp.terraform",
