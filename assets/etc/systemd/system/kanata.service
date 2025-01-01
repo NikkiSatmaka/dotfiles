@@ -1,10 +1,13 @@
 [Unit]
 Description=Kanata keyboard remapper
 Documentation=https://github.com/jtroo/kanata
+Requires=local-fs.target
+After=local-fs.target
 
 [Service]
 Type=simple
-ExecStart=/home/nikki/.local/bin/kanata --cfg /home/nikki/.config/kanata/kanata.kbd
+ExecStartPre=/usr/sbin/modprobe uinput
+ExecStart=/usr/bin/sh -c "exec /home/linuxbrew/.linuxbrew/bin/kanata --quiet --cfg /home/nikki/.config/kanata/kanata.kbd"
 Restart=no
 
 [Install]
