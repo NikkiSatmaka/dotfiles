@@ -153,3 +153,8 @@ fi
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
     . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
+
+# Enable jenv
+if command -v jenv >/dev/null 2>&1; then
+  eval "$(jenv init -)"
+fi
