@@ -5,19 +5,19 @@
 
 [".config/nvim"]
     type = "git-repo"
-    url = "git@github.com:NikkiSatmaka/nvim.git"
+    url = "github.com-personal:NikkiSatmaka/nvim.git"
     private = true
 
 {{- if eq .chezmoi.os "linux" }}
 [".config/mpv"]
     type = "git-repo"
-    url = "git@github.com:NikkiSatmaka/mpv-config.git"
+    url = "github.com-personal:NikkiSatmaka/mpv-config.git"
     private = true
 {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
 ["AppData/Roaming/mpv"]
     type = "git-repo"
-    url = "git@github.com:NikkiSatmaka/mpv-config.git"
+    url = "github.com-personal:NikkiSatmaka/mpv-config.git"
     private = true
 {{- end }}
