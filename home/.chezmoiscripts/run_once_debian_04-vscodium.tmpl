@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+#==============================================================================
+# Installing VSCodium
+#==============================================================================
+
+readonly USR_KEYRING_DIR="/usr/share/keyrings"
+readonly APT_SOURCE_DIR="/etc/apt/sources.list.d"
+
+readonly VSCODIUM_KEYRING_URL="https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg"
+readonly VSCODIUM_KEYRING_GPG="/tmp/vscodium.gpg"
+readonly VSCODIUM_KEYRING_DEST="$USR_KEYRING_DIR/vscodium-archive-keyring.gpg"
+readonly VSCODIUM_SOURCE="$APT_SOURCE_DIR/vscodium.list"
+readonly VSCODIUM_CONTENT="deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main"
+
+add_apt_keyring() {
+  if [[ -f "$3" ]]; then
+    echo "$3 already exists"
+    exit
+  fi
+  curl -sL "$1" | gpg --dearmor > "$2" || exit
+  echo "installing keyring to $3"
+  sudo install -o root -g root -Dm 644 "$2" "$3"
+}
+
+add_apt_source() {
+  if [[ -f "$1" ]]; then
+    echo "$1 already exists"
+    exit
+  fi
+  echo "adding apt source to $1"
+  sudo tee "$1" >/dev/null 2>&1 << _EOF_ &&
+$2
+_EOF_
+  sudo chmod 644 "$1"
+}
+
+add_apt_keyring "$VSCODIUM_KEYRING_URL" "$VSCODIUM_KEYRING_GPG" "$VSCODIUM_KEYRING_DEST"
+add_apt_source "$VSCODIUM_SOURCE" "$VSCODIUM_CONTENT"
+
+sudo apt-get update
+sudo apt-get install -y codium
