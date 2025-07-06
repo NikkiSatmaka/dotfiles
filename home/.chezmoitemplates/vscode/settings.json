@@ -75,6 +75,9 @@
   },
   // Telemetry
   "telemetry.telemetryLevel": "off",
+  "telemetry.feedback.enabled": false,
+  "gitlens.telemetry.enabled": false,
+  "docker.lsp.telemetry": "off",
   // Terminal
   "terminal.integrated.copyOnSelection": true,
   // Vim
