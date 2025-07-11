@@ -51,6 +51,7 @@
 	defaultToUpstream = true
 	tool = nvim
 	args = '-d'
+	conflictstyle = zdiff3
 
 [mergetool]
 	# Avoid saving an `.orig` backup file after a merge.
@@ -91,16 +92,19 @@
 	cookieFile = ~/.config/git/cookies
 
 [core]
-	{{- if ne .chezmoi.os "windows" }}
-	pager = diff-so-fancy | less --tabs=4 -RFX
-	{{- end }}
+	pager = delta
 	editor = nvim
 	# Use custom `.gitignore` and `.gitattributes`
 	attributesfile = ~/.config/git/attributes
 	excludesfile = ~/.config/git/ignore
 
 [interactive]
-	diffFilter = diff-so-fancy --patch
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	dark = true
+	line-numbers = true
 
 [color "diff-highlight"]
 	oldNormal = red bold
