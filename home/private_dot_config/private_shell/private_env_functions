@@ -66,13 +66,9 @@ initialize_shell_tool() {
 
 # Function to find and initialize brew
 find_and_init_brew() {
-    local _brew_prefixes=(
-        "$HOME/.linuxbrew"
-        "/home/linuxbrew/.linuxbrew"
-        "/opt/homebrew"
-    )
+    local _brew_prefixes="$HOME/.linuxbrew /home/linuxbrew/.linuxbrew /opt/homebrew"
 
-    for prefix in "${_brew_prefixes[@]}"; do
+    for prefix in $_brew_prefixes; do
         if test -x "$prefix/bin/brew"; then
             eval "$("$prefix/bin/brew" shellenv)"
             break
