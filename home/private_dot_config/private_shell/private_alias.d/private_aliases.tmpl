@@ -39,41 +39,6 @@ alias rwx="chmod 700"
 alias r--="chmod 644"
 alias r-x="chmod 755"
 
-# Easier navigation: .., ..., ...., ....., ~ and -
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd $HOME"
-alias -- -="cd -"
-alias q="exit"
-
-# cd places
-alias h="cd $HOME && ls"
-
-{{- if eq .chezmoi.os "darwin" }}
-alias dl="cd $HOME/Downloads && ls"
-alias d="cd $HOME/Documents && ls"
-alias mm="cd $HOME/Music && ls"
-alias pp="cd $HOME/Pictures && ls"
-alias vv="cd $HOME/Movies && ls"
-{{- else }}
-alias dl="cd ${XDG_DOWNLOAD_DIR:-$HOME/Downloads} && ls"
-alias d="cd ${XDG_DOCUMENTS_DIR:-$HOME/Documents} && ls"
-alias mm="cd ${XDG_MUSIC_DIR:-$HOME/Music} && ls"
-alias pp="cd ${XDG_PICTURES_DIR:-$HOME/Pictures} && ls"
-alias vv="cd ${XDG_VIDEOS_DIR:-$HOME/Videos} && ls"
-{{- end }}
-
-# commonly visited directories
-alias b="cd $HOME/.local/bin && ls -a"
-alias cf="cd ${XDG_CONFIG_HOME:-$HOME/.config} && ls -a"
-alias dx="cd $HOME/Dropbox && ls"
-alias o="cd ${XDG_DATA_HOME:-$HOME/.local/share}/chezmoi && ls -a"
-alias mn="cd /mnt && ls -a"
-alias dt="cd $HOME/data && ls"
-alias ws="cd $HOME/workspace && ls"
-
 alias sd="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/directories"
 alias sf="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/files"
 alias sc="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/commands"
@@ -111,18 +76,6 @@ alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 # receive the key of a developer
 alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 
-# yt-dlp (youtube-dl)
-alias yt="yt-dlp --add-metadata -i"
-alias yta-aac="yt-dlp --extract-audio --audio-format aac "
-alias yta-best="yt-dlp --extract-audio --audio-format best "
-alias yta-flac="yt-dlp --extract-audio --audio-format flac "
-alias yta-m4a="yt-dlp --extract-audio --audio-format m4a "
-alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 "
-alias yta-opus="yt-dlp --extract-audio --audio-format opus "
-alias yta-vorbis="yt-dlp --extract-audio --audio-format vorbis "
-alias yta-wav="yt-dlp --extract-audio --audio-format wav "
-alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
-
 alias mkd="mkdir -pv"
 alias ffmpeg="ffmpeg -hide_banner"
 
@@ -134,49 +87,6 @@ alias nano="nano -w";
 
 # Stops ping after sending 3 ECHO_REQUEST packets.
 alias ping="ping -c 3"
-
-# Directory browsing (list)
-# -----------------------------------------------------------------------------
-# Use "exa" as a modern "ls"
-if command -v eza >/dev/null 2>&1; then
-  alias ls="eza --group-directories-first"
-
-  alias l="eza -hlF --group-directories-first --git"  # show files in long format
-  alias la="eza -ha --group-directories-first"  # show all files
-  alias ll="eza -hlaF --group-directories-first --git"  # show all files in long format
-  alias ltree="eza -ThlF --git"  # show all files in tree format
-
-  alias lad="eza -hd -- .*(/)"  # only show dot-directories
-  alias lsa="eza -ha -- .*(.)"  # only show dot-files
-  alias lsd="eza -hlDF"  # only show directories
-  alias lse="eza -hldF -- *(/^F)"  # only show empty directories
-
-  alias lsnew="eza -rthl -- *(.) | tail \$@ 2>/dev/null"  # only the newest files
-  alias lsold="eza -rthl -- *(.) | head \$@ 2>/dev/null"   # display the oldest files
-  alias lsx="eza -l -- *(*) | head \$@ 2>/dev/null"        # only show executables
-  alias lssuid="eza -l -- *(s,S) | head \$@ 2>/dev/null"   # only show suid-files
-  alias lssmall="eza -hl --sort=size -- *(.) | tail \$@ 2>/dev/null"  # display the smallest files
-  alias lsbig="eza -hl --sort=size -- *(.) | grep -v total | head \$@ 2>/dev/null"    # display the biggest files
-else
-  # Detect which `ls` flavor is in use
-  if ls --color >/dev/null 2>&1; then # GNU `ls`
-      colorflag="--color"
-      export LS_COLORS="no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:"
-  else # macOS `ls`
-      colorflag="-G"
-      export LSCOLORS="BxBxhxDxfxhxhxhxhxcxcx"
-  fi
-
-  alias ls="ls ${colorflag}"
-
-  alias l="ls -lF ${colorflag}"
-  alias la="ls -A ${colorflag}"
-  alias ll="ls -lAF ${colorflag}"
-
-  # List only directories
-  alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
-fi
-
 
 # File management
 # -----------------------------------------------------------------------------
@@ -306,13 +216,6 @@ alias lxorgo="bat /var/log/Xorg.0.log.old"
 #btrfs aliases
 alias btrfsfs="sudo btrfs filesystem df /"
 alias btrfsli="sudo btrfs su li / -t"
-
-#snapper aliases
-alias snapcroot="sudo snapper -c root create-config /"
-alias snapchome="sudo snapper -c home create-config /home"
-alias snapli="sudo snapper list"
-alias snapcr="sudo snapper -c root create"
-alias snapch="sudo snapper -c home create"
 
 alias motherboard="cat /sys/devices/virtual/dmi/id/board_{vendor,name,version}"
 
