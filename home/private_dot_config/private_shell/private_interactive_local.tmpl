@@ -7,18 +7,18 @@ fi
 
 # Colourized less output
 cless() {
-  case "$1" in
-      *.md) glow -s dark "$1" | less -r;;
-      *) highlight -O ansi "$1" --force | less -r;;
-  esac
+    case "$1" in
+        *.md) glow -s dark "$1" | less -r;;
+        *) highlight -O ansi "$1" --force | less -r;;
+    esac
 }
 
 # Colourized cat output
 ccat() {
-  case "$1" in
-      *.md) glow -s dark "$1";;
-      *) highlight -O ansi "$1" --force;;
-  esac
+    case "$1" in
+        *.md) glow -s dark "$1";;
+        *) highlight -O ansi "$1" --force;;
+    esac
 }
 
 # cd when exiting lf
@@ -34,29 +34,28 @@ lc() {
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   tar xf $1    ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+ex () {
+    if [ -f $1 ] ; then
+        case $1 in
+        *.tar.bz2)   tar xjf $1   ;;
+        *.tar.gz)    tar xzf $1   ;;
+        *.bz2)       bunzip2 $1   ;;
+        *.rar)       unrar x $1   ;;
+        *.gz)        gunzip $1    ;;
+        *.tar)       tar xf $1    ;;
+        *.tbz2)      tar xjf $1   ;;
+        *.tgz)       tar xzf $1   ;;
+        *.zip)       unzip $1     ;;
+        *.Z)         uncompress $1;;
+        *.7z)        7z x $1      ;;
+        *.deb)       ar x $1      ;;
+        *.tar.xz)    tar xf $1    ;;
+        *.tar.zst)   tar xf $1    ;;
+        *)           echo "'$1' cannot be extracted via ex()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
 # cd when exiting nnn
@@ -83,8 +82,8 @@ n() {
     nnn "$@"
 
     if [ -f "$NNN_TMPFILE" ]; then
-            . "$NNN_TMPFILE"
-            rm -f "$NNN_TMPFILE" > /dev/null
+        . "$NNN_TMPFILE"
+        rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
 
@@ -94,7 +93,7 @@ y() {
 	yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+	rm -f -- "$tmp" > /dev/null
 }
 
 # broot function
@@ -120,6 +119,6 @@ initialize_shell_tool "jenv" "$(jenv init -)"
 
 # Enable pyenv
 [ -d "$PYENV_ROOT/bin" ] && pathprepend "$PYENV_ROOT/bin" PATH
-initialize_shell_tool pyenv "$(pyenv init -)"
+initialize_shell_tool "pyenv" "$(pyenv init -)"
 
 ssource "$HOME/.nix-profile/etc/profile.d/nix.sh"
