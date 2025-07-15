@@ -79,9 +79,9 @@ ssource "/etc/profile.d/bash_completion.sh"
 if command -v brew >/dev/null 2>&1; then
     HOMEBREW_PREFIX="$(brew --prefix)"
     ssource "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-        for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
         ssource "$COMPLETION"
-        done
+    done
 fi
 
 # load user bash completion
