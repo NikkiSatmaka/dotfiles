@@ -51,3 +51,15 @@ ssource() {
         . "$1"
     fi
 }
+
+# Define a function to conditionally evaluate shell initializations
+# Eg, to initialize direnv to bash
+# initialize_shell_tool "direnv" "$(direnv hook bash)"
+initialize_shell_tool() {
+    local tool_name="$1"
+    local init_command="$2"
+
+    if command -v "$tool_name" >/dev/null 2>&1; then
+        eval "$init_command"
+    fi
+}

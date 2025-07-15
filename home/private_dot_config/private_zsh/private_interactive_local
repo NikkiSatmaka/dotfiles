@@ -132,47 +132,21 @@ ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/interactive_vi_mode"
 #     eval $(dircolors =(cat ~/.shell/plugins/dircolors-solarized/dircolors.256dark ~/.shell/dircolors.extra))
 # fi
 
-# Load fzf completion
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-ssource /usr/share/fzf/key-bindings.zsh
-ssource /usr/share/fzf/completion.zsh
-ssource /usr/share/fzf/shell/key-bindings.zsh
-ssource /usr/share/fzf/shell/completion.zsh
-ssource /usr/share/doc/fzf/examples/key-bindings.zsh
-ssource /usr/share/doc/fzf/examples/completion.zsh
-ssource /opt/homebrew/opt/fzf/shell/completion.zsh
-ssource /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-
 # load zsh completion for opensuse in /etc/zsh_completion.d
 if [ -d "/etc/zsh_completion.d" ]; then
-  for i in "/etc/zsh_completion.d"/* ; do
-    ssource "$i"
-  done
-  unset i
+    for i in "/etc/zsh_completion.d"/* ; do
+        ssource "$i"
+    done
+    unset i
 fi
 
 # load user installed zsh completions
 fpath+="${ZDOTDIR:-$HOME/.config/zsh}/completions"
 
-# # Enable starship prompt.
-# if command -v starship >/dev/null 2>&1; then
-#     eval "$(starship init zsh)"
-# fi
-
-# Enable direnv.
-if command -v direnv >/dev/null 2>&1; then
-    eval "$(direnv hook zsh)"
-fi
-
-# Enable zoxide
-if command -v zoxide >/dev/null 2>&1; then
-    eval "$(zoxide init zsh)"
-fi
-
-# Enable pipx.
-if command -v pipx >/dev/null 2>&1; then
-    eval "$(register-python-argcomplete pipx)"
-fi
+initialize_shell_tool "fzf" "source <(fzf --zsh)"
+# initialize_shell_tool "starship" "$(starship init zsh)"
+initialize_shell_tool "direnv" "$(direnv hook zsh)"
+initialize_shell_tool "zoxide" "$(zoxide init zsh)"
 
 # Enable NVM
 ssource "$NVM_DIR/nvm.sh"
