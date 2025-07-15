@@ -113,6 +113,11 @@ if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook bash)"
 fi
 
+# Enable zoxide
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init bash)"
+fi
+
 # Enable pipx.
 if command -v pipx >/dev/null 2>&1; then
     eval "$(register-python-argcomplete pipx)"
