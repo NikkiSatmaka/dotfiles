@@ -5,13 +5,6 @@ if [ -d "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias.d" ]; then
   unset i
 fi
 
-# functions
-dc() {
-    dfm
-    dir="$(cat ~/.config/dmenufm/dmenufm_lastpath)"
-    [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-}
-
 # Colourized less output
 cless() {
   case "$1" in

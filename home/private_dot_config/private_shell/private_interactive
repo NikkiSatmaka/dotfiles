@@ -22,10 +22,4 @@ if [ -t 0 ]; then
     fi
 fi
 
-# gnome-terminal doesn't advertise its 256 colour support.
-if [ "$COLORTERM" = gnome-terminal -a "$TERM" = xterm ]; then
-#    export TERM=gnome-256color
-    export TERM=xterm-256color
-fi
-
 ssource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive_local"
