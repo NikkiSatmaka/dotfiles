@@ -48,7 +48,7 @@ pathappend() {
 # Usage: ssource filename
 ssource() {
     if [ -r "$1" ]; then
-        . "$1"
+        . "$1" 2>/dev/null || :
     fi
 }
 
@@ -60,7 +60,7 @@ initialize_shell_tool() {
     local init_command="$2"
 
     if command -v "$tool_name" >/dev/null 2>&1; then
-        eval "$init_command"
+        eval "$init_command" 2>/dev/null || :
     fi
 }
 

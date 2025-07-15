@@ -150,3 +150,6 @@ initialize_shell_tool "zoxide" "$(zoxide init zsh)"
 
 # Enable NVM
 ssource "$NVM_DIR/nvm.sh"
+
+# Enable orbstack
+ssource "${HOME}/.orbstack/shell/init.zsh"
