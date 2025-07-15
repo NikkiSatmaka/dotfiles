@@ -117,9 +117,6 @@ if command -v thefuck >/dev/null 2>&1; then
     eval "$(thefuck --alias)"
 fi
 
-# Enable rye
-ssource "$RYE_HOME/env"
-
 # Enable terraform completion.
 if command -v terraform >/dev/null 2>&1; then
     complete -C terraform terraform

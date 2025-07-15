@@ -5,7 +5,6 @@ export PYTHONPYCACHEPREFIX="${XDG_CACHE_HOME:-$HOME/.cache}/python"
 export PYTHONUSERBASE="${XDG_DATA_HOME:-$HOME/.local/share}/python"
 export IPYTHONDIR="${XDG_CONFIG_HOME:-$HOME/.config}/jupyter"
 export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/jupyter"
-export RYE_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/rye"
 export PIXI_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pixi"
 
 # java fixes
