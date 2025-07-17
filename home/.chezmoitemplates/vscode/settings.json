@@ -96,7 +96,8 @@
     "<C-b>": false,
     "<C-f>": false,
     "<C-k>": false,
-    "<C-p>": false
+    "<C-p>": false,
+    "<C-j>": false
   },
   "vim.normalModeKeyBindings": [
     {
