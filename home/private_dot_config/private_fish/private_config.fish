@@ -34,9 +34,14 @@ if command -q brew
     end
 end
 
-_initialize_fish_tool "fzf" "(fzf --fish)" "source"
-_initialize_fish_tool "starship" "(starship init fish)" "source"
-_initialize_fish_tool "direnv" "(direnv hook fish)" "source"
+# _initialize_fish_tool "fzf" "(fzf --fish)" "source"
+# _initialize_fish_tool "starship" "(starship init fish)" "source"
+# _initialize_fish_tool "direnv" "(direnv hook fish)" "source"
+
+fzf --fish | source
+starship init fish | source
+direnv hook fish | source
+zoxide init fish | source
 
 if command -q yazi
     function y
