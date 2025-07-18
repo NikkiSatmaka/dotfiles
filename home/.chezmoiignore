@@ -106,11 +106,13 @@ com.googlecode.iterm2.plist
 
 # ignore if not on linux
 {{- if ne .chezmoi.os "linux" }}
+.chezmoiscripts/06-noisetorch
 .config/broot
 .config/Code
 .config/espanso
 .config/user-dirs.dirs
 .config/user-dirs.locale
+.xsessionrc
 {{- end }}
 
 # ignore if not on arch linux
