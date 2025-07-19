@@ -42,7 +42,10 @@ fi
 # Path settings
 pathprepend "/sbin" PATH
 pathprepend "/usr/sbin" PATH
-pathprepend "$HOME/bin" PATH
+pathprepend "/usr/local/sbin" PATH
+init_pathprepend "/usr/local/go/bin" PATH
+init_pathprepend "/usr/local/plan9/bin" PATH
+init_pathprepend "/usr/lib/w3m" PATH
 pathprepend /usr/local/man MANPATH
 pathprepend /usr/share/man MANPATH
 pathprepend "$HOME/share/man" MANPATH
