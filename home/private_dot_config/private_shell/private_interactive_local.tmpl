@@ -116,9 +116,6 @@ initialize_shell_tool "terraform" "$(complete -C terraform terraform)"
 initialize_shell_tool "terragrunt" "$(complete -C terragrunt terragrunt)"
 initialize_shell_tool "tofu" "$(complete -C tofu tofu)"
 initialize_shell_tool "jenv" "$(jenv init -)"
-
-# Enable pyenv
-[ -d "$PYENV_ROOT/bin" ] && pathprepend "$PYENV_ROOT/bin" PATH
 initialize_shell_tool "pyenv" "$(pyenv init -)"
 
 ssource "$HOME/.nix-profile/etc/profile.d/nix.sh"
