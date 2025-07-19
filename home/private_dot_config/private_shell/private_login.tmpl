@@ -40,9 +40,9 @@ elif command -v lesspipe.sh >/dev/null 2>&1; then
 fi
 
 # Path settings
-pathprepend "/sbin" PATH
 pathprepend "/usr/sbin" PATH
 pathprepend "/usr/local/sbin" PATH
+pathprepend "/sbin" PATH
 init_pathprepend "/usr/local/go/bin" PATH
 init_pathprepend "/usr/local/plan9/bin" PATH
 init_pathprepend "/usr/lib/w3m" PATH

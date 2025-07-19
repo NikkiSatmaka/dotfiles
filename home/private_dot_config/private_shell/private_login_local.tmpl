@@ -102,8 +102,8 @@ export NNN_PLUG='o:fzopen;C:diffs;v:imgview;i:imgur;p:pdfview;m:mediainf;d:dragd
 export CALIBRE_USE_DARK_PALETTE=1
 
 # Path settings
-pathprepend "$HOME/bin" PATH
 pathprepend "$HOME/.local/bin" PATH
+pathprepend "$HOME/bin" PATH
 init_pathprepend "$HOME/.emacs.d/bin" PATH
 init_pathprepend "${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin" PATH
 init_pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin" PATH
