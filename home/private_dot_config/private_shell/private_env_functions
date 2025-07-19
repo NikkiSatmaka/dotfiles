@@ -52,6 +52,22 @@ ssource() {
     fi
 }
 
+# Usage: pathappend only if dir exists
+init_pathappend() {
+    local _target_path="$1"
+    if test -d "$_target_path"; then
+        pathappend "$_target_path" "$2"
+    fi
+}
+
+# Usage: pathprepend only if dir exists
+init_pathprepend() {
+    local _target_path="$1"
+    if test -d "$_target_path"; then
+        pathprepend "$_target_path" "$2"
+    fi
+}
+
 # Define a function to conditionally evaluate shell initializations
 # Eg, to initialize direnv to bash
 # initialize_shell_tool "direnv" "$(direnv hook bash)"

@@ -103,18 +103,19 @@ export CALIBRE_USE_DARK_PALETTE=1
 
 # Path settings
 pathprepend "$HOME/.local/bin" PATH
-pathprepend "$HOME/.emacs.d/bin" PATH
-pathprepend "${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin" PATH
-pathprepend "/usr/local/go/bin" PATH
-pathprepend "/usr/local/plan9/bin" PATH
-pathprepend "/usr/lib/w3m" PATH
-pathprepend "/usr/local/sbin" PATH
-pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin" PATH
-pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/gem/bin" PATH
-pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/go/bin" PATH
-pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin" PATH
-pathprepend "$PNPM_HOME" PATH
-pathprepend "$ANDROID_HOME/platform-tools" PATH
+init_pathprepend "$HOME/.emacs.d/bin" PATH
+init_pathprepend "${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin" PATH
+init_pathprepend "/usr/local/go/bin" PATH
+init_pathprepend "/usr/local/plan9/bin" PATH
+init_pathprepend "/usr/lib/w3m" PATH
+init_pathprepend "/usr/local/sbin" PATH
+init_pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin" PATH
+init_pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/gem/bin" PATH
+init_pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/go/bin" PATH
+init_pathprepend "${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin" PATH
+init_pathprepend "$PNPM_HOME" PATH
+init_pathprepend "$ANDROID_HOME/platform-tools" PATH
+init_pathprepend "$PYENV_ROOT/bin" PATH
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys "${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap" 2>/dev/null
