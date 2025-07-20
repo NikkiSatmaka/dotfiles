@@ -108,34 +108,6 @@ alias magit="nvim -c MagitOnly"
 # alias ref="shortcuts >/dev/null; source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/shortcuts"; source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/commands"; source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcuts/zshnameddirs"
 # alias weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport"
 
-# tmux aliases
-# alias tmux="tmux -f \${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
-alias ta='tmux attach'
-alias tl='tmux ls'
-
-if [[ -n $TMUX ]]; then # From inside tmux
-  alias tf='tmux find-window'
-  # Detach all other clients to this session
-  alias mine='tmux detach -a'
-  # Send command to other tmux window
-  tt() {
-    tmux send-keys -t .+ C-u && \
-      tmux set-buffer "$*" && \
-      tmux paste-buffer -t .+ && \
-      tmux send-keys -t .+ Enter;
-  }
-  # Create new session (from inside one)
-  tn() {
-    local name="${1:-`basename $PWD`}"
-    TMUX= tmux new-session -d -s "$name"
-    tmux switch-client -t "$name"
-    tmux display-message "Session #S created"
-  }
-else # From outside tmux
-  # Start grouped session so I can be in two different windows in one session
-  tdup() { tmux new-session -t "${1:-`tmux display-message -p '#S'`}"; }
-fi
-
 # Application aliases
 alias v="nvim"
 alias vimdiff="nvim -d"
