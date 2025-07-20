@@ -1,3 +1,6 @@
+#!/usr/bin/env sh
+# shellcheck shell=sh
+
 # yt-dlp (youtube-dl)
 alias yt="yt-dlp --add-metadata -i"
 alias yta-aac="yt-dlp --extract-audio --audio-format aac "
