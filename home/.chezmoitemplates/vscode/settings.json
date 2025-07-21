@@ -19,6 +19,7 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/node_modules": true,
+    "**/.venv": true,
     "**/.next": true,
     "**/tmp": true,
     "**/package-lock.json": true,
@@ -41,6 +42,7 @@
   "files.eol": "\n",
   "files.watcherExclude": {
     "**/.git": true,
+    "**/.venv": true,
     "**/node_modules": true,
     "**/tmp": true,
     "**/dist": true
@@ -68,6 +70,7 @@
     "**/bower_components": true,
     "**/*.code-search": true,
     "**/.git": true,
+    "**/.venv": true,
     "**/tmp": true,
     "dist": true,
     "out": true,
