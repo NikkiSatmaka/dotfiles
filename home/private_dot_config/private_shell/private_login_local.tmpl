@@ -114,9 +114,6 @@ init_pathprepend "$PNPM_HOME" PATH
 init_pathprepend "$ANDROID_HOME/platform-tools" PATH
 init_pathprepend "$PYENV_ROOT/bin" PATH
 
-# Switch escape and caps if tty and no passwd required:
-sudo -n loadkeys "${XDG_DATA_HOME:-$HOME/.local/share}/kbd/keymaps/ttymaps.kmap" 2>/dev/null
-
 # Enable homebrew.
 find_and_init_brew
 

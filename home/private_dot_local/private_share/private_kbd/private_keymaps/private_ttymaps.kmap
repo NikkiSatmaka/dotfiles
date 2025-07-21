@@ -1,7 +1,0 @@
-keycode   1 = Caps_Lock
-keycode  58 = Escape
-
-keycode   2 = eight            exclam
-keycode   3 = seven            at               at               nul              nul
-keycode   8 = two              ampersand        braceleft        Control_underscore
-keycode   9 = one              asterisk         bracketleft      Delete
