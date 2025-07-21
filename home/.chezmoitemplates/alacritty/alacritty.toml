@@ -7,5 +7,5 @@ opacity = 0.95
 blur = true
 
 [font]
-normal = { family = "FiraCode Nerd Font" }
+normal = { family = "Maple Mono NF" }
 size = 11.00

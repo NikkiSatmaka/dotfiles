@@ -1,8 +1,7 @@
 {
   // Editor
-  "editor.fontFamily": "'FiraCode Nerd Font', 'Fira Code', 'Symbols Nerd Font', 'monospace'",
-  "editor.fontLigatures": true,
-  "editor.lineNumbers": "relative",
+  "editor.fontFamily": "'Maple Mono NF', 'CommitMono Nerd Font', 'FiraCode Nerd Font', 'Fira Code', 'Symbols Nerd Font', 'monospace'",
+  "editor.fontLigatures": "'calt'",
   "editor.inlineSuggest.enabled": true,
   "editor.guides.bracketPairs": true,
   "editor.renderWhitespace": "all",
