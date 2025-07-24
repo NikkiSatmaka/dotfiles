@@ -1,0 +1,29 @@
+# Enable homebrew.
+find_and_init_brew
+
+{{- if eq .chezmoi.os "darwin" }}
+init_gnu_bin_paths() {
+  _igbp_packages="
+    coreutils
+    findutils
+    ed
+    gawk
+    grep
+    gnu-sed
+    gnu-tar
+    make
+  "
+
+  for _igbp_pkg in $_igbp_packages; do
+    _igbp_gnubin_path="$(brew --prefix "$_igbp_pkg")"/libexec/gnubin
+    init_pathprepend "$_igbp_gnubin_path" PATH
+  done
+  unset _igbp_packages
+  unset _igbp_pkg
+  unset _igbp_gnubin_path
+}
+
+init_gnu_bin_paths
+{{- end }}
+
+init_pathprepend "$(brew --prefix rustup)"/bin PATH

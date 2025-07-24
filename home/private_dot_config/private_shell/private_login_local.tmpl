@@ -114,17 +114,6 @@ init_pathprepend "$PNPM_HOME" PATH
 init_pathprepend "$ANDROID_HOME/platform-tools" PATH
 init_pathprepend "$PYENV_ROOT/bin" PATH
 
-# Enable homebrew.
-find_and_init_brew
-
-{{- if eq .chezmoi.os "darwin" }}
-pathprepend "/usr/local/opt/python/libexec/bin" PATH
-pathprepend "$(brew --prefix)/opt/coreutils/libexec/gnubin" PATH
-pathprepend "$(brew --prefix)/opt/moreutils/libexec/gnubin" PATH
-pathprepend "$(brew --prefix)/opt/findutils/libexec/gnubin" PATH
-pathprepend "$(brew --prefix)/opt/gnu-sed/libexec/gnubin" PATH
-{{- end }}
-
 # Enable Nix
 ssource "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
