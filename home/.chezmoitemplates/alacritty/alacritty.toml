@@ -1,4 +1,5 @@
-import = ["~/.config/alacritty/themes/catppuccin.toml"]
+[general]
+import = ["themes/catppuccin.toml"]
 live_config_reload = true
 
 [window]
