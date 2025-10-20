@@ -4,12 +4,19 @@
   "editor.fontLigatures": "'calt'",
   "editor.inlineSuggest.enabled": true,
   "editor.guides.bracketPairs": true,
+  "editor.lineNumbers": "relative",
   "editor.renderWhitespace": "all",
+  "editor.rulers": [88],
+  "diffEditor.ignoreTrimWhitespace": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.excludeGitIgnore": false,
   // Extensions
   "extensions.autoCheckUpdates": false,
   "extensions.autoUpdate": false,
   "settingsSync.ignoredExtensions": ["ms-vscode-remote.remote-wsl"],
   // Files
+  "files.autoSave": "onFocusChange",
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -31,8 +38,6 @@
   "files.associations": {
     "*.toml": "toml",
     "*.njk": "html",
-    "*.sql": "jinja-sql",
-    "*.yml": "jinja-yaml",
     ".env*": "dotenv"
   },
   "files.trimTrailingWhitespace": true,
@@ -46,7 +51,7 @@
     "**/tmp": true,
     "**/dist": true
   },
-  // Workbench
+  // Appearance
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.iconTheme": "catppuccin-mocha",
   "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
@@ -75,6 +80,8 @@
     "out": true,
     "coverage": true
   },
+  "search.useGlobalIgnoreFiles": true,
+  "search.useIgnoreFiles": true,
   // Telemetry
   "telemetry.telemetryLevel": "off",
   "telemetry.feedback.enabled": false,
@@ -241,5 +248,8 @@
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "editor.tabSize": 2
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
