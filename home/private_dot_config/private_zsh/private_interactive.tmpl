@@ -16,7 +16,8 @@ if command -v brew > /dev/null 2>&1; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/interactive_zinit"
+ssource "$(brew --prefix antidote)/share/antidote/antidote.zsh"
+antidote load
 
 # Initialize completion
 autoload -Uz compinit
