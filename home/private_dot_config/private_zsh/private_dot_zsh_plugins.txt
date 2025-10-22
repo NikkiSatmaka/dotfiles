@@ -31,7 +31,6 @@ ryutok/rust-zsh-completions
 # --------
 
 romkatv/powerlevel10k
-mattmc3/zephyr path:plugins/prompt
 # sindresorhus/pure kind:fpath
 # miekg/lean kind:fpath
 
