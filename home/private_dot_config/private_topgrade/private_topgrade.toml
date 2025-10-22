@@ -131,7 +131,7 @@ tmux_session_mode = "attach_if_not_in_session"
 # If `Repo Cask Upgrade` does not exist, then use the `--greedy_auto_updates` option.
 # NOTE: the above entry `greedy_cask` contains this entry, though you can enable
 # both of them, they won't clash with each other.
-# greedy_auto_updates = true
+greedy_auto_updates = true
 
 # For the BrewFormula step
 # Execute `brew autoremove` after the step.
