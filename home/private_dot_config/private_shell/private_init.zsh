@@ -46,6 +46,9 @@ setopt sharehistory
 setopt extendedhistory
 setopt histignorespace
 
+# Enable orbstack
+ssource "${HOME}/.orbstack/shell/init.zsh"
+
 source <(fzf --zsh)
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
