@@ -16,13 +16,13 @@
 {{- if eq .chezmoi.os "linux" }}
 [".config/mpv"]
     type = "git-repo"
-    url = "github.com-personal:NikkiSatmaka/mpv-config.git"
-    private = true
+    url = "https://github.com/noelsimbolon/mpv-config.git"
+    branch = "linux"
 {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
 ["AppData/Roaming/mpv"]
     type = "git-repo"
-    url = "github.com-personal:NikkiSatmaka/mpv-config.git"
-    private = true
+    url = "https://github.com/noelsimbolon/mpv-config.git"
+    branch = "windows"
 {{- end }}
