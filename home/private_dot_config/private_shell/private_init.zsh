@@ -21,7 +21,7 @@ antidote load
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh
 ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.p10k.zsh"
 
-
+zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
 zstyle ":history-search-multi-word" highlight-color "fg=yellow,bold" # Color in which to highlight matched, searched text (default bg=17 on 256-color terminals)
 zstyle ":history-search-multi-word" page-size "11"                    # Number of entries to show (default is $LINES/3)
 zstyle ":plugin:history-search-multi-word" active "underline"        # Effect on active history entry. Try: standout, bold, bg=blue (default underline)
@@ -49,7 +49,4 @@ setopt histignorespace
 # Enable orbstack
 ssource "${HOME}/.orbstack/shell/init.zsh"
 
-source <(fzf --zsh)
-eval "$(direnv hook zsh)"
-eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
