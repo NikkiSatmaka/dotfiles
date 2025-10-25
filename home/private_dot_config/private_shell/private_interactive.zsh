@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 # shellcheck shell=zsh
 
-# Reuse POSIX init
-. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/init.sh"
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# Reuse POSIX interactive
+. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive.sh"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

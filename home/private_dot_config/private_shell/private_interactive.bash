@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
 # shellcheck shell=bash disable=SC1090,SC1091,SC2034
 
-# Reuse POSIX init
-. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/init.sh"
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-source  "${XDG_DATA_HOME:=$HOME/.local/share}/blesh/ble.sh" --attach=none
+# Reuse POSIX interactive
+. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive.sh"
+
+source -- "${XDG_DATA_HOME:=$HOME/.local/share}/blesh/ble.sh" --attach=none
 
 HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend # do not overwrite history
