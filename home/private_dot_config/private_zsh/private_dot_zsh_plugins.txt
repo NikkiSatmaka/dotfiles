@@ -1,93 +1,57 @@
-#
+#!/usr/bin/env zsh
 # .zsh_plugins.txt - antidote plugins file
-#
 
-#
-# Init
-#
-
-# ------------
 # Completions
-# ------------
-
 mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
 aloxaf/fzf-tab
 
-greymd/docker-zsh-completion
-ryutok/rust-zsh-completions
-#$ZSH_CUSTOM_DEV path:plugins/completion
-
-# -------
 # Editor
-# -------
+jeffreytse/zsh-vi-mode
 
-# mattmc3/zsh_custom path:plugins/editor
-# sorin-ionescu/prezto path:modules/editor
-# romkatv/zsh-no-ps2
-
-# --------
 # Prompts
-# --------
-
 romkatv/powerlevel10k
-# sindresorhus/pure kind:fpath
-# miekg/lean kind:fpath
 
-#
-# Clipboard
-#
-
-# ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-# ohmyzsh/ohmyzsh path:plugins/copypath
-# ohmyzsh/ohmyzsh path:plugins/copybuffer
-# ohmyzsh/ohmyzsh path:plugins/copyfile
-
-mfaerevaag/wd
-
-#
-# OMZ
-#
-
-# ohmyzsh/ohmyzsh path:plugins/magic-enter   # included in editor
-# ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z  # included in editor
-ohmyzsh/ohmyzsh path:plugins/direnv kind:defer
-ohmyzsh/ohmyzsh path:plugins/extract kind:defer
-ohmyzsh/ohmyzsh path:plugins/git kind:defer
-ohmyzsh/ohmyzsh path:plugins/kubectl kind:defer
-ohmyzsh/ohmyzsh path:plugins/tmux kind:defer
-
-zsh-users/zsh-history-substring-search
-
-#
 # Utils
-#
-
 romkatv/zsh-bench kind:path
-# mattmc3/zman
-
-zpm-zsh/autoenv kind:defer
 MichaelAquilina/zsh-you-should-use kind:defer
-zsh-users/zsh-autosuggestions kind:defer
-zdharma-continuum/fast-syntax-highlighting kind:defer
-zdharma-continuum/history-search-multi-word kind:defer
-jeffreytse/zsh-vi-mode kind:defer
+mfaerevaag/wd kind:defer
 hlissner/zsh-autopair kind:defer
 kutsan/zsh-system-clipboard kind:defer
+zpm-zsh/autoenv kind:defer
+zsh-users/zsh-autosuggestions kind:defer
+zsh-users/zsh-history-substring-search kind:defer
+zdharma-continuum/fast-syntax-highlighting kind:defer
+zdharma-continuum/history-search-multi-word kind:defer
 
-#
-# macOS
-#
+# OMZ
+getantidote/use-omz
 
-# mattmc3/zsh_custom path:plugins/macos conditional:is-macos
+# OMZ utilty plugins
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+ohmyzsh/ohmyzsh path:plugins/copyfile
+ohmyzsh/ohmyzsh path:plugins/copypath
+ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/fzf
+ohmyzsh/ohmyzsh path:plugins/globalias
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/zoxide
 
-#
-# Final
-#
+# programmer plugins
+ohmyzsh/ohmyzsh path:plugins/direnv kind:defer
+ohmyzsh/ohmyzsh path:plugins/docker kind:defer
+ohmyzsh/ohmyzsh path:plugins/git kind:defer
+ohmyzsh/ohmyzsh path:plugins/golang kind:defer
+ohmyzsh/ohmyzsh path:plugins/kubectl kind:defer
+ohmyzsh/ohmyzsh path:plugins/podman kind:defer
+ohmyzsh/ohmyzsh path:plugins/python kind:defer
+ohmyzsh/ohmyzsh path:plugins/rust kind:defer
+ohmyzsh/ohmyzsh path:plugins/tmux kind:defer
+ohmyzsh/ohmyzsh path:plugins/uv kind:defer
+ohmyzsh/ohmyzsh path:plugins/vagrant kind:defer
 
-# mattmc3/zsh_custom path:plugins/fast-syntax-highlighting
-# mattmc3/zsh_custom path:plugins/autosuggestions
-# mattmc3/zsh_custom path:plugins/history-substring-search
-# mattmc3/zsh_custom path:plugins/zshrcd
+ohmyzsh/ohmyzsh path:plugins/brew kind:defer
 
 # vi: ft=properties
