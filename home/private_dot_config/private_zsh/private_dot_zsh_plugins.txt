@@ -14,44 +14,41 @@ romkatv/powerlevel10k
 
 # Utils
 romkatv/zsh-bench kind:path
-MichaelAquilina/zsh-you-should-use kind:defer
-mfaerevaag/wd kind:defer
-hlissner/zsh-autopair kind:defer
-kutsan/zsh-system-clipboard kind:defer
-zpm-zsh/autoenv kind:defer
-zsh-users/zsh-autosuggestions kind:defer
-zsh-users/zsh-history-substring-search kind:defer
-zdharma-continuum/fast-syntax-highlighting kind:defer
-zdharma-continuum/history-search-multi-word kind:defer
+MichaelAquilina/zsh-you-should-use
+mfaerevaag/wd
+hlissner/zsh-autopair
+kutsan/zsh-system-clipboard
+zpm-zsh/autoenv
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+zdharma-continuum/fast-syntax-highlighting
+zdharma-continuum/history-search-multi-word
+
+# Zephyr
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/completion
+mattmc3/zephyr path:plugins/compstyle
+mattmc3/zephyr path:plugins/confd
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/homebrew
+mattmc3/zephyr path:plugins/macos
+mattmc3/zephyr path:plugins/utility
+mattmc3/zephyr path:plugins/zfunctions
 
 # OMZ
-getantidote/use-omz
-
-# OMZ utilty plugins
-ohmyzsh/ohmyzsh path:plugins/colored-man-pages
-ohmyzsh/ohmyzsh path:plugins/copybuffer
-ohmyzsh/ohmyzsh path:plugins/copyfile
-ohmyzsh/ohmyzsh path:plugins/copypath
-ohmyzsh/ohmyzsh path:plugins/extract
-ohmyzsh/ohmyzsh path:plugins/fzf
-ohmyzsh/ohmyzsh path:plugins/globalias
-ohmyzsh/ohmyzsh path:plugins/magic-enter
-ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
-ohmyzsh/ohmyzsh path:plugins/zoxide
-
-# programmer plugins
-ohmyzsh/ohmyzsh path:plugins/direnv kind:defer
-ohmyzsh/ohmyzsh path:plugins/docker kind:defer
-ohmyzsh/ohmyzsh path:plugins/git kind:defer
-ohmyzsh/ohmyzsh path:plugins/golang kind:defer
-ohmyzsh/ohmyzsh path:plugins/kubectl kind:defer
-ohmyzsh/ohmyzsh path:plugins/podman kind:defer
-ohmyzsh/ohmyzsh path:plugins/python kind:defer
-ohmyzsh/ohmyzsh path:plugins/rust kind:defer
-ohmyzsh/ohmyzsh path:plugins/tmux kind:defer
-ohmyzsh/ohmyzsh path:plugins/uv kind:defer
-ohmyzsh/ohmyzsh path:plugins/vagrant kind:defer
-
-ohmyzsh/ohmyzsh path:plugins/brew kind:defer
+ohmyzsh/ohmyzsh path:plugins/direnv
+ohmyzsh/ohmyzsh path:plugins/docker
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/golang
+ohmyzsh/ohmyzsh path:plugins/kubectl
+ohmyzsh/ohmyzsh path:plugins/podman
+ohmyzsh/ohmyzsh path:plugins/python
+ohmyzsh/ohmyzsh path:plugins/rust
+ohmyzsh/ohmyzsh path:plugins/tmux
+ohmyzsh/ohmyzsh path:plugins/uv
+ohmyzsh/ohmyzsh path:plugins/vagrant
 
 # vi: ft=properties
