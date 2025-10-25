@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1090,SC1091
+
+. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive.zsh"
