@@ -1,6 +1,5 @@
-# WARNING: if you delete .bash_profile, this file becomes part of bash's startup
-# sequence, which means this file suddenly has to cater for two different
-# shells.
+#!/usr/bin/env sh
+# shellcheck disable=SC1090,SC1091
 
-. "${XDG_CONFIG_HOME:-$HOME/.config}/sh/env"
-. "${XDG_CONFIG_HOME:-$HOME/.config}/sh/login"
+. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env.sh"
+. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/login.sh"

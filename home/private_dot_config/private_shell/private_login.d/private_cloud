@@ -1,4 +1,0 @@
-# Cloud
-export AZURE_CONFIG_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/azure"
-export AWS_CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/aws/config"
-export AWS_SHARED_CREDENTIALS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/aws/credentials"
