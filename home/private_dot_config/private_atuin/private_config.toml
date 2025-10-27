@@ -1,1 +1,26 @@
-filter_mode_shell_up_key_binding = "directory"
+keymap_mode = "vim-insert"
+stats.common_subcommands = [
+  "apt",
+  "brew",
+  "cargo",
+  "composer",
+  "dnf",
+  "docker",
+  "git",
+  "go",
+  "ip",
+  "kubectl",
+  "nix",
+  "nmcli",
+  "npm",
+  "pecl",
+  "pnpm",
+  "podman",
+  "port",
+  "systemctl",
+  "tmux",
+  "uv",
+  "yarn",
+]
+stats.common_prefix = ["cd", "echo", "ll", "ls", "lt", "sudo", "vim", "z"]
+style = "full"
