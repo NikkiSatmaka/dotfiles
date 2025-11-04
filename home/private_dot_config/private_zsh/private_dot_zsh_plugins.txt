@@ -4,7 +4,7 @@
 # Completions
 mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
-aloxaf/fzf-tab
+# aloxaf/fzf-tab
 
 # Editor
 jeffreytse/zsh-vi-mode
@@ -39,6 +39,7 @@ mattmc3/zephyr path:plugins/utility
 mattmc3/zephyr path:plugins/zfunctions
 
 # OMZ
+getantidote/use-omz
 ohmyzsh/ohmyzsh path:plugins/direnv
 ohmyzsh/ohmyzsh path:plugins/docker
 ohmyzsh/ohmyzsh path:plugins/git
