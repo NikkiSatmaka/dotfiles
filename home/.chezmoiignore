@@ -143,6 +143,7 @@ com.googlecode.iterm2.plist
 
 # ignore if not on macos
 {{- if ne .chezmoi.os "darwin" }}
+**/*darwin*
 .config/iterm
 .config/skhd
 .config/yabai
