@@ -106,6 +106,7 @@ com.googlecode.iterm2.plist
 
 # ignore if not on linux
 {{- if ne .chezmoi.os "linux" }}
+**/*flatpak*
 .chezmoiscripts/06-noisetorch
 .config/broot
 .config/Code
