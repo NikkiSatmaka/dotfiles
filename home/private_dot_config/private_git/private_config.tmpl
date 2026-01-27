@@ -141,7 +141,7 @@ insteadOf = https://gitlab.com/
 [url "git@bitbucket.org:"]
 insteadOf = https://bitbucket.org/
 
-[url "ssh://git@github.com-rey/{{ .work.github_org }}"]
+[url "ssh://git@github.com-{{ .work.company }}/{{ .work.github_org }}"]
 insteadOf = ssh://git@github.com/{{ .work.github_org }}
 
 [includeIf "gitdir:~/workspace/{{ .work.company }}/"]
