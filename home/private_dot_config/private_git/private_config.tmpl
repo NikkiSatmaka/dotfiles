@@ -128,5 +128,21 @@ path = ~/.config/git/gitalias
 # Include extra configuration (if any).
 path = ~/.config/git/config_local
 
-[includeIf "gitdir:~/workspace/rey/"]
-path = ~/workspace/rey/.gitconfig
+[url "git@github.com-personal:{{ .git.github_username }}"]
+insteadOf = https://github.com/{{ .git.github_username }}
+insteadOf = git@github.com:{{ .git.github_username }}
+
+[url "git@github.com:"]
+insteadOf = https://github.com/
+
+[url "git@gitlab.com:"]
+insteadOf = https://gitlab.com/
+
+[url "git@bitbucket.org:"]
+insteadOf = https://bitbucket.org/
+
+[url "ssh://git@github.com-rey/{{ .work.github_org }}"]
+insteadOf = ssh://git@github.com/{{ .work.github_org }}
+
+[includeIf "gitdir:~/workspace/{{ .work.company }}/"]
+path = ~/workspace/{{ .work.company }}/.gitconfig

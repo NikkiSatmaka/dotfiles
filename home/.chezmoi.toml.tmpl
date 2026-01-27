@@ -15,6 +15,9 @@
 {{- $name := promptString "Your full name" }}
 {{- $email := promptString "Your email address" }}
 {{- $git_email := promptString "Git email address for the author/committer" }}
+{{- $github_username := promptString "Github username for the author/committer" }}
+{{- $company_name := promptString "Company name for workspace subdirectory name" }}
+{{- $company_github_org := promptString "Company github org for ssh alias" }}
 
 {{- $osID := .chezmoi.os -}}
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
@@ -32,3 +35,8 @@ encryption = "gpg"
 
   [data.git]
     email = {{ $git_email | quote }}
+    github_username = {{ $github_username | quote }}
+
+  [data.work]
+    company = {{ $company_name | quote }}
+    github_org = {{ $company_github_org | quote }}
