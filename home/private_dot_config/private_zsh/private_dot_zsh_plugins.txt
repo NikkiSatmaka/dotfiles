@@ -5,6 +5,7 @@
 mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
 # aloxaf/fzf-tab
+bilelmoussaoui/flatpak-zsh-completion
 
 # Editor
 jeffreytse/zsh-vi-mode
