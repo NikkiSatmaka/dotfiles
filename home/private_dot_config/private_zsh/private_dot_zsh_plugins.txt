@@ -52,5 +52,6 @@ ohmyzsh/ohmyzsh path:plugins/rust
 ohmyzsh/ohmyzsh path:plugins/tmux
 ohmyzsh/ohmyzsh path:plugins/uv
 ohmyzsh/ohmyzsh path:plugins/vagrant
+ohmyzsh/ohmyzsh path:plugins/zoxide
 
 # vi: ft=properties
