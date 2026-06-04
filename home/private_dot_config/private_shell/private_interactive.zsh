@@ -20,6 +20,9 @@ ssource "${ZDOTDIR:-$HOME/.config/zsh}/.zstyles"
 source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
 antidote load
 
+# Hotfix for `dtop` alias from omz:docker conflicting with `dtop` cli tools
+alias dtop >/dev/null 2>&1 && unalias dtop
+
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh
 ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.p10k.zsh"
 
