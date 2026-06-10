@@ -4,6 +4,7 @@
   "editor.fontLigatures": "'calt'",
   "editor.inlineSuggest.enabled": true,
   "editor.guides.bracketPairs": true,
+  "editor.minimap.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.renderWhitespace": "all",
   "editor.rulers": [88],
