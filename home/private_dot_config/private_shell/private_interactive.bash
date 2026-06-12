@@ -34,4 +34,8 @@ eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
 eval "$(atuin init bash)"
 
+for f in "$XDG_DATA_HOME/bash-completion/completions/"*.bash; do
+  [ -r "$f" ] && . "$f"
+done
+
 [[ ! ${BLE_VERSION-} ]] || ble-attach
