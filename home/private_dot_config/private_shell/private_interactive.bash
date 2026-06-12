@@ -7,7 +7,7 @@
 # Reuse POSIX interactive
 . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive.sh"
 
-source -- "${XDG_DATA_HOME:=$HOME/.local/share}/blesh/ble.sh" --attach=none
+[[ -r "${XDG_DATA_HOME:=$HOME/.local/share}/blesh/ble.sh"  ]] && source -- "${XDG_DATA_HOME:=$HOME/.local/share}/blesh/ble.sh" --attach=none
 
 HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend # do not overwrite history
