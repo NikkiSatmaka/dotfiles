@@ -14,7 +14,7 @@
   "explorer.excludeGitIgnore": false,
   // Extensions
   "extensions.autoCheckUpdates": false,
-  "extensions.autoUpdate": false,
+  "extensions.autoUpdate": "off",
   "settingsSync.ignoredExtensions": ["ms-vscode-remote.remote-wsl"],
   // Files
   "files.autoSave": "onFocusChange",
