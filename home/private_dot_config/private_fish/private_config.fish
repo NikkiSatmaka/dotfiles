@@ -7,6 +7,7 @@ end
 fish_vi_key_bindings
 
 fzf --fish | source
+vfox activate fish | source
 direnv hook fish | source
 zoxide init fish | source
 

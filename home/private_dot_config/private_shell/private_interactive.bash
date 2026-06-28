@@ -29,6 +29,7 @@ shopt -s checkwinsize   # checks term size when bash regains control
 ssource "${HOME}/.orbstack/shell/init.bash"
 
 source <(fzf --bash)
+eval "$(vfox activate bash)"
 eval "$(starship init bash)"
 eval "$(direnv hook bash)"
 eval "$(zoxide init bash)"
