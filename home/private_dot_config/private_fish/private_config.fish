@@ -20,3 +20,5 @@ function y
   end
   rm -f -- "$tmp"
 end
+
+alias nvitop="uvx nvitop"
