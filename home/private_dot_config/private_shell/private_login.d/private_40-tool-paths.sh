@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck shell=bash
 
+path_prepend "$(brew --prefix rustup)/bin"
 path_prepend "${BUN_INSTALL:-$HOME/.local/share/bun}/bin"
 path_prepend "${PNPM_HOME:-$HOME/.local/share/pnpm}/bin"
 path_prepend "${CARGO_HOME:-$HOME/.local/share/cargo}/bin"
