@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # shellcheck shell=bash
 
-path_prepend "$BUN_INSTALL/bin"
-path_prepend "$PNPM_HOME/bin"
-path_prepend "$CARGO_HOME/bin"
+path_prepend "${BUN_INSTALL:-$HOME/.local/share/bun}/bin"
+path_prepend "${PNPM_HOME:-$HOME/.local/share/pnpm}/bin"
+path_prepend "${CARGO_HOME:-$HOME/.local/share/cargo}/bin"
 # path_prepend "${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin"
 # path_prepend "${XDG_DATA_HOME:-$HOME/.local/share}/gem/bin"
 # path_prepend "${XDG_DATA_HOME:-$HOME/.local/share}/go/bin"
