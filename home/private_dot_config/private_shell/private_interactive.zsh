@@ -47,8 +47,6 @@ setopt histignorespace
 ssource "${HOME}/.orbstack/shell/init.zsh"
 
 source <(fzf --zsh)
-eval "$(vfox activate zsh)"
-eval "$(direnv hook zsh)"
+eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
-eval "$(fnm env --use-on-cd --shell zsh)"

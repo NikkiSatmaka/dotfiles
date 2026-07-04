@@ -7,11 +7,9 @@ end
 fish_vi_key_bindings
 
 fzf --fish | source
-vfox activate fish | source
-direnv hook fish | source
+mise activate fish | source
 zoxide init fish | source
 atuin init fish | sed "s/-k up/up/g" | source
-fnm env --use-on-cd --shell fish | source
 
 function y
   set tmp (mktemp -t "yazi-cwd.XXXXXX")
