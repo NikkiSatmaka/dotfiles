@@ -20,4 +20,4 @@ function y
   command rm -f -- "$tmp"
 end
 
-alias nvitop="uvx nvitop"
+abbr --add nvitop uvx nvitop
