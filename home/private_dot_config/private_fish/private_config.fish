@@ -6,10 +6,10 @@ end
 
 fish_vi_key_bindings
 
-fzf --fish | source
-mise activate fish | source
-zoxide init fish | source
-atuin init fish | sed "s/-k up/up/g" | source
+for f in $XDG_CONFIG_HOME/shell/shell-tools/*/init.fish
+    test -r $f
+    and source $f
+end
 
 function y
   set tmp (mktemp -t "yazi-cwd.XXXXXX")

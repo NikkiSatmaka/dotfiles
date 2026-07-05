@@ -46,7 +46,6 @@ setopt histignorespace
 # Enable orbstack
 ssource "${HOME}/.orbstack/shell/init.zsh"
 
-source <(fzf --zsh)
-eval "$(mise activate zsh)"
-eval "$(zoxide init zsh)"
-eval "$(atuin init zsh)"
+for f in "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shell-tools/"*/init.zsh; do
+  ssource "$f"
+done

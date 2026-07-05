@@ -28,14 +28,12 @@ shopt -s checkwinsize   # checks term size when bash regains control
 # Enable orbstack
 ssource "${HOME}/.orbstack/shell/init.bash"
 
-source <(fzf --bash)
-eval "$(starship init bash)"
-eval "$(mise activate bash)"
-eval "$(zoxide init bash)"
-eval "$(atuin init bash)"
+for f in "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shell-tools/"*/init.bash; do
+  ssource "$f"
+done
 
 for f in "$XDG_DATA_HOME/bash-completion/completions/"*.bash; do
-  [ -r "$f" ] && . "$f"
+  ssource "$f"
 done
 
 [[ ! ${BLE_VERSION-} ]] || ble-attach
