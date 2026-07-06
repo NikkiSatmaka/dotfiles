@@ -36,6 +36,7 @@ com.googlecode.iterm2.plist
 .config/sxiv
 .config/yabai
 .config/zathura
+.config/zellij
 
 # old config using arch and bspwm
 .imwheelrc
