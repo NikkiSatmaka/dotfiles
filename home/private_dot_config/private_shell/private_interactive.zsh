@@ -10,29 +10,23 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+ssource "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
 ssource "${ZDOTDIR:-$HOME/.config/zsh}/.zstyles"
 
 # Set the root name of the plugins files (.txt and .zsh) antidote will use.
-zsh_plugins="${ZDOTDIR:-$HOME/.config/zsh}/.zsh_plugins"
-
-# Ensure the .zsh_plugins.txt file exists so you can add plugins.
-[[ -f ${zsh_plugins}.txt ]] || touch ${zsh_plugins}.txt
-
-# Lazy-load antidote from its functions directory.
-fpath=("${HOMEBREW_PREFIX}/opt/antidote/share/antidote/functions" $fpath)
-autoload -Uz antidote
+ZSH_PLUGINS="${ZDOTDIR:-$HOME/.config/zsh}/.zsh_plugins"
 
 # Generate a new static file whenever .zsh_plugins.txt is updated.
-if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
-  antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh
+if [[ ! "${ZSH_PLUGINS}.zsh" -nt "${ZSH_PLUGINS}.txt" ]]; then
+  # Lazy-load antidote from its functions directory.
+  fpath=("${HOMEBREW_PREFIX}/opt/antidote/share/antidote/functions" $fpath)
+  autoload -Uz antidote
+  antidote bundle < "${ZSH_PLUGINS}.txt" >| "${ZSH_PLUGINS}.zsh"
 fi
 
 # Source your static plugins file.
-source ${zsh_plugins}.zsh
+ssource "${ZSH_PLUGINS}.zsh"
 
 # Hotfix for `dtop` alias from omz:docker conflicting with `dtop` cli tools
 alias dtop >/dev/null 2>&1 && unalias dtop
