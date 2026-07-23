@@ -7,7 +7,7 @@
   "editor.minimap.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.renderWhitespace": "all",
-  "editor.rulers": [88],
+  "editor.rulers": [88, 120],
   "diffEditor.ignoreTrimWhitespace": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
