@@ -38,6 +38,7 @@ mattmc3/zephyr path:plugins/utility
 mattmc3/zephyr path:plugins/zfunctions
 
 # OMZ
+getantidote/use-omz
 ohmyzsh/ohmyzsh path:plugins/bun
 ohmyzsh/ohmyzsh path:plugins/chezmoi
 ohmyzsh/ohmyzsh path:plugins/docker
