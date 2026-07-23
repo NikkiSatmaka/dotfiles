@@ -16,8 +16,6 @@ romkatv/powerlevel10k
 # Utils
 romkatv/zsh-bench kind:path
 MichaelAquilina/zsh-you-should-use
-mfaerevaag/wd
-hlissner/zsh-autopair
 kutsan/zsh-system-clipboard
 zpm-zsh/autoenv
 zsh-users/zsh-autosuggestions
@@ -40,7 +38,6 @@ mattmc3/zephyr path:plugins/utility
 mattmc3/zephyr path:plugins/zfunctions
 
 # OMZ
-getantidote/use-omz
 ohmyzsh/ohmyzsh path:plugins/bun
 ohmyzsh/ohmyzsh path:plugins/chezmoi
 ohmyzsh/ohmyzsh path:plugins/docker
