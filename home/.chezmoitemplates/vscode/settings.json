@@ -181,6 +181,7 @@
   // Jupyter
   "notebook.lineNumbers": "on",
   "notebook.formatOnSave.enabled": true,
+  "notebook.output.scrolling": true,
   "notebook.codeActionsOnSave": {
     "notebook.source.organizeImports": "explicit"
   },
