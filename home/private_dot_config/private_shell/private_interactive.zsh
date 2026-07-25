@@ -17,6 +17,8 @@ ssource "${ZDOTDIR:-$HOME/.config/zsh}/.zstyles"
 # Set the root name of the plugins files (.txt and .zsh) antidote will use.
 ZSH_PLUGINS="${ZDOTDIR:-$HOME/.config/zsh}/.zsh_plugins"
 
+fpath=(${XDG_DATA_HOME:-$HOME/.local/share}/mise-completions/zsh $fpath)
+
 # Generate a new static file whenever .zsh_plugins.txt is updated.
 if [[ ! "${ZSH_PLUGINS}.zsh" -nt "${ZSH_PLUGINS}.txt" ]]; then
   # Lazy-load antidote from its functions directory.

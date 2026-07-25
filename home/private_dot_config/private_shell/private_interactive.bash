@@ -7,7 +7,7 @@
 # Reuse POSIX interactive
 . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/interactive.sh"
 
-[[ -r "${XDG_DATA_HOME:=$HOME/.local/share}/blesh/ble.sh"  ]] && source -- "${XDG_DATA_HOME:=$HOME/.local/share}/blesh/ble.sh" --attach=none
+[[ -r "${XDG_DATA_HOME:=$HOME/.local/share}/blesh/ble.sh" ]] && source -- "${XDG_DATA_HOME:=$HOME/.local/share}/blesh/ble.sh" --attach=none
 
 HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend # do not overwrite history
@@ -29,6 +29,10 @@ shopt -s checkwinsize   # checks term size when bash regains control
 ssource "${HOME}/.orbstack/shell/init.bash"
 
 for f in "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shell-tools/"*/init.bash; do
+  ssource "$f"
+done
+
+for f in $XDG_DATA_HOME/mise-completions/bash/*; do
   ssource "$f"
 done
 
