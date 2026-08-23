@@ -12,4 +12,3 @@ tmux_session_mode = "attach_if_not_in_session"
 cleanup = true
 
 [brew]
-greedy_cask = true
