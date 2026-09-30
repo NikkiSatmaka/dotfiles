@@ -43,6 +43,7 @@ zfunctions
 
 # OMZ
 getantidote/use-omz
+ohmyzsh/ohmyzsh path:plugins/aws
 ohmyzsh/ohmyzsh path:plugins/bun
 ohmyzsh/ohmyzsh path:plugins/chezmoi
 ohmyzsh/ohmyzsh path:plugins/docker
