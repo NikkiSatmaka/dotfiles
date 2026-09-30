@@ -22,7 +22,7 @@ MichaelAquilina/zsh-you-should-use
 kutsan/zsh-system-clipboard
 # zpm-zsh/autoenv
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search post:bindkey-hss
+zsh-users/zsh-history-substring-search
 zdharma-continuum/fast-syntax-highlighting
 zdharma-continuum/history-search-multi-word
 
