@@ -253,5 +253,6 @@
   },
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "kiroAgent.workflows.enabled": true
 }
