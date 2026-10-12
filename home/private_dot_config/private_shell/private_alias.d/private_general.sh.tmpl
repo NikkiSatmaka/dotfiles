@@ -139,10 +139,6 @@ alias nggs="ng generate service"
 # Hexdsl Alias --------------------------------------------
 # alias cal="cal -Y"
 
-alias clean="cleanupdate"
-alias jpg2webp="for f in *.jpg; do cwebp "$f" -o "$(basename -- "$f" .jpg).webp"; done"
-alias png2webp="for f in *.png; do cwebp "$f" -o "$(basename -- "$f" .png).webp"; done"
-
 alias cpuspeed="watch grep \"cpu MHz\" /proc/cpuinfo"
 alias fake1g="fallocate -l 1G test.img"
 alias fe="fzf | xargs -r -I % $EDITOR %"
