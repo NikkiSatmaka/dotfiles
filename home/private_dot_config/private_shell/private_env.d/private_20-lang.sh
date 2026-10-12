@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-# shellcheck shell=bash
+#!/usr/bin/env sh
+# shellcheck shell=sh
 
 # These will already be set for GUI via env.conf; this ensures shells match too.
 : "${LANG:=en_US.UTF-8}"
