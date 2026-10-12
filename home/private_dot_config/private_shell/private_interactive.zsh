@@ -12,7 +12,7 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 ssource "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
-ssource "${ZDOTDIR:-$HOME/.config/zsh}/.zstyles"
+ssource "${ZDOTDIR:-$HOME/.config/zsh}/.zstyles.zsh"
 
 # Set the root name of the plugins files (.txt and .zsh) antidote will use.
 ZSH_PLUGINS="${ZDOTDIR:-$HOME/.config/zsh}/.zsh_plugins"
@@ -35,9 +35,6 @@ alias dtop >/dev/null 2>&1 && unalias dtop
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh
 ssource "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.p10k.zsh"
-
-# Use incremental search
-bindkey "^R" history-search-multi-word
 
 setopt autocd
 setopt interactivecomments
