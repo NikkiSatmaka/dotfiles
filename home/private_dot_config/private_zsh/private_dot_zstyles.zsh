@@ -12,3 +12,9 @@ zstyle ":plugin:history-search-multi-word" active "underline"                # E
 zstyle ":plugin:history-search-multi-word" check-paths "yes"                 # Whether to check paths for existence and mark with magenta (default true)
 zstyle ":plugin:history-search-multi-word" clear-on-cancel "no"              # Whether pressing Ctrl-C or ESC should clear entered query
 zstyle ":plugin:history-search-multi-word" synhl "yes"
+
+# Oh My Zsh eza listings
+zstyle ":omz:plugins:eza" dirs-first yes
+zstyle ":omz:plugins:eza" git-status yes
+zstyle ":omz:plugins:eza" header yes
+zstyle ":omz:plugins:eza" show-group no
