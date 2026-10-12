@@ -20,11 +20,34 @@ ZSH_PLUGINS="${ZDOTDIR:-$HOME/.config/zsh}/.zsh_plugins"
 fpath=(${XDG_DATA_HOME:-$HOME/.local/share}/mise-completions/zsh $fpath)
 
 # Generate a new static file whenever .zsh_plugins.txt is updated.
-if [[ ! "${ZSH_PLUGINS}.zsh" -nt "${ZSH_PLUGINS}.txt" ]]; then
-  # Lazy-load antidote from its functions directory.
-  fpath=("${HOMEBREW_PREFIX}/opt/antidote/share/antidote/functions" $fpath)
-  autoload -Uz antidote
-  antidote bundle < "${ZSH_PLUGINS}.txt" >| "${ZSH_PLUGINS}.zsh"
+if [[ -r "${ZSH_PLUGINS}.txt" && ( ! -s "${ZSH_PLUGINS}.zsh" || ! "${ZSH_PLUGINS}.zsh" -nt "${ZSH_PLUGINS}.txt" ) ]]; then
+  # Keep the previous bundle usable if Antidote cannot generate its replacement.
+  () {
+    local bundle_tmp
+
+    if ! (( $+commands[antidote] )) && {
+      ! (( $+functions[antidote] )) || [[ ${functions[antidote]} == *'builtin autoload -X'* ]]
+    }; then
+      # Resolve the autoload before opening any output file.
+      [[ -n ${HOMEBREW_PREFIX:-} ]] && fpath=("${HOMEBREW_PREFIX}/opt/antidote/share/antidote/functions" $fpath)
+      autoload -Uz antidote
+      if ! autoload +X antidote; then
+        print -u2 -- 'Antidote is unavailable; keeping the existing Zsh plugin bundle.'
+        return
+      fi
+    fi
+
+    bundle_tmp=$(command mktemp "${ZSH_PLUGINS}.zsh.XXXXXX") || return
+    {
+      if antidote bundle < "${ZSH_PLUGINS}.txt" >| "$bundle_tmp" && [[ -s "$bundle_tmp" ]]; then
+        command mv -f -- "$bundle_tmp" "${ZSH_PLUGINS}.zsh"
+      else
+        print -u2 -- 'Antidote bundle generation failed or produced no output; keeping the existing Zsh plugin bundle.'
+      fi
+    } always {
+      command rm -f -- "$bundle_tmp"
+    }
+  }
 fi
 
 # Source your static plugins file.

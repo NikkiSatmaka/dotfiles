@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-# shellcheck shell=bash
+#!/usr/bin/env sh
+# shellcheck shell=sh
 
 export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 export FZF_DEFAULT_OPTS='--height 40% --popup bottom,40% --layout reverse --border top'
