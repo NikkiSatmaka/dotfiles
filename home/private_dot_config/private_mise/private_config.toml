@@ -1,0 +1,16 @@
+[settings]
+disable_backends = ["asdf"]
+
+[tools]
+aws-cli = { version = "latest", symlink_bins = "true" }
+bun = "latest"
+codex = "latest"
+"github:alltuner/mise-completions-sync" = "latest"
+lua = "latest"
+node = "latest"
+oh-my-pi = { version = "latest", rename_exe = "omp" }
+opencode = "latest"
+pi = "latest"
+pnpm = "latest"
+rust = "latest"
+uv = "latest"
