@@ -13,7 +13,7 @@
     type = "git-repo"
     url = "https://github.com/noelsimbolon/mpv-config.git"
     [".config/mpv".clone]
-        args = ["--branch linux"]
+        args = ["--branch, linux"]
     [".config/mpv".pull]
         args = ["--ff-only"]
 {{- end }}
@@ -22,8 +22,8 @@
 ["AppData/Roaming/mpv"]
     type = "git-repo"
     url = "https://github.com/noelsimbolon/mpv-config.git"
-    [".config/mpv".clone]
-        args = ["--branch windows"]
-    [".config/mpv".pull]
+    ["AppData/Roaming/mpv".clone]
+        args = ["--branch, windows"]
+    ["AppData/Roaming/mpv".pull]
         args = ["--ff-only"]
 {{- end }}
