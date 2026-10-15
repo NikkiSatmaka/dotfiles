@@ -9,7 +9,7 @@ codex = "latest"
 lua = "latest"
 node = "latest"
 oh-my-pi = { version = "latest", rename_exe = "omp" }
-opencode = "latest"
+opencode = { version = "latest", allow_builds = ["@opencode/cli"] }
 pi = "latest"
 pnpm = "latest"
 rust = "latest"
