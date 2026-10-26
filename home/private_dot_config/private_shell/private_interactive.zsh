@@ -53,6 +53,9 @@ fi
 # Source your static plugins file.
 ssource "${ZSH_PLUGINS}.zsh"
 
+# Keep CLI aliases without OMZ's per-start completion generation.
+ssource "${ZDOTDIR:-$HOME/.config/zsh}/cli-aliases.zsh"
+
 # Hotfix for `dtop` alias from omz:docker conflicting with `dtop` cli tools
 alias dtop >/dev/null 2>&1 && unalias dtop
 

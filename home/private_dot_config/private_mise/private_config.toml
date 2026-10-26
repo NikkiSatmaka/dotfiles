@@ -1,6 +1,9 @@
 [settings]
 disable_backends = ["asdf"]
 
+[hooks]
+postinstall = 'test ! -r "${XDG_CONFIG_HOME:-$HOME/.config}/shell/refresh-completions.sh" || sh "${XDG_CONFIG_HOME:-$HOME/.config}/shell/refresh-completions.sh"'
+
 [tools]
 aws-cli = { version = "latest", symlink_bins = "true" }
 bun = "latest"
