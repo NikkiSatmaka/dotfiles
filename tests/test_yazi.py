@@ -49,4 +49,3 @@ esac
                     self.assertEqual(result.returncode, 23 if mode == "failure" else 0, result.stderr)
                     self.assertEqual((work / "pwd").read_text(), str(destination if mode == "change" else work))
                     self.assertFalse(Path((work / "record").read_text()).exists())
-

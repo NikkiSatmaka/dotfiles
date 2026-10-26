@@ -34,4 +34,3 @@ test -z "$EMPTY"; or exit 12
                 env=dict(os.environ, XDG_CONFIG_HOME=directory), text=True, capture_output=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertEqual(result.stdout, "")
-

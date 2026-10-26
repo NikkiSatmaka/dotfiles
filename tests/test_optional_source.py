@@ -25,4 +25,3 @@ class ShellTests(unittest.TestCase):
                         text=True, capture_output=True)
                     self.assertEqual(result.returncode, 7)
                     self.assertIn("visible error", result.stderr)
-

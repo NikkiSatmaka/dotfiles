@@ -17,3 +17,46 @@ My dotfiles for Linux, Windows, WSL, and macOS. I've used these operating system
 ## List of Apps
 ### Terminal
 - [Alacritty](https://github.com/alacritty/alacritty)
+
+## Shell setup
+
+Zsh initializes fzf, mise, and zoxide through their Oh My Zsh plugins. Keep
+their `shell-tools` initializers for Bash and Fish only. Zephyr owns completion
+initialization and caching; it loads before plugins that call `compdef`.
+Powerlevel10k uses its explicit theme entry point.
+
+OMP's Zsh completion script uses z1's `cached-eval` cache (20 hours). Dynamic
+completion requests still run OMP as needed. After upgrading OMP, invalidate
+the generated script with `cached-eval --clear omp completions zsh`, then open
+a new shell. Fish autoloads OMP completions on the first completion request.
+
+`ssource` skips unreadable or missing optional files, but preserves diagnostics
+and exit status when an existing file fails. Source required files directly.
+
+Fish imports shared environment exports through a POSIX shell subprocess with
+NUL-delimited output. Login shells also import `login.sh`. Fish aliases and
+functions belong in native `.fish` files; POSIX `.sh` files are never sourced
+directly by Fish. Tool integrations run only in interactive sessions.
+
+tmux explicitly uses Zsh, resolved from its server's `PATH`, independently of
+the account's login shell. This supports system and Homebrew installations.
+Homebrew's Zsh can remain installed as an Antidote dependency; it does not need
+to become the login shell. To switch tmux to Fish later, change `command -v zsh`
+to `command -v fish` in the tmux configuration.
+
+Preview and apply just the shell configuration, without bootstrap scripts or
+external repository updates:
+
+```sh
+chezmoi apply --dry-run --verbose --exclude=scripts,externals ~/.config/shell ~/.config/zsh ~/.config/fish
+chezmoi apply --exclude=scripts,externals ~/.config/shell ~/.config/zsh ~/.config/fish
+```
+
+`.chezmoiremove` removes the retired initializers on apply, including copies
+left behind on other devices. Open a new terminal after applying.
+
+Run the shell regression checks with:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+```
