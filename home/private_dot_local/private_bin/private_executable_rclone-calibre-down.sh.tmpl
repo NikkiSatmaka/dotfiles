@@ -3,9 +3,14 @@
 
 {{ if ne .chezmoi.hostname "avalon" -}}
 echo "Syncing Download gdrive:entertainment/books/calibre_library to $HOME/Documents/calibre_library"
-rclone sync -Pv gdrive_rfid:entertainment/books/calibre_library $HOME/Documents/calibre_library
+transfer_status=0
+rclone sync -Pv gdrive_rfid:entertainment/books/calibre_library "$HOME/Documents/calibre_library" || transfer_status=$?
 {{ else -}}
 echo "Syncing Download gdrive:entertainment/books/calibre_library to $HOME/data/calibre_library"
-rclone sync -Pv gdrive_rfid:entertainment/books/calibre_library $HOME/data/calibre_library
+transfer_status=0
+rclone sync -Pv gdrive_rfid:entertainment/books/calibre_library "$HOME/data/calibre_library" || transfer_status=$?
 {{ end -}}
-read
+if [ -t 0 ]; then
+  read -r -p "Press Enter to close..." || :
+fi
+exit "$transfer_status"
