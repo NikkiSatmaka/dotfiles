@@ -53,6 +53,19 @@ fi
 # Source your static plugins file.
 ssource "${ZSH_PLUGINS}.zsh"
 
+# Accept inline suggestions at end of line; otherwise move one character.
+# Cover both normal and application cursor sequences used by terminals.
+function shell_bind_suggestion_keys() {
+  local keymap
+  for keymap in emacs viins; do
+    bindkey -M "$keymap" '^[[C' forward-char
+    bindkey -M "$keymap" '^[OC' forward-char
+  done
+}
+shell_bind_suggestion_keys
+# zsh-vi-mode initializes lazily and can replace startup bindings.
+zvm_after_init_commands+=(shell_bind_suggestion_keys)
+
 # Load Zsh-specific aliases after the completion framework defines compdef.
 ssource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/lib.d/omz-aliases.zsh"
 for f in "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias.d/"*.zsh(N); do
