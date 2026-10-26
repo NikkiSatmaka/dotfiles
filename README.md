@@ -38,11 +38,13 @@ NUL-delimited output. Login shells also import `login.sh`. Fish aliases and
 functions belong in native `.fish` files; POSIX `.sh` files are never sourced
 directly by Fish. Tool integrations run only in interactive sessions.
 
-tmux explicitly uses Zsh, resolved from its server's `PATH`, independently of
-the account's login shell. This supports system and Homebrew installations.
+tmux explicitly uses Zsh independently of the account's login shell. Chezmoi
+renders its path at apply time, preferring Homebrew Zsh: `/opt/homebrew/bin/zsh`
+then `/usr/local/bin/zsh` on macOS; `/home/linuxbrew/.linuxbrew/bin/zsh` then
+`~/.linuxbrew/bin/zsh` on Linux. If neither exists, it uses `/bin/zsh`.
 Homebrew's Zsh can remain installed as an Antidote dependency; it does not need
-to become the login shell. To switch tmux to Fish later, change `command -v zsh`
-to `command -v fish` in the tmux configuration.
+to become the login shell. The tmux config is a rendered file rather than a
+symlink; reapply it after changing the template or installing/removing Zsh.
 
 Preview and apply just the shell configuration, without bootstrap scripts or
 external repository updates:
