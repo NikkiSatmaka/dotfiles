@@ -62,4 +62,7 @@ ohmyzsh/ohmyzsh path:plugins/kubectl kind:fpath
 ohmyzsh/ohmyzsh path:plugins/podman kind:fpath
 ohmyzsh/ohmyzsh path:plugins/uv kind:fpath
 
+# Load after plugins that define editor widgets.
+zsh-users/zsh-autosuggestions
+
 # vi: ft=properties
