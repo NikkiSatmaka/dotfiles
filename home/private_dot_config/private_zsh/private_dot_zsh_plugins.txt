@@ -41,7 +41,7 @@ macos
 utility
 zfunctions
 
-# OMZ (completion-generating plugins are replaced by cli-aliases.zsh).
+# OMZ (completion-generating plugins are replaced by shell/alias.d/cli-aliases.zsh).
 getantidote/use-omz
 ohmyzsh/ohmyzsh path:plugins/aws
 ohmyzsh/ohmyzsh path:plugins/docker-compose

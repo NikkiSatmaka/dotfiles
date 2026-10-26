@@ -26,7 +26,7 @@ source "$1"
 [[ ${aliases[pr]} == 'podman container run' ]] || exit 12
 [[ ${aliases[uva]} == 'uv add' ]] || exit 13
 (( $+functions[kj] && $+functions[kres] )) || exit 14
-''', "test", str(ROOT / "home/private_dot_config/private_zsh/private_cli-aliases.zsh")],
+''', "test", str(ROOT / "home/private_dot_config/private_shell/private_alias.d/private_cli-aliases.zsh")],
                 env=dict(os.environ, PATH=f"{root}:{os.environ['PATH']}", CALLS=str(root / "calls")),
                 text=True, capture_output=True)
             self.assertEqual(result.returncode, 0, result.stderr)
