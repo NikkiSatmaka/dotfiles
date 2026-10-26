@@ -1,67 +1,65 @@
 # -*-mode:gitignore-*- vim:ft=gitignore
+# Patterns use destination paths relative to ~, without source attributes.
+# https://www.chezmoi.io/reference/special-files/chezmoiignore/
+# Keep shared tools enabled; ignore retired/unused configs and foreign OS paths.
 
-# ~/.local/share/chezmoi/.chezmoiignore
-# =============================================================================
-# Read by chezmoi when chosing repository files to copy to home directory.
-#
-# This list defines globs to ignore, and supports Go's text/template language.
-# See https://www.chezmoi.io/docs/reference/#chezmoiignore
-
-*.gz
-*.txt
-LICENSE
-README.md
-README.org
-com.googlecode.iterm2.plist
-
-# temporarily ignore
+# Disabled application configs (including the current local exclusions).
+# These are retained in the repository for reference; do not deploy them.
+.config/R
+.config/VSCodium
+.config/aqua
+.config/broot
 .config/bspwm
 .config/calcurse
 .config/dunst
+.config/espanso
 .config/fontconfig
+.config/foot
 .config/gtk-2.0
 .config/gtk-3.0
 .config/jupyter
+.config/kanata
 .config/lf
 .config/lvim
 .config/mpd
 .config/ncmpcpp
+.config/newsboat
 .config/nixpkgs
+.config/nnn
 .config/picom
 .config/polybar
+.config/readline
 .config/redshift
 .config/rofi
 .config/skhd
 .config/sxhkd
 .config/sxiv
+.config/wezterm
 .config/yabai
 .config/zathura
 .config/zellij
 
-# old config using arch and bspwm
+# Retired X11/bspwm desktop configuration.
 .imwheelrc
 .xinitrc
 .Xmodmap
-.xprofile
 .Xresources
 .chezmoiscripts/zz_90-set-wallpaper
 .chezmoiscripts/zz_99-services
 .chezmoiscripts/fenrir_90-tweaks
 
-# doom emacs config
-.emacs-profile
-.emacs-profiles.el
+# Retired Doom Emacs configuration.
 .config/doom
 .chezmoiscripts/zz_81-install-doom-emacs
 
-# old executables
+# Legacy desktop helpers; keep the portable rclone wrappers enabled.
 .local/bin/*
 !.local/bin/rclone*
 .local/share/applications/*
-.local/share/kbd
 
-# scripts
+# Disabled bootstrap scripts (the completion refresh hook stays enabled).
 .chezmoiscripts/05-kmonad-colemak
+.chezmoiscripts/06-noisetorch
 .chezmoiscripts/10-install-packages-debian
 .chezmoiscripts/10-install-packages
 .chezmoiscripts/11-brew-packages
@@ -69,71 +67,43 @@ com.googlecode.iterm2.plist
 .chezmoiscripts/13-install-rustup
 .chezmoiscripts/50-change-shell
 .chezmoiscripts/70-rofi-dmenu
-.chezmoiscripts/arch_01-dash-shell
-.chezmoiscripts/arch_02-install-dbus-broker
-.chezmoiscripts/arch_03-opendoas
-.chezmoiscripts/arch_04-chaotic-aur-repo
+.chezmoiscripts/arch_*
 .chezmoiscripts/debian_03-postgresql
 .chezmoiscripts/debian_06-mongodb
 .chezmoiscripts/debian_07-docker
-.chezmoiscripts/debian_08-eza
 .chezmoiscripts/debian_09-openvpn3
 .chezmoiscripts/debian_11-virtualbox
 .chezmoiscripts/debian_12-kubernetes
 .chezmoiscripts/debian_13-zulu-java
 .chezmoiscripts/zz_80-install-lunarvim
 
-# .chezmoiscripts/06-noisetorch
-# .chezmoiscripts/debian_01-nerd_fonts
-# .chezmoiscripts/debian_04-vscode
-# .chezmoiscripts/debian_05-chrome
-# .chezmoiscripts/debian_10-nordvpn
-
-# ignore if not on avalon
-{{- if ne .chezmoi.hostname "avalon" }}
-.local/bin/screenlayout
-.imwheelrc
-{{- end }}
-
-# ignore if not on fenrir
-{{- if ne .chezmoi.hostname "fenrir" }}
-**/*fenrir*
-{{- end }}
-
-# ignore if not on cloud-nikki
-{{- if ne .chezmoi.hostname "cloud-nikki" }}
-.config/environment.d/ssh_askpass.conf
-{{- end }}
-
-# ignore if not on linux
+# Linux-only desktop paths and shell aliases.
 {{- if ne .chezmoi.os "linux" }}
-**/*flatpak*
-.chezmoiscripts/06-noisetorch
-.config/broot
+.config/shell/alias.d/flatpak.sh
+.config/Antigravity IDE
 .config/Code
-.config/espanso
+.config/Cursor
+.config/Kiro
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .xsessionrc
 {{- end }}
 
-# ignore if not on arch linux
+# Arch-only shell aliases; legacy Arch installers are disabled above.
 {{- if ne .osid "linux-arch" }}
-**/*arch*
+.config/shell/alias.d/arch.sh
 {{- end }}
 
-# ignore if not on debian
+# Debian-only installers.
 {{- if ne .osid "linux-debian" }}
-**/*debian*
+.chezmoiscripts/debian_*
 {{- end }}
 
-# ignore if on WSL
+# WSL keeps its existing minimal shell configuration.
 {{- if eq .chezmoi.os "linux" }}
 {{-   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 .config/*
-!.config/bash
 !.config/broot
-!.config/sh
 !.config/git
 !.config/shell
 !.config/tmux
@@ -143,26 +113,43 @@ com.googlecode.iterm2.plist
 {{-   end }}
 {{- end }}
 
-# ignore if not on macos
+# macOS uses the selected shared tools from the MacBook's local rules.
+# Negated patterns take priority over the disabled-config list above.
+{{- if eq .chezmoi.os "darwin" }}
+!.config
+.config/*
+.local
+Library/Application Support/espanso
+
+!.config/alacritty
+!.config/atuin
+!.config/broot
+!.config/fish
+!.config/ghostty
+!.config/git
+!.config/kitty
+!.config/npm
+!.config/nvim
+!.config/shell
+!.config/tmux
+!.config/topgrade
+!.config/zsh
+{{- end }}
+
+# macOS-only paths.
 {{- if ne .chezmoi.os "darwin" }}
-**/*darwin*
-.config/iterm
-.config/skhd
-.config/yabai
-.local/bin/bitbar
-.chezmoiscripts/11-brew-packages
+.config/shell/login.d/darwin-10-paths.sh
 Library
 {{- end }}
 
-# ignore if not on windows
+# Windows-only paths.
 {{- if ne .chezmoi.os "windows" }}
 AppData
 Documents
-.local/bin/windows
 .wslconfig
 {{- end }}
 
-# ignore only on windows
+# Windows keeps its existing Git and Starship configuration.
 {{- if eq .chezmoi.os "windows" }}
 .config/*
 !.config/git
@@ -171,13 +158,7 @@ Documents
 .bash_logout
 .bash_profile
 .bashrc
-.imwheelrc
 .profile
-.tmux/plugins/tpm
-.xinitrc
-.Xmodmap
-.xprofile
-.Xresources
 .zshenv
 .chezmoiscripts
 {{- end }}
