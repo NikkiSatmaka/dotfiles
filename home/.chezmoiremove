@@ -1,4 +1,5 @@
-# Retired initializers: Zsh uses OMZ plugins.
+# Retired initializers: Zsh uses OMZ plugins; Fish autoloads OMP completions.
 .config/shell/shell-tools/fzf/init.zsh
 .config/shell/shell-tools/mise/init.zsh
 .config/shell/shell-tools/zoxide/init.zsh
+.config/shell/shell-tools/omp/init.fish

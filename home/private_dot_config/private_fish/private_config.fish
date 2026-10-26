@@ -1,23 +1,27 @@
 #!/usr/bin/env fish
 
-if status is-interactive
-  # Commands to run in interactive sessions can go here
+set -q XDG_CONFIG_HOME; or set -gx XDG_CONFIG_HOME $HOME/.config
+if test -r "$XDG_CONFIG_HOME/shell/env.fish"
+    source "$XDG_CONFIG_HOME/shell/env.fish"
 end
 
-fish_vi_key_bindings
+status is-interactive; or return
 
-for f in $XDG_CONFIG_HOME/shell/shell-tools/*/init.fish
-    test -r $f
-    and source $f
+fish_vi_key_bindings
+if test -r "$XDG_CONFIG_HOME/shell/interactive.fish"
+    source "$XDG_CONFIG_HOME/shell/interactive.fish"
 end
 
 function y
-  set tmp (mktemp -t "yazi-cwd.XXXXXX")
-  command yazi $argv --cwd-file="$tmp"
+  set -l tmp (mktemp -t "yazi-cwd.XXXXXX"); or return
+  set -l result 0
+  command yazi $argv --cwd-file="$tmp"; or set result $status
+  set -l cwd
   if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
-    builtin cd -- "$cwd"
+    builtin cd -- "$cwd"; or set result $status
   end
   command rm -f -- "$tmp"
+  return $result
 end
 
 abbr --add nvitop uvx nvitop
