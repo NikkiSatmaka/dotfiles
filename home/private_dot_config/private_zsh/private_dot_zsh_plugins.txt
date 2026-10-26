@@ -41,7 +41,7 @@ macos
 utility
 zfunctions
 
-# OMZ (completion-generating plugins are replaced by shell/alias.d/cli-aliases.zsh).
+# OMZ (alias-bearing plugins are exposed through fpath, not sourced at startup).
 getantidote/use-omz
 ohmyzsh/ohmyzsh path:plugins/aws
 ohmyzsh/ohmyzsh path:plugins/docker-compose
@@ -56,5 +56,10 @@ ohmyzsh/ohmyzsh path:plugins/python
 ohmyzsh/ohmyzsh path:plugins/tmux
 ohmyzsh/ohmyzsh path:plugins/vagrant
 ohmyzsh/ohmyzsh path:plugins/zoxide
+
+ohmyzsh/ohmyzsh path:plugins/docker kind:fpath
+ohmyzsh/ohmyzsh path:plugins/kubectl kind:fpath
+ohmyzsh/ohmyzsh path:plugins/podman kind:fpath
+ohmyzsh/ohmyzsh path:plugins/uv kind:fpath
 
 # vi: ft=properties

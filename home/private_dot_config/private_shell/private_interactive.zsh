@@ -54,6 +54,7 @@ fi
 ssource "${ZSH_PLUGINS}.zsh"
 
 # Load Zsh-specific aliases after the completion framework defines compdef.
+ssource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/lib.d/omz-aliases.zsh"
 for f in "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias.d/"*.zsh(N); do
   ssource "$f"
 done

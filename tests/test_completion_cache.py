@@ -10,27 +10,46 @@ SHELL = ROOT / "home/private_dot_config/private_shell"
 
 
 class CompletionCacheTests(unittest.TestCase):
-    def test_cli_aliases_load_without_running_completion_generators(self):
+    def test_upstream_aliases_are_cached_and_follow_plugin_updates(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            for name in ("docker", "kubectl", "podman", "uv"):
-                tool = root / name
-                tool.write_text('#!/bin/sh\nprintf called >> "$CALLS"\nexit 1\n')
-                tool.chmod(0o755)
-            result = subprocess.run(
-                ["zsh", "-f", "-c", '''
+            tool = root / "uv"
+            tool.write_text("#!/bin/sh\nexit 0\n")
+            tool.chmod(0o755)
+            shared = root / "config/shell"
+            shared.mkdir(parents=True)
+            import shutil
+            shutil.copyfile(SHELL / "private_generate-omz-aliases.zsh", shared / "generate-omz-aliases.zsh")
+            plugin = root / "uv.plugin.zsh"
+            plugin_code = 'printf "called\\n" >> "$CALLS"\nalias uva="uv add"\n'
+            plugin.write_text(plugin_code)
+            code = '''
+. "$1"
+. "$2"
+. "$3"
+fpath=("$4" $fpath)
 compdef() { :; }
-source "$1"
-[[ ${aliases[dps]} == 'docker ps' ]] || exit 10
-[[ ${aliases[k]} == kubectl ]] || exit 11
-[[ ${aliases[pr]} == 'podman container run' ]] || exit 12
-[[ ${aliases[uva]} == 'uv add' ]] || exit 13
-(( $+functions[kj] && $+functions[kres] )) || exit 14
-''', "test", str(ROOT / "home/private_dot_config/private_shell/private_alias.d/private_cli-aliases.zsh")],
-                env=dict(os.environ, PATH=f"{root}:{os.environ['PATH']}", CALLS=str(root / "calls")),
-                text=True, capture_output=True)
-            self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertFalse((root / "calls").exists())
+load_omz_aliases uv
+load_omz_aliases uv
+print -r -- "$aliases[uva]"
+'''
+            command = ["zsh", "-f", "-c", code, "test",
+                       str(SHELL / "private_lib.d/private_completions.sh"),
+                       str(SHELL / "private_lib.d/private_path.sh"),
+                       str(SHELL / "private_lib.d/private_omz-aliases.zsh"), str(root)]
+            env = dict(os.environ, PATH=f"{root}:{os.environ['PATH']}",
+                       XDG_CONFIG_HOME=str(root / "config"), XDG_CACHE_HOME=str(root / "cache"),
+                       CALLS=str(root / "calls"))
+            first = subprocess.run(command, env=env, text=True, capture_output=True)
+            self.assertEqual(first.returncode, 0, first.stderr)
+            self.assertEqual(first.stdout.strip(), "uv add")
+            self.assertEqual(len((root / "calls").read_text().splitlines()), 1)
+            time.sleep(0.01)
+            plugin.write_text(plugin_code.replace("uv add", "uv add --updated"))
+            second = subprocess.run(command, env=env, text=True, capture_output=True)
+            self.assertEqual(second.returncode, 0, second.stderr)
+            self.assertEqual(second.stdout.strip(), "uv add --updated")
+            self.assertEqual(len((root / "calls").read_text().splitlines()), 2)
 
     def test_omp_cold_and_warm_start_do_not_depend_on_cached_eval(self):
         for shell in ("bash", "zsh"):
@@ -40,6 +59,7 @@ source "$1"
                 tool.write_text("#!/bin/sh\nprintf 'call\\n' >> \"$CALLS\"\nprintf 'OMP_COMPLETION_LOADED=yes\\n'\n")
                 tool.chmod(0o755)
                 code = '''
+set -C
 cached-eval() { shift; "$@"; }
 . "$1"
 . "$2"
@@ -68,7 +88,7 @@ test "$OMP_COMPLETION_LOADED" = yes || exit 11
             tool.chmod(0o755)
             cache = root / "completions/_test"
             env = dict(os.environ, PATH=f"{root}:{os.environ['PATH']}", CALLS=str(root / "calls"))
-            command = ["sh", "-c", '. "$1"; cache_command_output "$2" generate',
+            command = ["sh", "-c", 'set -C; . "$1"; cache_command_output "$2" generate',
                        "test", str(SHELL / "private_lib.d/private_completions.sh"), str(cache)]
             subprocess.run(command, env=env, check=True)
             before = cache.stat()
