@@ -12,12 +12,15 @@ copy_output() {
 }
 
 y() {
-  # shellcheck disable=SC2155
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-  yazi "$@" --cwd-file="$tmp"
-  IFS= read -r -d '' cwd <"$tmp"
-  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd" || return 0
-  rm -f -- "$tmp" >/dev/null
+  local tmp cwd='' result=0
+  tmp=$(mktemp -t "yazi-cwd.XXXXXX") || return
+  command yazi "$@" --cwd-file="$tmp" || result=$?
+  IFS= read -r -d '' cwd <"$tmp" || :
+  if [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && [ -d "$cwd" ]; then
+    builtin cd -- "$cwd" || result=$?
+  fi
+  command rm -f -- "$tmp"
+  return "$result"
 }
 
 n() {
