@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
 
+## Z1
+
+zstyle ':z1:homebrew' cache yes
+zstyle ':z1:zstyles' skip yes
+#zstyle ':z1:zfunctions' skip yes
+zstyle ':z1:confd' skip yes
+#zstyle ':z1:compinit' cache yes
+zstyle ':z1:compinit' skip yes
+
 # Zephyr features
 
 # Use caching.
-zstyle ':plugin:zephyr:plugin:*' 'use-cache' yes
+zstyle ':zephyr:plugin:completion' 'use-cache' yes
+zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
 zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
 
 zstyle ":plugin:history-search-multi-word" highlight-color "fg=yellow,bold"  # Color in which to highlight matched, searched text (default bg=17 on 256-color terminals)

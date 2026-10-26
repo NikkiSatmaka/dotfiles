@@ -1,0 +1,4 @@
+# Retired initializers: Zsh uses OMZ plugins.
+.config/shell/shell-tools/fzf/init.zsh
+.config/shell/shell-tools/mise/init.zsh
+.config/shell/shell-tools/zoxide/init.zsh
