@@ -6,9 +6,31 @@ mkcd() {
 }
 
 copy_output() {
-  "$(history | tail -2 | sed "s/ [0-9]* //;2d")" >/tmp/cmdoutput &&
-    xsel --clipboard </tmp/cmdoutput &&
-    notify-send "Terminal" "Ouput Copied"
+  if [ "$#" -eq 0 ]; then
+    printf 'Usage: copy_output command [arguments...]\n' >&2
+    return 2
+  fi
+  local tmp result=0
+  tmp=$(mktemp -t "copy-output.XXXXXX") || return
+  "$@" > "$tmp" || result=$?
+  if [ "$result" -ne 0 ]; then
+    command rm -f -- "$tmp"
+    return "$result"
+  fi
+  if command -v pbcopy >/dev/null 2>&1; then
+    pbcopy < "$tmp" || result=$?
+  elif [ -n "${WAYLAND_DISPLAY:-}" ] && command -v wl-copy >/dev/null 2>&1; then
+    wl-copy < "$tmp" || result=$?
+  elif command -v xsel >/dev/null 2>&1; then
+    xsel --clipboard --input < "$tmp" || result=$?
+  elif command -v xclip >/dev/null 2>&1; then
+    xclip -selection clipboard < "$tmp" || result=$?
+  else
+    printf 'No clipboard command found (pbcopy, wl-copy, xsel, xclip).\n' >&2
+    result=127
+  fi
+  command rm -f -- "$tmp"
+  return "$result"
 }
 
 y() {

@@ -24,3 +24,5 @@ export NODE_REPL_HISTORY="${XDG_DATA_HOME:-$HOME/.local/share}/node_repl_history
 
 export RUFF_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/ruff"
 export STARSHIP_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/starship"
+export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/config.toml"
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"

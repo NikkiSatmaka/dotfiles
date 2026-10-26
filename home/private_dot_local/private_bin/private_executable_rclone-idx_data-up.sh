@@ -3,5 +3,9 @@
 
 idx_exported_csv_dir="$HOME/.var/app/com.usebottles.bottles/data/bottles/bottles/amibroker/drive_c/data-ab/idx_exported_csv"
 echo "Syncing Upload $idx_exported_csv_dir to gdrive_rfid:investment/04_data/idx_exported_csv"
-rclone sync -Pv $idx_exported_csv_dir gdrive_rfid:investment/04_data/idx_exported_csv
-read
+transfer_status=0
+rclone sync -Pv "$idx_exported_csv_dir" gdrive_rfid:investment/04_data/idx_exported_csv || transfer_status=$?
+if [ -t 0 ]; then
+  read -r -p "Press Enter to close..." || :
+fi
+exit "$transfer_status"

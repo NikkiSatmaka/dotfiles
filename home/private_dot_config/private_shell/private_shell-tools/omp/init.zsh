@@ -1,12 +1,9 @@
 #!/usr/bin/env sh
 # shellcheck shell=zsh
 
-if (( $+commands[omp] )); then
-  # z1 caches stable generated code for 20 hours. After an OMP update, refresh
-  # immediately with: cached-eval --clear omp completions zsh
-  if (( $+functions[cached-eval] )); then
-    cached-eval omp completions zsh
-  else
-    eval "$(omp completions zsh)"
-  fi
+if command -v omp >/dev/null 2>&1; then
+  omp_cache="${XDG_CACHE_HOME:-$HOME/.cache}/shell/completions/omp.zsh"
+  cache_command_output "$omp_cache" omp completions zsh
+  [ ! -r "$omp_cache" ] || . "$omp_cache"
+  unset omp_cache
 fi

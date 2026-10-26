@@ -3,3 +3,7 @@
 .config/shell/shell-tools/mise/init.zsh
 .config/shell/shell-tools/zoxide/init.zsh
 .config/shell/shell-tools/omp/init.fish
+
+# Retire the copied alias snapshots; per-tool loaders use upstream definitions.
+.config/zsh/cli-aliases.zsh
+.config/shell/alias.d/cli-aliases.zsh
