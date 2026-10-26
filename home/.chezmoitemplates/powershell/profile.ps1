@@ -1,5 +1,5 @@
 
-$ENV:STARSHIP_CONFIG = "$HOME\config\starship\config.toml"
+$ENV:STARSHIP_CONFIG = Join-Path $HOME '.config/starship/config.toml'
 
 # # Chocolatey profile
 # $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
