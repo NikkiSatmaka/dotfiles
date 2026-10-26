@@ -24,7 +24,8 @@ path_remove() {
 
 # Usage: ssource file
 ssource() {
-  [ -r "$1" ] && . "$1" 2>/dev/null || :
+  [ -r "$1" ] || return 0
+  . "$1"
 }
 
 # Function to find and initialize brew
