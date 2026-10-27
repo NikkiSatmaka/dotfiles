@@ -176,7 +176,7 @@
     "editor.formatOnSave": true,
     "editor.tabSize": 4
   },
-  "python.languageServer": "Pylance",
+  "python.languageServer": "Default",
   "python.analysis.typeCheckingMode": "basic",
   // Jupyter
   "notebook.lineNumbers": "on",
