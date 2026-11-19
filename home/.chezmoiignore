@@ -133,6 +133,7 @@ Library/Application Support/espanso
 !.config/shell
 !.config/tmux
 !.config/topgrade
+!.config/zed
 !.config/zsh
 {{- end }}
 
