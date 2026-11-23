@@ -5,8 +5,9 @@ disable_backends = ["asdf"]
 postinstall = 'test ! -r "${XDG_CONFIG_HOME:-$HOME/.config}/shell/refresh-completions.sh" || sh "${XDG_CONFIG_HOME:-$HOME/.config}/shell/refresh-completions.sh"'
 
 [tools]
-aws-cli = { version = "latest", symlink_bins = "true" }
+awscli = "latest"
 bun = "latest"
+claude = "latest"
 codex = "latest"
 "github:alltuner/mise-completions-sync" = "latest"
 lua = "latest"
